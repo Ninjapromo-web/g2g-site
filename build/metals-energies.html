@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Metals and Energies Trading | G2G Group LTD</title>
+  <meta name="description" content="Unlock opportunities in metals and energies trading with G2G Group LTD. Trade gold, silver, oil, and more with our advanced trading platform.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/market.css">
+  <link rel="preload" href="assets/img/inner-hero-bg.webp" as="image">
+  <script src="js/header.js" defer></script>
+  <script src="js/analytics.js" defer></script>
+  <script src="js/stack.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header" data-el="header" data-name="site-header">
+    <div class="site-header__bar" data-el="container">
+      <a class="site-header__logo" href="index.html" data-el="image">
+        <img class="site-header__logo-img" src="assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub site-header__item--active">
+            <a class="site-header__link" href="markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link site-header__sub-link--current" href="metals-energies.html" aria-current="page"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link site-header__drawer-sub-link--current" href="metals-energies.html" aria-current="page">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- section: page-hero (Inner Hero 6013:293, экземпляр 6015:622) -->
+    <section class="page-hero theme-dark" data-el="container" data-name="page-hero">
+      <div class="page-hero__inner container" data-el="container">
+        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path breadcrumb__item--sep-tight"><a class="breadcrumb__link" href="markets.html">Markets</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path" aria-current="page">Metals &amp; Energies</li>
+          </ol>
+        </nav>
+        <div class="page-hero__copy" data-el="container">
+          <h1 class="page-hero__title type-h1" data-el="heading">Trade <span class="page-hero__accent">Metals &amp; Energies</span> With G2G</h1>
+          <div class="page-hero__texts" data-el="container">
+            <p class="page-hero__lead type-body-lg" data-el="text">Access Gold, Silver, Platinum, Palladium, US Oil, and Brent Oil through your G2G trading account. Review contract sizes, trading volumes, spreads, leverage, swap conditions, and trading hours before you trade.</p>
+            <!-- В Figma здесь заглушка «One supporting sentence for this page.» (page-hero__note) —
+                 текста в копирайте клиента нет, строка не выводится до текста от клиента -->
+          </div>
+        </div>
+        <div class="page-hero__actions" data-el="container">
+          <a class="btn btn--primary btn--lg" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="hero">Open Account</a>
+        </div>
+        <!-- Арт страницы (Rectangle 6064:5595): слиток золота + бочка нефти -->
+        <img class="page-hero__art" src="assets/img/hero-art-metals.webp" width="536" height="486" alt="" decoding="async" fetchpriority="high" data-el="image">
+      </div>
+    </section>
+
+    <!-- section: market-specs (Specifications 6099:3440) -->
+    <section class="market-specs theme-light" data-el="container" data-name="market-specs">
+      <div class="market-specs__inner container" data-el="container">
+        <div class="market-specs__tables" data-el="container">
+          <div class="section-head" data-el="container">
+            <p class="section-head__overline type-overline" data-el="text">TRADING SPECIFICATIONS</p>
+            <h2 class="section-head__title type-h2" data-el="heading">Metals &amp; Energies <span class="section-head__accent">Trading Conditions</span></h2>
+            <p class="section-head__lead type-body-lg" data-el="text">Review the current specifications for available metals and energy instruments.</p>
+          </div>
+
+          <!-- repeat: table-group (label, table, note) — Row / Grid (6098:3506) -->
+          <div class="table-group" data-el="container">
+            <h3 class="table-group__label type-overline" data-el="heading">PRECIOUS METALS</h3>
+            <div class="table-scroll" data-el="html" tabindex="0" role="region" aria-label="Precious metals specifications">
+              <table class="spec-table spec-table--wide spec-table--cols-5 spec-table--snap">
+                <colgroup><col class="spec-table__col-first"><col><col><col><col class="spec-table__col-last"></colgroup>
+                <thead>
+                  <tr class="spec-table__head-row">
+                    <th class="spec-table__head spec-table__cell--first" scope="col">Instrument</th>
+                    <th class="spec-table__head" scope="col">Contract Size</th>
+                    <th class="spec-table__head" scope="col">Minimum Volume</th>
+                    <th class="spec-table__head" scope="col">Maximum Volume</th>
+                    <th class="spec-table__head" scope="col">Spreads</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="spec-table__row"><th class="spec-table__key spec-table__cell--first" scope="row">Gold</th><td class="spec-table__value">100 oz</td><td class="spec-table__value">0.01 lot</td><td class="spec-table__value">10 lots</td><td class="spec-table__value">From 0.12 points*</td></tr>
+                  <tr class="spec-table__row spec-table__row--alt"><th class="spec-table__key spec-table__cell--first" scope="row">Silver</th><td class="spec-table__value">5,000 oz</td><td class="spec-table__value">0.01 lot</td><td class="spec-table__value">10 lots</td><td class="spec-table__value">From 0.12 points*</td></tr>
+                  <tr class="spec-table__row"><th class="spec-table__key spec-table__cell--first" scope="row">Platinum</th><td class="spec-table__value">100 oz</td><td class="spec-table__value">0.01 lot</td><td class="spec-table__value">10 lots</td><td class="spec-table__value">From 0.12 points*</td></tr>
+                  <tr class="spec-table__row spec-table__row--alt"><th class="spec-table__key spec-table__cell--first spec-table__cell--last-row" scope="row">Palladium</th><td class="spec-table__value spec-table__cell--last-row">100 oz</td><td class="spec-table__value spec-table__cell--last-row">0.01 lot</td><td class="spec-table__value spec-table__cell--last-row">10 lots</td><td class="spec-table__value spec-table__cell--last-row">From 0.12 points*</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-group__note type-caption" data-el="text">*Spreads are variable and may differ depending on market conditions, liquidity, and account type.</p>
+          </div>
+
+          <div class="table-group" data-el="container">
+            <h3 class="table-group__label type-overline" data-el="heading">ENERGIES</h3>
+            <div class="table-scroll" data-el="html" tabindex="0" role="region" aria-label="Energies specifications">
+              <table class="spec-table spec-table--wide spec-table--cols-4 spec-table--snap">
+                <colgroup><col class="spec-table__col-first"><col><col><col class="spec-table__col-last"></colgroup>
+                <thead>
+                  <tr class="spec-table__head-row">
+                    <th class="spec-table__head spec-table__cell--first" scope="col">Instrument</th>
+                    <th class="spec-table__head" scope="col">Contract Size</th>
+                    <th class="spec-table__head" scope="col">Minimum Volume</th>
+                    <th class="spec-table__head" scope="col">Maximum Volume</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="spec-table__row"><th class="spec-table__key spec-table__cell--first" scope="row">US Oil</th><td class="spec-table__value">1,000</td><td class="spec-table__value">0.01 lot</td><td class="spec-table__value">10 lots</td></tr>
+                  <tr class="spec-table__row spec-table__row--alt"><th class="spec-table__key spec-table__cell--first spec-table__cell--last-row" scope="row">UK Oil</th><td class="spec-table__value spec-table__cell--last-row">1,000</td><td class="spec-table__value spec-table__cell--last-row">0.01 lot</td><td class="spec-table__value spec-table__cell--last-row">10 lots</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- repeat: note-card (title, text, image) — Card / Note (6087:3646) -->
+        <div class="note-cards" data-el="container">
+          <article class="note-card" data-el="container">
+            <div class="note-card__copy" data-el="container">
+              <h3 class="note-card__title type-h4" data-el="heading">Maximum Net Open Positions</h3>
+              <p class="note-card__text type-small" data-el="text">50 per instrument.</p>
+            </div>
+            <img class="note-card__img" src="assets/img/note-positions.webp" srcset="assets/img/note-positions.webp 710w, assets/img/note-positions-3x.webp 1065w" sizes="355px" width="355" height="240" alt="" loading="lazy" decoding="async" data-el="image">
+          </article>
+          <article class="note-card" data-el="container">
+            <div class="note-card__copy" data-el="container">
+              <h3 class="note-card__title type-h4" data-el="heading">Maximum Leverage</h3>
+              <p class="note-card__text type-small" data-el="text">Dynamic leverage up to 1:500, subject to applicable terms and conditions.</p>
+            </div>
+            <img class="note-card__img" src="assets/img/note-leverage.webp" srcset="assets/img/note-leverage.webp 710w, assets/img/note-leverage-3x.webp 1065w" sizes="355px" width="355" height="240" alt="" loading="lazy" decoding="async" data-el="image">
+          </article>
+          <article class="note-card" data-el="container">
+            <div class="note-card__copy" data-el="container">
+              <h3 class="note-card__title type-h4" data-el="heading">Swap-Free</h3>
+              <p class="note-card__text type-small" data-el="text">Available, subject to applicable terms and conditions.</p>
+            </div>
+            <img class="note-card__img" src="assets/img/note-swap.webp" srcset="assets/img/note-swap.webp 710w, assets/img/note-swap-3x.webp 1065w" sizes="355px" width="355" height="240" alt="" loading="lazy" decoding="async" data-el="image">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: instruments (Available instruments 6099:3548) -->
+    <section class="instruments theme-dark edge-round-top" data-el="container" data-name="instruments">
+      <div class="instruments__inner container" data-el="container">
+
+        <div class="instruments__block instruments__block--narrow" data-el="container">
+          <div class="section-head" data-el="container">
+            <p class="section-head__overline type-overline" data-el="text">AVAILABLE INSTRUMENTS</p>
+            <h2 class="section-head__title type-h2" data-el="heading">Metal &amp; Energy Markets <span class="section-head__accent">Available Through G2G</span></h2>
+          </div>
+          <div class="pair-groups pair-groups--spaced" data-el="container">
+            <div class="pair-group" data-el="container">
+              <h3 class="pair-group__label type-overline" data-el="heading">PRECIOUS METALS</h3>
+              <!-- repeat: pill (instrument) -->
+              <ul class="pair-group__list pair-group__list--narrow" data-el="text">
+                <li class="pill pill--neutral">Gold</li>
+                <li class="pill pill--neutral">Silver</li>
+                <li class="pill pill--neutral">Platinum</li>
+                <li class="pill pill--neutral">Palladium</li>
+              </ul>
+            </div>
+            <div class="pair-group" data-el="container">
+              <h3 class="pair-group__label type-overline" data-el="heading">ENERGIES</h3>
+              <ul class="pair-group__list" data-el="text">
+                <li class="pill pill--neutral pill--long">Crude Oil / West Texas Intermediate (US Oil)</li>
+                <li class="pill pill--neutral pill--long">Brent Crude Oil (UK Oil)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr class="instruments__divider">
+
+        <div class="instruments__block" data-el="container">
+          <div class="section-head" data-el="container">
+            <p class="section-head__overline type-overline" data-el="text">TRADING HOURS</p>
+            <h2 class="section-head__title type-h2" data-el="heading">Metals &amp; Energies <span class="section-head__accent">Trading Hours</span></h2>
+            <p class="section-head__lead type-body-lg" data-el="text">All trading hours below are shown in G2G server time (GMT+3).</p>
+          </div>
+
+          <!-- repeat: table-group (label, table) — Row / Grid, 2 колонки -->
+          <div class="table-group table-group--narrow" data-el="container">
+            <h3 class="table-group__label type-overline" data-el="heading">PRECIOUS METALS</h3>
+            <table class="spec-table spec-table--cols-2 spec-table--snap" data-el="html">
+              <colgroup><col class="spec-table__col-first"><col class="spec-table__col-last"></colgroup>
+              <thead>
+                <tr class="spec-table__head-row"><th class="spec-table__head spec-table__cell--first" scope="col">Day</th><th class="spec-table__head" scope="col">Trading Hours</th></tr>
+              </thead>
+              <tbody>
+                <tr class="spec-table__row"><th class="spec-table__key spec-table__cell--first" scope="row">Monday–Thursday</th><td class="spec-table__value">01:01–23:58</td></tr>
+                <tr class="spec-table__row spec-table__row--alt"><th class="spec-table__key spec-table__cell--first spec-table__cell--last-row" scope="row">Friday</th><td class="spec-table__value spec-table__cell--last-row">01:01–23:49</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-group table-group--narrow" data-el="container">
+            <h3 class="table-group__label type-overline" data-el="heading">US OIL</h3>
+            <table class="spec-table spec-table--cols-2 spec-table--snap" data-el="html">
+              <colgroup><col class="spec-table__col-first"><col class="spec-table__col-last"></colgroup>
+              <thead>
+                <tr class="spec-table__head-row"><th class="spec-table__head spec-table__cell--first" scope="col">Day</th><th class="spec-table__head" scope="col">Trading Hours</th></tr>
+              </thead>
+              <tbody>
+                <tr class="spec-table__row"><th class="spec-table__key spec-table__cell--first" scope="row">Monday</th><td class="spec-table__value">00:01–23:59</td></tr>
+                <tr class="spec-table__row spec-table__row--alt"><th class="spec-table__key spec-table__cell--first" scope="row">Tuesday–Thursday</th><td class="spec-table__value">01:01–23:59</td></tr>
+                <tr class="spec-table__row"><th class="spec-table__key spec-table__cell--first spec-table__cell--last-row" scope="row">Friday</th><td class="spec-table__value spec-table__cell--last-row">01:01–23:49</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-group table-group--narrow" data-el="container">
+            <h3 class="table-group__label type-overline" data-el="heading">BRENT OIL</h3>
+            <table class="spec-table spec-table--cols-2 spec-table--snap" data-el="html">
+              <colgroup><col class="spec-table__col-first"><col class="spec-table__col-last"></colgroup>
+              <thead>
+                <tr class="spec-table__head-row"><th class="spec-table__head spec-table__cell--first" scope="col">Day</th><th class="spec-table__head" scope="col">Trading Hours</th></tr>
+              </thead>
+              <tbody>
+                <tr class="spec-table__row"><th class="spec-table__key spec-table__cell--first" scope="row">Monday–Thursday</th><td class="spec-table__value">00:00–01:00 and 03:00–23:59</td></tr>
+                <tr class="spec-table__row spec-table__row--alt"><th class="spec-table__key spec-table__cell--first spec-table__cell--last-row" scope="row">Friday</th><td class="spec-table__value spec-table__cell--last-row">00:00–01:00 and 03:00–23:49</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="instruments__notes" data-el="container">
+            <p class="instruments__note instruments__note--soft type-caption" data-el="text">All available trading sessions are supported, subject to the individual instrument’s trading hours.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- section: next-step (legals 6232:7501: «what to check») -->
+    <section class="next-step theme-light" data-el="container" data-name="next-step">
+      <div class="next-step__inner" data-el="container">
+        <div class="section-head" data-el="container">
+          <h2 class="section-head__title type-h2" data-el="heading">what to <span class="section-head__accent">check</span></h2>
+        </div>
+        <div class="next-step__panel" data-el="container">
+          <!-- repeat: plan-card -->
+          <article class="plan-card" data-el="container">
+            <div class="plan-card__top" data-el="container">
+              <p class="plan-card__overline type-overline" data-el="text">TRADING CONDITIONS &amp; AVAILABILITY</p>
+              <h3 class="plan-card__title type-h3" data-el="heading">What to Check Before You Trade</h3>
+            </div>
+            <hr class="plan-card__divider">
+            <div class="plan-card__body" data-el="container">
+              <ul class="plan-card__list type-body" data-el="text">
+                <li class="plan-card__item plan-card__item--muted">Trading specifications may change based on market conditions, liquidity providers, exchanges, and other relevant factors.</li>
+                <li class="plan-card__item plan-card__item--muted">There are currently no additional instrument-specific restrictions beyond the applicable trading conditions, margin requirements, trading hours, and terms and conditions.</li>
+                <li class="plan-card__item plan-card__item--muted">Holiday trading schedules are not fixed throughout the year and may vary depending on the relevant market and exchange.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="plan-card" data-el="container">
+            <div class="plan-card__top plan-card__top--art plan-card__top--tall theme-dark" data-el="container">
+              <img class="plan-card__art" src="assets/img/check-clock.webp" width="453" height="210" alt="" loading="lazy" decoding="async" data-el="image">
+              <p class="plan-card__overline plan-card__overline--light type-overline" data-el="text">CURRENT HOLIDAY &amp; SPECIAL HOURS</p>
+              <h3 class="plan-card__title plan-card__title--narrow type-h3" data-el="heading">Check Current Schedule Changes</h3>
+            </div>
+            <div class="plan-card__body" data-el="container">
+              <ul class="plan-card__list type-body" data-el="text">
+                <li class="plan-card__item plan-card__item--red">Trading hours may change around market holidays or other relevant exchange schedule changes.</li>
+                <li class="plan-card__item plan-card__item--red">Review the current schedule for any applicable closures or special trading hours before trading.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA подвала, footer Variant2 6055:5558) -->
+    <section class="page-cta" data-el="container" data-name="page-cta">
+      <div class="page-cta__card" data-el="container">
+        <div class="page-cta__content" data-el="container">
+          <h2 class="page-cta__title type-h2" data-el="heading">Trade <span class="page-cta__accent">Metals &amp; Energies</span> With G2G</h2>
+          <p class="page-cta__text type-body" data-el="text">Review the available instruments and their current trading specifications, then open your G2G account when you are ready to trade.</p>
+        </div>
+        <a class="btn btn--primary btn--lg" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6918:9230, Variant2: CTA-панель над ним — секция page-cta) -->
+  <footer class="site-footer site-footer--cta edge-round-top" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="index.html" data-el="image">
+            <img class="site-footer__logo-img" src="assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="about.html">About</a></li>
+            <li><a class="site-footer__link" href="regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

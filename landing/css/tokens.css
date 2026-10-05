@@ -1,0 +1,107 @@
+/* G2G India landing — токены.
+   Источник значений: опубликованный Webflow-лендинг g2g-landing.webflow.io (CSS снят 2026-09-30),
+   он же — согласованная клиентом версия; исходный макет Figma PJ871ALKOxKsPmrPRyMurd с тех пор
+   перекрашен пользователем в Designer (Funnel Display + мята G2G), поэтому числа — из Webflow.
+   Своя дизайн-система, не общая с многостраничником (тот — тема Vibecod).
+   Мапинг «переменная → Global в Elementor» — landing/spec/site-settings.md.
+   В секциях — только var(--…), без hex и кеглей россыпью. */
+
+@font-face {
+  font-family: 'Funnel Display';
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('../assets/fonts/funnel-display-latin-var.woff2') format('woff2');
+}
+
+:root {
+  /* ── Цвета (Webflow Variables → Elementor Global Colors) ─────────── */
+  --color-ink: #0D0D0D;              /* neutral-950: текст на светлом */
+  --color-white: #FFFFFF;            /* neutral-50 */
+  --color-mist: #ECF2F7;             /* neutral-100: полоса доверия, иконки, карточка G2G */
+  --color-grey-200: #CFCFCF;         /* neutral-200: рамки карточек, ссылки меню */
+  --color-grey-400: #9E9E9E;         /* neutral-400: вторичный текст */
+  --color-grey-600: #6E6E6E;         /* neutral-600: текст карточек на белом */
+  --color-grey-800: #3D3D3D;         /* neutral-800: рамки на тёмном */
+  --color-grey-900: #252525;         /* neutral-900: низ карточек шагов */
+  --color-deep: #071212;             /* тёмные секции, тёмная карточка */
+  --color-hero: #000407;             /* подложка героя */
+  --color-mint: #2BC48B;             /* acent-green: акцент заголовков, цифры, галочки */
+  --color-mint-deep: #00615B;        /* green-black: вторая строка заголовков на белом */
+  --color-red: #E53945;              /* primary-500: главная кнопка, активные элементы */
+  --color-red-hover: #C4181B;        /* hover главной кнопки */
+  --color-rose: #FEECEC;             /* primary-50: надзаголовок на арте */
+  --color-whatsapp: #25D366;         /* кнопки WhatsApp (цвет мессенджера) */
+  --color-whatsapp-hover: #1DA851;
+
+  /* белый с прозрачностью — подложки и текст на тёмном */
+  --color-white-5: rgb(255 255 255 / 0.05);
+  --color-white-10: rgb(255 255 255 / 0.10);
+  --color-white-14: rgb(255 255 255 / 0.14);
+  --color-white-20: rgb(255 255 255 / 0.20);
+  --color-white-50: rgb(255 255 255 / 0.50);
+  --color-white-70: rgb(255 255 255 / 0.70);
+  --color-white-80: rgb(255 255 255 / 0.80);
+  --color-mist-20: rgb(236 242 247 / 0.20);   /* hover карточки Why */
+  --color-panel: rgb(231 231 231 / 0.60);     /* подложка «Two ways» под svg-фоном */
+  --color-header-solid: rgb(13 13 13 / 0.92); /* шапка после прокрутки */
+  --color-header-glass: rgb(0 0 0 / 0.01);    /* шапка над героем */
+  --color-fab-shadow: rgb(0 0 0 / 0.25);
+
+  /* ── Типографика (Elementor Global Fonts) ────────────────────────── */
+  --font-main: 'Funnel Display', system-ui, sans-serif;
+
+  --fs-h1: 3.75rem;      --lh-h1: 1.1;
+  --fs-h2: 2.75rem;
+  --fs-h3: 1.9375rem;
+  --fs-h4: 1.5625rem;    --lh-h4: 1.1;
+  --fs-h5: 1.15rem;
+  --fs-display: 4.5rem;
+  --fs-body-m: 1.1rem;
+  --fs-body: 1rem;
+  --fs-nav-btn: 0.9rem;
+
+  /* ── Сетка и ритм ────────────────────────────────────────────────── */
+  --content-width: 85rem;   /* 1360 → Site Settings → Layout → Content Width */
+  --pad-x: 2.5rem;          /* боковое поле секций */
+  --section-y: 7.5rem;      /* вертикаль секций */
+  --gap-block: 2.75rem;     /* шапка секции → содержимое */
+  --header-h: 4.75rem;      /* высота фиксированной шапки (76) */
+
+  /* ── Радиусы ─────────────────────────────────────────────────────── */
+  --r-section: 3.75rem;     /* скруглённый верх тёмных секций */
+  --r-panel: 3.75rem;       /* крупные панели (Why, Two ways, Support, CTA) */
+  --r-card: 1.5rem;         /* рамка продуктов, swap-free */
+  --r-card-s: 1rem;         /* карточки Two ways, дисклеймер, карточка G2G */
+  --r-step: 0.75rem;        /* карточки шагов */
+  --r-icon: 0.5rem;         /* плашки иконок */
+  --r-pill: 50px;           /* кнопки */
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --fs-h1: 2.5rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.625rem;
+    --fs-display: 3.25rem;
+    --pad-x: 2rem;
+    --section-y: 5rem;
+    --r-panel: 2.5rem;
+    --header-h: 3.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    /* мобильный кегль тянется между значениями Webflow 479 и 767 */
+    --fs-h1: clamp(1.75rem, 1.05rem + 3vw, 2.125rem);   --lh-h1: 1.18;
+    --fs-h2: clamp(1.5rem, 1.05rem + 1.9vw, 1.75rem);
+    --fs-h4: 1.125rem;     --lh-h4: 1.25;
+    --fs-h5: 1.0625rem;
+    --fs-display: clamp(2.25rem, 1.6rem + 2.9vw, 2.75rem);
+    --pad-x: 1.25rem;
+    --section-y: clamp(3rem, 1.9rem + 4.7vw, 4rem);
+    --gap-block: 1.5rem;
+    --r-section: 1.5rem;
+    --r-panel: 1.5rem;
+  }
+}

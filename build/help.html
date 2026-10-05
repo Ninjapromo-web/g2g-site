@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Help &amp; Support | G2G Group LTD</title>
+  <meta name="description" content="Get expert help and support when you need it. Our dedicated support team is here to assist you with any questions or issues at G2G Group LTD.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="preload" href="assets/img/inner-hero-bg.webp" as="image">
+  <script src="js/header.js" defer></script>
+  <script src="js/analytics.js" defer></script>
+  <script src="js/stack.js" defer></script>
+  <script src="js/faq.js" defer></script>
+  <script src="js/motion.js" defer></script>
+  <script src="js/quotes.js" defer></script>
+  <script src="js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header" data-el="header" data-name="site-header">
+    <div class="site-header__bar" data-el="container">
+      <a class="site-header__logo" href="index.html" data-el="image">
+        <img class="site-header__logo-img" src="assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- section: page-hero (Inner Hero 6013:293, экземпляр 6021:2194) -->
+    <section class="page-hero theme-dark" data-el="container" data-name="page-hero">
+      <div class="page-hero__inner container" data-el="container">
+        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path" aria-current="page">Help &amp; Support</li>
+          </ol>
+        </nav>
+        <div class="page-hero__copy" data-el="container">
+          <h1 class="page-hero__title type-h1" data-el="heading">How Can <span class="page-hero__accent">We Help?</span></h1>
+          <div class="page-hero__texts" data-el="container">
+            <p class="page-hero__lead type-body-lg" data-el="text">Get in touch with the G2G support team if you need assistance, or find answers to common questions below.</p>
+          </div>
+        </div>
+        <div class="page-hero__actions" data-el="container">
+          <a class="btn btn--primary btn--lg" href="#contact-support" data-el="button">Contact Support</a>
+        </div>
+        <!-- Арт страницы (Rectangle 6064:5595, заливка FILL): две шестерёнки -->
+        <img class="page-hero__art" src="assets/img/hero-art-help.webp" width="536" height="486" alt="" decoding="async" fetchpriority="high" data-el="image">
+      </div>
+    </section>
+
+    <!-- section: channels (Channels 6021:2209) -->
+    <section class="channels theme-light" data-el="container" data-name="channels">
+      <div class="channels__inner container" data-el="container">
+        <div class="section-head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">Contact support</p>
+          <h2 class="section-head__title type-h2" data-el="heading"><span class="section-head__accent">Get in Touch</span> With G2G</h2>
+          <p class="section-head__lead type-body-lg" data-el="text">Need help with your account, trading, funding, withdrawals, or G2G services? Contact our support team directly or send us a message using the form below.</p>
+        </div>
+        <div class="channels__row" data-el="container">
+          <!-- WhatsApp: визуал чата (иллюстрация, скрыта от скринридера) + текст + кнопка -->
+          <article class="channel-card channel-card--whatsapp" data-el="container">
+            <div class="chat-visual" aria-hidden="true" data-inview data-el="html">
+              <div class="chat-visual__header">
+                <img class="chat-visual__avatar" src="assets/img/chat/avatar-g2g.svg" width="40" height="40" alt="">
+                <div class="chat-visual__who">
+                  <p class="chat-visual__name">G2G <img class="chat-visual__badge" src="assets/img/chat/verified.svg" width="20" height="20" alt=""></p>
+                  <p class="chat-visual__status">Support team</p>
+                </div>
+              </div>
+              <div class="chat-visual__body">
+                <div class="chat-msg chat-msg--out">
+                  <p class="chat-msg__text">Hi! My USDT deposit hasn’t arrived yet — TXID 0x84…9f2</p>
+                  <p class="chat-msg__meta">23:00 <img class="chat-msg__ticks" src="assets/img/chat/ticks.svg" width="16" height="11" alt=""></p>
+                </div>
+                <div class="chat-msg chat-msg--in">
+                  <p class="chat-msg__text">Thanks — we’re checking the transaction details with the payment provider and will update you here.</p>
+                  <p class="chat-msg__meta">23:01</p>
+                </div>
+              </div>
+            </div>
+            <div class="channel-card__copy channel-card__copy--wide" data-el="container">
+              <p class="channel-card__overline type-overline" data-el="text">Fastest route</p>
+              <h3 class="channel-card__title type-h3" data-el="heading">WhatsApp Support</h3>
+              <p class="channel-card__text type-body" data-el="text">Available through the site-wide support widget, with further assistance available through this page.</p>
+              <div class="channel-card__action" data-el="container">
+                <a class="whatsapp-btn" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp" data-placement="help">Chat on WhatsApp</a>
+              </div>
+            </div>
+          </article>
+          <div class="channels__stack" data-el="container">
+            <article class="channel-card" data-el="container">
+              <div class="channel-card__copy" data-el="container">
+                <div class="channel-card__chip" data-el="container"><img class="channel-card__icon" src="assets/icons/mail--deep.svg" width="24" height="24" alt="" data-el="image"></div>
+                <div class="channel-card__text type-small" data-el="text">
+                  <p><a class="channel-card__mail" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a> for help with your account, trading, funding, or withdrawals.</p>
+                  <p>For general enquiries, use <a class="channel-card__mail" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a>.</p>
+                </div>
+                <a class="btn btn--ghost" href="mailto:support@g2ggroup.com" data-el="button">Email support</a>
+              </div>
+            </article>
+            <article class="channel-card" data-el="container">
+              <div class="channel-card__copy" data-el="container">
+                <div class="channel-card__chip" data-el="container"><img class="channel-card__icon" src="assets/icons/phone--deep.svg" width="24" height="24" alt="" data-el="image"></div>
+                <h3 class="channel-card__title type-h4" data-el="heading">+44 7723 448083</h3>
+                <p class="channel-card__text type-small" data-el="text">Contact the support team directly by phone.</p>
+                <a class="btn btn--ghost channel-card__link--end" href="tel:+447723448083" data-el="button">Call the office</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: faq (FAQ 6021:2232 — тёмный вариант, FAQ Item Dark, 880; скругление 60) -->
+    <section class="faq faq--page faq--dark faq--r60 theme-dark" data-el="container" data-name="faq">
+      <div class="faq__inner faq__inner--mid container" data-el="container">
+        <div class="section-head" data-el="container">
+          <h2 class="section-head__title type-h2" data-el="heading">Frequently Asked <span class="section-head__accent">Questions</span></h2>
+        </div>
+        <!-- repeat: faq-item (question, answer). Q1 — из Figma. Q2–Q6 — в макете свёрнуты: ответы дословно из копирайта
+             (Help & Support / FAQ), «Traders Account» → «Individual Account» (Read me: Traders Account retired);
+             ссылки-кнопки из копирайта («View …») не выводятся — как в FAQ главной -->
+        <div class="faq__list faq__list--spaced" data-el="container">
+          <details class="faq-item faq-item--card" open>
+            <summary class="faq-item__question type-h4">How do I open a G2G Individual Account?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">Select <strong class="faq-item__strong">Open Account</strong> and complete the registration process through the G2G client portal. After registration, complete the required verification steps. Once verified, fund your account before accessing available markets.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">What trading account is available with G2G?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">G2G offers one public trading account: the Individual Account.</p>
+              <p class="faq-item__text type-body">Review the Accounts page for current Individual Account conditions.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">What markets can I trade with G2G?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">G2G provides access to available instruments across Forex, Metals, Energies, Indices, Cryptocurrency, and Stock CFDs.</p>
+              <p class="faq-item__text type-body">Instrument availability, trading conditions, specifications, and trading hours should be checked on the relevant Markets page before trading.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">How can I fund and withdraw from my account?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">You can fund and withdraw from your account using payment methods currently available through G2G. Available methods may depend on the currency, payment provider, and applicable requirements.</p>
+              <p class="faq-item__text type-body">G2G does not currently charge deposit or withdrawal fees from its side. Banks, card issuers, payment providers, blockchain networks, or other third parties may apply their own fees.</p>
+              <p class="faq-item__text type-body">Deposits and withdrawals are subject to applicable verification, KYC/AML, payment-provider, and security requirements. Additional requirements may apply depending on the payment method, transaction history, account status, or applicable compliance obligations.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">How long do deposits and withdrawals take?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">Processing times depend on the payment method, relevant provider, verification requirements, and other applicable requirements.</p>
+              <p class="faq-item__text type-body">Review the current information for your available payment method or contact G2G Support if you need assistance with a specific transaction.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">Where is G2G registered?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">G2G GROUP LIMITED is incorporated in Saint Lucia under registration number 2024-00120.</p>
+              <p class="faq-item__text type-body">Review the Regulation page for further information about the company’s registration and legal documentation.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: support-form (Support form 6021:2269). Поля — как на текущей форме g2ggroup.com (Read me, 18.09).
+         Обработчик — при переносе (WPForms на текущем сайте / Elementor Form / форма темы) -->
+    <section class="support-form theme-light" id="contact-support" data-el="container" data-name="support-form">
+      <div class="support-form__inner container" data-el="container">
+        <div class="section-head section-head--left support-form__head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">Send us a message</p>
+          <h2 class="section-head__title type-h2" data-el="heading">Contact the <span class="section-head__accent">Support Team</span></h2>
+          <p class="section-head__lead type-body-lg" data-el="text">Send the support team the details of your request and they will come back to you through your preferred channel.</p>
+        </div>
+        <div class="support-form__grid" data-el="container">
+          <form class="contact-form" action="#" method="post" aria-labelledby="contact-form-title" data-el="form">
+            <h3 class="contact-form__title type-h3" id="contact-form-title" data-el="heading">Contact the Support Team</h3>
+            <div class="contact-form__row" data-el="container">
+              <div class="field" data-el="container">
+                <label class="field__label" for="sup-first">First name <span class="field__req" aria-hidden="true">*</span></label>
+                <input class="field__control" id="sup-first" name="first_name" type="text" autocomplete="given-name" placeholder="First Name" required>
+              </div>
+              <div class="field" data-el="container">
+                <label class="field__label" for="sup-last">Last name <span class="field__req" aria-hidden="true">*</span></label>
+                <input class="field__control" id="sup-last" name="last_name" type="text" autocomplete="family-name" placeholder="Last Name" required>
+              </div>
+            </div>
+            <div class="contact-form__row" data-el="container">
+              <div class="field" data-el="container">
+                <label class="field__label" for="sup-email">Email <span class="field__req" aria-hidden="true">*</span></label>
+                <input class="field__control" id="sup-email" name="email" type="email" autocomplete="email" placeholder="Email" required>
+              </div>
+              <div class="field" data-el="container">
+                <label class="field__label" for="sup-phone">Phone</label>
+                <input class="field__control" id="sup-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone">
+              </div>
+            </div>
+            <div class="field contact-form__wide" data-el="container">
+              <label class="field__label" for="sup-message">Message</label>
+              <textarea class="field__control field__control--area field__control--tall" id="sup-message" name="message" rows="4" placeholder="Message"></textarea>
+            </div>
+            <p class="contact-form__consent type-caption" data-el="text">I agree to the processing of my personal data in accordance with the <a href="privacy-policy.html">Privacy Policy</a>.</p>
+            <button class="btn btn--primary btn--lg contact-form__submit" type="submit" data-el="button">Submit</button>
+          </form>
+          <aside class="reach-card" aria-labelledby="reach-title" data-el="container">
+            <p class="reach-card__overline type-overline" data-el="text">Contact details</p>
+            <h3 class="reach-card__title type-h3" id="reach-title" data-el="heading">Other ways to reach us</h3>
+            <ul class="reach-card__list" data-el="icon-list">
+              <li class="reach-card__item type-small">Email — support@g2ggroup.com</li>
+              <li class="reach-card__item type-small">Phone — +44 7723 448083</li>
+              <li class="reach-card__item type-small">General enquiries — info@g2ggroup.com</li>
+              <li class="reach-card__item type-small">WhatsApp — available through the site-wide support widget</li>
+            </ul>
+            <div class="reach-card__action" data-el="container">
+              <a class="whatsapp-btn" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp" data-placement="help-form">Chat on WhatsApp</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA подвала, footer Variant2 6055:4739) — как на 02 Markets -->
+    <section class="page-cta" data-el="container" data-name="page-cta">
+      <div class="page-cta__card" data-el="container">
+        <div class="page-cta__content" data-el="container">
+          <h2 class="page-cta__title type-h2" data-el="heading">Open a <span class="page-cta__accent">live</span> account</h2>
+          <p class="page-cta__text type-body" data-el="text">Clear trading conditions · MetaTrader 5 · WhatsApp support</p>
+        </div>
+        <a class="btn btn--primary btn--lg" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6918:9230, Variant2: CTA-панель над ним — секция page-cta) -->
+  <footer class="site-footer site-footer--cta edge-round-top" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="index.html" data-el="image">
+            <img class="site-footer__logo-img" src="assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="about.html">About</a></li>
+            <li><a class="site-footer__link" href="regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

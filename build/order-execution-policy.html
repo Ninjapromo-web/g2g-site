@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Order Execution Policy | G2G Group LTD</title>
+  <meta name="description" content="Information about the principles and procedures that apply to the execution and handling of client orders.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="preload" href="assets/img/inner-hero-bg.webp" as="image">
+  <script src="js/header.js" defer></script>
+  <script src="js/analytics.js" defer></script>
+  <script src="js/doc-toc.js" defer></script>
+  <script src="js/stack.js" defer></script>
+  <script src="js/faq.js" defer></script>
+  <script src="js/quotes.js" defer></script>
+  <script src="js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header site-header--solid site-header--always-solid" data-el="header" data-name="site-header">
+    <div class="site-header__bar site-header__bar--solid" data-el="container">
+      <a class="site-header__logo" href="index.html" data-el="image">
+        <img class="site-header__logo-img" src="assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub site-header__item--active">
+            <a class="site-header__link" href="accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article" data-el="container">
+
+    <!-- section: doc-head — шапка документа: Article head 6023:2707 без рубрики, меты и обложки (макета страниц политик нет).
+         В WP — шаблон страницы «Юридический документ»: заголовок = название страницы, лид = её краткое описание -->
+    <section class="article-head doc-head theme-light" data-el="container" data-name="doc-head">
+      <div class="article-head__inner container" data-el="container">
+        <nav aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb breadcrumb--light">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="legal.html">Legal</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path" aria-current="page">Order Execution Policy</li>
+          </ol>
+        </nav>
+        <h1 class="article-head__title type-h1" data-el="heading">Order Execution Policy</h1>
+        <p class="doc-head__lead type-body-lg" data-el="text">Information about the principles and procedures that apply to the execution and handling of client orders.</p>
+        <hr class="doc-head__rule">
+      </div>
+    </section>
+
+    <!-- section: doc-body — текст документа дословно со старого сайта (legal-docs/order-execution-policy.html) -->
+    <section class="article-body doc-body theme-light" data-el="container" data-name="doc-body">
+      <div class="article-body__inner doc-body__inner container" data-el="container">
+        <div class="doc-content" data-el="text">
+          <h2 class="doc-content__h doc-content__h--first type-h3" id="introduction">Introduction</h2>
+          <p class="doc-content__p type-body">G2G GROUP LIMITED, (“the Company”) is a Limited Liability Company incorporated in Saint Lucia with registration number 2024-00120 and having its registered address at Ground Floor, The Sotheby Building, Rodney Village, Rodney Bay, Gros-Islet, Saint Lucia (hereinafter “the Company”).</p>
+          <h2 class="doc-content__h type-h3" id="regulatory-requirements">Regulatory Requirements</h2>
+          <p class="doc-content__p type-body">The Company is incorporated in accordance with the International Business Companies Act Cap. 12.14 and is entitled to engage in any commercial activity without additional approval and / or licensing from the Financial Services Regulatory Authority.</p>
+          <h2 class="doc-content__h type-h3" id="scope">Scope</h2>
+          <p class="doc-content__p type-body">The purpose of this Policy is to provide an overview of the guidelines set with regards to how the Company acts when executing Clients’ trades and orders, by ensuring that it takes all sufficient steps to consistently obtain the best possible result for our Clients. When dealing with Clients, the Company has an obligation to act fairly, honestly and professionally in the best interest of the clients. The Company proceeded with the establishment and maintenance of the present Policy, in order to ensure compliance with the obligation to execute orders on terms most favourable to its clients and to therefore achieve the best possible result for them.</p>
+          <h2 class="doc-content__h type-h3" id="applicability">Applicability</h2>
+          <p class="doc-content__p type-body">The provisions of the Policy are applicable for both Retail and Professional Clients, as have been defined by the Company’s Terms and Conditions and Client Categorisation Policy. The Company does not have a duty of best execution if you have been classified as an Eligible Counterparty. However, it is noted that there are instances where the provisions of the Policy do not apply. In particular, in case where the Company classified a client as an Eligible Counterparty, then the requirements to take all sufficient steps and therefore ensure compliance with the execution arrangements do not apply. In addition, in the instances of a specific instruction from clients, either Retail or Professional, the Company shall execute the order following the specific instruction and without having to comply with the requirements and guidelines set within this Policy.</p>
+          <h2 class="doc-content__h type-h3" id="execution-of-orders">Execution of orders</h2>
+          <p class="doc-content__p type-body">OTC Transactions (CFDs): The Company deals with its client as principal when executing their orders. The Company is therefore the only “execution venue” for its clients unless it acts as an Agent on the clients’ behalf. This means that the client transacts directly with the Company and not on any exchange or other external market or venue. As part of the Company’s efforts to take all sufficient steps to obtain best execution, the Company has agreements with multiple liquidity providers. The client is provided with as recent as technically possible market quotes. This is achieved through different channels. When a client sends an order request, this request is executed by the Company as an identical request to the designated liquidity provider (who has been determined on the basis of regular assessments of the quality of available execution data, to offer the best prices for the relevant underlying instrument traded).</p>
+          <p class="doc-content__p type-body">DMA (Direct Market Access) (Equities): At the time of opening an account for trading of Stocks, Options, Futures, Exchange Trades Funds, Warrants, Fixed Income products the Client becomes subject to the Best Execution Policy of the Financial Intermediary, the Company cooperates with. Only in situations in which the customer transmits orders directly to the Company, in order for the Company to perform the service of reception and transmission of orders, the Company is deemed to be acting on behalf of its clients.</p>
+          <p class="doc-content__p type-body">Execution criteria: When executing client orders, the Company considers the following criteria:</p>
+          <ul class="doc-list type-body">
+            <li class="doc-list__item">The characteristics of the Client’s order such as the potential for it to have an impact on the market including whether any specific instructions are given;</li>
+            <li class="doc-list__item">The characteristics of the financial instruments that are subject to that order such as market liquidity for that order;</li>
+            <li class="doc-list__item">The characteristics of the execution venues to which that order can be directed;</li>
+            <li class="doc-list__item">The prevailing level of liquidity at the time of execution.</li>
+          </ul>
+          <h2 class="doc-content__h type-h3" id="best-execution-factors">Best execution factors</h2>
+          <p class="doc-content__p type-body">The Company takes sufficient steps to achieve best execution for clients, when receiving and transmitting orders for execution, by taking into consideration the following execution factors:</p>
+          <ul class="doc-list type-body">
+            <li class="doc-list__item">Price;</li>
+            <li class="doc-list__item">Speed and likelihood of execution;</li>
+            <li class="doc-list__item">Costs or commissions;</li>
+            <li class="doc-list__item">Size and nature of the order;</li>
+            <li class="doc-list__item">Market conditions and variations;</li>
+            <li class="doc-list__item">Execution capability;</li>
+            <li class="doc-list__item">Any other direct consideration relevant to the execution of the order.</li>
+          </ul>
+          <p class="doc-content__p type-body">For Retail clients, the best possible result will be determined in terms of total consideration, representing the price of the financial instrument and the costs related to execution. If a client is not treated as a Retail client, the Company may determine that other execution factors are more important than price and cost in obtaining the best possible execution result. The relative importance assigned to each of the aforesaid execution factors is as follows:</p>
+          <ul class="doc-list type-body">
+            <li class="doc-list__item">Price: High</li>
+            <li class="doc-list__item">Costs: High</li>
+            <li class="doc-list__item">Size: High</li>
+            <li class="doc-list__item">Liquidity and market impact: Medium</li>
+            <li class="doc-list__item">Speed of execution: Medium</li>
+            <li class="doc-list__item">Likelihood of execution and settlement: Medium</li>
+          </ul>
+          <p class="doc-content__p type-body">The Company will determine the relative importance of the above considerations by using its commercial judgment and experience, in the light of the information available on the market and taking into account the criteria described below:</p>
+          <ul class="doc-list type-body">
+            <li class="doc-list__item">The characteristics of the client including the categorization of the client as retail or professional</li>
+            <li class="doc-list__item">The characteristics of the client’s order</li>
+            <li class="doc-list__item">The characteristics of financial instruments that are the subject of that order</li>
+            <li class="doc-list__item">The characteristics of the execution venues to which that order can be directed.</li>
+          </ul>
+          <h2 class="doc-content__h type-h3" id="monitoring-and-review-of-the-policy">Monitoring and Review of the Policy</h2>
+          <p class="doc-content__p type-body">In order for to preserve the best available results for the Clients, the Company periodically monitors the effectiveness of the order execution arrangements in order to identify and where appropriate correct any deficiencies.</p>
+          <h2 class="doc-content__h type-h3" id="record-keeping">Record keeping</h2>
+          <p class="doc-content__p type-body">For the purpose of this Policy and pursuant to the Best Execution Rules, the Company will maintain records of transactions made by the Clients, including details about the cost, speed and likelihood of execution, for a minimum period of five (5) years.</p>
+        </div>
+        <!-- Оглавление — как Aside 17 Article (6023:2737): ссылки на разделы. Десктоп — раскрыто и прилипает под шапкой,
+             ≤1024 — свёрнуто в строку, закреплённую под шапкой: раскрывается поверх текста из любого места документа
+             (js/doc-toc.js). Заголовок «Table of contents» — правка пользователя 02.10 (было «On this page», как в Article).
+             В WP строится из h2 документа -->
+        <aside class="article-toc doc-toc" aria-label="Table of contents" data-el="container">
+          <details class="doc-toc__box" data-widget="doc-toc" open>
+            <summary class="doc-toc__summary type-overline">Table of contents</summary>
+            <ul class="article-toc__list doc-toc__list" data-el="icon-list">
+              <li><a class="article-toc__link doc-toc__link type-small" href="#introduction">Introduction</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#regulatory-requirements">Regulatory Requirements</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#scope">Scope</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#applicability">Applicability</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#execution-of-orders">Execution of orders</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#best-execution-factors">Best execution factors</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#monitoring-and-review-of-the-policy">Monitoring and Review of the Policy</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#record-keeping">Record keeping</a></li>
+            </ul>
+          </details>
+          <hr class="article-toc__divider doc-toc__divider">
+          <a class="btn btn--secondary doc-toc__back" href="legal.html" data-el="button">Legal Documents</a>
+        </aside>
+      </div>
+    </section>
+
+    </article>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — как 17 Article и 18 Legal) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading">Open a <span class="page-cta__accent--dark">live</span> account</h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Clear trading conditions · MetaTrader 5 · WhatsApp support</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="index.html" data-el="image">
+            <img class="site-footer__logo-img" src="assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="about.html">About</a></li>
+            <li><a class="site-footer__link" href="regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Funding &amp; Withdrawals | G2G Group LTD</title>
+  <meta name="description" content="Fund and withdraw from your forex trading account. Explore our secure payment options and seamless transaction process at G2G Group LTD.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="preload" href="assets/img/inner-hero-bg.webp" as="image">
+  <script src="js/header.js" defer></script>
+  <script src="js/analytics.js" defer></script>
+  <script src="js/stack.js" defer></script>
+  <script src="js/faq.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header" data-el="header" data-name="site-header">
+    <div class="site-header__bar" data-el="container">
+      <a class="site-header__logo" href="index.html" data-el="image">
+        <img class="site-header__logo-img" src="assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="platform.html">Platform</a></li>
+          <li class="site-header__item site-header__item--active"><a class="site-header__link" href="funding.html" aria-current="page">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="funding.html" aria-current="page">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- section: page-hero (Inner Hero 6013:293, экземпляр 6421:6503) -->
+    <section class="page-hero theme-dark" data-el="container" data-name="page-hero">
+      <div class="page-hero__inner container" data-el="container">
+        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path" aria-current="page">Funding &amp; Withdrawals</li>
+          </ol>
+        </nav>
+        <div class="page-hero__copy" data-el="container">
+          <h1 class="page-hero__title type-h1" data-el="heading"><span class="page-hero__accent">Fund &amp; Withdraw</span> With G2G</h1>
+          <div class="page-hero__texts" data-el="container">
+            <p class="page-hero__lead type-body-lg" data-el="text">Fund your G2G account using available cards, digital wallets, bank transfers, and cryptocurrency, with support for USD, EUR, GBP, and AED.</p>
+            <p class="page-hero__note type-small" data-el="text">Manage deposits and withdrawal requests directly through your G2G account.</p>
+          </div>
+        </div>
+        <div class="page-hero__actions" data-el="container">
+          <a class="btn btn--primary btn--lg" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="hero">Open Account</a>
+        </div>
+        <!-- Арт страницы (Rectangle 6064:5595, заливка CROP пересчитана): кошелёк с картой и молнией -->
+        <img class="page-hero__art" src="assets/img/hero-art-funding.webp" width="536" height="486" alt="" decoding="async" fetchpriority="high" data-el="image">
+      </div>
+    </section>
+
+    <!-- section: pay-methods (Payment methods 6421:6504) -->
+    <section class="pay-methods theme-light" data-el="container" data-name="pay-methods">
+      <div class="pay-methods__inner container" data-el="container">
+        <div class="section-head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">PAYMENT METHODS</p>
+          <h2 class="section-head__title type-h2" data-el="heading">Choose Your <span class="section-head__accent">Payment Method</span></h2>
+          <p class="section-head__lead type-body-lg" data-el="text">Available payment methods may include:</p>
+        </div>
+        <!-- repeat: pay-tile (logo [+ word]). Логотипы Visa, Mastercard, Neteller, Tether, Google Pay — те же SVG, что на главной;
+             Apple и Skrill — экспорт узлов этой страницы. «PAY» — текстом, как в Figma -->
+        <ul class="pay-methods__grid" data-el="container">
+          <li class="pay-tile" data-el="container"><img class="pay-tile__logo" src="assets/img/pay-visa.svg" width="140" height="45" alt="Visa" loading="lazy" data-el="image"></li>
+          <li class="pay-tile" data-el="container"><img class="pay-tile__logo" src="assets/img/pay-mastercard.svg" width="224" height="36" alt="Mastercard" loading="lazy" data-el="image"></li>
+          <li class="pay-tile" data-el="container">
+            <img class="pay-tile__logo pay-tile__logo--tall" src="assets/img/pay-apple.svg" width="56" height="78" alt="Apple Pay" loading="lazy" data-el="image">
+            <p class="pay-tile__word" aria-hidden="true" data-el="text">Pay</p>
+          </li>
+          <li class="pay-tile" data-el="container">
+            <img class="pay-tile__logo pay-tile__logo--tall" src="assets/img/pay-google-pay.svg" width="53" height="54" alt="Google Pay" loading="lazy" data-el="image">
+            <p class="pay-tile__word pay-tile__word--google" aria-hidden="true" data-el="text">Pay</p>
+          </li>
+          <li class="pay-tile" data-el="container"><img class="pay-tile__logo" src="assets/img/pay-skrill-lg.svg" width="129" height="44" alt="Skrill" loading="lazy" data-el="image"></li>
+          <li class="pay-tile" data-el="container"><img class="pay-tile__logo" src="assets/img/pay-neteller.svg" width="209" height="32" alt="Neteller" loading="lazy" data-el="image"></li>
+          <li class="pay-tile" data-el="container"><img class="pay-tile__logo" src="assets/img/pay-tether.svg" width="197" height="44" alt="Tether (USDT)" loading="lazy" data-el="image"></li>
+          <li class="pay-tile" data-el="container">
+            <img class="pay-tile__logo" src="assets/icons/bank-line--deep.svg" width="36" height="36" alt="" data-el="image">
+            <p class="pay-tile__label" data-el="text">Bank Transfer</p>
+          </li>
+        </ul>
+        <!-- repeat: proof-chip (icon, text) -->
+        <ul class="pay-methods__chips" data-el="container">
+          <li class="proof-chip type-small"><img class="proof-chip__icon" src="assets/icons/bolt--deep.svg" width="19" height="19" alt="" data-el="image">Deposits — instant</li>
+          <li class="proof-chip type-small"><img class="proof-chip__icon" src="assets/icons/clock--deep.svg" width="19" height="19" alt="" data-el="image">Withdrawals — most processed in minutes</li>
+          <li class="proof-chip type-small"><img class="proof-chip__icon" src="assets/icons/shield--deep.svg" width="19" height="19" alt="" data-el="image">No hidden fees · Same-method withdrawals</li>
+        </ul>
+        <p class="pay-methods__note type-caption" data-el="text">Payment method availability may depend on the provider, supported currency, account status, and applicable requirements.</p>
+      </div>
+    </section>
+
+    <!-- section: tx-details (Key transaction details 6421:6535) — сюда ведёт «Deposits & Withdrawals» меню Conditions -->
+    <section class="tx-details theme-dark edge-round-top" id="tx-details" data-el="container" data-name="tx-details">
+      <div class="tx-details__inner container" data-el="container">
+        <div class="section-head section-head--left tx-details__head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">FUNDING &amp; WITHDRAWAL CONDITIONS</p>
+          <h2 class="section-head__title type-h2" data-el="heading">Key Transaction <span class="section-head__accent">Details</span></h2>
+          <p class="section-head__lead type-body-lg" data-el="text">Review the key funding and withdrawal conditions before making a transaction.</p>
+        </div>
+        <!-- repeat: tx-card (value?, title, text, extra?) -->
+        <div class="tx-details__bento" data-el="container">
+          <div class="tx-details__row" data-el="container">
+            <article class="tx-card" data-el="container">
+              <div class="tx-card__copy" data-el="container">
+                <h3 class="tx-card__title type-h3" data-el="heading">Processing Times</h3>
+                <p class="tx-card__text type-body" data-el="text">Deposits are generally processed within a few minutes, with expected processing up to approximately 5 minutes. Most withdrawals are processed in minutes — typically under 30 — and may take up to 48 hours depending on the method, provider, and applicable verification requirements.</p>
+              </div>
+              <!-- Speed timeline: шаги с точками, последний — мятный -->
+              <div class="tx-timeline" data-el="container">
+                <div class="tx-timeline__row" data-el="container">
+                  <p class="tx-timeline__label type-overline" data-el="text">DEPOSIT</p>
+                  <ol class="tx-timeline__track" data-el="container">
+                    <li class="tx-timeline__step type-body-lg">Payment confirmed</li>
+                    <li class="tx-timeline__step tx-timeline__step--done type-body-lg">Credited — minutes</li>
+                  </ol>
+                </div>
+                <div class="tx-timeline__row" data-el="container">
+                  <p class="tx-timeline__label type-overline" data-el="text">WITHDRAWAL</p>
+                  <ol class="tx-timeline__track" data-el="container">
+                    <li class="tx-timeline__step type-body-lg">Request</li>
+                    <li class="tx-timeline__step type-body-lg">Review</li>
+                    <li class="tx-timeline__step tx-timeline__step--done type-body-lg">Paid — under 30 min</li>
+                  </ol>
+                </div>
+              </div>
+            </article>
+            <article class="tx-card tx-card--fixed" data-el="container">
+              <p class="tx-card__value type-stat" data-el="text">$10</p>
+              <div class="tx-card__copy tx-card__copy--narrow" data-el="container">
+                <h3 class="tx-card__title type-h3" data-el="heading">Minimum Amount</h3>
+                <p class="tx-card__text type-body" data-el="text">The minimum deposit or withdrawal amount is $10 or the equivalent in a supported currency. G2G does not currently set a fixed maximum amount, although payment provider limits, verification requirements, and applicable terms and conditions may apply.</p>
+              </div>
+            </article>
+          </div>
+          <div class="tx-details__row" data-el="container">
+            <article class="tx-card tx-card--fixed tx-card--short" data-el="container">
+              <p class="tx-card__value type-stat" data-el="text">$0</p>
+              <div class="tx-card__copy tx-card__copy--narrow" data-el="container">
+                <h3 class="tx-card__title type-h3" data-el="heading">Deposit and Withdrawal Fees</h3>
+                <p class="tx-card__text type-small" data-el="text">G2G does not currently charge deposit or withdrawal fees from its side. Banks, card issuers, payment providers, blockchain networks, or other third parties may apply their own fees.</p>
+              </div>
+            </article>
+            <article class="tx-card tx-card--short" data-el="container">
+              <div class="tx-card__copy tx-card__copy--narrow" data-el="container">
+                <h3 class="tx-card__title type-h3" data-el="heading">Supported Currencies</h3>
+                <p class="tx-card__text type-body" data-el="text">G2G currently supports USD, EUR, GBP, and AED.</p>
+              </div>
+              <ul class="currency-chips" data-el="container">
+                <li class="currency-chip type-h4">USD</li>
+                <li class="currency-chip type-h4">EUR</li>
+                <li class="currency-chip type-h4">GBP</li>
+                <li class="currency-chip type-h4">AED</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: tx-manage (Deposits and withdrawals 6421:6543) -->
+    <section class="tx-manage theme-light" data-el="container" data-name="tx-manage">
+      <div class="tx-manage__inner container" data-el="container">
+        <div class="tx-manage__intro" data-el="container">
+          <div class="section-head section-head--left" data-el="container">
+            <p class="section-head__overline type-overline" data-el="text">DEPOSITS &amp; WITHDRAWALS</p>
+            <h2 class="section-head__title type-h2" data-el="heading"><span class="section-head__accent">Manage Transactions</span> From Your Account</h2>
+          </div>
+          <!-- Экран Deposit Funds в портале (Deposit screen preview 6421:6546): экспорт узла @2x -->
+          <img class="tx-manage__preview" src="assets/img/funding-portal-deposit.webp" width="564" height="353" alt="Deposit Funds screen in the G2G client portal" loading="lazy" decoding="async" data-el="image">
+        </div>
+        <div class="tx-manage__cards" data-el="container">
+          <!-- repeat: info-card (icon, title, text) -->
+          <article class="info-card" data-el="container">
+            <div class="info-card__chip" data-el="container"><img class="info-card__icon" src="assets/icons/wallet-card--deep.svg" width="24" height="24" alt="" data-el="image"></div>
+            <div class="info-card__copy info-card__copy--loose" data-el="container">
+              <h3 class="info-card__title type-h4" data-el="heading">Fund Your G2G Account</h3>
+              <p class="info-card__text type-small" data-el="text">Access the Deposit Funds section of your G2G account to view the payment methods currently available to you. Choose your preferred available method and follow the payment instructions provided for your transaction.</p>
+            </div>
+          </article>
+          <article class="info-card info-card--r16" data-el="container">
+            <div class="info-card__chip" data-el="container"><img class="info-card__icon" src="assets/icons/bank-sm--deep.svg" width="24" height="24" alt="" data-el="image"></div>
+            <div class="info-card__copy" data-el="container">
+              <h3 class="info-card__title type-h4" data-el="heading">Request a Withdrawal</h3>
+              <p class="info-card__text type-small" data-el="text">Submit and manage withdrawal requests directly through your G2G account. Withdrawals are subject to applicable verification, KYC/AML, payment provider, and security requirements. The way funds are returned may depend on the selected payment method.</p>
+            </div>
+          </article>
+          <!-- Текст как отображается в Figma (Button: регистр Title Case) -->
+          <a class="btn btn--primary btn--lg" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="mid">Go To Client Portal</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: next-step (legals 6421:6712 — тот же блок «Your next step», что на страницах рынков) -->
+    <section class="next-step theme-light" data-el="container" data-name="legals">
+      <div class="next-step__inner" data-el="container">
+        <div class="next-step__panel next-step__panel--deco-low" data-el="container">
+          <!-- repeat: plan-card -->
+          <article class="plan-card plan-card--narrow plan-card--soft" data-el="container">
+            <div class="plan-card__top plan-card__top--roomy" data-el="container">
+              <p class="plan-card__overline type-overline" data-el="text">VERIFICATION AND PAYMENT CONTROLS</p>
+              <h3 class="plan-card__title type-h3" data-el="heading">Why Verification May Be Required</h3>
+            </div>
+            <hr class="plan-card__divider">
+            <div class="plan-card__body" data-el="container">
+              <ul class="plan-card__list type-body" data-el="text">
+                <li class="plan-card__item plan-card__item--muted">G2G applies identity verification and KYC/AML controls where required as part of its procedures for processing client transactions.</li>
+                <li class="plan-card__item plan-card__item--muted">These requirements help determine how deposits and withdrawals can be processed and may affect the payment method, processing time, or additional information required for a transaction.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="plan-card" data-el="container">
+            <div class="plan-card__top plan-card__top--art plan-card__top--roomy theme-dark" data-el="container">
+              <!-- Арт (Frame 2147224669, заливка CROP пересчитана) — на весь блок -->
+              <img class="plan-card__art plan-card__art--cover" src="assets/img/plan-art-funds.webp" width="694" height="258" alt="" loading="lazy" decoding="async" data-el="image">
+              <p class="plan-card__overline plan-card__overline--light type-overline" data-el="text">CLIENT FUNDS</p>
+              <h3 class="plan-card__title type-h3" data-el="heading">How G2G Handles Client Funds</h3>
+              <div class="plan-card__actions" data-el="container">
+                <a class="btn btn--secondary btn--lg btn--fluid" href="security-of-funds-policy.html" data-el="button">Review Security Of Funds Policy</a>
+              </div>
+            </div>
+            <div class="plan-card__body" data-el="container">
+              <p class="plan-card__text plan-card__text--secondary type-small" data-el="text">G2G’s Security of Funds Policy provides for client funds to be held separately from the company’s operational funds. Key controls include:</p>
+              <ul class="plan-card__list plan-card__list--two type-body" data-el="text">
+                <li class="plan-card__item plan-card__item--red">Segregated client accounts</li>
+                <li class="plan-card__item plan-card__item--red">Daily reconciliation of client funds</li>
+                <li class="plan-card__item plan-card__item--red">Controlled access to financial systems</li>
+                <li class="plan-card__item plan-card__item--red">Dual authorization for fund transfers</li>
+              </ul>
+              <p class="plan-card__note type-small" data-el="text">These controls form part of G2G’s framework for the handling and oversight of client funds.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: faq (FAQ 6421:6756 — тёмный вариант, FAQ Item Dark) -->
+    <section class="faq faq--page faq--dark theme-dark" data-el="container" data-name="faq">
+      <div class="faq__inner faq__inner--page container" data-el="container">
+        <div class="section-head" data-el="container">
+          <h2 class="section-head__title type-h2" data-el="heading">Funding &amp; Withdrawal <span class="section-head__accent">Questions</span></h2>
+        </div>
+        <!-- repeat: faq-item (question, answer). Q1 — из Figma. Q2, Q3 — те же вопросы, что на главной: ответы из копирайта
+             (§10 FAQ). Q4 — черновик из карточки Minimum Amount этой страницы. Q5 — ответ на близкий вопрос главной
+             («What verification is required for withdrawals?») -->
+        <div class="faq__list faq__list--spaced" data-el="container">
+          <details class="faq-item faq-item--card" open>
+            <summary class="faq-item__question type-h4">Which payment methods does G2G support?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">Available payment methods may include debit and credit cards, Apple Pay, Google Pay, Neteller, Skrill, cryptocurrency including USDT, and bank transfer. Availability may depend on the provider, supported currency, account status, and applicable requirements.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">Does G2G charge deposit or withdrawal fees?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">G2G does not currently charge deposit or withdrawal fees from its side.</p>
+              <p class="faq-item__text type-body">Banks, payment providers, card issuers, blockchain networks, or other third parties may apply their own fees.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">How long do deposits and withdrawals take?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">Processing times depend on the payment method, relevant provider, verification requirements, and other applicable requirements.</p>
+              <p class="faq-item__text type-body">Review the current information for your available payment method or contact G2G Support if you need assistance with a specific transaction.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">What is the minimum deposit or withdrawal amount?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">The minimum deposit or withdrawal amount is $10 or the equivalent in a supported currency. G2G does not currently set a fixed maximum amount, although payment provider limits, verification requirements, and applicable terms and conditions may apply.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--card">
+            <summary class="faq-item__question type-h4">Why might verification be required for a withdrawal?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">Withdrawals are subject to applicable verification, KYC/AML, payment-provider, and security requirements.</p>
+              <p class="faq-item__text type-body">Additional requirements may apply depending on the payment method, transaction history, account status, or applicable compliance obligations.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: support (Support 6421:6764 — на белом, с надзаголовком и лидом) -->
+    <section class="support support--plain theme-light" data-el="container" data-name="support">
+      <div class="support__inner container" data-el="container">
+        <div class="section-head support__head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">SUPPORT</p>
+          <h2 class="section-head__title type-h2" data-el="heading"><span class="section-head__accent">Need Help</span> With a Deposit or Withdrawal?</h2>
+          <p class="section-head__lead type-body-lg" data-el="text">If you need assistance with an available payment method, deposit, or withdrawal request, contact G2G through the available support channels.</p>
+        </div>
+        <a class="btn btn--tertiary btn--lg" href="help.html" data-el="button">Contact Support</a>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — footer 6421:6767) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading"><span class="page-cta__accent--dark">Open &amp; Fund</span> Your G2G Account</h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Choose the G2G account that matches your requirements and access the funding methods available to your account.</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="index.html" data-el="image">
+            <img class="site-footer__logo-img" src="assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="about.html">About</a></li>
+            <li><a class="site-footer__link" href="regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

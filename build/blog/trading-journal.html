@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Forex Trading Journal: Track Trades, Improve Strategy &amp; Discipline | G2G Group LTD</title>
+  <meta name="description" content="How keeping a Forex trading journal helps you track trades, control emotions, identify patterns, and improve long-term trading performance.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="preload" href="../assets/img/inner-hero-bg.webp" as="image">
+  <script src="../js/header.js" defer></script>
+  <script src="../js/analytics.js" defer></script>
+  <script src="../js/doc-toc.js" defer></script>
+  <script src="../js/stack.js" defer></script>
+  <script src="../js/faq.js" defer></script>
+  <script src="../js/quotes.js" defer></script>
+  <script src="../js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header site-header--solid site-header--always-solid" data-el="header" data-name="site-header">
+    <div class="site-header__bar site-header__bar--solid" data-el="container">
+      <a class="site-header__logo" href="../index.html" data-el="image">
+        <img class="site-header__logo-img" src="../assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="../metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="../indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="../crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="../stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="../markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="../funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="../regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="../legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item site-header__item--active"><a class="site-header__link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article" data-el="container">
+
+    <!-- section: article-head (Article head 6023:2707) — шапка Solid с самого верха; в WP — шаблон записи (Single Post):
+         рубрика — одна основная (Uncategorized не выводится), автор — «G2G», а не логин, время чтения — по числу слов -->
+    <section class="article-head theme-light" data-el="container" data-name="article-head">
+      <div class="article-head__inner container" data-el="container">
+        <nav aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb breadcrumb--light">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../blog.html">Blog</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path">Forex</li>
+          </ol>
+        </nav>
+        <p class="pill pill--mint pill--mint-strong" data-el="text">Forex</p>
+        <h1 class="article-head__title type-h1" data-el="heading">Forex Trading Journal: How Tracking Your Trades Improves Consistency and Performance</h1>
+        <p class="article-meta type-small" data-el="text">
+          <span class="article-meta__author">G2G</span>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <time datetime="2025-12-25">December 25, 2025</time>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </p>
+        <!-- Cover image 6023:2723: обложка записи + hue #1B4B39 (слой CSS). alt пустой: на обложке вписан заголовок записи — он же в h1 -->
+        <div class="article-cover" data-el="container">
+          <img class="article-cover__img" src="../assets/img/blog/trading-journal.webp" width="1920" height="1080" alt="" decoding="async" fetchpriority="high" data-el="image">
+        </div>
+      </div>
+    </section>
+
+    <!-- section: article-body (Article body 6023:2725) -->
+    <section class="article-body theme-light" data-el="container" data-name="article-body">
+      <div class="article-body__inner container" data-el="container">
+        <!-- Тело записи — как его отдаёт WordPress: теги без классов (research/blog-old-site/clean/<slug>.html, слова не менялись).
+             Вид задаёт .article-content в pages.css; id у h2 ставит сборка (в теме — фильтр содержимого), из них же оглавление -->
+        <div class="article-content" data-el="text">
+<p>Success in Forex trading goes far beyond having a solid strategy or sharp instincts. In a fast-moving and emotionally demanding market, one of the most powerful tools a trader can use is a <strong>Forex trading journal</strong>. A well-maintained trading journal allows you to analyze past trades, identify patterns, control emotions, and continuously refine your strategy.</p>
+<p>This comprehensive guide explains <strong>why keeping a Forex trading journal is essential</strong>, what to include in it, how to maintain it effectively, and how it can transform your long-term trading performance.</p>
+<h2 id="introduction-to-trading-journals">Introduction to Trading Journals</h2>
+<p>A trading journal is a detailed record of every trade you take, including entry and exit points, position size, market conditions, reasoning behind the trade, and your emotional state throughout the process. Unlike a basic trade log, a trading journal focuses not only on <em>what</em> happened, but <em>why</em> it happened.</p>
+<p>For serious Forex traders, a journal is an essential tool for structured self-evaluation and continuous improvement. It creates awareness of your habits, strengths, and weaknesses, helping you make more informed decisions over time.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/12/1.-Title-Why-Maintaining-a-Trading-Journal-is-Essential-1024x683.jpg" alt="" width="1000" height="667" srcset="https://g2ggroup.com/wp-content/uploads/2025/12/1.-Title-Why-Maintaining-a-Trading-Journal-is-Essential-1024x683.jpg 1024w, https://g2ggroup.com/wp-content/uploads/2025/12/1.-Title-Why-Maintaining-a-Trading-Journal-is-Essential-300x200.jpg 300w, https://g2ggroup.com/wp-content/uploads/2025/12/1.-Title-Why-Maintaining-a-Trading-Journal-is-Essential-768x512.jpg 768w, https://g2ggroup.com/wp-content/uploads/2025/12/1.-Title-Why-Maintaining-a-Trading-Journal-is-Essential-650x433.jpg 650w, https://g2ggroup.com/wp-content/uploads/2025/12/1.-Title-Why-Maintaining-a-Trading-Journal-is-Essential.jpg 1536w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h2 id="why-keeping-a-trading-journal-is-important">Why Keeping a Trading Journal Is Important</h2>
+<h3>Reviewing and Analyzing Past Trades</h3>
+<p>One of the most valuable benefits of a trading journal is the ability to review and analyze past trades objectively. By documenting your decisions, you can determine what worked, what didn’t, and why.</p>
+<p><strong>Example:</strong> If you notice that trades taken during high volatility consistently result in losses, you can adjust your strategy to avoid those conditions.</p>
+<h3>Identifying Patterns and Trends</h3>
+<p>Over time, your trading journal will reveal recurring patterns in both winning and losing trades. These patterns may relate to market conditions, timing, setups, or emotional behavior.</p>
+<p><strong>Example:</strong> You may discover that fear of missing out (FOMO) causes you to enter trades too early, leading to avoidable losses.</p>
+<h3>Building Discipline and Emotional Control</h3>
+<p>Writing down each trade increases accountability and encourages disciplined decision-making. Tracking emotions helps you understand how fear, greed, or overconfidence influence your actions.</p>
+<p><strong>Example:</strong> Regularly noting emotional states before and after trades helps you recognize when emotions are driving decisions instead of logic.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/12/2.-Title-Key-Components-of-a-Trading-Journal-1024x683.jpg" alt="" width="1000" height="667" srcset="https://g2ggroup.com/wp-content/uploads/2025/12/2.-Title-Key-Components-of-a-Trading-Journal-1024x683.jpg 1024w, https://g2ggroup.com/wp-content/uploads/2025/12/2.-Title-Key-Components-of-a-Trading-Journal-300x200.jpg 300w, https://g2ggroup.com/wp-content/uploads/2025/12/2.-Title-Key-Components-of-a-Trading-Journal-768x512.jpg 768w, https://g2ggroup.com/wp-content/uploads/2025/12/2.-Title-Key-Components-of-a-Trading-Journal-650x433.jpg 650w, https://g2ggroup.com/wp-content/uploads/2025/12/2.-Title-Key-Components-of-a-Trading-Journal.jpg 1536w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h2 id="key-components-of-a-forex-trading-journal">Key Components of a Forex Trading Journal</h2>
+<h3>Trade Details: Entry, Exit, and Position Size</h3>
+<p>Each journal entry should include:</p>
+<ul>
+<li>Entry price and exit price</li>
+<li>Position size</li>
+<li>Date and time of the trade</li>
+</ul>
+<p>These details allow you to evaluate timing, risk management, and execution accuracy.</p>
+<h3>Market Conditions and Analysis</h3>
+<p>Record the market context and analysis behind each trade:</p>
+<ul>
+<li>Market environment (trending, ranging, volatile)</li>
+<li>Indicators or tools used</li>
+<li>Fundamental or technical reasoning</li>
+</ul>
+<p>This helps identify which conditions favor your strategy.</p>
+<h3>Emotional and Psychological Notes</h3>
+<p>Document how you felt before, during, and after the trade:</p>
+<ul>
+<li>Confidence or hesitation before entry</li>
+<li>Emotional reactions during the trade</li>
+<li>Feelings after closing the position</li>
+</ul>
+<p>This is critical for improving trading psychology.</p>
+<h3>Lessons Learned and Areas for Improvement</h3>
+<p>Conclude each entry with reflection:</p>
+<ul>
+<li>What went right</li>
+<li>What went wrong</li>
+<li>Adjustments to apply in future trades</li>
+</ul>
+<p>Every trade becomes a learning opportunity.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/12/3.-Title-How-to-Create-and-Manage-a-Trading-Journal-1024x683.jpg" alt="" width="1000" height="667" srcset="https://g2ggroup.com/wp-content/uploads/2025/12/3.-Title-How-to-Create-and-Manage-a-Trading-Journal-1024x683.jpg 1024w, https://g2ggroup.com/wp-content/uploads/2025/12/3.-Title-How-to-Create-and-Manage-a-Trading-Journal-300x200.jpg 300w, https://g2ggroup.com/wp-content/uploads/2025/12/3.-Title-How-to-Create-and-Manage-a-Trading-Journal-768x512.jpg 768w, https://g2ggroup.com/wp-content/uploads/2025/12/3.-Title-How-to-Create-and-Manage-a-Trading-Journal-650x433.jpg 650w, https://g2ggroup.com/wp-content/uploads/2025/12/3.-Title-How-to-Create-and-Manage-a-Trading-Journal.jpg 1536w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h2 id="how-to-create-and-maintain-a-trading-journal">How to Create and Maintain a Trading Journal</h2>
+<h3>Choosing a Format: Digital vs. Paper</h3>
+<p>Both formats are effective:</p>
+<ul>
+<li><strong>Digital journals</strong> (spreadsheets or apps) are easier to analyze and organize.</li>
+<li><strong>Paper journals</strong> encourage deeper reflection and mindfulness.</li>
+</ul>
+<p>Choose the format that best fits your personality and workflow.</p>
+<h3>Structuring Entries for Maximum Benefit</h3>
+<p>Use a consistent format for every trade. Separate sections for trade data, analysis, emotions, and lessons make reviewing easier and more effective.</p>
+<p><strong>Tip:</strong> Consistency allows meaningful comparisons across trades.</p>
+<h3>Reviewing and Updating Regularly</h3>
+<p>A trading journal is only valuable if reviewed regularly. Set aside time weekly or monthly to analyze performance, identify trends, and refine your trading plan.</p>
+<p><strong>Tip:</strong> Treat review sessions as growth opportunities rather than judgment.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/12/4.-Title-The-Benefits-of-Keeping-a-Trading-Journal-1024x683.jpg" alt="" width="1000" height="667" srcset="https://g2ggroup.com/wp-content/uploads/2025/12/4.-Title-The-Benefits-of-Keeping-a-Trading-Journal-1024x683.jpg 1024w, https://g2ggroup.com/wp-content/uploads/2025/12/4.-Title-The-Benefits-of-Keeping-a-Trading-Journal-300x200.jpg 300w, https://g2ggroup.com/wp-content/uploads/2025/12/4.-Title-The-Benefits-of-Keeping-a-Trading-Journal-768x512.jpg 768w, https://g2ggroup.com/wp-content/uploads/2025/12/4.-Title-The-Benefits-of-Keeping-a-Trading-Journal-650x433.jpg 650w, https://g2ggroup.com/wp-content/uploads/2025/12/4.-Title-The-Benefits-of-Keeping-a-Trading-Journal.jpg 1536w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h2 id="advantages-of-keeping-a-forex-trading-journal">Advantages of Keeping a Forex Trading Journal</h2>
+<h3>Continuous Strategy Improvement</h3>
+<p>By analyzing journal data, you can eliminate ineffective setups and focus on high-probability trades.</p>
+<p><strong>Example:</strong> If certain entry signals consistently perform better, you can prioritize them.</p>
+<h3>Building Confidence and Accountability</h3>
+<p>Knowing that every trade must be justified in writing discourages impulsive decisions and reinforces discipline.</p>
+<h3>Avoiding Repeated Mistakes</h3>
+<p>A trading journal highlights recurring errors, allowing you to correct them before they become costly habits.</p>
+<p><strong>Example:</strong> Recognizing losses from counter-trend trading helps you avoid similar setups.</p>
+<h2 id="case-studies-how-trading-journals-transform-performance">Case Studies: How Trading Journals Transform Performance</h2>
+<h3>Case Study 1: A Day Trader’s Journey to Consistency</h3>
+<p>A day trader struggling with inconsistency began journaling trades daily. Over time, the journal revealed emotional overtrading during volatile sessions. By limiting trades and sticking to a plan, consistency improved significantly.</p>
+<h3>Case Study 2: Turning Around a Losing Strategy</h3>
+<p>Another trader identified overconfidence as the root cause of losses after reviewing journal entries. By trusting analysis instead of emotion, the trader reversed a prolonged losing streak.</p>
+<h2 id="common-mistakes-to-avoid-when-keeping-a-trading-journal">Common Mistakes to Avoid When Keeping a Trading Journal</h2>
+<h3>Incomplete or Inconsistent Entries</h3>
+<p>Missing details reduce the journal’s effectiveness.</p>
+<p><strong>Solution:</strong> Record every trade fully, no matter how small.</p>
+<h3>Ignoring Psychological Factors</h3>
+<p>Failing to document emotions limits self-awareness.</p>
+<p><strong>Solution:</strong> Always record emotional states during trades.</p>
+<h3>Not Reviewing the Journal Regularly</h3>
+<p>A journal without review provides little value.</p>
+<p><strong>Solution:</strong> Schedule weekly or monthly reviews.</p>
+<h2 id="conclusion-stay-on-track-with-a-forex-trading-journal">Conclusion: Stay on Track with a Forex Trading Journal</h2>
+<p>Maintaining a Forex trading journal is one of the most effective ways to improve consistency, discipline, and long-term performance. By recording trades, emotions, and lessons learned, traders gain valuable insight into their habits and decision-making processes.</p>
+<p>Whether you are a beginner or an experienced trader, a well-maintained trading journal helps you learn from mistakes, reinforce positive behaviors, and stay on track toward consistent profitability in the Forex market.</p>
+<ul>
+<li>
+<strong>What is a Forex trading journal?</strong><br>A Forex trading journal is a detailed record of every trade, including entry and exit points, market conditions, emotions, and lessons learned.
+</li>
+<li>
+<strong>Why is a trading journal important in Forex trading?</strong><br>It helps traders analyze performance, identify patterns, improve discipline, and avoid repeating costly mistakes.
+</li>
+<li>
+<strong>What should I include in a trading journal?</strong><br>You should include trade details, market analysis, emotional notes, and post-trade lessons.
+</li>
+<li>
+<strong>Can a trading journal improve trading psychology?</strong><br>Yes, tracking emotions and decisions increases self-awareness and helps control fear, greed, and impulsive behavior.
+</li>
+<li>
+<strong>Is a digital or paper trading journal better?</strong><br>Digital journals are easier to analyze and organize, while paper journals can encourage deeper reflection. Both are effective.
+</li>
+<li>
+<strong>How often should I review my trading journal?</strong><br>Weekly or monthly reviews are recommended to identify trends and improve strategies.
+</li>
+<li>
+<strong>Do professional Forex traders use trading journals?</strong><br>Yes, most professional traders rely on journals to maintain discipline and consistency.
+</li>
+<li>
+<strong>Can beginners benefit from a trading journal?</strong><br>Absolutely. A trading journal helps beginners learn faster by understanding mistakes and improving decision-making.
+</li>
+<li>
+<strong>How does a trading journal help avoid repeated mistakes?</strong><br>By reviewing past losing trades, traders can recognize patterns and prevent repeating the same errors.
+</li>
+<li>
+<strong>Does keeping a trading journal increase profitability?</strong><br>While it doesn’t guarantee profits, it significantly improves consistency, discipline, and long-term performance.
+</li>
+</ul>
+        </div>
+        <!-- Aside 6023:2737 — оглавление из разделов записи (h2). В записях их от 5 до 53: список прокручивается внутри
+             карточки; на ≤1024 свёрнуто в строку, закреплённую под шапкой (js/doc-toc.js) — общий блок с 19–24.
+             Заголовок «Table of contents» — как на 19–24 (правка пользователя 02.10; в макете «On this page») -->
+        <aside class="article-toc doc-toc" aria-label="Table of contents" data-el="container">
+          <details class="doc-toc__box" data-widget="doc-toc" open>
+            <summary class="doc-toc__summary type-overline">Table of contents</summary>
+            <ul class="article-toc__list doc-toc__list" data-el="icon-list">
+              <li><a class="article-toc__link doc-toc__link type-small" href="#introduction-to-trading-journals">Introduction to Trading Journals</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#why-keeping-a-trading-journal-is-important">Why Keeping a Trading Journal Is Important</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#key-components-of-a-forex-trading-journal">Key Components of a Forex Trading Journal</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-to-create-and-maintain-a-trading-journal">How to Create and Maintain a Trading Journal</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#advantages-of-keeping-a-forex-trading-journal">Advantages of Keeping a Forex Trading Journal</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#case-studies-how-trading-journals-transform-performance">Case Studies: How Trading Journals Transform Performance</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#common-mistakes-to-avoid-when-keeping-a-trading-journal">Common Mistakes to Avoid When Keeping a Trading Journal</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#conclusion-stay-on-track-with-a-forex-trading-journal">Conclusion: Stay on Track with a Forex Trading Journal</a></li>
+            </ul>
+          </details>
+          <hr class="article-toc__divider doc-toc__divider">
+          <p class="article-toc__note doc-toc__extra type-small" data-el="text">See the live spreads for every instrument in the specification tables.</p>
+          <a class="btn btn--secondary doc-toc__back" href="../markets.html" data-el="button">Market specifications</a>
+        </aside>
+      </div>
+    </section>
+
+    </article>
+
+    <!-- section: related (Related 6023:2746) — 3 × Article card (как в 16 Blog; в WP — Query Loop: свежие записи той же рубрики) -->
+    <section class="related theme-light" data-el="container" data-name="related">
+      <div class="related__inner container" data-el="container">
+        <h2 class="related__overline type-overline" data-el="heading">Related articles</h2>
+        <div class="article-grid article-grid--related" data-el="loop-grid">
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/fundamental-analysis-in-forex-economic-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/fundamental-analysis-in-forex-economic.html">Fundamental Analysis in Forex: Economic News, Interest Rates, and Central Banks</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn fundamental analysis in forex trading, including economic news, interest rates, and central banks—and how they drive currency movements.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/fundamental-analysis-in-forex-economic.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html">Technical Analysis in Forex Trading: Indicators and Chart Patterns</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn technical analysis in forex trading, including key indicators, chart patterns, and strategies to improve timing and consistency.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/forex-trading-strategies-that-actually-work-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-11" data-el="text">February 11, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/forex-trading-strategies-that-actually-work.html">Forex Trading Strategies That Actually Work</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Find forex trading strategies that actually work. Learn proven methods, risk management, and real-market techniques used by pro traders.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/forex-trading-strategies-that-actually-work.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — footer 6055:5831, компонент Footer cta=true) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading">Open a <span class="page-cta__accent--dark">live</span> account</h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Clear trading conditions · MetaTrader 5 · WhatsApp support</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="../index.html" data-el="image">
+            <img class="site-footer__logo-img" src="../assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="../platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="../funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../about.html">About</a></li>
+            <li><a class="site-footer__link" href="../regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="../help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="../order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="../security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="../anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="../complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="../demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="../business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="../regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="../help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="../blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>How Forex Market Works: Trading Sessions, Liquidity, Participants</title>
+  <meta name="description" content="Learn how the Forex market works, including trading sessions, liquidity, and major market participants. A clear guide to Forex by G2G Group">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="preload" href="../assets/img/inner-hero-bg.webp" as="image">
+  <script src="../js/header.js" defer></script>
+  <script src="../js/analytics.js" defer></script>
+  <script src="../js/doc-toc.js" defer></script>
+  <script src="../js/stack.js" defer></script>
+  <script src="../js/faq.js" defer></script>
+  <script src="../js/quotes.js" defer></script>
+  <script src="../js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header site-header--solid site-header--always-solid" data-el="header" data-name="site-header">
+    <div class="site-header__bar site-header__bar--solid" data-el="container">
+      <a class="site-header__logo" href="../index.html" data-el="image">
+        <img class="site-header__logo-img" src="../assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="../metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="../indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="../crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="../stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="../markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="../funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="../regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="../legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item site-header__item--active"><a class="site-header__link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article" data-el="container">
+
+    <!-- section: article-head (Article head 6023:2707) — шапка Solid с самого верха; в WP — шаблон записи (Single Post):
+         рубрика — одна основная (Uncategorized не выводится), автор — «G2G», а не логин, время чтения — по числу слов -->
+    <section class="article-head theme-light" data-el="container" data-name="article-head">
+      <div class="article-head__inner container" data-el="container">
+        <nav aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb breadcrumb--light">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../blog.html">Blog</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path">Forex</li>
+          </ol>
+        </nav>
+        <p class="pill pill--mint pill--mint-strong" data-el="text">Forex</p>
+        <h1 class="article-head__title type-h1" data-el="heading">How the Forex Market Works: Trading Sessions, Liquidity, and Participants</h1>
+        <p class="article-meta type-small" data-el="text">
+          <span class="article-meta__author">G2G</span>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <time datetime="2026-02-08">February 8, 2026</time>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <span>19 min read</span>
+        </p>
+        <!-- Cover image 6023:2723: обложка записи + hue #1B4B39 (слой CSS). alt пустой: на обложке вписан заголовок записи — он же в h1 -->
+        <div class="article-cover" data-el="container">
+          <img class="article-cover__img" src="../assets/img/blog/how-forex-works.webp" width="1920" height="1080" alt="" decoding="async" fetchpriority="high" data-el="image">
+        </div>
+      </div>
+    </section>
+
+    <!-- section: article-body (Article body 6023:2725) -->
+    <section class="article-body theme-light" data-el="container" data-name="article-body">
+      <div class="article-body__inner container" data-el="container">
+        <!-- Тело записи — как его отдаёт WordPress: теги без классов (research/blog-old-site/clean/<slug>.html, слова не менялись).
+             Вид задаёт .article-content в pages.css; id у h2 ставит сборка (в теме — фильтр содержимого), из них же оглавление -->
+        <div class="article-content" data-el="text">
+<p>The foreign exchange market, commonly known as the Forex market, is the largest and most liquid financial market in the world. Every day, trillions of dollars are exchanged as currencies are bought and sold by banks, institutions, corporations, and individual traders. Despite its size and global importance, many traders enter Forex without fully understanding how the market actually works. This lack of structural knowledge often leads to poor timing, unrealistic expectations, and avoidable trading mistakes.</p>
+<p>To trade effectively, it is not enough to know how to place a buy or sell order. Traders need a clear understanding of how the Forex market operates behind the scenes. This includes knowing when the market is most active, why price movements accelerate or slow down at certain hours, and who is responsible for creating liquidity and volatility. These factors directly influence spreads, execution speed, and risk.</p>
+<p>Unlike stock markets, the Forex market does not operate from a single centralized exchange. It is a decentralized, over-the-counter market that runs 24 hours a day, five days a week. Currency trading moves from one major financial center to another as the global business day progresses. This continuous flow creates distinct trading sessions, each with its own characteristics, levels of liquidity, and dominant participants.</p>
+<p>Understanding Forex trading sessions is essential because market behavior changes throughout the day. Some sessions are quiet and range-bound, while others experience sharp price movements and increased volatility. These shifts are not random. They are driven by institutional activity, economic data releases, and the overlap of major financial centers. Traders who understand this rhythm are better equipped to choose when to trade and when to stay out of the market.</p>
+<p>Liquidity is another foundational concept that shapes how the Forex market works. High liquidity generally leads to tighter spreads, smoother price action, and faster trade execution. Low liquidity, on the other hand, can result in erratic price movements, slippage, and increased trading costs. Many beginners underestimate the importance of liquidity and only discover its impact during periods of high volatility or unexpected losses.</p>
+<p>Equally important is understanding who participates in the Forex market. Contrary to popular belief, retail traders make up only a small portion of total trading volume. The market is primarily driven by large financial institutions such as central banks, commercial banks, hedge funds, and multinational corporations. Each participant trades for different reasons, ranging from monetary policy implementation to international business operations and speculative investment strategies. These motivations influence market direction, momentum, and long-term trends.</p>
+<p>Knowing who trades Forex and why provides valuable context for price movements. It helps traders distinguish between short-term noise and meaningful market activity. More importantly, it encourages realistic expectations by highlighting the difference between institutional-scale trading and retail participation.</p>
+<p>This article explains how the Forex market works by breaking it down into three core components: trading sessions, liquidity, and market participants. Each section builds on the previous one to provide a clear picture of how currencies are traded globally and why the market behaves the way it does. Rather than focusing on strategies or indicators, the goal is to develop a strong foundational understanding of Forex market structure.</p>
+<p>By the end of this guide, readers will have a clearer framework for analyzing market conditions, selecting appropriate trading times, and aligning their approach with real market dynamics. A solid grasp of these fundamentals is essential for anyone looking to move beyond guesswork and trade Forex with greater confidence and consistency.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2026/02/1.-The-Decentralized-Network-OTC-Trading-Explained.jpg" alt="" width="1000" height="1000" srcset="https://g2ggroup.com/wp-content/uploads/2026/02/1.-The-Decentralized-Network-OTC-Trading-Explained.jpg 1000w, https://g2ggroup.com/wp-content/uploads/2026/02/1.-The-Decentralized-Network-OTC-Trading-Explained-300x300.jpg 300w, https://g2ggroup.com/wp-content/uploads/2026/02/1.-The-Decentralized-Network-OTC-Trading-Explained-150x150.jpg 150w, https://g2ggroup.com/wp-content/uploads/2026/02/1.-The-Decentralized-Network-OTC-Trading-Explained-768x768.jpg 768w, https://g2ggroup.com/wp-content/uploads/2026/02/1.-The-Decentralized-Network-OTC-Trading-Explained-650x650.jpg 650w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h2 id="what-is-the-forex-market">What Is the Forex Market?</h2>
+<h3>Definition of the Forex Market</h3>
+<p>The Forex market, short for foreign exchange market, is a global marketplace where currencies are traded against one another. It allows participants to exchange one currency for another at an agreed-upon price, known as the exchange rate. These transactions are essential for international trade, investment, travel, and global financial stability.</p>
+<p>At its core, Forex trading involves currency pairs such as EUR/USD or GBP/JPY. Each trade reflects the relative value of one currency compared to another. When traders buy a currency pair, they are buying the base currency and selling the quote currency. This simple structure forms the foundation of how the Forex market works.</p>
+<h3>Decentralized Nature of Forex Trading</h3>
+<p>Unlike stock markets, the Forex market does not operate through a single centralized exchange. Instead, it functions as a decentralized, over-the-counter (OTC) market. This means currency transactions take place directly between participants through electronic networks rather than on a physical trading floor.</p>
+<p>Prices in the Forex market are determined by supply and demand across a global network of banks, financial institutions, and liquidity providers. Because there is no central exchange, multiple prices may exist at the same time, with brokers sourcing quotes from different liquidity pools. This decentralized structure is what allows the Forex market to operate continuously across different time zones.</p>
+<p>The absence of a central exchange also contributes to the market’s flexibility. Trading is not restricted to specific opening and closing bells, making Forex accessible around the clock during the business week. However, this flexibility also means that market conditions can vary significantly depending on the time of day and active participants.</p>
+<h3>Forex vs Stock and Futures Markets</h3>
+<p>One of the key differences between the Forex market and other financial markets is how and where trading occurs. Stock markets are centralized and tied to specific exchanges, such as the New York Stock Exchange or the London Stock Exchange. Trading hours are fixed, and liquidity is concentrated during official market sessions.</p>
+<p>The Forex market, by contrast, operates globally with no single governing exchange. Liquidity flows from major financial centers such as London, New York, Tokyo, and Sydney. This global structure allows traders to respond immediately to economic news and geopolitical events, regardless of their location.</p>
+<p>Futures markets share some similarities with Forex, particularly in terms of leverage and speculation. However, futures contracts are standardized, exchange-traded instruments with expiration dates. Spot Forex trading does not involve expiration and is primarily focused on immediate currency exchange, even though most trades are settled electronically rather than through physical delivery.</p>
+<p>Understanding these structural differences helps traders set realistic expectations. Forex offers high liquidity and accessibility, but it also requires a solid understanding of how decentralized pricing, trading sessions, and participant behavior influence market conditions.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2026/02/2.-The-Rhythm-of-the-Market-Trading-Session-Overlaps.png" alt="" width="1000" height="1000" srcset="https://g2ggroup.com/wp-content/uploads/2026/02/2.-The-Rhythm-of-the-Market-Trading-Session-Overlaps.png 1000w, https://g2ggroup.com/wp-content/uploads/2026/02/2.-The-Rhythm-of-the-Market-Trading-Session-Overlaps-300x300.png 300w, https://g2ggroup.com/wp-content/uploads/2026/02/2.-The-Rhythm-of-the-Market-Trading-Session-Overlaps-150x150.png 150w, https://g2ggroup.com/wp-content/uploads/2026/02/2.-The-Rhythm-of-the-Market-Trading-Session-Overlaps-768x768.png 768w, https://g2ggroup.com/wp-content/uploads/2026/02/2.-The-Rhythm-of-the-Market-Trading-Session-Overlaps-650x650.png 650w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h2 id="forex-market-structure-explained">Forex Market Structure Explained</h2>
+<h3>Over-the-Counter (OTC) Trading</h3>
+<p>The Forex market operates as an over-the-counter market, meaning trades are conducted directly between participants rather than through a centralized exchange. Transactions occur electronically through a network of banks, brokers, and financial institutions that quote prices and execute trades in real time. This OTC structure is a defining feature of how the Forex market works.</p>
+<p>Because Forex trading does not take place on a single exchange, there is no official “market price” for any currency pair. Instead, prices are derived from multiple liquidity providers across the global financial system. Brokers aggregate these prices and display them to traders, which is why small price differences can exist between platforms.</p>
+<p>This structure allows the Forex market to remain highly flexible and continuously active. However, it also means that market conditions, such as spreads and execution quality, can vary depending on the broker, time of day, and available liquidity.</p>
+<h3>Role of Liquidity Providers and Brokers</h3>
+<p>Liquidity providers are financial institutions that supply buy and sell prices to the market. These are typically large banks, prime brokers, and institutional trading firms. By continuously offering prices, liquidity providers make it possible for traders to enter and exit positions without significant delays.</p>
+<p>Retail traders usually access the Forex market through brokers rather than directly interacting with liquidity providers. Brokers act as intermediaries, connecting traders to the broader market. Some brokers route orders directly to liquidity providers, while others may internalize trades depending on their execution model.</p>
+<p>The quality of a broker’s liquidity sources has a direct impact on trading conditions. Deeper liquidity generally results in tighter spreads and more stable price movements. During periods of low liquidity, spreads may widen, and trade execution can become less predictable.</p>
+<h3>How Prices Are Quoted and Matched</h3>
+<p>Forex prices are quoted in currency pairs, with each quote consisting of a bid price and an ask price. The bid represents the price at which the market is willing to buy the base currency, while the ask represents the price at which it is willing to sell. The difference between these two prices is known as the spread.</p>
+<p>Price matching occurs when a buy order and a sell order meet at an agreed price. In the Forex market, this matching process is handled electronically through broker systems and liquidity networks. Large institutions often trade directly with one another, while retail orders are typically matched through aggregated liquidity pools.</p>
+<p>Market conditions influence how smoothly this process occurs. During high-liquidity periods, orders are filled quickly and close to the quoted price. In low-liquidity environments or during major news events, price matching can become less efficient, leading to slippage or partial fills.</p>
+<p>Understanding how Forex prices are formed and executed helps traders make sense of real-world trading experiences. It explains why spreads change, why execution quality varies, and why timing plays such a crucial role in Forex trading performance.</p>
+<h2 id="forex-trading-sessions-and-market-hours">Forex Trading Sessions and Market Hours</h2>
+<h3>Why the Forex Market Trades 24 Hours a Day</h3>
+<p>The Forex market operates 24 hours a day, five days a week, because currency trading follows the global business cycle rather than a single exchange schedule. As one major financial center closes, another opens, allowing trading activity to continue almost seamlessly across time zones. This structure is a direct result of the market’s decentralized nature.</p>
+<p>Banks, institutions, and corporations around the world need to exchange currencies during their local business hours. The continuous overlap of these global markets is what keeps Forex trading active from Monday morning in Asia to Friday evening in North America. However, while the market is always open, trading conditions are not always the same.</p>
+<p>Market activity, volatility, and liquidity fluctuate depending on which financial centers are active. Understanding these shifts is essential for traders who want to avoid low-quality market conditions and focus on periods with meaningful price movement.</p>
+<h3>The Four Major Forex Trading Sessions</h3>
+<p>The Forex market is commonly divided into four major trading sessions, each named after a key financial hub. These sessions define when different regions dominate market activity.</p>
+<p><strong>Sydney Session</strong><br>The Sydney session marks the start of the Forex trading week. It is generally characterized by lower liquidity and slower price movement, especially in currency pairs not linked to the Australian or New Zealand dollar. This session often sets the initial tone for the week but is typically less volatile.</p>
+<p><strong>Tokyo Session</strong><br>The Tokyo session represents Asian market activity and brings increased volume compared to Sydney. Currency pairs involving the Japanese yen, such as USD/JPY and EUR/JPY, tend to be more active during this period. Price action can still be relatively range-bound, but liquidity improves as more institutional participants enter the market.</p>
+<p><strong>London Session</strong><br>The London session is the most active and liquid Forex trading session. A large percentage of global currency transactions pass through London, making this session critical for price discovery. Major currency pairs often experience strong trends, tighter spreads, and higher volatility during this period.</p>
+<p><strong>New York Session</strong><br>The New York session overlaps with the latter part of the London session, creating the most liquid and volatile period of the trading day. Economic data releases from the United States frequently occur during this time, which can lead to sharp price movements. As the London session closes, volatility may gradually decline.</p>
+<h3>Session Overlaps and Their Importance</h3>
+<p>Session overlaps occur when two major trading sessions are open at the same time. These periods are especially important because they combine liquidity from multiple financial centers. The London–New York overlap is the most significant, accounting for a large share of daily trading volume.</p>
+<p>During overlaps, spreads are typically tighter, execution is faster, and price movements are more reliable. This is when institutional traders are most active, creating opportunities for well-structured trading strategies. In contrast, periods with no session overlap often experience reduced liquidity and unpredictable price behavior.</p>
+<p>Understanding Forex trading sessions helps traders align their activity with market conditions rather than trading at random times. Choosing the right session can improve execution quality, reduce costs, and increase the effectiveness of a trading strategy.</p>
+<h2 id="forex-liquidity-explained">Forex Liquidity Explained</h2>
+<h3>What Liquidity Means in Forex Trading</h3>
+<p>Liquidity in the Forex market refers to how easily a currency pair can be bought or sold without causing a significant change in price. A highly liquid market has a large number of buyers and sellers actively trading, which allows orders to be executed quickly and efficiently. This is one of the key reasons the Forex market is attractive to traders around the world.</p>
+<p>Major currency pairs such as EUR/USD, USD/JPY, and GBP/USD tend to have the highest liquidity. These pairs are traded heavily by banks, institutions, and corporations, resulting in consistent order flow throughout the day. High liquidity helps keep prices stable and reduces transaction costs for traders.</p>
+<p>Liquidity is not constant. It fluctuates depending on the trading session, market participation, and economic conditions. Understanding when liquidity is high or low is essential for managing risk and avoiding unfavorable trading environments.</p>
+<h3>High vs Low Liquidity Market Conditions</h3>
+<p>High-liquidity conditions occur when multiple trading sessions overlap and institutional participation is strong. During these periods, the market can absorb large orders without sharp price swings. Price movements tend to be smoother, and technical levels are more likely to hold.</p>
+<p>Low-liquidity conditions usually appear during off-hours, holidays, or between major trading sessions. With fewer participants in the market, even small orders can lead to disproportionate price movements. This can result in choppy price action, false breakouts, and increased uncertainty.</p>
+<p>Traders who are unaware of liquidity conditions may misinterpret market behavior. What appears to be a strong price move in a low-liquidity environment may simply be the result of limited participation rather than genuine market conviction.</p>
+<h3>How Liquidity Affects Spreads and Slippage</h3>
+<p>Liquidity has a direct impact on trading costs. In highly liquid markets, competition among buyers and sellers keeps bid-ask spreads tight. This reduces the cost of entering and exiting trades and improves overall execution quality.</p>
+<p>When liquidity drops, spreads often widen as liquidity providers take on more risk. This means traders pay more to enter trades, even if the market is not moving significantly. Slippage also becomes more common, particularly during news releases or volatile conditions, when orders may be filled at prices different from those expected.</p>
+<p>Understanding how Forex liquidity works allows traders to choose optimal trading times and adjust their expectations. By aligning trading activity with high-liquidity periods, traders can reduce unnecessary costs and avoid conditions that increase execution risk.</p>
+<h2 id="who-are-the-major-forex-market-participants">Who Are the Major Forex Market Participants?</h2>
+<h3>Central Banks</h3>
+<p>Central banks are among the most influential participants in the Forex market. They manage a country’s monetary policy and may intervene in currency markets to control inflation, stabilize exchange rates, or support economic growth. Examples include the Federal Reserve, the European Central Bank, and the Bank of Japan.</p>
+<p>Central bank actions, such as interest rate decisions or direct currency interventions, can cause significant market movements. Even verbal statements or policy signals can influence trader expectations and shift currency values. Because of their size and authority, central banks can impact Forex markets in ways no other participant can.</p>
+<h3>Commercial Banks and Financial Institutions</h3>
+<p>Commercial banks form the backbone of daily Forex trading activity. Large banks facilitate currency transactions for clients, engage in proprietary trading, and provide liquidity to the broader market. Most Forex trades pass through the interbank market, where these institutions trade directly with one another.</p>
+<p>Financial institutions also act as market makers, continuously quoting buy and sell prices. Their trading activity creates much of the liquidity that retail traders rely on. Changes in bank positioning or risk appetite can influence short-term price movements and intraday trends.</p>
+<h3>Hedge Funds and Investment Managers</h3>
+<p>Hedge funds and investment managers participate in the Forex market primarily for speculative and portfolio management purposes. They trade currencies to profit from macroeconomic trends, interest rate differentials, and geopolitical developments. These participants often use large position sizes and sophisticated strategies.</p>
+<p>Because hedge funds tend to trade based on broader economic themes, their activity can contribute to sustained trends rather than short-term price fluctuations. When large funds enter or exit positions, their trades can amplify momentum and influence market direction across multiple sessions.</p>
+<h3>Corporations and Multinational Companies</h3>
+<p>Corporations participate in the Forex market to support their business operations rather than to speculate. Multinational companies need to exchange currencies to pay suppliers, receive international revenue, or hedge against currency risk. These transactions are known as commercial or transactional flows.</p>
+<p>While corporate trades are not usually aimed at predicting market direction, their activity adds depth and consistency to market liquidity. Large corporate flows can influence exchange rates, especially in currencies linked to export-driven economies.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2026/02/3.-The-Liquidity-Effect-Spreads-and-Execution.jpg" alt="" width="1000" height="1000" srcset="https://g2ggroup.com/wp-content/uploads/2026/02/3.-The-Liquidity-Effect-Spreads-and-Execution.jpg 1000w, https://g2ggroup.com/wp-content/uploads/2026/02/3.-The-Liquidity-Effect-Spreads-and-Execution-300x300.jpg 300w, https://g2ggroup.com/wp-content/uploads/2026/02/3.-The-Liquidity-Effect-Spreads-and-Execution-150x150.jpg 150w, https://g2ggroup.com/wp-content/uploads/2026/02/3.-The-Liquidity-Effect-Spreads-and-Execution-768x768.jpg 768w, https://g2ggroup.com/wp-content/uploads/2026/02/3.-The-Liquidity-Effect-Spreads-and-Execution-650x650.jpg 650w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h3>Retail Traders</h3>
+<p>Retail traders are individual participants who trade Forex through online brokers. Although they represent a small fraction of total market volume, retail traders contribute to short-term liquidity and market activity. Their trades are typically smaller and more frequent than those of institutional participants.</p>
+<p>Retail traders often focus on technical analysis, short-term strategies, and leveraged positions. Understanding that they are trading in a market dominated by institutions helps set realistic expectations. Successful retail traders learn to align their strategies with broader market conditions rather than attempting to compete directly with large players.</p>
+<h2 id="how-trading-sessions-liquidity-and-participants-work-togethe">How Trading Sessions, Liquidity, and Participants Work Together</h2>
+<h3>Why Volatility Changes Throughout the Day</h3>
+<p>Volatility in the Forex market is not random. It changes throughout the day based on which trading sessions are active and which participants are involved. When major financial centers are open, institutional traders, banks, and hedge funds are more active, increasing both liquidity and price movement.</p>
+<p>During quieter sessions, such as the early Asian hours, fewer participants are trading. This often leads to slower price action and tighter ranges. As London and New York open, trading volume rises sharply, and price movements become more pronounced. These shifts explain why certain times of day consistently offer better trading opportunities than others.</p>
+<p>Understanding this relationship helps traders avoid misinterpreting low volatility as market indecision or high volatility as market instability. In most cases, these changes simply reflect normal participation cycles.</p>
+<h3>Institutional Activity vs Retail Activity</h3>
+<p>Institutional participants dominate the Forex market during high-liquidity periods. Their trades are driven by macroeconomic data, interest rate expectations, and global capital flows. When institutions are active, price movements tend to be more directional and technically cleaner.</p>
+<p>Retail traders are more active during specific hours, often influenced by personal schedules rather than market conditions. This can lead to increased activity during lower-liquidity periods, where price behavior may be less reliable. Without institutional participation, technical patterns are more likely to fail or produce false signals.</p>
+<p>Recognizing when institutional traders are most active allows retail traders to align their strategies with stronger market forces rather than trading against them.</p>
+<h3>Best Times to Trade Based on Market Behavior</h3>
+<p>The most favorable trading conditions usually occur when high liquidity and active participation overlap. This often happens during the London session and the London–New York overlap. During these periods, spreads are tighter, execution is faster, and price movements reflect genuine market interest.</p>
+<p>In contrast, trading during low-liquidity periods increases execution risk and uncertainty. Spreads may widen, price movements can be erratic, and stop-loss orders are more vulnerable to sudden spikes. This does not mean trading is impossible during these times, but it does require adjusted expectations and tighter risk controls.</p>
+<p>By understanding how trading sessions, liquidity, and participants interact, traders can choose when to trade with greater precision. This structured approach reduces randomness and helps traders operate in sync with the natural rhythm of the Forex market.</p>
+<h2 id="common-misconceptions-about-the-forex-market">Common Misconceptions About the Forex Market</h2>
+<h3>“The Forex Market Is Manipulated”</h3>
+<p>One of the most common misconceptions is that the Forex market is heavily manipulated to work against retail traders. While short-term price movements can sometimes appear unpredictable, the sheer size and liquidity of the Forex market make systematic manipulation extremely difficult. Daily trading volume is dominated by large institutions with competing interests, which helps keep prices relatively efficient.</p>
+<p>What retail traders often interpret as manipulation is usually the result of low liquidity, news-driven volatility, or a lack of understanding of market structure. Sudden price spikes or stop-loss hits are more commonly caused by shifts in participation rather than deliberate targeting of individual traders.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2026/02/4.-The-Forex-Ecosystem-Who-Moves-the-Market.jpg" alt="" width="1000" height="1000" srcset="https://g2ggroup.com/wp-content/uploads/2026/02/4.-The-Forex-Ecosystem-Who-Moves-the-Market.jpg 1000w, https://g2ggroup.com/wp-content/uploads/2026/02/4.-The-Forex-Ecosystem-Who-Moves-the-Market-300x300.jpg 300w, https://g2ggroup.com/wp-content/uploads/2026/02/4.-The-Forex-Ecosystem-Who-Moves-the-Market-150x150.jpg 150w, https://g2ggroup.com/wp-content/uploads/2026/02/4.-The-Forex-Ecosystem-Who-Moves-the-Market-768x768.jpg 768w, https://g2ggroup.com/wp-content/uploads/2026/02/4.-The-Forex-Ecosystem-Who-Moves-the-Market-650x650.jpg 650w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+<h3>“Forex Is Only for Big Banks”</h3>
+<p>It is true that banks and institutions account for most Forex trading volume, but this does not mean the market is inaccessible to individuals. Retail traders can participate through online brokers, using the same price feeds and market access mechanisms as larger players, albeit with smaller trade sizes.</p>
+<p>The key difference lies in resources, not access. Institutional traders have more capital, advanced tools, and broader information networks. Retail traders who understand this distinction can focus on realistic goals and strategies that align with their position in the market instead of attempting to compete directly with institutions.</p>
+<h3>“More Volatility Always Means More Profit”</h3>
+<p>Many beginners assume that high volatility automatically leads to higher profits. In reality, increased volatility also brings higher risk. Rapid price movements can result in slippage, wider spreads, and emotional decision-making, all of which can negatively impact trading performance.</p>
+<p>Profitable trading depends on controlled risk and consistent execution, not on chasing large price swings. In many cases, moderate and predictable volatility during high-liquidity periods provides better trading conditions than extreme market fluctuations.</p>
+<h2 id="why-understanding-forex-market-mechanics-matters-for-traders">Why Understanding Forex Market Mechanics Matters for Traders</h2>
+<h3>Better Timing and Trade Selection</h3>
+<p>Understanding how the Forex market works allows traders to choose when to trade with intention rather than convenience. Market mechanics such as trading sessions and liquidity levels directly affect price behavior. Trading during active sessions increases the likelihood that price movements are driven by meaningful participation rather than random fluctuations.</p>
+<p>When traders align their activity with high-liquidity periods, technical levels tend to be more reliable and execution quality improves. This leads to better trade selection and fewer low-probability setups. Timing becomes a strategic decision instead of a guess.</p>
+<h3>Risk Management Advantages</h3>
+<p>Market mechanics play a critical role in effective risk management. Liquidity conditions influence spreads, slippage, and stop-loss behavior. Traders who understand these dynamics can adjust position size, stop placement, and expectations based on current market conditions.</p>
+<p>For example, tighter risk controls may be necessary during low-liquidity periods or major news events. By accounting for market structure, traders reduce exposure to unexpected execution issues that can undermine even well-planned trades.</p>
+<h3>Aligning Strategy With Market Conditions</h3>
+<p>No trading strategy works equally well in all market environments. Some approaches perform best during high volatility, while others require stable, range-bound conditions. Understanding trading sessions and participant behavior helps traders apply the right strategy at the right time.</p>
+<p>Rather than forcing a single approach in every market condition, informed traders adapt to the market’s natural rhythm. This alignment improves consistency and reinforces disciplined decision-making, which is essential for long-term trading performance.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The Forex market is far more than a place where currencies are bought and sold. It is a complex, global system shaped by trading sessions, liquidity conditions, and a wide range of market participants. Understanding how these elements work together provides essential context for interpreting price movements and making informed trading decisions.</p>
+<p>Trading sessions determine when the market is most active and when liquidity is strongest. Liquidity influences spreads, execution quality, and the reliability of price action. Market participants, from central banks to retail traders, each play a distinct role that affects volatility and direction. None of these factors operate in isolation, and ignoring them often leads to inconsistent results.</p>
+<p>For traders, learning how the Forex market works is a foundational step rather than an advanced concept. It helps replace guesswork with structure and aligns trading activity with real market dynamics. This understanding supports better timing, stronger risk management, and more realistic expectations.</p>
+<p>Before focusing on strategies, indicators, or automation, traders benefit from mastering the mechanics of the market itself. A solid grasp of Forex market structure creates a framework that improves decision-making and long-term consistency, regardless of trading style or experience level.</p>
+<p>By approaching Forex with this broader perspective, traders are better equipped to navigate changing conditions and engage with the market on informed, disciplined terms.</p>
+        </div>
+        <!-- Aside 6023:2737 — оглавление из разделов записи (h2). В записях их от 5 до 53: список прокручивается внутри
+             карточки; на ≤1024 свёрнуто в строку, закреплённую под шапкой (js/doc-toc.js) — общий блок с 19–24.
+             Заголовок «Table of contents» — как на 19–24 (правка пользователя 02.10; в макете «On this page») -->
+        <aside class="article-toc doc-toc" aria-label="Table of contents" data-el="container">
+          <details class="doc-toc__box" data-widget="doc-toc" open>
+            <summary class="doc-toc__summary type-overline">Table of contents</summary>
+            <ul class="article-toc__list doc-toc__list" data-el="icon-list">
+              <li><a class="article-toc__link doc-toc__link type-small" href="#what-is-the-forex-market">What Is the Forex Market?</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#forex-market-structure-explained">Forex Market Structure Explained</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#forex-trading-sessions-and-market-hours">Forex Trading Sessions and Market Hours</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#forex-liquidity-explained">Forex Liquidity Explained</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#who-are-the-major-forex-market-participants">Who Are the Major Forex Market Participants?</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-trading-sessions-liquidity-and-participants-work-togethe">How Trading Sessions, Liquidity, and Participants Work Together</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#common-misconceptions-about-the-forex-market">Common Misconceptions About the Forex Market</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#why-understanding-forex-market-mechanics-matters-for-traders">Why Understanding Forex Market Mechanics Matters for Traders</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#conclusion">Conclusion</a></li>
+            </ul>
+          </details>
+          <hr class="article-toc__divider doc-toc__divider">
+          <p class="article-toc__note doc-toc__extra type-small" data-el="text">See the live spreads for every instrument in the specification tables.</p>
+          <a class="btn btn--secondary doc-toc__back" href="../markets.html" data-el="button">Market specifications</a>
+        </aside>
+      </div>
+    </section>
+
+    </article>
+
+    <!-- section: related (Related 6023:2746) — 3 × Article card (как в 16 Blog; в WP — Query Loop: свежие записи той же рубрики) -->
+    <section class="related theme-light" data-el="container" data-name="related">
+      <div class="related__inner container" data-el="container">
+        <h2 class="related__overline type-overline" data-el="heading">Related articles</h2>
+        <div class="article-grid article-grid--related" data-el="loop-grid">
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/fundamental-analysis-in-forex-economic-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/fundamental-analysis-in-forex-economic.html">Fundamental Analysis in Forex: Economic News, Interest Rates, and Central Banks</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn fundamental analysis in forex trading, including economic news, interest rates, and central banks—and how they drive currency movements.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/fundamental-analysis-in-forex-economic.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html">Technical Analysis in Forex Trading: Indicators and Chart Patterns</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn technical analysis in forex trading, including key indicators, chart patterns, and strategies to improve timing and consistency.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/forex-trading-strategies-that-actually-work-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-11" data-el="text">February 11, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/forex-trading-strategies-that-actually-work.html">Forex Trading Strategies That Actually Work</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Find forex trading strategies that actually work. Learn proven methods, risk management, and real-market techniques used by pro traders.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/forex-trading-strategies-that-actually-work.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — footer 6055:5831, компонент Footer cta=true) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading">Open a <span class="page-cta__accent--dark">live</span> account</h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Clear trading conditions · MetaTrader 5 · WhatsApp support</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="../index.html" data-el="image">
+            <img class="site-footer__logo-img" src="../assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="../platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="../funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../about.html">About</a></li>
+            <li><a class="site-footer__link" href="../regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="../help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="../order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="../security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="../anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="../complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="../demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="../business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="../regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="../help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="../blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

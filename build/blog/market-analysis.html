@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Comprehensive Market Analysis: Forex, Gold, Crypto | G2G Group LTD</title>
+  <meta name="description" content="Get expert market analysis and trading insights — forex and gold with up-to-date charts, data-driven forecasts, and actionable trade ideas.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="preload" href="../assets/img/inner-hero-bg.webp" as="image">
+  <script src="../js/header.js" defer></script>
+  <script src="../js/analytics.js" defer></script>
+  <script src="../js/doc-toc.js" defer></script>
+  <script src="../js/stack.js" defer></script>
+  <script src="../js/faq.js" defer></script>
+  <script src="../js/quotes.js" defer></script>
+  <script src="../js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header site-header--solid site-header--always-solid" data-el="header" data-name="site-header">
+    <div class="site-header__bar site-header__bar--solid" data-el="container">
+      <a class="site-header__logo" href="../index.html" data-el="image">
+        <img class="site-header__logo-img" src="../assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="../metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="../indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="../crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="../stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="../markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="../funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="../regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="../legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item site-header__item--active"><a class="site-header__link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article" data-el="container">
+
+    <!-- section: article-head (Article head 6023:2707) — шапка Solid с самого верха; в WP — шаблон записи (Single Post):
+         рубрика — одна основная (Uncategorized не выводится), автор — «G2G», а не логин, время чтения — по числу слов -->
+    <section class="article-head theme-light" data-el="container" data-name="article-head">
+      <div class="article-head__inner container" data-el="container">
+        <nav aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb breadcrumb--light">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../blog.html">Blog</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path">Forex</li>
+          </ol>
+        </nav>
+        <p class="pill pill--mint pill--mint-strong" data-el="text">Forex</p>
+        <h1 class="article-head__title type-h1" data-el="heading">Comprehensive Market Analysis: Forex, Gold, Crypto</h1>
+        <p class="article-meta type-small" data-el="text">
+          <span class="article-meta__author">G2G</span>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <time datetime="2025-11-27">November 27, 2025</time>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </p>
+        <!-- Cover image 6023:2723: обложка записи + hue #1B4B39 (слой CSS). alt пустой: на обложке вписан заголовок записи — он же в h1 -->
+        <div class="article-cover" data-el="container">
+          <img class="article-cover__img" src="../assets/img/blog/market-analysis.webp" width="1600" height="900" alt="" decoding="async" fetchpriority="high" data-el="image">
+        </div>
+      </div>
+    </section>
+
+    <!-- section: article-body (Article body 6023:2725) -->
+    <section class="article-body theme-light" data-el="container" data-name="article-body">
+      <div class="article-body__inner container" data-el="container">
+        <!-- Тело записи — как его отдаёт WordPress: теги без классов (research/blog-old-site/clean/<slug>.html, слова не менялись).
+             Вид задаёт .article-content в pages.css; id у h2 ставит сборка (в теме — фильтр содержимого), из них же оглавление -->
+        <div class="article-content" data-el="text">
+<p>Successful trading requires more than intuition — it demands consistent, data-driven market analysis. At G2G Group, we provide traders with clear insights into Forex, gold, indices, and crypto markets, helping them make informed decisions in fast-moving conditions. This guide explains the key components of market analysis and how traders can use it to stay ahead.</p>
+<h2 id="what-is-market-analysis-in-trading">What Is Market Analysis in Trading?</h2>
+<p>Market analysis is the process of evaluating financial markets using data, price behavior, and fundamental factors to determine potential trade opportunities. The goal is to understand what drives price movements and anticipate where markets may move next.</p>
+<p>In Forex and commodities such as gold, analysis helps traders:</p>
+<ul>
+<li>Identify trend direction and momentum</li>
+<li>Time entry and exit points</li>
+<li>Understand macroeconomic influences</li>
+<li>Evaluate risk and set appropriate stop-loss levels</li>
+<li>Spot potential reversals or breakouts</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/11/Image-1-The-Three-Pillars-Infographic-300x300.png" alt="" width="300" height="300" srcset="https://g2ggroup.com/wp-content/uploads/2025/11/Image-1-The-Three-Pillars-Infographic-300x300.png 300w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-1-The-Three-Pillars-Infographic-150x150.png 150w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-1-The-Three-Pillars-Infographic-768x768.png 768w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-1-The-Three-Pillars-Infographic-650x650.png 650w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-1-The-Three-Pillars-Infographic.png 1000w" sizes="(max-width: 300px) 100vw, 300px"></p>
+<h2 id="types-of-market-analysis-every-trader-should-use">Types of Market Analysis Every Trader Should Use</h2>
+<h3>1. Technical Analysis</h3>
+<p>Technical analysis focuses on price action, patterns, and market psychology. Traders rely on charts and indicators to predict future price movements. Popular tools include:</p>
+<ul>
+<li>Candlestick patterns</li>
+<li>Trendlines and channels</li>
+<li>Moving averages (MA)</li>
+<li>RSI, MACD and momentum oscillators</li>
+<li>Support and resistance zones</li>
+</ul>
+<p>Technical analysis is essential for day traders and swing traders who depend on precise timing.</p>
+<h3>2. Fundamental Analysis</h3>
+<p>Fundamental analysis examines economic data, geopolitical events, interest rates, and global financial conditions. Markets move based on real-world events, especially:</p>
+<ul>
+<li>Central bank decisions</li>
+<li>Inflation reports</li>
+<li>Non-Farm Payrolls (NFP)</li>
+<li>GDP data</li>
+<li>Consumer sentiment and manufacturing surveys</li>
+</ul>
+<p>This approach is crucial for medium-to-long term strategies, particularly in Forex and gold trading.</p>
+<h3>3. Sentiment Analysis</h3>
+<p>Sentiment analysis gauges the mood of the market — whether traders are risk-on or risk-off. It often shifts based on major news, economic stress, or political uncertainty.</p>
+<p>Examples include:</p>
+<ul>
+<li>Fear driving capital toward gold and safe-haven currencies</li>
+<li>Risk appetite boosting equities and risk-ier currencies</li>
+<li>Crypto momentum influenced by investor enthusiasm</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/11/Image-2-The-Technical-Toolkit-300x300.png" alt="" width="300" height="300" srcset="https://g2ggroup.com/wp-content/uploads/2025/11/Image-2-The-Technical-Toolkit-300x300.png 300w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-2-The-Technical-Toolkit-150x150.png 150w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-2-The-Technical-Toolkit-768x768.png 768w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-2-The-Technical-Toolkit-650x650.png 650w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-2-The-Technical-Toolkit.png 1000w" sizes="(max-width: 300px) 100vw, 300px"></p>
+<h2 id="forex-market-analysis">Forex Market Analysis</h2>
+<p>The Forex market is shaped by interest rates, economic strength, and global liquidity. Proper analysis helps traders anticipate currency volatility and major trend shifts.</p>
+<h3>Key factors affecting Forex movements:</h3>
+<ul>
+<li>Central bank policy (Fed, ECB, BoE, BoJ)</li>
+<li>Employment and inflation data</li>
+<li>Geopolitical stability</li>
+<li>Market liquidity during sessions (Asian, London, New York)</li>
+</ul>
+<p>Traders combining technical and fundamental analysis typically achieve the most consistent results.</p>
+<h2 id="gold-xau-usd-market-analysis">Gold (XAU/USD) Market Analysis</h2>
+<p>Gold is one of the most actively traded commodities and is highly sensitive to risk sentiment. Skilled traders monitor the real-time factors that influence XAU/USD price movements.</p>
+<h3>Main drivers of gold prices:</h3>
+<ul>
+<li>US Dollar strength or weakness</li>
+<li>Interest rate expectations</li>
+<li>Inflation concerns</li>
+<li>Geopolitical tensions</li>
+<li>Bond yields and real rates</li>
+</ul>
+<p>Gold traders rely on both technical tools (Fibonacci, support zones) and macroeconomic analysis to capture strong moves.</p>
+<h2 id="crypto-market-analysis">Crypto Market Analysis</h2>
+<p>The crypto market is more volatile than traditional markets, requiring disciplined analysis and risk control. Traders look at:</p>
+<ul>
+<li>Market sentiment and liquidity</li>
+<li>Regulatory developments</li>
+<li>Blockchain adoption trends</li>
+<li>Technical patterns and momentum indicators</li>
+</ul>
+<p>Crypto analysis often overlaps with risk sentiment seen in the stock and commodities markets.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/11/Image-3-Fear-Greed-Gauge-300x300.png" alt="" width="300" height="300" srcset="https://g2ggroup.com/wp-content/uploads/2025/11/Image-3-Fear-Greed-Gauge-300x300.png 300w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-3-Fear-Greed-Gauge-150x150.png 150w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-3-Fear-Greed-Gauge-768x768.png 768w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-3-Fear-Greed-Gauge-650x650.png 650w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-3-Fear-Greed-Gauge.png 1000w" sizes="(max-width: 300px) 100vw, 300px"></p>
+<h2 id="how-to-use-market-analysis-in-your-trading-strategy">How to Use Market Analysis in Your Trading Strategy</h2>
+<ul>
+<li><strong>Identify trend direction:</strong> analyze long-term and short-term movements.</li>
+<li><strong>Wait for confirmation:</strong> avoid impulsive entries.</li>
+<li><strong>Use multi-timeframe analysis:</strong> combine daily, 4H, and 1H charts.</li>
+<li><strong>Monitor economic calendars:</strong> key events can trigger major moves.</li>
+<li><strong>Apply risk management:</strong> never trade without a stop-loss.</li>
+</ul>
+<p>Combining techniques provides a clearer, more reliable market picture.</p>
+<p><img loading="lazy" decoding="async" src="https://g2ggroup.com/wp-content/uploads/2025/11/Image-4-Analysis-Paralysis-Warning-300x300.jpg" alt="" width="300" height="300" srcset="https://g2ggroup.com/wp-content/uploads/2025/11/Image-4-Analysis-Paralysis-Warning-300x300.jpg 300w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-4-Analysis-Paralysis-Warning-150x150.jpg 150w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-4-Analysis-Paralysis-Warning-768x768.jpg 768w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-4-Analysis-Paralysis-Warning-650x650.jpg 650w, https://g2ggroup.com/wp-content/uploads/2025/11/Image-4-Analysis-Paralysis-Warning.jpg 1000w" sizes="(max-width: 300px) 100vw, 300px"></p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Market analysis is the foundation of every successful trading strategy. Whether you focus on Forex, gold, crypto, or global assets, understanding price behavior and economic conditions will improve your decision-making and long-term results.</p>
+<p>Stay updated with G2G Group’s analysis to gain a competitive trading edge.</p>
+<h2 id="frequently-asked-questions-faqs">Frequently Asked Questions (FAQs)</h2>
+<h3>What is market analysis in trading?</h3>
+<p>Market analysis is the process of studying price movements, economic data, and market sentiment to understand trends and identify potential trading opportunities across Forex, gold, crypto, and other assets.</p>
+<h3>Why is market analysis important for traders?</h3>
+<p>Market analysis helps traders make informed decisions, reduce risk, identify high-probability setups, and understand the factors influencing price movements. It is essential for improving accuracy and consistency in trading.</p>
+<h3>What types of market analysis are used in Forex and gold trading?</h3>
+<p>The three main types are technical analysis, fundamental analysis, and sentiment analysis. Successful traders often combine all three to gain a complete view of market conditions.</p>
+<h3>How often should I perform market analysis?</h3>
+<p>Most traders analyze markets daily. Short-term traders may monitor charts multiple times throughout the day, while long-term traders may update their analysis weekly.</p>
+<h3>Does market analysis guarantee profitable trades?</h3>
+<p>No. Market analysis increases the probability of making informed and strategic decisions, but market conditions can change rapidly. Risk management is always necessary.</p>
+<h3>Can beginners learn how to do market analysis?</h3>
+<p>Yes, Beginners can learn market analysis through educational resources, charts, economic calendars, and practice. Over time, identifying trends and patterns becomes easier.</p>
+<h3>Which tools are best for Forex and gold market analysis?</h3>
+<p>Common tools include candlestick charts, moving averages, RSI, MACD, support and resistance levels, economic calendars, and news feeds that cover global financial events.</p>
+<h3>How does fundamental analysis affect gold and Forex markets?</h3>
+<p>Economic factors such as interest rates, inflation, geopolitical tensions, and central bank decisions have a direct impact on the value of currencies and gold prices.</p>
+<h3>Is sentiment analysis useful for traders?</h3>
+<p>Yes, Sentiment analysis helps traders understand whether the market is risk-on or risk-off, which strongly influences currency pairs, gold, indices, and crypto assets.</p>
+<h3>Where can I get reliable market analysis?</h3>
+<p>Reliable market analysis is available through financial news sources, economic data providers, trading platforms, and professional broker websites that offer insights and market updates.</p>
+        </div>
+        <!-- Aside 6023:2737 — оглавление из разделов записи (h2). В записях их от 5 до 53: список прокручивается внутри
+             карточки; на ≤1024 свёрнуто в строку, закреплённую под шапкой (js/doc-toc.js) — общий блок с 19–24.
+             Заголовок «Table of contents» — как на 19–24 (правка пользователя 02.10; в макете «On this page») -->
+        <aside class="article-toc doc-toc" aria-label="Table of contents" data-el="container">
+          <details class="doc-toc__box" data-widget="doc-toc" open>
+            <summary class="doc-toc__summary type-overline">Table of contents</summary>
+            <ul class="article-toc__list doc-toc__list" data-el="icon-list">
+              <li><a class="article-toc__link doc-toc__link type-small" href="#what-is-market-analysis-in-trading">What Is Market Analysis in Trading?</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#types-of-market-analysis-every-trader-should-use">Types of Market Analysis Every Trader Should Use</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#forex-market-analysis">Forex Market Analysis</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#gold-xau-usd-market-analysis">Gold (XAU/USD) Market Analysis</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#crypto-market-analysis">Crypto Market Analysis</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-to-use-market-analysis-in-your-trading-strategy">How to Use Market Analysis in Your Trading Strategy</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#final-thoughts">Final Thoughts</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#frequently-asked-questions-faqs">Frequently Asked Questions (FAQs)</a></li>
+            </ul>
+          </details>
+          <hr class="article-toc__divider doc-toc__divider">
+          <p class="article-toc__note doc-toc__extra type-small" data-el="text">See the live spreads for every instrument in the specification tables.</p>
+          <a class="btn btn--secondary doc-toc__back" href="../markets.html" data-el="button">Market specifications</a>
+        </aside>
+      </div>
+    </section>
+
+    </article>
+
+    <!-- section: related (Related 6023:2746) — 3 × Article card (как в 16 Blog; в WP — Query Loop: свежие записи той же рубрики) -->
+    <section class="related theme-light" data-el="container" data-name="related">
+      <div class="related__inner container" data-el="container">
+        <h2 class="related__overline type-overline" data-el="heading">Related articles</h2>
+        <div class="article-grid article-grid--related" data-el="loop-grid">
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/fundamental-analysis-in-forex-economic-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/fundamental-analysis-in-forex-economic.html">Fundamental Analysis in Forex: Economic News, Interest Rates, and Central Banks</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn fundamental analysis in forex trading, including economic news, interest rates, and central banks—and how they drive currency movements.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/fundamental-analysis-in-forex-economic.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html">Technical Analysis in Forex Trading: Indicators and Chart Patterns</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn technical analysis in forex trading, including key indicators, chart patterns, and strategies to improve timing and consistency.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/forex-trading-strategies-that-actually-work-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-11" data-el="text">February 11, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/forex-trading-strategies-that-actually-work.html">Forex Trading Strategies That Actually Work</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Find forex trading strategies that actually work. Learn proven methods, risk management, and real-market techniques used by pro traders.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/forex-trading-strategies-that-actually-work.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — footer 6055:5831, компонент Footer cta=true) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading">Open a <span class="page-cta__accent--dark">live</span> account</h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Clear trading conditions · MetaTrader 5 · WhatsApp support</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="../index.html" data-el="image">
+            <img class="site-footer__logo-img" src="../assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="../platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="../funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../about.html">About</a></li>
+            <li><a class="site-footer__link" href="../regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="../help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="../order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="../security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="../anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="../complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="../demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="../business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="../regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="../help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="../blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

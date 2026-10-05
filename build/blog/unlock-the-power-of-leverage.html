@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Forex Leverage: How It Can Boost Your Trading| G2G Group LTD</title>
+  <meta name="description" content="Forex leverage can boost profits—or wipe out your account. Discover how leverage works and how to use it wisely with smart risk management.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="preload" href="../assets/img/inner-hero-bg.webp" as="image">
+  <script src="../js/header.js" defer></script>
+  <script src="../js/analytics.js" defer></script>
+  <script src="../js/doc-toc.js" defer></script>
+  <script src="../js/stack.js" defer></script>
+  <script src="../js/faq.js" defer></script>
+  <script src="../js/quotes.js" defer></script>
+  <script src="../js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header site-header--solid site-header--always-solid" data-el="header" data-name="site-header">
+    <div class="site-header__bar site-header__bar--solid" data-el="container">
+      <a class="site-header__logo" href="../index.html" data-el="image">
+        <img class="site-header__logo-img" src="../assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="../metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="../indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="../crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="../stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="../markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="../funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="../regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="../legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item site-header__item--active"><a class="site-header__link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article" data-el="container">
+
+    <!-- section: article-head (Article head 6023:2707) — шапка Solid с самого верха; в WP — шаблон записи (Single Post):
+         рубрика — одна основная (Uncategorized не выводится), автор — «G2G», а не логин, время чтения — по числу слов -->
+    <section class="article-head theme-light" data-el="container" data-name="article-head">
+      <div class="article-head__inner container" data-el="container">
+        <nav aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb breadcrumb--light">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../blog.html">Blog</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path">Forex</li>
+          </ol>
+        </nav>
+        <p class="pill pill--mint pill--mint-strong" data-el="text">Forex</p>
+        <h1 class="article-head__title type-h1" data-el="heading">Forex Leverage: A Double-Edged Sword for Traders – How to Use It Wisely</h1>
+        <p class="article-meta type-small" data-el="text">
+          <span class="article-meta__author">G2G</span>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <time datetime="2026-01-05">January 5, 2026</time>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <span>5 min read</span>
+        </p>
+        <!-- Cover image 6023:2723: обложка записи + hue #1B4B39 (слой CSS). alt пустой: на обложке вписан заголовок записи — он же в h1 -->
+        <div class="article-cover" data-el="container">
+          <img class="article-cover__img" src="../assets/img/blog/unlock-the-power-of-leverage.webp" width="1920" height="1080" alt="" decoding="async" fetchpriority="high" data-el="image">
+        </div>
+      </div>
+    </section>
+
+    <!-- section: article-body (Article body 6023:2725) -->
+    <section class="article-body theme-light" data-el="container" data-name="article-body">
+      <div class="article-body__inner container" data-el="container">
+        <!-- Тело записи — как его отдаёт WordPress: теги без классов (research/blog-old-site/clean/<slug>.html, слова не менялись).
+             Вид задаёт .article-content в pages.css; id у h2 ставит сборка (в теме — фильтр содержимого), из них же оглавление -->
+        <div class="article-content" data-el="text">
+<p>Forex leverage is one of the most attractive features of currency trading. It allows traders to control large market positions with a relatively small amount of capital. While leverage can significantly amplify profits, it can also magnify losses just as quickly—making it a true double-edged sword.</p>
+<p>Understanding how Forex leverage works and learning how to manage it properly is essential for long-term trading success. This article explores Forex leverage in detail, covering how it works, its benefits and risks, and practical strategies to use leverage wisely.</p>
+<h2 id="introduction-to-forex-leverage">Introduction to Forex Leverage</h2>
+<p>Forex leverage allows traders to control a larger market position than their actual capital would normally permit. Essentially, leverage enables traders to borrow funds from their broker to increase trade size.</p>
+<p>For example, with a leverage ratio of <strong>100:1</strong>, a trader needs only <strong>$1,000</strong> to control a <strong>$100,000</strong> position.</p>
+<p>While leverage can greatly increase profit potential, it also exposes traders to significant losses. Understanding leverage is therefore crucial for making informed trading decisions, applying proper risk management, and achieving sustainable results in Forex trading.</p>
+<h2 id="how-forex-leverage-works">How Forex Leverage Works</h2>
+<p>To fully understand leverage in Forex trading, it is important to understand its relationship with margin and leverage ratios.</p>
+<h3>Margin and Leverage Basics</h3>
+<p>Margin is the amount of money a trader must deposit to open a position. It acts as collateral for potential losses. Leverage, on the other hand, is the multiplier that increases a trader’s market exposure.</p>
+<p>Margin and leverage are inversely related:</p>
+<ul>
+<li>
+Higher leverage → Lower margin requirement
+</li>
+<li>
+Lower leverage → Higher margin requirement
+</li>
+</ul>
+<p><strong>Example:</strong><br>With 100:1 leverage, only <strong>1%</strong> of the total trade value is required as margin. A $100,000 trade would therefore require just $1,000.</p>
+<h3>Leverage Ratios Explained</h3>
+<p>Leverage ratios show how much market exposure a trader can control relative to their margin. Common Forex leverage ratios range from <strong>50:1 to 500:1</strong>, depending on the broker and regulatory environment.</p>
+<p><strong>Example:</strong><br>With 100:1 leverage, every $1 of capital controls $100 in the market. A trader with $1,000 could therefore control a $100,000 position.</p>
+<h3>Calculating Leverage in Forex Trading</h3>
+<p>Leverage calculation is straightforward:</p>
+<p><strong>Formula:</strong><br>Leverage = Total Position Size ÷ Margin Required</p>
+<p><strong>Example:</strong><br>If a trader deposits $1,000 and opens a $50,000 position, the leverage used is <strong>50:1</strong>.</p>
+<h2 id="advantages-of-using-leverage-in-forex">Advantages of Using Leverage in Forex</h2>
+<p>Leverage offers several benefits when used responsibly.</p>
+<h3>Amplifying Trading Capital</h3>
+<p>Leverage allows traders to increase their market exposure beyond their actual capital, making it possible to generate higher returns from successful trades.</p>
+<p>Without leverage, $1,000 controls only a $1,000 position. With 100:1 leverage, the same $1,000 can control $100,000—significantly increasing profit potential.</p>
+<h3>Opportunities in Volatile Markets</h3>
+<p>Leverage is particularly useful in volatile markets, where price movements can create strong trading opportunities.</p>
+<p><strong>Example:</strong><br>A 1% price move on a $100,000 leveraged position results in a $1,000 profit, compared to just $10 on an unleveraged $1,000 position.</p>
+<h3>Position Sizing Flexibility</h3>
+<p>Leverage provides flexibility in position sizing, allowing traders to diversify across multiple currency pairs rather than committing all capital to a single trade.</p>
+<p><strong>Example:</strong><br>Instead of placing one large trade, a trader can open smaller positions across different pairs, spreading risk more effectively.</p>
+<h2 id="the-risks-of-forex-leverage">The Risks of Forex Leverage</h2>
+<p>While leverage can boost profits, it also carries substantial risks.</p>
+<h3>Large Potential Losses</h3>
+<p>Leverage magnifies losses just as it magnifies gains. A small adverse price movement can quickly erase a trader’s margin.</p>
+<p><strong>Example:</strong><br>A 1% move against a $100,000 leveraged position results in a $1,000 loss—enough to wipe out a $1,000 margin deposit.</p>
+<h3>Margin Calls and Account Liquidation</h3>
+<p>If losses reduce account equity below required margin levels, brokers may issue a margin call or automatically close positions.</p>
+<p><strong>Example:</strong><br>If equity falls too low, the broker may liquidate trades at unfavorable prices to protect their capital.</p>
+<h3>Psychological Impact of High Leverage</h3>
+<p>High leverage often leads to emotional trading driven by fear or greed. This can cause impulsive decisions such as revenge trading or abandoning a trading plan.</p>
+<p><strong>Example:</strong><br>A trader under pressure from leveraged losses may attempt to recover quickly, leading to even greater losses.</p>
+<h2 id="using-leverage-wisely">Using Leverage Wisely</h2>
+<p>To benefit from leverage without excessive risk, traders must apply disciplined strategies.</p>
+<h3>Setting Appropriate Leverage Levels</h3>
+<p>Choosing the right leverage level is critical. Higher leverage increases both profit potential and risk exposure.</p>
+<p><strong>Trading Tip:</strong><br>Beginners should consider lower leverage levels such as <strong>10:1 or 20:1</strong>. As experience grows, leverage can be adjusted to suit the trading strategy.</p>
+<h3>Risk Management Strategies</h3>
+<p>Effective risk management is essential when trading with leverage. This includes:</p>
+<ul>
+<li>
+Using stop-loss orders
+</li>
+<li>
+Limiting position size
+</li>
+<li>
+Avoiding overexposure to a single trade
+</li>
+</ul>
+<p><strong>Example:</strong><br>A stop-loss order automatically closes a trade when a predetermined loss level is reached, protecting trading capital.</p>
+<h3>Monitoring Your Account Balance</h3>
+<p>Traders must regularly monitor margin levels and account equity to avoid margin calls.</p>
+<p><strong>Tip:</strong><br>If margin levels fall too low, consider reducing position sizes or adding funds to maintain account stability.</p>
+<h2 id="case-studies-leverage-and-trading-outcomes">Case Studies: Leverage and Trading Outcomes</h2>
+<p>Real-world examples highlight both the benefits and dangers of leverage.</p>
+<h3>High-Leverage Success Stories</h3>
+<p>A trader using 100:1 leverage entered a GBP/USD trade after a strong economic report. With $1,000 margin controlling $100,000, a 5% price move generated a $5,000 profit.</p>
+<h3>Cautionary Tales of Over-Leveraging</h3>
+<p>Another trader used 200:1 leverage on EUR/USD without a stop-loss. A 1% adverse move resulted in a $2,000 loss on a $1,000 margin, triggering a margin call and account liquidation.</p>
+<h2 id="common-mistakes-when-using-leverage">Common Mistakes When Using Leverage</h2>
+<h3>Over-Leveraging</h3>
+<p>Using excessive leverage can lead to rapid losses, especially in volatile markets.</p>
+<p><strong>Tip:</strong><br>Avoid using maximum leverage unless you fully understand the risks.</p>
+<h3>Ignoring Market Volatility</h3>
+<p>Leverage amplifies volatility, making even small price movements dangerous.</p>
+<p><strong>Tip:</strong><br>Reduce leverage or avoid trading during major news releases and high-volatility periods.</p>
+<h3>Failing to Use Stop-Loss Orders</h3>
+<p>Not using stop-loss orders is one of the most common and costly mistakes.</p>
+<p><strong>Tip:</strong><br>Always place a stop-loss on leveraged trades to protect your capital.</p>
+<h2 id="conclusion-using-the-power-of-leverage-for-forex-success">Conclusion: Using the Power of Leverage for Forex Success</h2>
+<p>Leverage is a powerful tool that can significantly enhance Forex trading results when used correctly. It allows traders to control larger positions and increase profit potential—but it also introduces serious risks.</p>
+<p>By understanding how leverage works, choosing appropriate leverage levels, and applying strong risk management strategies, traders can use leverage to their advantage while minimizing potential losses. Successful leverage trading requires discipline, continuous learning, and a careful balance between risk and reward.</p>
+        </div>
+        <!-- Aside 6023:2737 — оглавление из разделов записи (h2). В записях их от 5 до 53: список прокручивается внутри
+             карточки; на ≤1024 свёрнуто в строку, закреплённую под шапкой (js/doc-toc.js) — общий блок с 19–24.
+             Заголовок «Table of contents» — как на 19–24 (правка пользователя 02.10; в макете «On this page») -->
+        <aside class="article-toc doc-toc" aria-label="Table of contents" data-el="container">
+          <details class="doc-toc__box" data-widget="doc-toc" open>
+            <summary class="doc-toc__summary type-overline">Table of contents</summary>
+            <ul class="article-toc__list doc-toc__list" data-el="icon-list">
+              <li><a class="article-toc__link doc-toc__link type-small" href="#introduction-to-forex-leverage">Introduction to Forex Leverage</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-forex-leverage-works">How Forex Leverage Works</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#advantages-of-using-leverage-in-forex">Advantages of Using Leverage in Forex</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#the-risks-of-forex-leverage">The Risks of Forex Leverage</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#using-leverage-wisely">Using Leverage Wisely</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#case-studies-leverage-and-trading-outcomes">Case Studies: Leverage and Trading Outcomes</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#common-mistakes-when-using-leverage">Common Mistakes When Using Leverage</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#conclusion-using-the-power-of-leverage-for-forex-success">Conclusion: Using the Power of Leverage for Forex Success</a></li>
+            </ul>
+          </details>
+          <hr class="article-toc__divider doc-toc__divider">
+          <p class="article-toc__note doc-toc__extra type-small" data-el="text">See the live spreads for every instrument in the specification tables.</p>
+          <a class="btn btn--secondary doc-toc__back" href="../markets.html" data-el="button">Market specifications</a>
+        </aside>
+      </div>
+    </section>
+
+    </article>
+
+    <!-- section: related (Related 6023:2746) — 3 × Article card (как в 16 Blog; в WP — Query Loop: свежие записи той же рубрики) -->
+    <section class="related theme-light" data-el="container" data-name="related">
+      <div class="related__inner container" data-el="container">
+        <h2 class="related__overline type-overline" data-el="heading">Related articles</h2>
+        <div class="article-grid article-grid--related" data-el="loop-grid">
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/fundamental-analysis-in-forex-economic-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/fundamental-analysis-in-forex-economic.html">Fundamental Analysis in Forex: Economic News, Interest Rates, and Central Banks</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn fundamental analysis in forex trading, including economic news, interest rates, and central banks—and how they drive currency movements.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/fundamental-analysis-in-forex-economic.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html">Technical Analysis in Forex Trading: Indicators and Chart Patterns</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn technical analysis in forex trading, including key indicators, chart patterns, and strategies to improve timing and consistency.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/forex-trading-strategies-that-actually-work-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-11" data-el="text">February 11, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/forex-trading-strategies-that-actually-work.html">Forex Trading Strategies That Actually Work</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Find forex trading strategies that actually work. Learn proven methods, risk management, and real-market techniques used by pro traders.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/forex-trading-strategies-that-actually-work.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — footer 6055:5831, компонент Footer cta=true) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading">Open a <span class="page-cta__accent--dark">live</span> account</h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Clear trading conditions · MetaTrader 5 · WhatsApp support</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="../index.html" data-el="image">
+            <img class="site-footer__logo-img" src="../assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="../platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="../funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../about.html">About</a></li>
+            <li><a class="site-footer__link" href="../regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="../help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="../order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="../security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="../anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="../complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="../demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="../business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="../regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="../help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="../blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

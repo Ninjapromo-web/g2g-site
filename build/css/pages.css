@@ -1,0 +1,3128 @@
+/* G2G — секции внутренних страниц 08 Accounts, 10 Funding, 09 Platform, 16 Business.
+   Секции самодостаточны; значения — из get_design_context по id секции (build/SECTIONS.md).
+   Общие блоки этих страниц (герой, How it works, FAQ, Support, CTA подвала, Pill, Tag) —
+   components.css. Шаблон рынка — market.css, главная — home.css (здесь не подключаются). */
+
+/* ════════ 08 Accounts · Account Types (6818:8462) ══════════════════
+   Заголовок по центру · три карточки: Individual (мятный градиент), IBs & Affiliates, Partnership */
+.account-types { padding-block: var(--section-pad-md); }
+.account-types__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+}
+.account-types__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-24) var(--space-20);
+}
+/* repeat: audience-card (pill, title, text, list, button) */
+.audience-card {
+  --check-color: var(--color-accent-deep);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+  padding: calc(var(--space-36) - var(--border-width)) calc(26px - var(--border-width)); /* обводка в Figma внутри */
+  overflow: hidden;
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-xl); /* 28 → 24 */
+  background-color: var(--card-bg);
+}
+.audience-card--featured {
+  --check-color: var(--color-accent);
+  border-color: var(--color-border-mint-strong);
+  background-image: var(--gradient-audience-featured);
+}
+/* CUSTOM-CSS: фрагмент знака G2G справа сверху (Union, 34%, градиент) — тот же, что у карточки на главной */
+.audience-card--featured::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -12px;
+  right: -45px;
+  width: 250px;
+  height: 208px;
+  background: url('../assets/img/account-decor.svg') center / contain no-repeat;
+  pointer-events: none;
+}
+/* Desktop/H4 28/1.1 → H3 24 (как New style/H3 на страницах рынков — на согласовании), регистр как в макете */
+.audience-card__title {
+  color: var(--fg);
+  text-transform: none;
+}
+.audience-card__text { color: var(--fg-2); }
+.audience-card__text--strong { color: var(--fg); }
+.audience-card__divider {
+  align-self: stretch;
+  height: var(--border-width);
+  margin: 0;
+  border: 0;
+  background-color: var(--color-divider-on-light);
+}
+.audience-card__divider--light { background-color: var(--color-border-subtle); }
+.audience-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: stretch;
+  margin-bottom: var(--space-24); /* «sp» 4px + зазор 20 перед кнопкой */
+}
+.audience-card__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg);
+}
+.audience-card__item::before {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background-color: var(--check-color);
+  -webkit-mask: url('../assets/icons/check-sm.svg') center / contain no-repeat;
+  mask: url('../assets/icons/check-sm.svg') center / contain no-repeat;
+}
+.audience-card__cta { margin-top: auto; } /* кнопки карточек — по одной линии снизу */
+
+@media (max-width: 1024px) {
+  .account-types__inner { gap: var(--space-48); }
+  .account-types__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16);
+  }
+  .audience-card { padding: calc(var(--space-32) - var(--border-width)) calc(var(--space-24) - var(--border-width)); }
+  .audience-card--featured { grid-column: 1 / -1; } /* наше решение: главная карточка — на всю ширину */
+}
+@media (max-width: 767px) {
+  .account-types__inner { gap: var(--space-32); }
+  .account-types__grid { grid-template-columns: minmax(0, 1fr); }
+  .audience-card--featured { grid-column: auto; }
+}
+
+/* ════════ 08 Accounts · Trading Conditions (6819:8467) ═════════════
+   Tint → белый. Заголовок слева · панель «условие — значение» · кнопка + два шага регистрации */
+.conditions {
+  padding-block: var(--section-pad);
+  background-image: var(--gradient-tint-fade);
+}
+.conditions__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-36);
+}
+.conditions-panel {
+  padding: calc(var(--space-8) - var(--border-width)) calc(var(--space-40) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-faint);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-light);
+}
+/* repeat: conditions-row (key, value) — разделитель 1px между строками, как в Figma */
+.conditions-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  padding-block: 22px;
+  border-bottom: var(--border-width) solid var(--line);
+}
+.conditions-row--last { border-bottom: 0; }
+.conditions-row__key {
+  flex: none;
+  width: 280px;
+  color: var(--fg-2); /* On Light Muted 2.96 → Secondary (решение 24.09) */
+}
+.conditions-row__value {
+  flex: 1 1 0;
+  min-width: 0;
+  color: var(--fg);
+}
+
+.conditions__actions {
+  display: flex;
+  align-items: center;
+  gap: 146px;
+}
+/* Два шага регистрации с пунктирной связкой 121px между ними */
+.flow-steps {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  align-items: stretch;
+  gap: 121px;
+  min-width: 0;
+}
+/* CUSTOM-CSS: пунктир 6/6, 1.5px (Line 3) — ровно посередине между карточками */
+.flow-steps::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 121px;
+  height: 1.5px;
+  transform: translate(-50%, -50%);
+  background-image: repeating-linear-gradient(90deg,
+    var(--color-chip-on-light) 0 6px, transparent 6px 12px);
+}
+/* repeat: flow-step (icon, title, number, text) */
+.flow-step {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: calc(var(--space-24) - var(--border-width));
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-light);
+}
+.flow-step__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.flow-step__label {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  gap: var(--space-12);
+  min-width: 0;
+}
+.flow-step__icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+.flow-step__title { color: var(--fg); }
+.flow-step__num {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background-color: var(--color-chip-on-light);
+  color: var(--fg); /* On Light Muted на подложке 2.3 → On Light (контраст) */
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  font-weight: var(--fw-semibold);
+}
+.flow-step__text { color: var(--fg-2); } /* On Light Muted → Secondary (решение 24.09) */
+
+@media (max-width: 1024px) {
+  .conditions-panel { padding-inline: calc(var(--space-24) - var(--border-width)); }
+  .conditions-row__key { width: 200px; }
+  /* кнопка — над шагами; шаги на всю ширину */
+  .conditions__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-24);
+  }
+  .flow-steps {
+    flex: none;
+    align-self: stretch;
+    gap: 64px;
+  }
+  .flow-steps::before { width: 64px; }
+}
+@media (max-width: 767px) {
+  .conditions-panel { padding-inline: calc(var(--space-20) - var(--border-width)); }
+  /* ключ над значением */
+  .conditions-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding-block: var(--space-16);
+  }
+  .conditions-row__key { width: auto; }
+  .conditions__actions { align-items: stretch; }
+  /* шаги — столбиком, связка вертикальная */
+  .flow-steps {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .flow-steps::before {
+    width: 1.5px;
+    height: 40px;
+    background-image: repeating-linear-gradient(180deg,
+      var(--color-chip-on-light) 0 6px, transparent 6px 12px);
+  }
+}
+
+/* ════════ 08 Accounts · What the Account Includes (6820:8468) ══════
+   Бенто 2×2 стеклянных плиток. Свечение — растр Ellipse 2/3 из Figma (blur 100/150) = фон секции */
+.includes {
+  /* низ 112 + 60: в Figma под плитками ряд ссылок с opacity 0 (зазор 40 + строка 20) — место сохранено */
+  padding-block: var(--section-pad) calc(var(--section-pad) + 60px);
+  /* CUSTOM-CSS не нужен: фон-картинка контейнера (assets/_src/accounts/incl-glow.html) */
+  background: url('../assets/img/accounts-includes-glow.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.includes__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.includes__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-24);
+}
+/* repeat: stat-tile (value | tags, label, text) — стекло на белом */
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-12);
+  padding: var(--space-36);
+  border-radius: var(--radius-md);
+  background-color: var(--color-tile-mist);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.stat-tile__tags {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--space-8);
+}
+.stat-tile__value { color: var(--fg-accent); }
+.stat-tile__label { color: var(--fg-overline); }
+.stat-tile__text { color: var(--fg-2); }
+
+@media (max-width: 1024px) {
+  .includes { padding-bottom: var(--section-pad); }
+  .includes__grid { gap: var(--space-16); }
+  .stat-tile { padding: var(--space-28); }
+}
+@media (max-width: 767px) {
+  .includes { background-size: 900px auto; }
+  .includes__grid { grid-template-columns: minmax(0, 1fr); }
+  .stat-tile { padding: var(--space-24); }
+}
+
+/* ════════ 10 Funding · Payment methods (6421:6504) ═════════════════
+   Заголовок · 8 плиток 4×2 (логотипы — те же SVG, что на главной, где совпадают) · чипы · примечание */
+.pay-methods { padding-block: var(--section-pad-md); }
+.pay-methods__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.pay-methods__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-20);
+}
+/* repeat: pay-tile (logo [+ word]) */
+.pay-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 132px;
+  padding-inline: var(--space-16);
+  overflow: hidden;
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-light);
+}
+.pay-tile__logo {
+  display: block;
+  flex: none;
+  max-width: 100%;
+  height: auto;
+}
+/* «PAY» у Apple Pay / Google Pay — текстом, как в Figma (Funnel Display Medium 40) */
+.pay-tile__word {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  color: var(--color-logo-ink);
+}
+.pay-tile__word--google { color: var(--color-logo-google); }
+.pay-tile__label {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  font-weight: var(--fw-medium);
+  color: var(--color-logo-ink);
+  white-space: nowrap;
+}
+.pay-methods__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-12);
+  padding-top: var(--space-20);
+}
+/* repeat: proof-chip (icon, text) */
+.proof-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 10px var(--space-16) 10px 14px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-deep-wash);
+  color: var(--color-accent-deep);
+}
+.proof-chip__icon {
+  flex: none;
+  width: 19.2px;
+  height: 19.2px;
+}
+.pay-methods__note {
+  color: var(--fg-2); /* On Light Muted 2.96 → Secondary (решение 24.09) */
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .pay-methods__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16);
+  }
+}
+@media (max-width: 767px) {
+  .pay-methods__grid { gap: var(--space-12); }
+  .pay-tile {
+    gap: var(--space-8);
+    height: 96px;
+    padding-inline: var(--space-12);
+  }
+  /* логотипы — по высоте плитки 96 */
+  .pay-tile__logo {
+    width: auto;
+    max-height: 32px;
+  }
+  .pay-tile__logo--tall { max-height: 52px; }
+  .pay-tile__word { font-size: 1.75rem; }
+  .pay-tile__label { font-size: var(--fs-body); }
+  .pay-methods__chips { padding-top: 0; }
+}
+
+/* ════════ 10 Funding · Key transaction details (6421:6535) ═════════
+   Тёмная секция со скруглённым верхом, фон — растр Mesh gradient + Ellipse 2/3 (assets/_src/funding/keytx-bg.html).
+   Бенто: [Processing times | Minimum amount 490] / [Fees 490 | Currencies] — стеклянные карточки 320 и 252 */
+.tx-details {
+  padding-block: var(--section-pad-md);
+  background: var(--color-surface-dark) url('../assets/img/funding-keytx-bg.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.tx-details__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.tx-details__head { max-width: 820px; }
+.tx-details__bento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+.tx-details__row {
+  display: flex;
+  gap: var(--space-24);
+}
+/* repeat: tx-card (value?, title, text, extra?) */
+.tx-card {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-24);
+  min-width: 0;
+  min-height: 320px;
+  padding: var(--space-32);
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--color-tx-card);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.tx-card--fixed { flex: 0 0 490px; }
+.tx-card--short { min-height: 252px; }
+.tx-card__value { color: var(--fg-accent); }
+.tx-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.tx-card__copy--narrow { max-width: 480px; }
+.tx-card__title { color: var(--fg); }
+.tx-card__text { color: var(--fg-2); }
+
+/* Таймлайн «Deposit / Withdrawal»: подпись 104 · шаги с точками; линии между шагами делят остаток поровну */
+.tx-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.tx-timeline__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+.tx-timeline__label {
+  flex: none;
+  width: 104px;
+  color: var(--fg-2); /* Muted на карточке ~4.0 → Secondary (решение 24.09) */
+}
+.tx-timeline__track {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  gap: var(--space-8);
+  min-width: 0;
+}
+/* repeat: tx-timeline__step — точка (::before) · текст · линия до следующего шага (::after) */
+.tx-timeline__step {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--fg-2);
+  white-space: nowrap;
+}
+.tx-timeline__step::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-dot-idle);
+}
+.tx-timeline__step::after {
+  content: "";
+  flex: 1 1 0;
+  height: 2px;
+  background-color: var(--color-border-glass);
+}
+.tx-timeline__step--done {
+  flex: none;
+  color: var(--color-surface-light); /* Text #FFFFFF */
+}
+.tx-timeline__step--done::before { background-color: var(--color-accent); }
+.tx-timeline__step--done::after { display: none; }
+
+.currency-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+}
+.currency-chip {
+  padding: calc(10px - var(--border-width)) calc(22px - var(--border-width));
+  border: var(--border-width) solid var(--color-border-glass);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-chip-glass);
+  color: var(--color-surface-light);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass */
+}
+
+@media (max-width: 1024px) {
+  .tx-details__row { flex-direction: column; }
+  /* в колонке основа 0 + overflow: hidden схлопывает карточку — высота по содержимому */
+  .tx-card,
+  .tx-card--fixed { flex: none; }
+  .tx-card,
+  .tx-card--short { min-height: 0; }
+}
+@media (max-width: 767px) {
+  .tx-details__bento,
+  .tx-details__row { gap: var(--space-16); }
+  .tx-card { padding: var(--space-24); }
+  /* таймлайн: подпись сверху, шаги столбиком без линий */
+  .tx-timeline__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+  .tx-timeline__track {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .tx-timeline__step { white-space: normal; }
+  .tx-timeline__step::after { display: none; }
+}
+
+/* ════════ 10 Funding · Deposits and withdrawals (6421:6543) ═════════
+   Слева заголовок и экран портала (экспорт узла 6421:6546), справа две карточки и кнопка */
+.tx-manage { padding-block: var(--section-pad-md); }
+.tx-manage__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-40);
+}
+.tx-manage__intro {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: space-between;
+  gap: var(--space-48);
+  min-width: 0;
+}
+.tx-manage__preview {
+  width: 564px;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+.tx-manage__cards {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  min-width: 0;
+}
+/* repeat: info-card (icon, title, text) */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: stretch;
+  padding: calc(var(--space-28) - var(--border-width));
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--card-bg);
+}
+.info-card--r16 { border-radius: var(--radius-md); } /* вторая карточка — экземпляр Card / Device, радиус 16 */
+.info-card__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm); /* 13 → 12 */
+  background-color: var(--color-surface-tint);
+}
+.info-card__icon { width: 24px; height: 24px; }
+.info-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.info-card__copy--loose { gap: 14px; }
+.info-card__title { color: var(--fg); }
+.info-card__text { color: var(--fg-2); }
+
+@media (max-width: 1024px) {
+  .tx-manage__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .tx-manage__intro { gap: var(--space-32); }
+  .tx-manage__cards { flex: none; }
+}
+@media (max-width: 767px) {
+  .info-card { padding: calc(var(--space-20) - var(--border-width)); }
+}
+
+/* ════════ 09 Platform · Access MT5 (6110:3672) ══════════════════════
+   Переключатель платформ (Platform switcher 6798:9926): строка меняет превью, подпись и кнопку.
+   Вкладки — role="tablist" + js/tabs.js; состояния — модификаторы --active, цвета строки — переменные */
+.mt5-access { padding-block: var(--section-pad-md); }
+.mt5-access__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.platform-switcher {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-32);
+}
+.platform-switcher__list {
+  display: flex;
+  flex: 0 0 392px;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+/* repeat: platform-tab (icon, title, meta, art) */
+.platform-tab {
+  --tab-chip: var(--color-overlay-on-light);
+  --tab-icon: var(--color-text-on-light-secondary);
+  --tab-extra: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  height: 76px;
+  padding: 0 var(--space-16) 0 18px; /* чип на 19 от края, обводка в Figma внутри */
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border-faint);
+  border-radius: var(--radius-sm); /* 14 → 12 */
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-on-light);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+.platform-tab--active {
+  --tab-chip: var(--color-accent-tint-strong);
+  --tab-icon: var(--color-accent-deep);
+  --tab-extra: visible;
+  border-color: var(--color-border-mint);
+  background-color: var(--color-accent-wash);
+}
+/* CUSTOM-CSS: мятная черта слева у активной строки (Rectangle 3×34) */
+.platform-tab::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -1px;
+  width: 3px;
+  height: 34px;
+  border-radius: 2px;
+  background-color: var(--color-accent);
+  visibility: var(--tab-extra);
+}
+/* стрелка «>» справа у активной строки */
+.platform-tab::after {
+  content: "";
+  position: absolute;
+  top: 29px;
+  right: 20px;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-accent);
+  -webkit-mask: url('../assets/icons/chevron-right-sm.svg') center / contain no-repeat;
+  mask: url('../assets/icons/chevron-right-sm.svg') center / contain no-repeat;
+  visibility: var(--tab-extra);
+}
+.platform-tab__chip {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm); /* 11 → 12 */
+  background-color: var(--tab-chip);
+}
+.platform-tab__icon {
+  width: 20px;
+  height: 20px;
+  background-color: var(--tab-icon);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+.platform-tab__icon--windows { --icon: url('../assets/icons/os-windows.svg'); }
+.platform-tab__icon--laptop { --icon: url('../assets/icons/os-laptop.svg'); }
+.platform-tab__icon--phone { --icon: url('../assets/icons/os-phone.svg'); }
+.platform-tab__icon--devices { --icon: url('../assets/icons/os-devices.svg'); }
+.platform-tab__icon--phone-keys { --icon: url('../assets/icons/os-phone-keys.svg'); }
+.platform-tab__text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.platform-tab__title {
+  font-size: var(--fs-body);
+  line-height: 1.2;
+  font-weight: var(--fw-semibold);
+}
+.platform-tab__meta {
+  font-size: var(--fs-caption);
+  line-height: 1.2;
+  color: var(--color-text-on-light-secondary); /* On Light Muted на #F6F8FB 2.8 → Secondary (решение 24.09) */
+}
+/* Логотип ОС у активной строки — выходит за край строки и срезается ею (координаты от правого края 392) */
+.platform-tab__art {
+  position: absolute;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+  visibility: var(--tab-extra);
+}
+.platform-tab__art--windows { right: 40px; top: 6px; width: 102px; }
+.platform-tab__art--macos { right: 40px; top: 10px; width: 109px; }
+.platform-tab__art--ios { right: 44px; top: 0; width: 152px; }
+.platform-tab__art--android { right: 46px; top: 23px; width: 97px; }
+.platform-tab__art--huawei { right: -15px; top: -31px; width: 222px; }
+
+.platform-switcher__panel {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-32);
+  min-width: 0;
+  padding: 30px 30px 32px; /* 31 и 33 в Figma минус обводка */
+  border: var(--border-width) solid var(--color-border-faint);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-soft);
+}
+.platform-switcher__panel[hidden] { display: none; }
+.platform-switcher__stage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+.platform-switcher__foot {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-24);
+}
+.platform-switcher__caption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.platform-switcher__title {
+  font-size: var(--fs-body-lg);
+  line-height: 1.2;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-on-light);
+}
+.platform-switcher__text { color: var(--color-text-on-light-secondary); } /* 13 Muted → Small 14 Secondary */
+.platform-switcher__cta {
+  flex: none;
+  margin-top: 6px;
+}
+
+@media (hover: hover) {
+  .platform-tab:hover { border-color: var(--color-border-mint); }
+}
+@media (max-width: 1024px) {
+  .platform-switcher { flex-direction: column; }
+  .platform-switcher__list {
+    display: grid;
+    flex: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-self: stretch;
+  }
+  .platform-switcher__panel { align-self: stretch; }
+  .platform-tab__art { display: none; } /* в узкой строке логотип ОС ложится на название — наше решение */
+}
+/* ≤767 — аккордеон (правка пользователя 02.10): строки встают столбиком, и панель под всем списком оказывалась далеко
+   от выбранной строки. Теперь панель раскрывается сразу под своей строкой и составляет с ней одну карточку.
+   CUSTOM-CSS: список — display: contents, строки и панели становятся соседями в одной колонке и чередуются через order
+   (разметка вкладок и порядок чтения прежние: tablist, затем панели). Раскрытие и удержание строки на месте — js/tabs.js
+   (data-tabs-accordion). Elementor — отдельный виджет Accordion на мобильном вместо Nested Tabs. */
+@media (max-width: 767px) {
+  .platform-switcher {
+    gap: var(--space-8);
+    overflow-anchor: none; /* строку под пальцем удерживает скрипт — без встречной поправки браузера */
+  }
+  .platform-switcher__list { display: contents; }
+  .platform-tab:nth-child(1) { order: 1; }
+  .platform-tab:nth-child(2) { order: 3; }
+  .platform-tab:nth-child(3) { order: 5; }
+  .platform-tab:nth-child(4) { order: 7; }
+  .platform-tab:nth-child(5) { order: 9; }
+  .platform-switcher__panel:nth-child(2) { order: 2; }
+  .platform-switcher__panel:nth-child(3) { order: 4; }
+  .platform-switcher__panel:nth-child(4) { order: 6; }
+  .platform-switcher__panel:nth-child(5) { order: 8; }
+  .platform-switcher__panel:nth-child(6) { order: 10; }
+  .platform-tab {
+    --tab-mark: var(--color-text-on-light-secondary);
+    --tab-turn: 90deg;
+    flex: none;
+  }
+  .platform-tab--active {
+    --tab-mark: var(--color-accent);
+    --tab-turn: -90deg;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  /* стрелка есть у каждой строки: вниз — раскроется, вверх — раскрыта */
+  .platform-tab::after {
+    background-color: var(--tab-mark);
+    rotate: var(--tab-turn);
+    visibility: visible;
+    transition: rotate var(--dur-base) var(--ease-out), background-color var(--dur-fast) ease;
+  }
+  .platform-switcher__panel {
+    flex: none;
+    gap: var(--space-16);
+    margin-top: calc(var(--space-8) * -1); /* вплотную к своей строке: одна карточка */
+    padding: var(--space-16);
+    border-top: 0;
+    border-color: var(--color-border-mint);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    scroll-margin-bottom: calc(var(--fab-size) + var(--space-40)); /* раскрытая панель встаёт выше кнопки WhatsApp */
+  }
+  .platform-switcher__stage { border-radius: var(--radius-xs); }
+  .platform-switcher__foot { flex-direction: column; gap: var(--space-16); }
+  .platform-switcher__title { display: none; } /* название уже в строке над панелью */
+  .platform-switcher__cta { align-self: stretch; margin-top: 0; }
+}
+
+/* ════════ 09 Platform · What it does (6018:1720) ════════════════════
+   Та же конструкция, что «What the Account Includes» на 08 Accounts: свечение Ellipse 2/3 в тех же координатах
+   (общий растр) и стеклянные плитки; здесь радиус 24, справа — мокап интерфейса MT5 (экспорт узла) */
+.mt5-tools {
+  padding-block: var(--section-pad-md);
+  background: url('../assets/img/accounts-includes-glow.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.mt5-tools__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.mt5-tools__bento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+.mt5-tools__row {
+  display: flex;
+  gap: var(--space-24);
+}
+/* repeat: tool-card (title, text, mockup) */
+.tool-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 300px;
+  padding: var(--space-32);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-tile-mist);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.tool-card--wide { flex: 0 0 65.3125%; } /* 836 из 1280 */
+.tool-card--short {
+  min-height: 214px;
+  padding-block: 42px;
+}
+.tool-card__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.tool-card__copy--320 { max-width: 320px; }
+.tool-card__copy--235 { max-width: 235px; }
+.tool-card__title { color: var(--fg); }
+.tool-card__text { color: var(--fg-2); }
+.tool-card__text--narrow { max-width: 220px; } /* Order and Risk Controls: мокап тикета справа */
+/* Мокап справа по месту из Figma; тикет выходит за низ карточки и срезается */
+.tool-card__mock {
+  position: absolute;
+  z-index: 0;
+  height: auto;
+  max-width: none;
+}
+.tool-card__mock--chart { right: 24px; top: 50px; width: 464.64px; }
+.tool-card__mock--ticket { right: 20px; top: 118px; width: 150px; }
+.tool-card__mock--panel { right: 24px; top: 21px; width: 306px; }
+
+@media (max-width: 1024px) {
+  .mt5-tools__row { flex-direction: column; }
+  .tool-card--wide { flex: none; }
+  .tool-card { flex: none; }
+}
+@media (max-width: 767px) {
+  .mt5-tools { background-size: 900px auto; }
+  .tool-card,
+  .tool-card--short {
+    min-height: 0;
+    gap: var(--space-24);
+    padding: var(--space-24);
+  }
+  .tool-card__copy--320,
+  .tool-card__copy--235,
+  .tool-card__text--narrow { max-width: none; }
+  /* мокап — под текстом, во всю ширину карточки */
+  .tool-card__mock {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+  }
+  .tool-card__mock--ticket { width: 150px; }
+}
+
+/* ════════ 09 Platform · Markets (6110:3730) ═════════════════════════
+   Заголовок слева, стрелки справа · лента Card / Market (components.css) до правого края окна.
+   Прокрутка — нативная (scroll-snap), стрелки листают по карточке — js/carousel.js */
+.mt5-markets {
+  padding-block: var(--section-pad-md);
+  overflow: hidden; /* лента уходит за правый край окна */
+}
+.mt5-markets__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.mt5-markets__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-40);
+}
+.mt5-markets__heading { max-width: 820px; }
+.carousel-nav {
+  display: flex;
+  flex: none;
+  gap: 10px;
+}
+.carousel-nav__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border: var(--border-width) solid var(--color-text-on-light-secondary); /* Grey on white → On Light Secondary */
+  border-radius: var(--radius-pill);
+  background-color: var(--color-card-glass-soft);
+  color: var(--color-text-on-light);
+  cursor: pointer;
+  transition: opacity var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+.carousel-nav__btn::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  background-color: currentColor;
+  -webkit-mask: url('../assets/icons/arrow-right.svg') center / contain no-repeat;
+  mask: url('../assets/icons/arrow-right.svg') center / contain no-repeat;
+}
+.carousel-nav__btn--prev::before { transform: scaleX(-1); }
+.carousel-nav__btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.mt5-markets__track {
+  position: relative; /* скрытые подписи ссылок (.visually-hidden, absolute) обрезаются лентой, а не растягивают страницу */
+  display: flex;
+  gap: var(--space-24);
+  margin-right: calc(50% - 50vw); /* до правого края окна */
+  padding-right: var(--page-gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.mt5-markets__track::-webkit-scrollbar { display: none; }
+.mt5-markets__card {
+  flex: 0 0 400px;
+  min-height: 296px; /* высота карточки в Figma фиксирована */
+  scroll-snap-align: start;
+}
+@media (hover: hover) {
+  .carousel-nav__btn:not(:disabled):hover { background-color: var(--color-deep-wash); }
+}
+@media (max-width: 767px) {
+  .mt5-markets__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-24);
+  }
+  .mt5-markets__card {
+    flex-basis: 280px;
+    min-height: 260px;
+  }
+}
+
+/* ════════ 09 Platform · Automated trading (6110:3779) ═══════════════
+   Тёмная секция со скруглённым верхом, фон — растр Mesh gradient + Ellipse 2/3 (assets/_src/platform/auto-bg.html).
+   Карточки — тёмное стекло: [Expert Advisors 836 | MetaEditor] / [Strategy Testing] · кнопка */
+.mt5-auto {
+  padding-block: var(--section-pad-md);
+  background: var(--color-surface-dark) url('../assets/img/platform-auto-bg.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.mt5-auto__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+}
+.mt5-auto__bento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  align-self: stretch;
+}
+.mt5-auto__row {
+  display: flex;
+  gap: var(--space-24);
+}
+/* repeat: auto-card (title, text, mockup) */
+.auto-card {
+  display: flex;
+  flex: 1 1 0;
+  gap: var(--space-32);
+  min-width: 0;
+  padding: var(--space-32);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-glass-dark);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.auto-card--wide { flex: 0 0 65.3125%; }
+.auto-card--stack {
+  flex-direction: column;
+  gap: 29px;
+}
+.auto-card--split {
+  flex: none; /* прямой потомок колонки: основа 0 + overflow: hidden схлопнули бы карточку */
+  justify-content: space-between;
+}
+.auto-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  min-width: 0;
+}
+.auto-card__copy--330 { flex: 0 0 340px; max-width: 330px; }
+.auto-card__title { color: var(--fg); }
+.auto-card__text { color: var(--fg-2); }
+.auto-card__mock {
+  display: block;
+  flex: none;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .mt5-auto__row { flex-direction: column; }
+  .auto-card,
+  .auto-card--wide { flex: none; }
+  .auto-card--split { flex-direction: column; }
+  .auto-card__copy--330 { flex: none; } /* в колонке основа 340 стала бы высотой */
+}
+@media (max-width: 767px) {
+  .auto-card {
+    flex-direction: column;
+    gap: var(--space-24);
+    padding: var(--space-24);
+  }
+  .auto-card__copy--330 { flex: none; max-width: none; }
+}
+
+/* ════════ finalCTA, светлый вариант (09 Platform 6123:8167) ═════════
+   Панель Tint с размытыми пятнами, мятным hue-оверлеем и стеклянным знаком G2G — растр
+   (assets/_src/platform/cta-bg.html, hue вшит). Текст слева: H2, список, кнопка */
+.final-cta__panel--light {
+  align-items: flex-start;
+  padding: 100px var(--space-80);
+  text-align: left;
+}
+.final-cta__bg--right { object-position: 100% 50%; } /* знак G2G остаётся справа */
+.final-cta__content--light {
+  align-items: flex-start;
+  max-width: 690px;
+}
+/* H2 48 → 40: ширина 690 × 40/48 — перенос как в макете, «G2G on MT5» второй строкой */
+.final-cta__title--light {
+  max-width: 575px;
+  color: var(--color-text-on-light);
+}
+.final-cta__accent--light { color: var(--color-accent-deep); }
+.final-cta__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-left: var(--space-24);
+  list-style: disc;
+  color: var(--color-text-on-light-secondary); /* Grey on white → On Light Secondary (утверждённая замена) */
+}
+@media (max-width: 1024px) {
+  .final-cta__panel--light { padding: var(--space-80) var(--space-48); }
+}
+@media (max-width: 767px) {
+  .final-cta__panel--light { padding: var(--space-48) var(--space-24); }
+  .final-cta__bg--right { opacity: 0.6; } /* знак за текстом — приглушён */
+}
+
+/* ════════ 16 Business · IBs & Affiliates (6824:8604) ════════════════
+   Вступление в две колонки · бенто 2 + 3 стеклянных плиток с простыми визуалами · кнопка.
+   Свечение — растр Ellipse 2/3 (assets/_src/business-page/ib-glow.html) */
+.ib-program {
+  padding-block: var(--section-pad);
+  background: url('../assets/img/business-ib-glow.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.ib-program__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-48);
+}
+.ib-program__intro {
+  display: flex;
+  gap: var(--space-64);
+  align-self: stretch;
+}
+.ib-program__head { flex: 1 1 0; }
+.ib-program__points {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-16);
+  min-width: 0;
+}
+/* repeat: ib-point — маркер-квадрат 7px в поле 28 (Frame 6828:9163) */
+.ib-point {
+  display: flex;
+  gap: 10px;
+  color: var(--fg-2);
+}
+.ib-point::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(var(--color-accent-deep), var(--color-accent-deep)) 11px 11px / 7px 7px no-repeat;
+}
+.ib-program__bento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  align-self: stretch;
+}
+.ib-program__row {
+  display: flex;
+  gap: var(--space-24);
+}
+/* repeat: ib-tile (visual, title, text) */
+.ib-tile {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: var(--space-32);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-tile-fog);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.ib-tile__title { color: var(--fg); }
+.ib-tile__text { color: var(--fg-2); }
+/* Визуал «rebates» — три полосы 460/359/258 × 14 (мята 100/60/35%) */
+.rebate-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-self: stretch;
+}
+.rebate-bar {
+  width: 460px;
+  max-width: 100%;
+  height: 14px;
+  border-radius: 7px;
+  background-color: var(--color-accent);
+}
+.rebate-bar--mid {
+  width: 359px;
+  background-color: var(--color-border-mint-strong);
+}
+.rebate-bar--low {
+  width: 258px;
+  background-color: var(--color-border-mint-mid);
+}
+.ib-tile__visual {
+  display: block;
+  width: 240px;
+  height: 64px;
+}
+.ib-tile__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-tint-soft);
+}
+.ib-tile__icon { width: 24px; height: 24px; }
+.method-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+.method-chip {
+  padding: 7px var(--space-12);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-chip-white);
+  color: var(--color-text-on-light);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass */
+}
+
+@media (max-width: 1024px) {
+  .ib-program__intro {
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+  .ib-program__row--three { flex-wrap: wrap; }
+  .ib-tile--half { flex: 1 1 calc(50% - var(--space-12)); }
+}
+@media (max-width: 767px) {
+  .ib-program { background-size: 900px auto; }
+  .ib-program__row {
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+  .ib-program__bento { gap: var(--space-16); }
+  .ib-tile { padding: var(--space-24); }
+}
+
+/* ════════ 16 Business · Partnership (6828:9177) ═════════════════════
+   Та же основа, что Platform на главной: мятный градиент, два контура знака G2G слева, лид с мятной чертой.
+   Справа — тёмная карточка «Who it is for». Свечения за карточкой — в растре фона секции */
+.partn {
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--section-pad);
+  background: url('../assets/img/business-partn-bg.webp') center top / max(1440px, 100%) 100% no-repeat, var(--gradient-mint-fade);
+}
+/* CUSTOM-CSS: два контура знака G2G слева (Union, белый 8%) — как .platform::before на главной */
+.partn::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    url('../assets/img/platform-mark.svg') 6px -150px / 605px 493px no-repeat,
+    url('../assets/img/platform-mark.svg') 6px 391px / 605px 493px no-repeat;
+  pointer-events: none;
+}
+.partn__inner {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+}
+.partn__copy {
+  display: flex;
+  flex: 0 0 600px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  min-width: 0;
+}
+.partn-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  min-width: 0;
+  padding: var(--space-36);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-image: var(--gradient-partner-card);
+}
+/* CUSTOM-CSS: фрагмент знака G2G справа сверху (Union 290×241, 34%) — тот же, что у карточки счёта */
+.partn-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -28.5px;
+  right: -23px;
+  width: 290px;
+  height: 241px;
+  background: url('../assets/img/account-decor.svg') center / contain no-repeat;
+  pointer-events: none;
+}
+.partn-card__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-tint);
+}
+.partn-card__icon { width: 24px; height: 24px; }
+.partn-card__lead { color: var(--color-text-secondary); }
+.audience-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.audience-pill {
+  padding: calc(10px - var(--border-width)) calc(var(--space-16) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-mint-mid);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent-tint-soft);
+  color: var(--color-accent);
+}
+.partn-card__divider {
+  align-self: stretch;
+  height: var(--border-width);
+  margin: 0;
+  border: 0;
+  background-color: var(--color-divider-glass);
+}
+.partn-card__note { color: var(--color-text-secondary); } /* Muted на градиенте ~3.5 → Secondary (решение 24.09) */
+
+@media (max-width: 1024px) {
+  .partn__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-48);
+  }
+  .partn__copy {
+    flex: none;
+    max-width: 600px;
+  }
+  .partn-card { flex: none; } /* в колонке основа 0 + overflow: hidden схлопывают карточку */
+  .partn { background: var(--gradient-mint-fade); } /* свечение привязано к карточке справа — в колонке без него */
+}
+@media (max-width: 767px) {
+  .partn-card { padding: var(--space-24); }
+}
+
+/* ════════ 16 Business · Partnership Enquiry (6823:8498) ═════════════
+   Tint · заголовок по центру · форма 880 (Input 6008:147 — components.css .field) */
+.enquiry { padding-block: var(--section-pad-md); }
+.enquiry__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+}
+.enquiry__head { max-width: 880px; }
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+  width: 100%;
+  max-width: 880px;
+  padding: calc(var(--space-36) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-light);
+  box-shadow: var(--shadow-card-light);
+}
+.enquiry-form__title { color: var(--color-text-on-light); }
+.enquiry-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-16);
+  align-self: stretch;
+}
+.enquiry-form__field--wide { align-self: stretch; }
+@media (max-width: 767px) {
+  .enquiry-form {
+    padding: calc(var(--space-24) - var(--border-width)) calc(var(--space-20) - var(--border-width));
+  }
+  .enquiry-form__row { grid-template-columns: minmax(0, 1fr); }
+  .enquiry-form__submit { align-self: stretch; }
+}
+
+/* ════════ 11 About · Who we are (6113:3819) / Institutional background (6113:3851) ═════════
+   Белая секция по центру: Section Heading 820 · три абзаца 900 (On Light Secondary, выделения Bold On Light), 96/96 */
+.about-intro { padding-block: var(--section-pad-md); }
+.about-intro__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+}
+.about-intro__head { max-width: 820px; }
+.about-intro__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 900px;
+  color: var(--fg-2);
+  text-align: center;
+}
+.about-intro__strong {
+  font-weight: var(--fw-bold);
+  color: var(--fg);
+}
+
+/* ════════ 11 About · Industry experience (Timeline 6019:2011) ═════════
+   Тёмная, скруглённый верх; фон — растр Mesh gradient + Ellipse 2/3 + затемнение (assets/_src/about/exp-bg.html).
+   Заголовок слева · бенто из Feature Tile (6102:3620) на тёмном: [Tall · 456] / [628 · Short] · итоговая строка H4 */
+.about-exp {
+  padding-block: var(--section-pad-md) var(--section-pad);
+  background: var(--color-surface-dark) url('../assets/img/about-exp-bg.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.about-exp__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+}
+.about-exp__head { align-self: stretch; }
+.about-exp__bento {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  width: 100%;
+}
+.about-exp__row {
+  display: flex;
+  gap: var(--space-24);
+}
+.about-exp__row > .feature-tile { flex: 1 1 0; }
+.about-exp__row > .about-exp__tile--456 { flex: 0 0 456px; }
+.about-exp__row > .about-exp__tile--628 { flex: 0 0 628px; }
+.about-exp__note {
+  max-width: 900px;
+  color: var(--fg);
+  text-align: center;
+}
+/* Feature Tile на тёмном: Surface/Card 20% + Glass. Светлый край от эффекта Glass — рамкой (как .strip на Crypto) */
+.feature-tile--dark {
+  padding: calc(var(--space-32) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-subtle);
+  background-color: var(--color-tile-glass-dark);
+}
+.feature-tile--tall { min-height: 246px; }
+.feature-tile--compact { min-height: 160px; }
+.feature-tile__ghost--sm {
+  right: 37px;
+  width: 100px;
+  height: 100px;
+}
+@media (max-width: 1024px) {
+  .about-exp__row > .about-exp__tile--456,
+  .about-exp__row > .about-exp__tile--628 { flex: 1 1 0; }
+  .about-exp__row { gap: var(--space-16); }
+  .about-exp__bento { gap: var(--space-16); }
+}
+@media (max-width: 767px) {
+  .about-exp__row { flex-direction: column; }
+  /* в колонке основа 0 + overflow: hidden схлопнули бы плитку (layout-rules, «Ловушки») */
+  .about-exp__row > .feature-tile,
+  .about-exp__row > .about-exp__tile--456,
+  .about-exp__row > .about-exp__tile--628 { flex: none; }
+  .feature-tile--dark { padding: calc(var(--space-24) - var(--border-width)) calc(var(--space-24) - var(--border-width)) 112px; }
+  .feature-tile--tall,
+  .feature-tile--compact { min-height: 0; }
+  .feature-tile__ghost--sm {
+    right: var(--space-24);
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ════════ 11 About · Our presence (6113:3860) ═════════
+   Фон из Group 38 (6227:6067): слой «планета» (горизонт, свечение, звёзды) — растр с альфой сверху
+   (assets/_src/about/presence-planet-wide.html; кадр 2200 — средние 1440 как в макете, по бокам свечение гаснет само,
+   на экранах шире макета края картинки не видны), под ним Rectangle 4804 — градиент тёмный → мята 16% → белый,
+   привязанный к НИЗУ секции (в Figma 391 / 479 / 660 из 657, --gradient-fade-to-white): на мобильном секция выше, тёмная часть растёт вместе
+   с контентом, а переход в белый всегда проходит по низу полосы, как в макете.
+   CUSTOM-CSS: два слоя фона (растр + градиент с остановками calc) — в Elementor фон-картинка + Background Overlay градиентом. */
+.presence {
+  padding-block: 58px var(--section-pad-md);
+  background:
+    url('../assets/img/about-presence-planet.webp') center top / 2200px auto no-repeat,
+    var(--gradient-fade-to-white);
+}
+.presence__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+}
+.presence__head { max-width: 720px; }
+.presence__highlight { color: var(--color-surface-light); } /* «international financial markets.» — белый в Figma */
+.strip--glass {
+  border: 0; /* обводка Figma внутри рамки — тенью inset, высота полосы как в макете (Box Shadow → Inset в Elementor) */
+  box-shadow: inset 0 0 0 var(--border-width) var(--color-border-subtle);
+  border-radius: var(--radius-xl); /* 22 → 24, как у полос рынков */
+  background-color: var(--color-strip-glass);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+/* Кнопка стоит уже на белом — тема светлая, но без заливки темы (под ней переход в белый) */
+.presence__action { background-color: transparent; }
+@media (max-width: 767px) {
+  .presence { padding-top: var(--section-pad-sm); }
+}
+
+/* ════════ Inner Hero без кнопок (12 Regulation 6445:6707) ═════════
+   В Figma вместо кнопок — пустой фрейм 175×58: высоту героя (601) и место арта держит он. В Elementor — пустой
+   контейнер с Min Height 58. На мобильном не нужен — там место под арт даёт нижнее поле героя. */
+.page-hero__actions--empty { min-height: 58px; }
+@media (max-width: 767px) {
+  .page-hero__actions--empty { display: none; }
+}
+
+/* ════════ Список с квадратным маркером (Frame 20×20, ▪ 4.55) ═════════
+   Как пункты plan-card: маркер — квадрат градиентом в 20×20 (в Elementor — Icon List со своей SVG).
+   Цвет маркера — --marker (по умолчанию CTA красный, 12 Regulation · Regulatory status). */
+.square-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.square-list__item {
+  display: flex;
+  gap: 10px;
+  color: var(--fg-2);
+}
+.square-list__item::before {
+  content: "";
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(var(--marker, var(--color-cta)), var(--marker, var(--color-cta))) 7.4px 7.7px / 4.55px 4.55px no-repeat;
+}
+.square-list--light { --marker: var(--color-surface-tint); }
+
+/* ════════ 12 Regulation · Policies (6445:6722) ═════════
+   Белая: заголовок слева 820 · сетка 3 × 2 карточек Card / Device (как info-card на 10 Funding), высота 248 */
+.policies { padding-block: var(--section-pad-md); }
+.policies__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.policies__head { max-width: 820px; }
+.policies__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-24);
+}
+/* repeat: policy-card (icon, title, text, link) */
+.policy-card {
+  justify-content: space-between;
+  min-height: 248px;
+}
+.policy-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.policy-card__link { align-self: flex-start; }
+@media (max-width: 1024px) {
+  .policies__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16);
+  }
+  .policy-card {
+    min-height: 0;
+    gap: var(--space-24);
+  }
+}
+@media (max-width: 767px) {
+  .policies__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ════════ 12 Regulation · Regulatory status (6445:6716) ═════════
+   Тёмная, скруглённый верх, фон — растр (assets/_src/regulation/status-bg.html). Текст слева · карточка 460 справа */
+.reg-status {
+  padding-block: var(--section-pad-md);
+  background: var(--color-surface-dark) url('../assets/img/regulation-status-bg.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.reg-status__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-40);
+}
+.reg-status__copy {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.reg-status__lead { color: var(--color-surface-light); } /* «Text» #FFFFFF в Figma */
+.reg-status__list { padding-top: var(--space-12); }
+.reg-status__card {
+  display: flex;
+  flex: 0 0 460px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: calc(var(--space-28) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-subtle); /* светлый край Glass */
+  border-radius: var(--radius-md);
+  background-color: var(--color-glass-dark);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.reg-status__card-overline { color: var(--fg-overline); }
+.reg-status__card-title { color: var(--color-surface-light); }
+@media (max-width: 1024px) {
+  /* секция выше растра 548 — фон растягивается на всю высоту, иначе на тёмном видна его нижняя граница */
+  .reg-status { background-size: cover; }
+  .reg-status__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .reg-status__copy,
+  .reg-status__card { flex: none; } /* в колонке основа 0 схлопнула бы блок */
+  .reg-status__card { max-width: 600px; }
+}
+@media (max-width: 767px) {
+  .reg-status__card { padding: calc(var(--space-24) - var(--border-width)) calc(var(--space-20) - var(--border-width)); }
+}
+
+/* ════════ 12 Regulation · Legal facts (6445:6708) ═════════
+   Белая: заголовок по центру · 3 × Licence Card (6452:6879) · примечание · панель реквизитов Tint · примечание */
+.legal-facts { padding-block: var(--section-pad-md); }
+.legal-facts__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.legal-facts__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+.legal-facts__note {
+  color: var(--fg-2); /* On Light Muted 2.96 → Secondary (решение 24.09) */
+  text-align: center;
+}
+/* repeat: licence-card (label, status, flag + title | title, text) */
+.licence-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-24);
+}
+.licence-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 180px;
+  padding: calc(var(--space-28) - var(--border-width));
+  border: var(--border-width) solid var(--color-divider-on-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-tint);
+}
+.licence-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+.licence-card__label { color: var(--fg-overline); } /* On Light Muted → Secondary (решение 24.09) */
+.licence-card__status {
+  padding: calc(6px - var(--border-width)) calc(var(--space-12) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-on-light-strong);
+  border-radius: var(--radius-pill);
+  color: var(--fg-2); /* «In progress»: Muted → Secondary */
+  white-space: nowrap;
+}
+.licence-card__status--active {
+  border-color: var(--color-border-mint-soft);
+  background-color: var(--color-surface-tint-mint);
+  color: var(--color-accent-deep);
+}
+.licence-card__name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--fg);
+}
+.licence-card__flag {
+  flex: none;
+  width: 32px;
+  height: 24px;
+  border-radius: 4px;
+}
+.licence-card__text { color: var(--fg-2); }
+/* Реквизиты: строки «ключ 260 — значение H4» с разделителями */
+.company-details {
+  padding: var(--space-12) var(--space-40);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-tint);
+}
+.company-details__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  padding-block: 22px;
+}
+.company-details__row + .company-details__row { border-top: var(--border-width) solid var(--color-border-on-light); }
+.company-details__key {
+  flex: 0 0 260px;
+  color: var(--fg-2); /* On Light Muted → Secondary (решение 24.09) */
+}
+.company-details__value {
+  flex: 1 1 0;
+  min-width: 0;
+  color: var(--fg);
+}
+@media (max-width: 1024px) {
+  .licence-cards { gap: var(--space-16); }
+  .licence-card { min-height: 0; }
+  .company-details__key { flex-basis: 200px; }
+}
+@media (max-width: 767px) {
+  .licence-cards { grid-template-columns: minmax(0, 1fr); }
+  .licence-card { padding: calc(var(--space-20) - var(--border-width)); }
+  .company-details { padding: var(--space-4) var(--space-20); }
+  /* ключ над значением */
+  .company-details__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding-block: var(--space-16);
+  }
+  .company-details__key,
+  .company-details__value { flex: none; }
+}
+
+/* ════════ Support — вариант с двумя кнопками на белом (12 Regulation 6445:6736: 96 / 120) ═════ */
+.support--end { padding-bottom: var(--section-pad-lg); }
+.support__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-12);
+}
+@media (max-width: 767px) {
+  .support__actions {
+    flex-direction: column;
+    align-self: stretch;
+  }
+}
+
+/* ════════ Кнопка WhatsApp в тексте страницы (WhatsApp FAB 6008:155, развёрнутый экземпляр) ═════════
+   13 Help: «Chat on WhatsApp» в карточке канала и в «Other ways to reach us». Мятный градиент + Mint Glow, иконка 24,
+   подпись Web/Button. Плавающая .whatsapp-fab — отдельная (закреплена, свёрнута). CUSTOM-CSS: градиент 166° + свечение */
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: 56px;
+  padding: var(--space-16) var(--space-24) var(--space-16) var(--space-16);
+  border-radius: var(--radius-pill);
+  background-image: var(--gradient-whatsapp-btn);
+  box-shadow: 0 0 24px rgb(43 196 140 / 0.35); /* drop-shadow 24 из Figma (Mint Glow 48 — у FAB) */
+  color: var(--color-surface-dark); /* Frosted Black → Surface Dark (утверждённая замена) */
+  font-size: var(--fs-button);
+  line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);
+  font-weight: var(--fw-button);
+  white-space: nowrap;
+  transition: box-shadow var(--dur-base) ease;
+}
+.whatsapp-btn::before {
+  content: "";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  -webkit-mask: url('../assets/icons/whatsapp.svg') center / contain no-repeat;
+  mask: url('../assets/icons/whatsapp.svg') center / contain no-repeat;
+}
+@media (hover: hover) {
+  .whatsapp-btn:hover { box-shadow: var(--shadow-mint-glow); }
+}
+
+/* ════════ 13 Help · Channels (6021:2209) ═════════
+   Белая: заголовок по центру · ряд [WhatsApp 836 | стопка 420: Email, Phone]. Карточки — стекло Fog 20% (как плитки IBs
+   на 16 Business); свечение под ними — растр с альфой (assets/_src/help/channels-glow.html), растягивается на ряд */
+.channels { padding-block: var(--section-pad-md); }
+.channels__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.channels__row {
+  position: relative;
+  display: flex;
+  gap: var(--space-24);
+  background: url('../assets/img/help-channels-glow.webp') center / 100% 100% no-repeat;
+}
+.channel-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-tile-fog);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.channel-card--whatsapp { flex: 1 1 0; min-width: 0; }
+.channels__stack {
+  display: flex;
+  flex: 0 0 420px;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+.channels__stack > .channel-card { flex: 1 1 0; }
+.channel-card__copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-28);
+}
+.channel-card__copy--wide {
+  gap: 14px;
+  padding: var(--space-32);
+}
+.channel-card__overline { color: var(--color-accent-deep); }
+.channel-card__title { color: var(--fg); }
+.channel-card__text { color: var(--fg-2); }
+.channel-card__text p + p { margin-top: var(--space-12); }
+.channel-card__mail {
+  font-weight: var(--fw-bold);
+  color: var(--color-accent-deep);
+}
+.channel-card__action { padding-top: 18px; }
+.channel-card__link--end { margin-top: auto; } /* «Call the office» прижата к низу (в Figma — flex 1, items-end) */
+.channel-card__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-tint);
+}
+.channel-card__icon { width: 24px; height: 24px; }
+
+/* Визуал «чат WhatsApp» (Chat visual 6369:6017): иллюстрация 241 высотой, шрифт интерфейса — системный (в Figma SF Pro).
+   Появление по анимации Figma (таймлайн 5 с): шапка 0–0,6 с, сообщение 0,5–1,1 с, ответ 1,8–2,5 с — один раз при входе
+   в экран (js/motion.js); CUSTOM-CSS: keyframes. */
+.chat-visual {
+  position: relative;
+  height: 241px;
+  overflow: hidden;
+  background: var(--color-chat-bg) url('../assets/img/help-chat-wallpaper.webp') left top / 540px 981px;
+  font-family: var(--font-system);
+}
+.chat-visual__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  height: 60px;
+  padding: var(--space-8) var(--space-24) var(--space-8) var(--space-16);
+  background-color: var(--color-chat-header);
+  box-shadow: 0 1px 1.5px rgb(11 20 26 / 0.4);
+}
+.chat-visual__avatar { flex: none; width: 40px; height: 40px; }
+.chat-visual__who {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.chat-visual__name {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  color: var(--color-chat-name);
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 500;
+}
+.chat-visual__badge { width: 20px; height: 20px; }
+.chat-visual__status {
+  color: var(--color-chat-meta);
+  font-size: 14px;
+  line-height: 20px;
+}
+.chat-visual__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-8) 72px;
+  margin-top: var(--space-16);
+}
+.chat-msg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+  max-width: 647px;
+  padding: var(--space-8);
+  color: var(--color-surface-light);
+  font-family: var(--font-family);
+  font-size: 12px;
+  line-height: normal;
+}
+.chat-msg--out {
+  align-self: flex-end;
+  border-radius: 8px 0 8px 8px;
+  background-color: var(--color-chat-out);
+}
+.chat-msg--in {
+  align-self: flex-start;
+  align-items: flex-end;
+  border-radius: 0 8px 8px 8px;
+  background-color: var(--color-chat-header);
+}
+.chat-msg__text { align-self: stretch; }
+/* хвостики пузырей — SVG 8×13 из Figma */
+.chat-msg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 13px;
+  background: var(--tail) center / 8px 13px no-repeat;
+}
+.chat-msg--out { --tail: url('../assets/img/chat/tail-out.svg'); }
+.chat-msg--out::after { right: -8px; }
+.chat-msg--in { --tail: url('../assets/img/chat/tail-in.svg'); }
+.chat-msg--in::after { left: -8px; }
+.chat-msg__meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  align-self: stretch;
+  color: rgb(255 255 255 / 0.6);
+  font-family: var(--font-system);
+  font-size: 11px;
+  line-height: 15px;
+}
+.chat-msg__ticks { width: 16px; height: 11px; }
+@keyframes chat-in {
+  from { opacity: 0; translate: 0 var(--from-y, 20px); }
+}
+.chat-visual__header { animation: chat-in 600ms var(--ease-out) both; --from-y: -12px; }
+.chat-msg--out { animation: chat-in 600ms var(--ease-out) 500ms both; }
+.chat-msg--in { animation: chat-in 700ms var(--ease-out) 1800ms both; }
+.chat-visual.is-waiting * { animation-play-state: paused; }
+
+@media (max-width: 1024px) {
+  .channels__row {
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+  .channel-card--whatsapp,
+  .channels__stack { flex: none; } /* в колонке основа 0 схлопнула бы карточку */
+  .channels__stack {
+    flex-direction: row;
+    gap: var(--space-16);
+  }
+  .channels__stack > .channel-card { flex: 1 1 0; min-width: 0; }
+}
+@media (max-width: 767px) {
+  .channels__stack { flex-direction: column; }
+  .channels__stack > .channel-card { flex: none; }
+  .channel-card__copy,
+  .channel-card__copy--wide { padding: var(--space-24) var(--space-20); }
+  .chat-visual__body { padding-inline: var(--space-20); }
+  .chat-visual { height: auto; min-height: 241px; padding-bottom: var(--space-16); }
+}
+
+/* ════════ FAQ тёмный со скруглением секции 60 (13 Help 6021:2232; у 10 Funding — 30) ═════ */
+.faq--dark.faq--r60 {
+  border-radius: var(--radius-section) var(--radius-section) 0 0;
+  background-image: url('../assets/img/help-faq-bg.webp');
+}
+@media (max-width: 1024px) {
+  .faq--dark.faq--r60 { background-size: cover; } /* секция выше растра — фон на всю высоту */
+}
+.faq-item__strong {
+  font-weight: var(--fw-bold);
+  color: var(--color-surface-light);
+}
+
+/* ════════ 13 Help · Support form (6021:2269) ═════════
+   Cool White: заголовок слева 820 · сетка [форма 1fr | контакты 0.5fr], зазор 32. Поля — Input 6008:147 (.field) */
+.support-form {
+  padding-block: var(--section-pad-md) var(--section-pad);
+  background-color: var(--color-text); /* Cool White, как у Support */
+}
+.support-form__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.support-form__head { max-width: 820px; }
+.support-form__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.5fr);
+  gap: var(--space-24) var(--space-32);
+  align-items: start;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+  padding: var(--space-36);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-light);
+  box-shadow: var(--shadow-card-light);
+}
+.contact-form__title { color: var(--color-text-on-light); }
+.contact-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-16);
+  align-self: stretch;
+}
+.contact-form__wide { align-self: stretch; }
+.field__req { color: var(--color-cta); }
+.field__control--tall { height: 132px; } /* Message: 16 + строка 24 + 92 (Figma) */
+.contact-form__consent { color: var(--color-text-on-light); }
+.contact-form__consent a {
+  color: inherit;
+  text-decoration: underline;
+}
+/* Карточка контактов: Tint Mint светлее, рамка мята 30% */
+.reach-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  align-self: stretch;
+  padding: calc(var(--space-36) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-mint-soft);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-mint-soft);
+}
+.reach-card__overline { color: var(--color-accent-deep); }
+.reach-card__title { color: var(--color-text-on-light); }
+.reach-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.reach-card__item {
+  display: flex;
+  gap: var(--space-12);
+  color: var(--color-text-on-light-secondary);
+}
+.reach-card__item::before {
+  content: "";
+  flex: none;
+  width: 19.2px;
+  height: 19.2px;
+  background: url('../assets/icons/check-19--deep.svg') center / contain no-repeat;
+}
+.reach-card__action { margin-top: auto; }
+@media (max-width: 1024px) {
+  .support-form__grid { grid-template-columns: minmax(0, 1fr); }
+  .reach-card { gap: var(--space-16); }
+  .reach-card__action { margin-top: var(--space-8); }
+}
+@media (max-width: 767px) {
+  .contact-form,
+  .reach-card { padding: var(--space-24) var(--space-20); }
+  .contact-form__row { grid-template-columns: minmax(0, 1fr); }
+  .contact-form__submit { align-self: stretch; }
+}
+
+/* ════════ 14 Demo · Hero с витриной портала (6332:8792) ═════════
+   Свой герой (не Inner Hero): по центру пилюли · H1 · лид + примечание · кнопка · Demo Showcase 1240×850 (6340:5828).
+   Фон — растр Mesh gradient + Ellipse 2/3 + Vector (assets/_src/demo/hero-bg.html); крошки в Figma скрыты. */
+.demo-hero {
+  position: relative;
+  border-bottom: var(--border-width) solid var(--color-border-subtle);
+  background: var(--color-surface-dark) url('../assets/img/demo-hero-bg.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.demo-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-32);
+  padding-block: 156px var(--space-80);
+}
+.demo-hero__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.demo-hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-20);
+  text-align: center;
+}
+.demo-hero__title {
+  max-width: 820px;
+  color: var(--color-text);
+}
+.demo-hero__accent { color: var(--color-accent); }
+.demo-hero__texts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.demo-hero__lead { color: var(--color-text); }
+.demo-hero__note { color: var(--color-text-secondary); }
+
+/* Demo Showcase: сцена 1240×850 в процентах — картинки масштабируются по ширине, переключатель — в натуральную величину.
+   Десктоп (0, 78) 880×620 · телефон (940, 150) 300×620 · переключатель справа сверху. Скругления и тени — из Figma
+   (рамка и углы вшиты в картинки). Смена темы — js/tabs.js (вкладки Dark / Light, панели — пары картинок). */
+.demo-showcase {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  aspect-ratio: 1240 / 850;
+}
+.demo-showcase__panel[hidden] { display: none; }
+.demo-showcase__desktop,
+.demo-showcase__mobile {
+  position: absolute;
+  height: auto;
+}
+.demo-showcase__desktop {
+  left: 0;
+  top: 9.176%;              /* 78 / 850 */
+  width: 70.968%;           /* 880 / 1240 */
+  border-radius: 1.818% / 2.581%; /* 16 px */
+  box-shadow: 0 30px 70px rgb(0 0 0 / 0.5);
+}
+.demo-showcase__mobile {
+  left: 75.806%;            /* 940 / 1240 */
+  top: 17.647%;             /* 150 / 850 */
+  width: 24.194%;           /* 300 / 1240 */
+  border-radius: 11.333% / 5.484%; /* 34 px */
+  box-shadow: 0 0 50px rgb(43 196 140 / 0.22), 0 26px 60px rgb(0 0 0 / 0.55);
+}
+/* Переключатель темы (Theme toggle): стекло, два сегмента, активный — мятный */
+.demo-theme {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: calc(5px - var(--border-width));
+  border: var(--border-width) solid var(--color-border-toggle);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-toggle-bg);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.4);
+}
+.demo-theme__seg {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-height: 36px;
+  padding: var(--space-8) 18px var(--space-8) var(--space-16);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: var(--fs-button);
+  line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);
+  font-weight: var(--fw-button);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+.demo-theme__seg::before {
+  content: "";
+  flex: none;
+  width: 16.8px;
+  height: 16.8px;
+  background-color: currentColor;
+  -webkit-mask: var(--seg-icon) center / contain no-repeat;
+  mask: var(--seg-icon) center / contain no-repeat;
+}
+.demo-theme__seg--dark { --seg-icon: url('../assets/icons/moon.svg'); }
+.demo-theme__seg--light { --seg-icon: url('../assets/icons/spark.svg'); }
+.demo-theme__seg--active {
+  background-color: var(--color-accent);
+  color: var(--color-surface-dark); /* Frosted Black → Surface Dark (утверждённая замена) */
+}
+.demo-theme__seg:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+@media (hover: hover) {
+  .demo-theme__seg:not(.demo-theme__seg--active):hover { color: var(--color-text); }
+}
+@media (max-width: 1024px) {
+  .demo-hero { background-size: cover; }
+  .demo-hero__inner { padding-top: 132px; }
+}
+/* Мобильный: только телефон (десктоп в ширину 343 нечитаем), переключатель над ним по центру */
+@media (max-width: 767px) {
+  .demo-hero__inner { padding-top: 112px; padding-bottom: var(--space-64); gap: var(--space-24); }
+  .demo-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-24);
+    aspect-ratio: auto;
+  }
+  .demo-theme { position: static; }
+  .demo-showcase__desktop { display: none; }
+  .demo-showcase__mobile {
+    position: static;
+    width: min(300px, 78vw);
+  }
+}
+
+/* ════════ 14 Demo · Demo account (6114:3871) ═════════
+   Белая, поля 160 (контент 1120): заголовок по центру · [карточка 628 | карточка] Fog 20% с мини-визуалами · кнопка.
+   Свечение под карточками — растр с альфой (assets/_src/demo/account-glow.html); ширина — не меньше макета,
+   но во всю секцию: у левого края растра альфа не нулевая, на экранах шире 1440 там был виден обрез */
+.demo-account {
+  padding-block: var(--section-pad-md);
+  background: var(--color-surface-light) url('../assets/img/demo-account-glow.webp') center top / max(1440px, 100%) 773px no-repeat;
+}
+.demo-account__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+  max-width: calc(1120px + var(--page-gutter) * 2);
+}
+.demo-account__row {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-24);
+  width: 100%;
+}
+.demo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  padding: var(--space-32);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-tile-fog);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.demo-card--wide { flex: 0 0 628px; }
+.demo-card--split {
+  flex: 1 1 0;
+  justify-content: space-between;
+  min-width: 0;
+}
+.demo-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: 480px;
+}
+.demo-card__title { color: var(--fg); }
+.demo-card__text { color: var(--fg-2); }
+.demo-card__visual {
+  width: 290px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.demo-card__visual--shadow { box-shadow: var(--shadow-card-light); }
+@media (max-width: 1024px) {
+  .demo-account__row { gap: var(--space-16); }
+  .demo-card--wide { flex: 1 1 0; min-width: 0; }
+}
+@media (max-width: 767px) {
+  .demo-account { background-size: 1440px 100%; }
+  .demo-account__row { flex-direction: column; }
+  .demo-card--wide,
+  .demo-card--split { flex: none; } /* в колонке основа 0 схлопнула бы карточку */
+  .demo-card { padding: var(--space-24) var(--space-20); }
+  .demo-card--split { gap: var(--space-24); }
+}
+
+/* ════════ finalCTA, вариант «текст слева, знак справа» (экземпляр 6161:4751, 14 Demo) ═════════
+   Тот же компонент 6123:8218, но без фото: панель #010202, поля 80, текст 690 слева, знак G2G (imageg2g 1) — 45% ширины
+   справа по центру; мятный hue 50% вшит в картинку (assets/_src/demo/finalcta-mark.html). H2 48 → 40: ширина 690 × 40/48,
+   чтобы «Live Account?» ушёл второй строкой, как в макете (приём Accounts). */
+.final-cta--split .final-cta__panel {
+  align-items: flex-start;
+  padding: 120px var(--space-80);
+  background-color: var(--color-panel-black);
+  text-align: left;
+}
+.final-cta--split .final-cta__content {
+  align-items: flex-start;
+  max-width: 690px;
+}
+.final-cta--split .final-cta__title { max-width: 575px; }
+.final-cta--split .final-cta__text {
+  max-width: none;
+  color: var(--color-surface-tint); /* BG #ECF2F7 в Figma */
+}
+.final-cta__mark {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  z-index: -1;
+  width: 45%;
+  height: auto;
+  translate: 0 -50%;
+  pointer-events: none;
+}
+@media (max-width: 1024px) {
+  .final-cta--split .final-cta__panel { padding: 96px var(--space-48); }
+  .final-cta--split .final-cta__content { max-width: 56%; }
+  .final-cta__mark { left: 58%; width: 44%; }
+}
+@media (max-width: 767px) {
+  .final-cta--split .final-cta__panel { padding: 64px var(--space-20) var(--space-20); }
+  .final-cta--split .final-cta__content { max-width: none; }
+  /* знак — под кнопкой, в потоке (порядок — Custom Order контейнера) */
+  .final-cta__mark {
+    position: static;
+    order: 3;
+    align-self: center;
+    width: min(100%, 320px);
+    translate: none;
+  }
+}
+
+/* ════════ 16 Blog · Latest articles (6115:3915) ═════════
+   Белая: заголовок по центру · сетка 3 × 2 карточек статьи · пагинация. В WP — Loop Grid / шаблон архива:
+   карточка = Article card (6115:3921), тонировка обложки — слоями CSS, ляжет на любую обложку поста. */
+.blog-latest { padding-block: var(--section-pad-md); }
+.blog-latest__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-24);
+}
+/* repeat: article-card (image, category, date, title, excerpt, link) */
+.article-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-light);
+}
+/* Обложка 200: своя рамка и радиус 24 (углы снизу видны скруглёнными). Тонировка по Figma: мята в режиме hue +
+   тёмный 45% в режиме color-burn. CUSTOM-CSS: два слоя с mix-blend-mode (в Elementor — Background Overlay → Blend Mode) */
+.article-card__media {
+  position: relative;
+  isolation: isolate;
+  height: 200px;
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-xl);
+}
+.article-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.article-card__media::before,
+.article-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.article-card__media::before {
+  background-color: var(--color-accent);
+  mix-blend-mode: hue;
+}
+.article-card__media::after {
+  background-color: var(--color-photo-burn);
+  mix-blend-mode: color-burn;
+}
+.article-card__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--space-12);
+  min-height: 290px; /* ряд 490 в макете: обложка 200 + текст 290 */
+  padding: var(--space-24);
+}
+.article-card__meta {
+  display: flex;
+  flex-wrap: wrap; /* длинная рубрика из WordPress: дата уходит на вторую строку, а не за край карточки */
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8) var(--space-12);
+}
+.article-card__date {
+  color: var(--color-text-on-light-secondary); /* On Light Muted 2.96 → Secondary (решение 24.09) */
+  white-space: nowrap;
+}
+.article-card__title { color: var(--color-text-on-light); }
+.article-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-card__excerpt { color: var(--color-text-on-light-secondary); }
+.article-card__link {
+  align-self: flex-start;
+  margin-top: auto;
+}
+@media (hover: hover) {
+  .article-card__title a:hover { color: var(--color-accent-deep); }
+}
+@media (max-width: 1024px) {
+  .article-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16);
+  }
+  .article-card__body { min-height: 0; }
+}
+@media (max-width: 767px) {
+  .article-grid { grid-template-columns: minmax(0, 1fr); }
+  .article-card__body { padding: var(--space-20); }
+}
+
+/* Пагинация (6115:3987): кнопки 44, текущая — Deep, «назад» на первой — неактивна (55%), справа подпись */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding-top: var(--space-16);
+}
+.pagination__list {
+  display: flex;
+  flex-wrap: wrap; /* 7 кнопок по 44 не входят в экран 320 — стрелка переносится, а не растягивает страницу */
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+}
+.pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-light);
+  color: var(--color-text-on-light);
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+.pagination__item--current {
+  border-color: var(--color-accent-deep);
+  background-color: var(--color-accent-deep);
+  color: var(--color-surface-light);
+}
+.pagination__item--gap {
+  border-color: transparent;
+  background: none;
+  color: var(--color-text-on-light-secondary); /* Muted → Secondary */
+}
+.pagination__item--disabled { opacity: 0.55; }
+.pagination__arrow::before {
+  content: "";
+  display: block;
+  width: 14.88px;
+  height: 14.88px;
+  background-color: currentColor;
+  -webkit-mask: url('../assets/icons/chevron-right-15.svg') center / contain no-repeat;
+  mask: url('../assets/icons/chevron-right-15.svg') center / contain no-repeat;
+}
+.pagination__arrow--prev::before { rotate: 180deg; }
+.pagination__summary {
+  margin-left: var(--space-8);
+  color: var(--color-text-on-light-secondary); /* Muted → Secondary */
+}
+@media (hover: hover) {
+  a.pagination__item:not(.pagination__item--current):hover {
+    border-color: var(--color-accent-deep);
+    color: var(--color-accent-deep);
+  }
+}
+@media (max-width: 767px) {
+  .pagination__list { gap: var(--space-4); } /* 7 кнопок по 44 — в колонку 343 */
+  .pagination__summary {
+    flex-basis: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+/* ════════ 17 Article · Article head (6023:2707) ═════════
+   Белая, шапка Solid с самого верха (assemble_page.py --header solid): верх = высота шапки + 64. Крошки на светлом,
+   пилюля рубрики, H1 1000, мета-строка, обложка 480 (r24, рамка). В WP — шаблон записи (Single Post). */
+.article-head {
+  padding: calc(var(--header-h) + var(--space-64)) 0 var(--space-40);
+}
+.article-head__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+}
+.breadcrumb--light { color: var(--color-text-on-light-secondary); } /* On Light Muted 2.96 → Secondary (решение 24.09) */
+.breadcrumb--light .breadcrumb__item--path { color: var(--color-accent-deep); }
+.pill--mint-strong { background-color: var(--color-accent-tint-strong); } /* Pill Mint 16% (MARKET NOTE 6023:2714) */
+.article-head__title {
+  max-width: 1000px;
+  color: var(--color-text-on-light);
+  overflow-wrap: break-word; /* длинное слово заголовка записи (CRYPTOCURRENCY при 34 px) на экране 320 */
+}
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--color-text-on-light-secondary);
+}
+.article-meta__author { color: var(--color-text-on-light); }
+.article-meta__dot { color: var(--color-text-on-light-secondary); } /* Muted → Secondary */
+/* Обложка: фото + мята тёмная (#1B4B39) в режиме hue — ложится на любую обложку записи. CUSTOM-CSS: mix-blend-mode */
+.article-cover {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-xl);
+}
+.article-cover__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.article-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-cover-hue);
+  mix-blend-mode: hue;
+  pointer-events: none;
+}
+
+/* ════════ 17 Article · Article body (6023:2725) ═════════
+   Текст (flex 1) · колонка 360 — оглавление: общий блок со страницами 19–24 (.doc-toc + js/doc-toc.js), прилипает под шапкой.
+   Тело записи WordPress отдаёт без классов (классический редактор, блоки) — вид задан голым тегам внутри .article-content.
+   В макете есть лид, заголовок раздела, абзац и цитата; подзаголовки, списки, таблица, картинки и ссылки — наши, из набора 19–24
+   (в 27 записях старого блога: 610 h3, 39 h4, 288 списков, 2 таблицы, 94 картинки).
+   Ритм — полями сверху, а не gap: обёртки внутри тела записи (мусор вставки, блоки-группы) его не ломают.
+   Колонка чтения — 660, как на 19–24 (в макете 840): в 840 выходит 105 знаков в строке, на планшете — 120; в 660 — около 82.
+   Оглавление остаётся у правого края сетки. */
+.article-body {
+  --doc-measure: 660px;
+  padding-block: var(--space-24) var(--section-pad-md);
+}
+.article-body__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-80);
+}
+.article-content {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: var(--doc-measure);
+  color: var(--fg-2);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  overflow-wrap: break-word;
+}
+.article-content > :first-child { margin-top: 0; }
+/* абзацы и списки — зазор 16; строки на всю ширину колонки: глобальный balance резал бы короткие абзацы уже соседних */
+.article-content :where(p, ul, ol, dl) {
+  margin-top: var(--space-16);
+  text-wrap: pretty;
+}
+.article-content :where(li) { text-wrap: pretty; }
+/* лид — первый абзац записи: Body Large, On Light (как в макете) */
+.article-content > p:first-child {
+  color: var(--fg);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+}
+/* Ступени заголовков: раздел h2 — H3 24 UPPER (макет), подраздел h3 — H4 20, пункт h4 — Body Large SemiBold.
+   Заголовок стоит ближе к своему тексту, чем к предыдущему (56 / 20, 36 / 12, 28 / 8) */
+.article-content :where(h2, h3, h4, h5, h6) { color: var(--fg); }
+.article-content :where(h2) {
+  margin-top: 56px;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  font-weight: var(--fw-h3);
+  text-transform: uppercase;
+  scroll-margin-top: var(--space-8); /* сверх общего scroll-padding-top (шапка + 16): заголовок встаёт на 24 ниже шапки */
+}
+.article-content :where(h3) {
+  margin-top: var(--space-36);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  font-weight: var(--fw-h4);
+}
+.article-content :where(h4, h5, h6) {
+  margin-top: var(--space-28);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-h4);
+  font-weight: var(--fw-semibold);
+}
+/* …но заголовок следующего раздела после заголовка держит свой отступ */
+.article-content :where(h2) + :where(:not(h2)) { margin-top: var(--space-20); }
+.article-content :where(h3) + :where(:not(h2, h3)) { margin-top: var(--space-12); }
+.article-content :where(h4, h5, h6) + :where(:not(h2, h3, h4, h5, h6)) { margin-top: var(--space-8); }
+.article-content :where(strong, b) {
+  color: var(--fg);
+  font-weight: var(--fw-semibold);
+}
+.article-content :where(h2, h3, h4, h5, h6) :where(strong, b) { font-weight: inherit; }
+.article-content :where(a) {
+  color: var(--fg-accent);
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+}
+/* Список: маркер — квадрат 5 Accent Deep, как .doc-list (19–24). CUSTOM-CSS: ::before; Elementor — Icon List */
+.article-content :where(ul) > li {
+  position: relative;
+  padding-left: var(--space-28);
+}
+.article-content :where(ul) > li::before {
+  content: "";
+  position: absolute;
+  top: calc((1lh - 5px) / 2);
+  left: var(--space-8);
+  width: 5px;
+  height: 5px;
+  background-color: var(--fg-accent);
+}
+/* Нумерованный список: номер выделен цветом и начертанием, без кружков и рамок */
+.article-content :where(ol) {
+  padding-left: var(--space-28);
+  list-style: decimal;
+}
+.article-content :where(ol) > li { padding-left: var(--space-4); }
+.article-content :where(ol) > li::marker {
+  color: var(--fg-accent);
+  font-weight: var(--fw-semibold);
+  font-variant-numeric: tabular-nums;
+}
+.article-content :where(li) + li { margin-top: var(--space-8); }
+.article-content :where(li) > :where(ul, ol) { margin-top: var(--space-8); }
+.article-content :where(li) > p { margin-top: 0; }
+.article-content :where(li) > p + p { margin-top: var(--space-8); }
+/* Цитата — Pull quote макета. CUSTOM-CSS: градиент 173.6° с двумя мятными стопами + рамка только слева */
+.pull-quote,
+.article-content :where(blockquote) {
+  margin: var(--space-28) 0 0;
+  padding: var(--space-28) var(--space-32) var(--space-28) calc(var(--space-32) - 5px);
+  border-left: 5px solid var(--color-accent);
+  border-radius: 18px;
+  background-image: var(--gradient-pull-quote);
+}
+.pull-quote__text,
+.article-content :where(blockquote) p {
+  margin-top: 0;
+  color: var(--fg);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  font-weight: var(--fw-h4);
+  text-wrap: balance;
+}
+.article-content :where(blockquote) p + p { margin-top: var(--space-12); }
+/* Картинка записи: не шире колонки; свой размер из атрибутов не растягивается (в записях есть вставки 300 px —
+   они остаются 300, иначе мыло). Рамка держит край у светлых графиков */
+.article-content :where(img) {
+  max-width: 100%;
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-md);
+}
+.article-content :where(img) + img { margin-top: var(--space-16); }
+.article-content :where(img.emoji) {
+  display: inline;
+  border: 0;
+  border-radius: 0;
+}
+.article-content :where(p:has(> img), figure) { margin-top: var(--space-28); }
+.article-content > img { margin-top: var(--space-28); }
+.article-content :where(figcaption) {
+  margin-top: var(--space-8);
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+}
+/* Таблица: минимум линеек — подложка шапки и линии строк, без вертикальных; первый столбец — основным цветом */
+.article-content :where(table) {
+  width: 100%;
+  margin-top: var(--space-28);
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-sm);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  font-size: var(--fs-table-cell);
+  line-height: var(--lh-table-cell);
+}
+.article-content :where(th, td) {
+  padding: var(--space-12) var(--space-16);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere; /* таблица записи приходит без обёртки-прокрутки: в крайнем случае рвётся слово, а не страница */
+}
+.article-content :where(th) {
+  background-color: var(--row-head);
+  color: var(--fg-2);
+  font-size: var(--fs-table-head);
+  line-height: var(--lh-table-head);
+  letter-spacing: var(--ls-table-head);
+  font-weight: var(--fw-table-head);
+}
+.article-content :where(td) { border-top: var(--border-width) solid var(--line); }
+.article-content :where(td:first-child) { color: var(--fg); }
+/* обёртка таблицы (блок «Таблица» WordPress, фильтр темы): широкая таблица прокручивается сама, страница — нет */
+.article-content :where(.wp-block-table, .table-scroll) {
+  margin-top: var(--space-28);
+  overflow-x: auto;
+}
+.article-content :where(.wp-block-table, .table-scroll) > table { margin-top: 0; }
+.article-content :where(hr) {
+  height: var(--border-width);
+  margin: var(--space-40) 0 0;
+  border: 0;
+  background-color: var(--line);
+}
+.article-content :where(iframe, video) { max-width: 100%; }
+/* после картинки, таблицы и цитаты текст отступает так же, как перед ними */
+.article-content :where(p:has(> img), figure, table, blockquote, .wp-block-table, .table-scroll) + :where(p, ul, ol, blockquote, table) { margin-top: var(--space-28); }
+.article-content > img + :where(p, ul, ol) { margin-top: var(--space-28); }
+.article-toc {
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-24));
+  display: flex;
+  flex: 0 0 360px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  padding: calc(var(--space-28) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-light);
+}
+.article-toc__overline { color: var(--color-text-on-light-secondary); } /* Muted → Secondary */
+.article-toc__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+.article-toc__link {
+  color: var(--color-accent-deep);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+.article-toc__divider {
+  align-self: stretch;
+  height: var(--border-width);
+  margin: 0;
+  border: 0;
+  background-color: var(--color-border-on-light);
+}
+.article-toc__note { color: var(--color-text-on-light-secondary); }
+@media (hover: hover) {
+  .article-toc__link:hover { text-decoration-line: underline; }
+}
+@media (max-width: 1024px) {
+  .article-head { padding-top: calc(var(--header-h) + var(--space-48)); }
+  .article-cover { height: auto; aspect-ratio: 1280 / 480; }
+  /* оглавление — над текстом; свёрнуто в строку, закреплённую под шапкой (правила .doc-toc ниже — общие с 19–24) */
+  .article-body { --toc-bar: 56px; }
+  .article-body__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-24); /* + нижнее поле закреплённой строки = 32 до текста */
+  }
+  .article-toc {
+    position: static;
+    flex: none;
+    order: -1;
+  }
+  .article-content { flex: none; } /* в колонке основа 0 схлопнула бы текст */
+  /* выбранный раздел встаёт под закреплённой строкой оглавления */
+  .article-content :where(h2) { scroll-margin-top: calc(var(--toc-bar) + var(--space-8)); }
+}
+@media (max-width: 767px) {
+  .article-head { padding-top: calc(var(--header-h-sm) + var(--space-32)); }
+  .article-cover { aspect-ratio: 16 / 10; }
+  .article-toc { padding: calc(var(--space-20) - var(--border-width)); }
+  .article-content :where(h2) { margin-top: var(--space-40); }
+  .article-content :where(h3) { margin-top: var(--space-28); }
+  .article-content :where(h2) + :where(:not(h2)) { margin-top: var(--space-16); }
+  .pull-quote,
+  .article-content :where(blockquote) { padding: var(--space-20) var(--space-20) var(--space-20) calc(var(--space-20) - 5px); }
+  .article-content :where(th, td) { padding: var(--space-12) var(--space-8); }
+  .article-content :where(th:first-child, td:first-child) { padding-left: var(--space-12); }
+}
+
+/* ════════ 17 Article · Related (6023:2746) ═════════
+   Надзаголовок + 3 Article card. В Figma карточки 410 с зазором 40 выходят за колонку 1280 на 30 — у нас сетка 3 колонки
+   с зазором 40 внутри колонки (карточка 400) */
+.related { padding-block: var(--section-pad-md); }
+.related__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.related__overline { color: var(--color-text-on-light-secondary); } /* Muted → Secondary */
+.article-grid--related { gap: var(--space-40); }
+@media (max-width: 1024px) {
+  .article-grid--related { gap: var(--space-16); }
+  .article-grid--related > :last-child { grid-column: 1 / -1; } /* третья — на всю ширину под двумя */
+}
+@media (max-width: 767px) {
+  .article-grid--related > :last-child { grid-column: auto; }
+}
+
+/* ════════ 18 Legal · Policies & Terms (6115:4012) ═════════
+   Тот же блок, что 12 Regulation · Policies (Card / Device), но заголовок по центру с лидом и строки по 268 (сетка 560) */
+.policies__grid--tall .policy-card { min-height: 268px; }
+@media (max-width: 1024px) {
+  .policies__grid--tall .policy-card { min-height: 0; }
+}
+
+/* ════════ 18 Legal · legals «Other info» (6121:8098) ═════════
+   Тот же «Your next step» (plan-card), что на рынках и 10 Funding: заголовок без акцента, сверху без поля (после белой
+   секции), декор-знак от верха панели (−68, −126); правая карточка — красный градиент вместо арта. Ниже — плашка риска */
+.next-step--flush-top { padding-top: 0; }
+.next-step__panel--deco-top { background-position: -68px -126px; }
+.plan-card__top--risk {
+  flex-grow: 1;
+  background-color: var(--color-surface-art);
+  background-image: var(--gradient-risk); /* 2 стопа — Elementor: Background → Gradient */
+}
+.plan-card__title--light { color: var(--color-text); }
+.risk-note {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: var(--space-24) var(--space-28);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-tint);
+  color: var(--color-text-on-light-secondary); /* On Light Muted 2.96 → Secondary (решение 24.09) */
+}
+@media (max-width: 767px) {
+  .risk-note { padding: var(--space-20); }
+}
+
+/* ════════ 19–24 Юридические документы (Terms, Privacy, Order Execution, Security of Funds, AML, Complaints) ═════════
+   Макета в Figma нет — собрано из 17 Article: шапка Solid, Article head без рубрики, меты и обложки, тело «текст + оглавление» («Table of contents» — тот же блок и в 17 Article).
+   Тексты — дословно со старого сайта (генератор _src/pages/gen_legal_docs.py, контент — _src/pages/legal-docs/).
+   В WP тело документа — обычное содержимое страницы (заголовки, абзацы, списки), оглавление строится из h2. */
+.doc-head { padding-bottom: 0; }
+/* линия под шапкой документа — по ширине колонки (на экранах шире 1440 не уходит в поля) */
+.doc-head__rule {
+  align-self: stretch;
+  height: var(--border-width);
+  margin: var(--space-20) 0 0;
+  border: 0;
+  background-color: var(--line);
+}
+.doc-head__lead {
+  max-width: var(--doc-measure);
+  color: var(--fg-2);
+}
+.doc-body {
+  --doc-measure: 660px; /* колонка чтения: ~82 знака в строке при Body 16 (в 17 Article — 840, ~100 знаков) */
+  padding-top: var(--space-40);
+}
+.doc-head { --doc-measure: 660px; }
+.doc-body__inner { justify-content: space-between; } /* текст слева, оглавление у правого края сетки */
+/* Ритм: зазор 16 между блоками; перед разделом 56, перед подразделом 32, список — ближе к своей вводной строке (12) */
+.doc-content {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-16);
+  min-width: 0;
+  max-width: var(--doc-measure);
+}
+.doc-content__h {
+  margin-top: var(--space-40);
+  color: var(--fg);
+  scroll-margin-top: var(--space-8); /* сверх общего scroll-padding-top (шапка + 16) — заголовок встаёт на 24 ниже шапки */
+}
+.doc-content__h--first { margin-top: 0; }
+.doc-content__sub {
+  margin-top: var(--space-16);
+  color: var(--fg);
+}
+/* длинный текст — строки на всю ширину колонки: глобальный balance резал бы короткие абзацы уже соседних */
+.doc-content__p {
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+.doc-link {
+  color: var(--fg-accent);
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+}
+/* Список: маркер — квадрат 5 (как .square-list, цвет Accent Deep). CUSTOM-CSS: ::before; Elementor — Icon List */
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  margin-top: calc(var(--space-4) * -1);
+}
+.doc-list__item {
+  position: relative;
+  padding-left: var(--space-28);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+.doc-list__item::before {
+  content: "";
+  position: absolute;
+  top: calc((1lh - 5px) / 2);
+  left: var(--space-8);
+  width: 5px;
+  height: 5px;
+  background-color: var(--fg-accent);
+}
+/* пункты со своей нумерацией в тексте («a.», «a)», «(a)») — без маркера */
+.doc-list__item--plain::before { content: none; }
+/* Определения (Privacy · Personal Information): термин · описание, строки разделены линией */
+.doc-defs {
+  display: grid;
+  grid-template-columns: 244px minmax(0, 1fr);
+  border-bottom: var(--border-width) solid var(--line);
+}
+.doc-defs__term,
+.doc-defs__desc {
+  padding-block: var(--space-12);
+  border-top: var(--border-width) solid var(--line);
+}
+.doc-defs__term {
+  padding-right: var(--space-24); /* зазор колонок — полем термина: линия строки остаётся сплошной */
+  color: var(--fg);
+  font-weight: var(--fw-semibold);
+}
+.doc-defs__desc {
+  margin: 0;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+/* Оглавление: длинный список (AML — 17 разделов) прокручивается внутри карточки и не заходит под кнопку WhatsApp
+   (низ карточки — на 24 выше неё); на ≤1024 свёрнуто в закреплённую строку (ниже, js/doc-toc.js) */
+.doc-toc {
+  max-height: calc(100svh - var(--header-h) - var(--space-24) - var(--fab-size) - var(--space-48));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+.doc-toc__box { align-self: stretch; }
+.doc-toc__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  color: var(--fg-overline);
+  list-style: none;
+  pointer-events: none; /* на десктопе оглавление всегда раскрыто */
+}
+.doc-toc__summary::-webkit-details-marker { display: none; }
+.doc-toc__list {
+  gap: var(--space-12);
+  margin-top: var(--space-16);
+}
+/* ≤1024 — оглавление свёрнуто в строку и закреплено под шапкой (правка пользователя 02.10): раскрыть его можно из любого
+   места документа, не возвращаясь в начало. Обёртка (aside) — закреплённая полоса высотой в одну строку: её белая подложка
+   закрывает текст, уходящий под строку, а карточка со списком раскрывается поверх текста и не сдвигает его.
+   CUSTOM-CSS: sticky + список поверх потока; Elementor — Table of Contents с Sticky (Motion Effects) и Minimize Box. */
+@media (max-width: 1024px) {
+  .doc-body { --toc-bar: 56px; }
+  .doc-body__inner { gap: var(--space-24); } /* + нижнее поле полосы = прежние 32 до текста */
+  .doc-toc {
+    position: sticky;
+    top: var(--pin-top);
+    z-index: 5; /* над текстом, под шапкой и кнопкой WhatsApp */
+    align-self: flex-start;
+    width: 100%;
+    max-width: var(--doc-measure); /* над текстом — той же ширины, что колонка */
+    height: calc(var(--toc-bar) + var(--space-8) * 2);
+    max-height: none;
+    padding: var(--space-8) 0;
+    border: 0;
+    border-radius: 0;
+    background-color: var(--color-surface-light);
+    overflow: visible;
+  }
+  /* текст под закреплённой строкой уходит в белый, а не обрезается по линии */
+  .doc-toc::after {
+    content: "";
+    position: absolute;
+    inset: 100% 0 auto;
+    height: var(--space-16);
+    background-image: linear-gradient(var(--color-surface-light), transparent);
+    pointer-events: none;
+  }
+  .doc-toc__box {
+    position: relative;
+    z-index: 1;
+    border: var(--border-width) solid var(--color-border-on-light);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-light);
+    transition: box-shadow var(--dur-base) var(--ease-out);
+  }
+  .doc-toc__box--open { box-shadow: var(--shadow-card-light); }
+  .doc-toc__summary {
+    min-height: calc(var(--toc-bar) - var(--border-width) * 2);
+    padding-inline: var(--space-20);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  /* выбранный раздел встаёт под закреплённой строкой, а не под ней */
+  .doc-content__h { scroll-margin-top: calc(var(--toc-bar) + var(--space-8)); }
+  /* CUSTOM-CSS: шеврон маской, поворот — от состояния (переменную задаёт .doc-toc__box--open) */
+  .doc-toc__summary::after {
+    content: "";
+    flex: none;
+    width: 10px;
+    height: 10px;
+    background-color: currentColor;
+    mask: url("../assets/icons/chevron-down-10.svg") center / contain no-repeat;
+    rotate: var(--toc-chevron, 0deg);
+    transition: rotate var(--dur-base) var(--ease-out);
+  }
+  .doc-toc__box--open { --toc-chevron: 180deg; }
+  /* длинный список (AML — 17 разделов) прокручивается внутри карточки; её низ — выше кнопки WhatsApp */
+  .doc-toc__list {
+    flex-wrap: nowrap;
+    gap: 0;
+    max-height: calc(100svh - var(--pin-top) - var(--toc-bar) - var(--fab-size) - var(--space-48));
+    margin-top: 0;
+    padding: 0 var(--space-20) var(--space-8);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  /* строка-ссылка 44 по высоте — зона касания */
+  .doc-toc__link {
+    display: block;
+    padding-block: var(--space-12);
+  }
+  .doc-toc__divider,
+  .doc-toc__extra,
+  .doc-toc__back { display: none; }
+  .doc-content { flex: none; } /* в колонке основа 0 схлопнула бы текст */
+}
+@media (max-width: 767px) {
+  .doc-head__rule { margin-top: var(--space-12); }
+  .doc-body { padding-top: var(--space-24); }
+  .doc-content__h { margin-top: var(--space-24); }
+  .doc-content__h--first { margin-top: 0; }
+  .doc-defs { grid-template-columns: minmax(0, 1fr); }
+  .doc-defs__term {
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+  .doc-defs__desc {
+    padding-top: var(--space-4);
+    border-top: 0;
+  }
+}

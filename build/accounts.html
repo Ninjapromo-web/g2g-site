@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Individual Accounts | G2G Group LTD</title>
+  <meta name="description" content="Trade available global markets through a G2G Individual Account with raw spreads, zero commission and access to major global FX liquidity.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="preload" href="assets/img/inner-hero-bg.webp" as="image">
+  <script src="js/header.js" defer></script>
+  <script src="js/analytics.js" defer></script>
+  <script src="js/stack.js" defer></script>
+  <script src="js/faq.js" defer></script>
+  <script src="js/tabs.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header" data-el="header" data-name="site-header">
+    <div class="site-header__bar" data-el="container">
+      <a class="site-header__logo" href="index.html" data-el="image">
+        <img class="site-header__logo-img" src="assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item site-header__item--active"><a class="site-header__link" href="accounts.html" aria-current="page">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="accounts.html" aria-current="page">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- section: page-hero (Inner Hero 6013:293, экземпляр 6816:8303) -->
+    <section class="page-hero theme-dark" data-el="container" data-name="page-hero">
+      <div class="page-hero__inner container" data-el="container">
+        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path" aria-current="page">Accounts</li>
+          </ol>
+        </nav>
+        <div class="page-hero__copy" data-el="container">
+          <h1 class="page-hero__title type-h1" data-el="heading"><span class="page-hero__accent">Individual</span> Accounts</h1>
+          <div class="page-hero__texts" data-el="container">
+            <p class="page-hero__lead type-body-lg" data-el="text">Trade available global markets through a G2G Individual Account with raw spreads, zero commission and access to major global FX liquidity.</p>
+            <p class="page-hero__note type-small" data-el="text">Trade with leverage of up to 1:500 and free swap, subject to Terms &amp; Conditions.</p>
+          </div>
+        </div>
+        <div class="page-hero__actions" data-el="container">
+          <a class="btn btn--primary btn--lg" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="hero">Open Account</a>
+          <a class="btn btn--tertiary btn--lg" href="demo.html" data-el="button" data-event="click_demo" data-placement="hero">Try Demo</a>
+        </div>
+        <!-- Арт страницы (Rectangle 6064:5595, заливка FILL): бриллиант на подиуме.
+             Фидбек 18.09 (7064:8101): «анимированный, стеклянный» — анимация позже, вместе с остальным JS -->
+        <img class="page-hero__art" src="assets/img/hero-art-accounts.webp" width="536" height="486" alt="" decoding="async" fetchpriority="high" data-el="image">
+      </div>
+    </section>
+
+    <!-- section: account-types (Account Types 6818:8462) -->
+    <section class="account-types theme-light" data-el="container" data-name="account-types">
+      <div class="account-types__inner container" data-el="container">
+        <div class="section-head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">ACCOUNT TYPES</p>
+          <h2 class="section-head__title type-h2" data-el="heading"><span class="section-head__accent">Choose How</span> You Work With G2G</h2>
+          <p class="section-head__lead type-body-lg" data-el="text">Three ways to work with G2G — trading on your own account, building a partner business, or an institutional relationship.</p>
+        </div>
+        <!-- repeat: audience-card (pill, title, text, list, button) -->
+        <div class="account-types__grid" data-el="container">
+          <article class="audience-card audience-card--featured" data-el="container">
+            <p class="pill pill--sm pill--glass" data-el="text">FOR INDIVIDUALS</p>
+            <h3 class="audience-card__title type-h3" data-el="heading">Individual Accounts</h3>
+            <p class="audience-card__text audience-card__text--strong type-small" data-el="text">Trade available markets on your own account with published trading conditions.</p>
+            <hr class="audience-card__divider audience-card__divider--light">
+            <ul class="audience-card__list" data-el="text">
+              <li class="audience-card__item type-small">Up to 1:500 leverage</li>
+              <li class="audience-card__item type-small">Raw spreads</li>
+              <li class="audience-card__item type-small">Zero commission</li>
+              <li class="audience-card__item type-small">Free swap — T&amp;Cs apply</li>
+              <li class="audience-card__item type-small">Access to major global FX liquidity</li>
+            </ul>
+            <a class="btn btn--primary btn--lg btn--block audience-card__cta" href="#conditions" data-el="button">See Conditions</a>
+          </article>
+          <article class="audience-card" data-el="container">
+            <p class="pill pill--sm pill--deep" data-el="text">IBS &amp; AFFILIATES</p>
+            <h3 class="audience-card__title type-h3" data-el="heading">IBs &amp; Affiliates</h3>
+            <p class="audience-card__text type-small" data-el="text">Build a business with G2G through a structured partner programme.</p>
+            <hr class="audience-card__divider">
+            <ul class="audience-card__list" data-el="text">
+              <li class="audience-card__item type-small">Multiple rebate types</li>
+              <li class="audience-card__item type-small">Multiple deposit methods</li>
+              <li class="audience-card__item type-small">Multi-tier IB structure</li>
+              <li class="audience-card__item type-small">Marketing support &amp; collaboration</li>
+              <li class="audience-card__item type-small">Customisable offers — T&amp;Cs apply</li>
+            </ul>
+            <a class="btn btn--secondary btn--lg btn--block audience-card__cta" href="business.html#ibs" data-el="button">Explore IBs &amp; Affiliates</a>
+          </article>
+          <article class="audience-card" data-el="container">
+            <p class="pill pill--sm pill--deep" data-el="text">PARTNERSHIP</p>
+            <h3 class="audience-card__title type-h3" data-el="heading">Partnership</h3>
+            <p class="audience-card__text type-small" data-el="text">Discuss institutional and corporate requirements directly with the G2G team.</p>
+            <hr class="audience-card__divider">
+            <ul class="audience-card__list" data-el="text">
+              <li class="audience-card__item type-small">For hedge funds &amp; asset managers</li>
+              <li class="audience-card__item type-small">For institutions &amp; corporates</li>
+              <li class="audience-card__item type-small">Requirements discussed directly</li>
+              <li class="audience-card__item type-small">No fixed public tariff</li>
+            </ul>
+            <a class="btn btn--secondary btn--lg btn--block audience-card__cta" href="business.html#partnership" data-el="button">Explore Partnership</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: conditions (Trading Conditions 6819:8467) — сюда ведёт «Conditions» в шапке -->
+    <section class="conditions theme-light" id="conditions" data-el="container" data-name="conditions">
+      <div class="conditions__inner container" data-el="container">
+        <div class="section-head section-head--left section-head--tight" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">TRADING CONDITIONS</p>
+          <h2 class="section-head__title type-h2" data-el="heading">Individual Account <span class="section-head__accent">Conditions</span></h2>
+          <p class="section-head__lead type-body-lg" data-el="text">See the core conditions of your G2G Individual Account before you open it.</p>
+        </div>
+        <!-- repeat: conditions-row (key, value) -->
+        <ul class="conditions-panel" data-el="container">
+          <li class="conditions-row" data-el="container">
+            <p class="conditions-row__key type-body" data-el="text">Leverage</p>
+            <p class="conditions-row__value type-h4" data-el="text">Up to 1:500</p>
+          </li>
+          <li class="conditions-row" data-el="container">
+            <p class="conditions-row__key type-body" data-el="text">Spreads</p>
+            <p class="conditions-row__value type-h4" data-el="text">Raw Spreads</p>
+          </li>
+          <li class="conditions-row" data-el="container">
+            <p class="conditions-row__key type-body" data-el="text">Commission</p>
+            <p class="conditions-row__value type-h4" data-el="text">Zero Commission</p>
+          </li>
+          <li class="conditions-row" data-el="container">
+            <p class="conditions-row__key type-body" data-el="text">Swap</p>
+            <p class="conditions-row__value type-h4" data-el="text">Free Swap — Terms &amp; Conditions Apply</p>
+          </li>
+          <li class="conditions-row" data-el="container">
+            <p class="conditions-row__key type-body" data-el="text">Liquidity</p>
+            <p class="conditions-row__value type-h4" data-el="text">Access to Major Global FX Liquidity</p>
+          </li>
+          <li class="conditions-row" data-el="container">
+            <p class="conditions-row__key type-body" data-el="text">Platform</p>
+            <p class="conditions-row__value type-h4" data-el="text">MetaTrader 5</p>
+          </li>
+          <li class="conditions-row conditions-row--last" data-el="container">
+            <p class="conditions-row__key type-body" data-el="text">Markets</p>
+            <p class="conditions-row__value" data-el="text"><a class="link-arrow link-arrow--lg" href="markets.html">View Available Markets</a></p>
+          </li>
+        </ul>
+        <div class="conditions__actions" data-el="container">
+          <a class="btn btn--primary btn--lg" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="mid">Open Account</a>
+          <!-- repeat: flow-step (icon, title, number, text) -->
+          <ol class="flow-steps" data-el="container">
+            <li class="flow-step" data-el="container">
+              <div class="flow-step__head" data-el="container">
+                <div class="flow-step__label" data-el="container">
+                  <img class="flow-step__icon" src="assets/icons/user--deep.svg" width="24" height="24" alt="" data-el="image">
+                  <h3 class="flow-step__title type-h4" data-el="heading">Registration</h3>
+                </div>
+                <p class="flow-step__num" data-el="text">1</p>
+              </div>
+              <p class="flow-step__text type-small" data-el="text">Email, phone and a password. About a minute.</p>
+            </li>
+            <li class="flow-step" data-el="container">
+              <div class="flow-step__head" data-el="container">
+                <div class="flow-step__label" data-el="container">
+                  <img class="flow-step__icon" src="assets/icons/document-lines--deep.svg" width="24" height="24" alt="" data-el="image">
+                  <h3 class="flow-step__title type-h4" data-el="heading">Verification</h3>
+                </div>
+                <p class="flow-step__num" data-el="text">2</p>
+              </div>
+              <p class="flow-step__text type-small" data-el="text">Confirm your identity and documents.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: includes (What the Account Includes 6820:8468) -->
+    <section class="includes theme-light" data-el="container" data-name="includes">
+      <div class="includes__inner container" data-el="container">
+        <div class="section-head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">WHAT THE ACCOUNT INCLUDES</p>
+          <h2 class="section-head__title type-h2" data-el="heading"><span class="section-head__accent">Global Market Access</span>, Backed by Established Infrastructure</h2>
+        </div>
+        <!-- repeat: stat-tile (value | tags, label, text). Ряд ссылок «Markets → Platform → License» в Figma с opacity 0 — не верстаем -->
+        <div class="includes__grid" data-el="container">
+          <article class="stat-tile" data-el="container">
+            <ul class="stat-tile__tags" aria-label="Markets" data-el="container">
+              <li class="tag">Forex</li>
+              <li class="tag">Metals</li>
+              <li class="tag">Energies</li>
+              <li class="tag">Indices</li>
+              <li class="tag">Crypto</li>
+              <li class="tag">Stocks</li>
+            </ul>
+            <h3 class="stat-tile__label type-overline" data-el="heading">MARKETS</h3>
+            <p class="stat-tile__text type-body-lg" data-el="text">Access available forex, metals, energies, indices, cryptocurrency and stock instruments through your Individual Account.</p>
+          </article>
+          <article class="stat-tile" data-el="container">
+            <p class="stat-tile__value type-stat" data-el="text">20+</p>
+            <h3 class="stat-tile__label type-overline" data-el="heading">20+ YEARS</h3>
+            <p class="stat-tile__text type-body-lg" data-el="text">With 20+ years as a company, G2G provides a trading environment connected to major global FX liquidity.</p>
+          </article>
+          <article class="stat-tile" data-el="container">
+            <p class="stat-tile__value type-stat" data-el="text">CFD</p>
+            <h3 class="stat-tile__label type-overline" data-el="heading">CFDS</h3>
+            <p class="stat-tile__text type-body-lg" data-el="text">Products are typically traded as CFDs, allowing you to trade price movements without owning the underlying asset.</p>
+          </article>
+          <article class="stat-tile" data-el="container">
+            <p class="stat-tile__value type-stat" data-el="text">MT5</p>
+            <h3 class="stat-tile__label type-overline" data-el="heading">METATRADER 5</h3>
+            <p class="stat-tile__text type-body-lg" data-el="text">Use MetaTrader 5 to analyse available markets, place and manage orders, and monitor open positions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: how (why g2g 6828:9975 — How it works, светлый вариант) -->
+    <!-- Переключатель шагов (набор why g2g 6828:9802, 4 варианта с переходами по клику) — как HOW IT WORKS на главной
+         (правка пользователя 25.09 перенесена 28.09): наведение на шаг (десктоп) / на ≤1024 — экран закреплён отдельной
+         карточкой, шаг выбирает прокрутка, тап докручивает. js/tabs.js, экраны сменяются наплывом (data-panels="fade") -->
+    <section class="how how--light how--switch how--portal theme-light edge-round-top" data-widget="tabs" data-tabs-hover data-tabs-scroll="(max-width: 1024px)" data-tabs-pin=".how__screens" data-panels="fade" data-active-class="step--active" data-panel-active-class="how__screen--active" data-el="container" data-name="how">
+      <div class="how__inner container" data-el="container">
+        <div class="section-head" data-el="container">
+          <p class="section-head__overline type-overline" data-el="text">HOW TO START</p>
+          <h2 class="section-head__title type-h2" data-el="heading">From Registration to Trading</h2>
+        </div>
+        <!-- repeat: step (number, title, text) — вкладка переключателя -->
+        <ol class="how__steps" role="tablist" aria-label="From registration to trading">
+          <li class="step step--active" role="tab" id="acc-how-tab-register" aria-controls="acc-how-panel-register" aria-selected="true" aria-labelledby="acc-how-title-register" aria-describedby="acc-how-text-register" tabindex="0">
+            <div class="step__head" data-el="container">
+              <p class="step__num" data-el="text">01</p>
+              <h3 class="step__title type-h3" id="acc-how-title-register" data-el="heading">Register</h3>
+            </div>
+            <p class="step__text type-body" id="acc-how-text-register" data-el="text">Create your G2G Individual Account through the live registration portal.</p>
+          </li>
+          <li class="step" role="tab" id="acc-how-tab-verify" aria-controls="acc-how-panel-verify" aria-selected="false" aria-labelledby="acc-how-title-verify" aria-describedby="acc-how-text-verify" tabindex="-1">
+            <div class="step__head" data-el="container">
+              <p class="step__num" data-el="text">02</p>
+              <h3 class="step__title type-h3" id="acc-how-title-verify" data-el="heading">Verify</h3>
+            </div>
+            <p class="step__text type-body" id="acc-how-text-verify" data-el="text">Complete the applicable identity verification and KYC requirements.</p>
+          </li>
+          <li class="step" role="tab" id="acc-how-tab-fund" aria-controls="acc-how-panel-fund" aria-selected="false" aria-labelledby="acc-how-title-fund" aria-describedby="acc-how-text-fund" tabindex="-1">
+            <div class="step__head" data-el="container">
+              <p class="step__num" data-el="text">03</p>
+              <h3 class="step__title type-h3" id="acc-how-title-fund" data-el="heading">Fund</h3>
+            </div>
+            <p class="step__text type-body" id="acc-how-text-fund" data-el="text">Choose an available payment method and fund your account.</p>
+          </li>
+          <li class="step" role="tab" id="acc-how-tab-trade" aria-controls="acc-how-panel-trade" aria-selected="false" aria-labelledby="acc-how-title-trade" aria-describedby="acc-how-text-trade" tabindex="-1">
+            <div class="step__head" data-el="container">
+              <p class="step__num" data-el="text">04</p>
+              <h3 class="step__title type-h3" id="acc-how-title-trade" data-el="heading">Trade</h3>
+            </div>
+            <p class="step__text type-body" id="acc-how-text-trade" data-el="text">Access available markets through your verified and funded account.</p>
+          </li>
+        </ol>
+      </div>
+      <!-- Экраны портала в белой рамке 16: экспорт узлов вариантов 6828:10761 / 10975 / 10818 / 11103 @2x (верхние углы
+           прозрачные). Стопкой, активный наплывает поверх; низ срезан краем секции, как в Figma -->
+      <div class="how__screens" data-el="container">
+        <div class="how__frame" data-el="container">
+          <div class="how__screen how__screen--active" role="tabpanel" id="acc-how-panel-register" aria-labelledby="acc-how-tab-register">
+            <img src="assets/img/accounts-portal.webp" width="896" height="566" alt="G2G portal registration screen: open a live account" loading="lazy" decoding="async" data-el="image">
+          </div>
+          <div class="how__screen" role="tabpanel" id="acc-how-panel-verify" aria-labelledby="acc-how-tab-verify">
+            <img src="assets/img/accounts-portal-kyc.webp" width="896" height="566" alt="G2G portal: identity verification (KYC) screen" loading="lazy" decoding="async" data-el="image">
+          </div>
+          <div class="how__screen" role="tabpanel" id="acc-how-panel-fund" aria-labelledby="acc-how-tab-fund">
+            <img src="assets/img/accounts-portal-deposit.webp" width="896" height="566" alt="G2G portal: deposit screen" loading="lazy" decoding="async" data-el="image">
+          </div>
+          <div class="how__screen" role="tabpanel" id="acc-how-panel-trade" aria-labelledby="acc-how-tab-trade">
+            <img src="assets/img/accounts-portal-trade.webp" width="896" height="566" alt="G2G portal: trading screen" loading="lazy" decoding="async" data-el="image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: faq (FAQ 6816:8368: список 880, зазор 12) -->
+    <section class="faq faq--even theme-light" data-el="container" data-name="faq">
+      <div class="faq__inner faq__inner--mid container" data-el="container">
+        <div class="section-head" data-el="container">
+          <h2 class="section-head__title type-h2" data-el="heading">Frequently Asked Questions</h2>
+        </div>
+        <!-- repeat: faq-item (question, answer). Q1 — из Figma; ответы Q2–Q4 свёрнуты — из копирайта
+             (copy-HP-Accounts-Business-2026-09-14, Accounts / FAQ, «Traders Account» → «Individual Account» как в Figma);
+             Q5 — тот же вопрос, что на главной, ответ оттуда -->
+        <div class="faq__list faq__list--spaced" data-el="container">
+          <details class="faq-item" open>
+            <summary class="faq-item__question type-h4">Does the Individual Account charge commission?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">The G2G Individual Account has zero commission. External payment or service providers may apply separate charges where applicable.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question type-h4">Is the Individual Account swap-free?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">The Individual Account offers Free Swap, subject to Terms &amp; Conditions. Applicable requirements are set out in the relevant Terms &amp; Conditions.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question type-h4">What happens after I register?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">Registration is followed by the required identity verification. Once verified, you can fund your account before beginning live trading.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question type-h4">How can I deposit and withdraw funds?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">G2G provides multiple deposit and withdrawal methods. Available methods and applicable conditions may vary.</p>
+            </div>
+          </details>
+          <details class="faq-item faq-item--last">
+            <summary class="faq-item__question type-h4">Where can I find G2G's registration and licensing information?</summary>
+            <div class="faq-item__answer" data-el="text">
+              <p class="faq-item__text type-body">Current company registration and licensing details are published on the Regulation page.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: support (Support 6834:12125) -->
+    <section class="support theme-light" data-el="container" data-name="support">
+      <div class="support__inner container" data-el="container">
+        <div class="section-head support__head" data-el="container">
+          <h2 class="section-head__title type-h2" data-el="heading">Looking for <span class="section-head__accent">business opportunities?</span></h2>
+        </div>
+        <a class="btn btn--tertiary btn--lg" href="business.html" data-el="button">Business</a>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — footer 6816:8376) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading">Ready to Open Your <span class="page-cta__accent--dark">Individual Account?</span></h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Open your G2G Individual Account, complete the required verification, and fund your account before beginning live trading.</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="index.html" data-el="image">
+            <img class="site-footer__logo-img" src="assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="about.html">About</a></li>
+            <li><a class="site-footer__link" href="regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+/* G2G — база: шрифт, сброс, темы секций, наборы типографики, контейнер, сетка,
+   доступность. Правила разметки — projects/g2g/markup-rules.md:
+   стили только по одному классу, без селекторов по тегам внутри секций. */
+
+/* ── Шрифт (самохостинг, latin; Elementor — Google Fonts / Custom Fonts,
+      theme.json — fontFace) ─────────────────────────────────── */
+@font-face {
+  font-family: 'Funnel Display';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('../assets/fonts/funnel-display-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* ── Сброс (точечный: в Vibecod глобальный reset конфликтует с редактором) ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background-color: var(--color-surface-dark); /* цвет при «перекрутке» страницы */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + var(--space-16));
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface-light); /* видна в скруглённых углах тёмных секций */
+  color: var(--color-text-on-light);
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Фон страницы Tint (02 Markets: фрейм залит Web/Surface/Tint — виден под CTA подвала и в углах
+   подвала). Elementor: Page Settings → Style → Body background; тема — класс шаблона на body */
+.page--tint { background-color: var(--color-surface-tint); }
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+
+/* Figma: у всех текстов textWrapStyle = BALANCE → строки выравниваются по длине.
+   Elementor: Custom CSS сайта; тема: styles.css / theme.json → css. */
+h1, h2, h3, h4, h5, h6, p, li, summary, figcaption, blockquote { text-wrap: balance; }
+ul, ol { padding: 0; list-style: none; }
+img, svg, video, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+
+/* ── Темы секций (Figma: variant Theme=Dark/Light) ──────────────
+   Задают контекстные цвета; компоненты берут их через var(--fg…),
+   поэтому один и тот же компонент переключается фоном секции. */
+.theme-dark {
+  --fg: var(--color-text);
+  --fg-2: var(--color-text-secondary);
+  --fg-3: var(--color-text-muted);
+  --fg-overline: var(--color-text-muted);            /* Web/Text/Muted, 4.59 на Surface Dark */
+  --fg-accent: var(--color-accent);
+  --line: var(--color-border-subtle);
+  --card-bg: var(--color-surface-card);
+  --focus: var(--color-accent);
+  --sec-fg: var(--color-accent);
+  --sec-border: var(--color-accent);
+  --sec-hover-bg: var(--color-accent-wash);
+  --sec-hover-fg: var(--color-accent);
+  --sec-hover-border: var(--color-accent-bright);
+  --sec-border-w: var(--border-width-button);
+  --tert-bg: var(--color-text);
+  --tert-fg: var(--color-surface-dark);
+  --tert-hover-bg: var(--color-surface-tint);
+  --tert-hover-fg: var(--color-surface-dark);
+  --pill-neutral-bg: var(--color-surface-overlay);
+  --pill-neutral-border: transparent;
+  --pill-neutral-border-w: 0;
+  --row-head: var(--color-row-head);
+  --row-alt: var(--color-row-alt);
+  background-color: var(--color-surface-dark);
+  color: var(--fg);
+}
+
+.theme-light {
+  --fg: var(--color-text-on-light);
+  --fg-2: var(--color-text-on-light-secondary);
+  --fg-3: var(--color-text-on-light-muted);
+  --fg-overline: var(--color-text-on-light-secondary); /* решение 24.09: Muted на белом 4.15 → AA */
+  --fg-accent: var(--color-accent-deep);
+  --line: var(--color-border-on-light);
+  --card-bg: var(--color-surface-light);
+  --focus: var(--color-accent-deep);
+  --sec-fg: var(--color-text-on-light);
+  --sec-border: var(--color-text-on-light-secondary);
+  --sec-hover-bg: var(--color-deep-wash);
+  --sec-hover-fg: var(--color-accent-deep);
+  --sec-hover-border: var(--color-accent-deep);
+  --sec-border-w: var(--border-width);
+  --tert-bg: var(--color-surface-dark);
+  --tert-fg: var(--color-text);
+  --tert-hover-bg: var(--color-surface-dark);
+  --tert-hover-fg: var(--color-accent);
+  --pill-neutral-bg: var(--color-overlay-on-light);
+  --pill-neutral-border: var(--color-border-on-light);
+  --pill-neutral-border-w: var(--border-width);
+  --row-head: var(--color-row-head-on-light);
+  --row-alt: var(--color-row-alt-on-light);
+  background-color: var(--color-surface-light);
+  color: var(--fg);
+}
+
+.theme-tint {
+  --fg: var(--color-text-on-light);
+  --fg-2: var(--color-text-on-light-secondary);
+  --fg-3: var(--color-text-on-light-muted);
+  --fg-overline: var(--color-text-on-light-secondary); /* решение 24.09: Muted на белом 4.15 → AA */
+  --fg-accent: var(--color-accent-deep);
+  --line: var(--color-border-on-light);
+  --card-bg: var(--color-surface-light);
+  --focus: var(--color-accent-deep);
+  --sec-fg: var(--color-text-on-light);
+  --sec-border: var(--color-text-on-light-secondary);
+  --sec-hover-bg: var(--color-deep-wash);
+  --sec-hover-fg: var(--color-accent-deep);
+  --sec-hover-border: var(--color-accent-deep);
+  --sec-border-w: var(--border-width);
+  --tert-bg: var(--color-surface-dark);
+  --tert-fg: var(--color-text);
+  --tert-hover-bg: var(--color-surface-dark);
+  --tert-hover-fg: var(--color-accent);
+  --pill-neutral-bg: var(--color-overlay-on-light);
+  --pill-neutral-border: var(--color-border-on-light);
+  --pill-neutral-border-w: var(--border-width);
+  --row-head: var(--color-row-head-on-light);
+  --row-alt: var(--color-row-alt-on-light);
+  background-color: var(--color-surface-tint);
+  color: var(--fg);
+}
+
+/* ── Наборы типографики = Global Fonts (Elementor) / пресеты theme.json ── */
+.type-display    { font-size: var(--fs-display);    line-height: var(--lh-display);    letter-spacing: var(--ls-display);    font-weight: var(--fw-display); }
+.type-h1         { font-size: var(--fs-h1);         line-height: var(--lh-h1);         letter-spacing: var(--ls-h1);         font-weight: var(--fw-h1); text-transform: uppercase; }
+.type-h2         { font-size: var(--fs-h2);         line-height: var(--lh-h2);         letter-spacing: var(--ls-h2);         font-weight: var(--fw-h2); text-transform: uppercase; }
+.type-h3         { font-size: var(--fs-h3);         line-height: var(--lh-h3);         letter-spacing: var(--ls-h3);         font-weight: var(--fw-h3); text-transform: uppercase; }
+.type-h4         { font-size: var(--fs-h4);         line-height: var(--lh-h4);         letter-spacing: var(--ls-h4);         font-weight: var(--fw-h4); }
+.type-stat       { font-size: var(--fs-stat);       line-height: var(--lh-stat);       letter-spacing: var(--ls-stat);       font-weight: var(--fw-stat); }
+.type-overline   { font-size: var(--fs-overline);   line-height: var(--lh-overline);   letter-spacing: var(--ls-overline);   font-weight: var(--fw-overline); text-transform: uppercase; }
+.type-body-lg    { font-size: var(--fs-body-lg);    line-height: var(--lh-body-lg);    letter-spacing: var(--ls-body-lg);    font-weight: var(--fw-body-lg); }
+.type-body       { font-size: var(--fs-body);       line-height: var(--lh-body);       letter-spacing: var(--ls-body);       font-weight: var(--fw-body); }
+.type-small      { font-size: var(--fs-small);      line-height: var(--lh-small);      letter-spacing: var(--ls-small);      font-weight: var(--fw-small); }
+.type-caption    { font-size: var(--fs-caption);    line-height: var(--lh-caption);    letter-spacing: var(--ls-caption);    font-weight: var(--fw-caption); }
+.type-table-head { font-size: var(--fs-table-head); line-height: var(--lh-table-head); letter-spacing: var(--ls-table-head); font-weight: var(--fw-table-head); }
+.type-table-cell { font-size: var(--fs-table-cell); line-height: var(--lh-table-cell); letter-spacing: var(--ls-table-cell); font-weight: var(--fw-table-cell); }
+.type-nav        { font-size: var(--fs-nav);        line-height: var(--lh-nav);        letter-spacing: var(--ls-nav);        font-weight: var(--fw-nav); }
+
+/* ── Контейнер = Elementor Container «Boxed» (Content Width 1280) ── */
+.container {
+  width: 100%;
+  max-width: calc(var(--content-width) + var(--page-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+/* ── Сетки = Elementor Grid Container ───────────────────────────
+   Колонки по брейкпоинтам: 4 → 2 → 1, 3 → 2 → 1, 2 → 2 → 1. */
+.grid-2, .grid-3, .grid-4 {
+  display: grid;
+  gap: var(--grid-gap);
+}
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* ── Секция: переход «чёткая граница» (решение 24.09, вариант копии) ──
+   Тёмная секция со скруглённым верхом поверх белой. Сменить на плавный
+   переход — правкой одного этого класса. CUSTOM-CSS не нужен: Border Radius. */
+.edge-round-top {
+  border-top-left-radius: var(--radius-section);
+  border-top-right-radius: var(--radius-section);
+  overflow: hidden;
+}
+
+/* ── Наезд секций (js/stack.js, 29.09) ──────────────────────────
+   Секция со скруглённым верхом наезжает на предыдущую: та останавливается (sticky) и уходит
+   в тень. Классы и обёртку .stack ставит скрипт; без него — обычная прокрутка.
+   CUSTOM-CSS: в Elementor — контейнер-обёртка пары, у нижней секции этот sticky. */
+.stack-under {
+  position: sticky;
+  /* Запас: высокая секция останавливается не низом у низа экрана, а выше — иначе верхняя сразу
+     закрывала кнопки у стыка (правка пользователя 29.09). Не меньше четверти экрана; если у низа
+     секции кнопка (--stack-cta — от низа секции до низа последней кнопки, ставит js/stack.js) —
+     столько, чтобы она к остановке доехала до середины экрана. */
+  --stack-gap: max(25svh, calc(50svh - var(--stack-cta, 100svh)));
+  /* короткая останавливается верхом у верха экрана, высокая — низом на «запас» выше низа
+     (svh: низ при развёрнутой панели браузера на телефоне, иначе строки уйдут под верхнюю).
+     Без поддержки svh объявление недействительно — обычная прокрутка без наезда. */
+  top: min(0px, calc(100svh - var(--stack-h) - var(--stack-gap)));
+}
+.stack-cover { position: relative; } /* поверх липкой: позиционированная и позже в DOM */
+.stack__shade {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 9;
+  height: min(100%, 100vh); /* видимая часть — нижний экран секции; слой не во всю <main> */
+  height: min(100%, 100lvh);
+  background-color: var(--color-surface-dark);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Доступность ─────────────────────────────────────────────── */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Не переносить внутри (Tier-1, номера): в Elementor — HTML-тег <span> в тексте виджета */
+.text-nowrap { white-space: nowrap; }
+
+.skip-link {
+  position: fixed;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: calc(var(--z-header) + 1);
+  padding: var(--space-12) var(--space-20);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-text);
+  color: var(--color-text-on-light);
+  font-weight: var(--fw-semibold);
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; }
+
+:focus-visible {
+  outline: 2px solid var(--focus, var(--color-accent));
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-light);
+}
+
+@media (max-width: 1024px) {
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Прокрутка страницы заблокирована, пока открыто мобильное меню (js/header.js) */
+.page--locked { overflow: hidden; }

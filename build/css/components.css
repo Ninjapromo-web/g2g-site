@@ -1,0 +1,1789 @@
+/* G2G — общие компоненты (Figma «◆ Library» 4006:23).
+   Цвета, зависящие от фона, берутся из контекста темы секции (base.css:
+   .theme-dark / .theme-light / .theme-tint) — как variant Theme в Figma.
+   Ховеры — только в @media (hover: hover). */
+
+/* ════════ Button (4007:35) ═════════════════════════════════════
+   Primary = Open Account; Secondary = Try Demo / Log in; Ghost = ссылка.
+   M = 40px (Web/Button, капс), L = 58px (Button L 16px). */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  min-height: var(--control-h-md);
+  padding: 0 22px;
+  border: var(--border-width-button) solid transparent;
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  font-family: var(--font-family);
+  font-size: var(--fs-button);
+  line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);
+  font-weight: var(--fw-button);
+  text-align: center; /* регистр — как в тексте: экземпляры Button отменяют UPPER стиля Web/Button */
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
+}
+
+.btn--lg {
+  min-height: var(--control-h-lg);
+  padding-inline: var(--space-32);
+  font-size: var(--fs-button-lg);
+  line-height: var(--lh-button-lg);
+  letter-spacing: var(--ls-button-lg);
+}
+
+.btn--block { width: 100%; }
+/* длинная подпись в узкой карточке: кнопка не шире контейнера, при нехватке места текст переносится */
+.btn--fluid {
+  max-width: 100%;
+  white-space: normal;
+}
+@media (max-width: 767px) {
+  .btn--fluid { padding-inline: var(--space-20); }
+}
+
+.btn--primary {
+  background-color: var(--color-cta);
+  color: var(--color-text);
+}
+
+.btn--secondary {
+  border-width: var(--sec-border-w);
+  border-color: var(--sec-border);
+  color: var(--sec-fg);
+}
+
+/* Secondary M на тёмном (Log in в шапке) — белая обводка */
+.btn--outline {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+.btn--tertiary {
+  background-color: var(--tert-bg);
+  color: var(--tert-fg);
+}
+
+.btn--ghost {
+  min-height: 36px;
+  padding: var(--space-8) 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--fg-accent);
+  text-decoration-thickness: var(--border-width-button);
+  text-underline-offset: 6px;
+}
+
+@media (hover: hover) {
+  .btn--primary:hover { background-color: var(--color-cta-hover); }
+  .btn--secondary:hover {
+    border-color: var(--sec-hover-border);
+    background-color: var(--sec-hover-bg);
+    color: var(--sec-hover-fg);
+  }
+  .btn--outline:hover {
+    border-color: var(--color-accent-bright);
+    background-color: var(--color-accent-wash);
+    color: var(--color-accent);
+  }
+  .btn--tertiary:hover {
+    background-color: var(--tert-hover-bg);
+    color: var(--tert-hover-fg);
+  }
+  .btn--ghost:hover { text-decoration-line: underline; }
+}
+
+/* ════════ Link с стрелкой (Button Ghost + Icon, «Explore …») ════
+   В карточках: текст Web/Button + стрелка 18px. На тач-экранах зона
+   нажатия растягивается полями без сдвига вёрстки. */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-button);
+  line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);
+  font-weight: var(--fw-button);
+  color: var(--fg-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.link-arrow::after {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask: url('../assets/icons/arrow-right.svg') center / contain no-repeat;
+  mask: url('../assets/icons/arrow-right.svg') center / contain no-repeat;
+  transition: transform var(--dur-fast) ease;
+}
+@media (hover: hover) {
+  .link-arrow:hover { text-decoration-line: underline; }
+  .link-arrow:hover::after { transform: translateX(3px); }
+}
+@media (max-width: 1024px) {
+  .link-arrow {
+    padding-block: 12px;
+    margin-block: -12px;
+  }
+}
+
+/* ════════ Pill (6006:39) ═══════════════════════════════════════ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 7px 14px;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-overline);
+  line-height: var(--lh-overline);
+  letter-spacing: var(--ls-overline);
+  font-weight: var(--fw-overline);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pill--mint {
+  background-color: var(--color-accent-tint);
+  color: var(--fg-accent);
+}
+.pill--neutral {
+  padding-block: calc(7px - var(--pill-neutral-border-w)); /* обводка в Figma внутри: высота 28, как у пилюли без рамки */
+  border-width: var(--pill-neutral-border-w);
+  border-color: var(--pill-neutral-border);
+  background-color: var(--pill-neutral-bg);
+  color: var(--fg-2);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.pill--red {
+  background-color: var(--color-cta-tint);
+  color: var(--color-cta);
+}
+
+/* ════════ Section Heading (6006:32) ════════════════════════════
+   Overline · H2 (двухцветный: мята на тёмном, deep green на белом) · лид.
+   Типографика — классами .type-* в разметке. */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  text-align: center;
+}
+.section-head--left {
+  align-items: flex-start;
+  text-align: left;
+}
+.section-head__overline { color: var(--fg-overline); }
+.section-head__title { color: var(--fg); }
+.section-head__accent { color: var(--fg-accent); }
+.section-head__lead {
+  max-width: 1000px;
+  color: var(--fg-2);
+}
+
+/* ════════ Текстовый блок секции: лид H4 + мятная черта, примечание, кнопки ════
+   Одинаково в Platform и Payments (Figma: Subhead Web/H4, Vector 32px, Body Large). */
+.copy-lead { color: var(--fg); }
+.copy-lead::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 2.5px;
+  margin-top: var(--space-24);
+  background-color: var(--color-accent);
+}
+.copy-note { color: var(--fg-2); }
+.copy-actions { padding-top: var(--space-32); }
+
+/* ════════ Header (4008:65) ═════════════════════════════════════
+   Transparent — плавает над героем (1280, r30, стекло); Solid — после
+   прокрутки, на всю ширину. Классы-состояния ставит js/header.js. */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-header);
+  padding: var(--space-16) var(--page-gutter) 0;
+  pointer-events: none;
+  transition: padding var(--dur-base) var(--ease-out);
+}
+.site-header--solid { padding: 0; }
+
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  max-width: var(--content-width);
+  height: var(--header-h);
+  margin-inline: auto;
+  padding-inline: var(--space-40);
+  border: var(--border-width) solid var(--color-border-subtle);
+  border-radius: var(--radius-header);
+  background-color: var(--color-header-glass);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Background blur 4 */
+  color: var(--color-text);
+  pointer-events: auto;
+  transition: max-width var(--dur-base) var(--ease-out),
+    border-radius var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) ease;
+}
+.site-header__bar--solid {
+  max-width: 100%;
+  border-width: 0 0 var(--border-width);
+  border-radius: 0;
+  background-color: var(--color-surface-dark);
+}
+
+.site-header__logo {
+  display: block;
+  flex: none;
+  width: 112px;
+}
+.site-header__logo-img { width: 100%; height: auto; }
+
+/* Пункты на всю высоту панели: выпадающее меню встаёт от её нижнего края (top: 100%) */
+.site-header__nav { align-self: stretch; }
+.site-header__menu {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-24);
+  height: 100%;
+}
+/* Состояние пункта → вид ссылки, шеврона и меню: модификатор задаёт переменные, дети их берут */
+.site-header__item {
+  --nav-fg: var(--color-text);
+  --sub-opacity: 0;
+  --sub-visibility: hidden;
+  --sub-shift: -6px;
+  --sub-dur: 140ms;
+  --sub-ease: ease-in;
+  --sub-hide-delay: 140ms;
+  --sub-chevron-turn: 0deg;
+  --sub-chevron-alpha: 0.6;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.site-header__item--active { --nav-fg: var(--color-accent); } /* раздел текущей страницы (Markets на страницах рынков) */
+.site-header__item--open {
+  --nav-fg: var(--color-accent);
+  --sub-opacity: 1;
+  --sub-visibility: visible;
+  --sub-shift: 0px;
+  --sub-dur: 220ms;
+  --sub-ease: var(--ease-out);
+  --sub-hide-delay: 0s;
+  --sub-chevron-turn: 180deg;
+  --sub-chevron-alpha: 1;
+}
+.site-header__link {
+  display: inline-flex;
+  align-items: center;
+  padding-block: var(--space-12);
+  font-size: var(--fs-nav);
+  line-height: var(--lh-nav);
+  font-weight: var(--fw-nav);
+  color: var(--nav-fg);
+  transition: color var(--dur-fast) ease;
+}
+
+/* Кнопка-шеврон: знак 10px (в макете 16 — уменьшен по правке пользователя 01.10), зона нажатия 24×32 */
+.site-header__sub-toggle {
+  position: relative;
+  flex: none;
+  width: 24px;
+  height: 32px;
+  margin-inline: -1px -7px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-xs);
+  background: none;
+  color: var(--nav-fg);
+  cursor: pointer;
+  transition: color var(--dur-fast) ease;
+}
+.site-header__sub-toggle:focus-visible { outline-offset: -2px; } /* кольцо внутри кнопки — не задевает текст пункта */
+.site-header__sub-toggle::before {
+  content: "";
+  position: absolute;
+  inset: 1px 0 0; /* на 1px ниже середины строки — по оптическому центру строчных */
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  background-color: currentColor;
+  -webkit-mask: url('../assets/icons/chevron-down-10.svg') center / contain no-repeat;
+  mask: url('../assets/icons/chevron-down-10.svg') center / contain no-repeat;
+  opacity: var(--sub-chevron-alpha);
+  transform: rotate(var(--sub-chevron-turn));
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast) ease;
+}
+
+/* Выпадающее меню — наше решение (макетов нет). Фон глухой: размытие внутри размытой панели шапки
+   не работает (вложенный backdrop-filter). Тексты пунктов стоят на одной вертикали с текстом пункта шапки. */
+.site-header__sub {
+  position: absolute;
+  top: calc(100% + var(--space-8));
+  left: calc((var(--space-8) + var(--space-12) + var(--border-width)) * -1);
+  width: 300px;
+  padding: var(--space-8);
+  border: var(--border-width) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-elevated);
+  box-shadow: var(--shadow-card);
+  opacity: var(--sub-opacity);
+  visibility: var(--sub-visibility);
+  transform: translateY(var(--sub-shift));
+  transition: opacity var(--sub-dur) var(--sub-ease), transform var(--sub-dur) var(--sub-ease),
+    visibility 0s linear var(--sub-hide-delay);
+}
+/* CUSTOM-CSS: «мостик» над меню — курсор не теряет пункт, проходя зазор между шапкой и меню */
+.site-header__sub::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--space-12) * -1) 0 auto;
+  height: var(--space-12);
+}
+.site-header__sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.site-header__sub-link {
+  --sub-title: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px var(--space-12);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--dur-fast) ease;
+}
+.site-header__sub-link:focus-visible { outline-offset: 0; } /* кольцо фокуса не заходит на соседние пункты */
+.site-header__sub-link--current { --sub-title: var(--color-accent); } /* текущая страница */
+.site-header__sub-title {
+  font-size: var(--fs-nav);
+  line-height: var(--lh-nav);
+  font-weight: var(--fw-nav);
+  color: var(--sub-title);
+  transition: color var(--dur-fast) ease;
+}
+.site-header__sub-note {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-secondary);
+}
+/* «All Markets» — обзорная страница, отделена линией от списка рынков */
+.site-header__sub-more {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border-subtle);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+/* Бургер: три линии — фон кнопки + ::before/::after. Меню на ≤1024. */
+.site-header__burger {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  padding: 0;
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  cursor: pointer;
+}
+.site-header__burger::before,
+.site-header__burger::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  height: 1.5px;
+  border-radius: 1px;
+  background-color: var(--color-text);
+  transition: transform var(--dur-base) var(--ease-out), top var(--dur-base) var(--ease-out);
+}
+.site-header__burger::before { top: 17px; }
+.site-header__burger::after { top: 25px; }
+.site-header__burger--open::before { top: 21px; transform: rotate(45deg); }
+.site-header__burger--open::after { top: 21px; transform: rotate(-45deg); }
+
+/* Мобильное меню — наше решение (макетов нет) */
+.site-header__drawer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  padding: calc(var(--header-h) + var(--space-40)) var(--page-gutter) var(--space-32);
+  overflow-y: auto;
+  background-color: var(--color-surface-dark);
+  pointer-events: auto;
+}
+.site-header__drawer[hidden] { display: none; }
+/* Открытие (js/header.js, 29.09): панель проявляется, пункты поднимаются по очереди (--i ставит
+   скрипт), кнопки — последним шагом. Закрытие — одно короткое затухание, без очереди. */
+.site-header__drawer {
+  opacity: 0;
+  transition: opacity 180ms ease-in;
+}
+.site-header__drawer:not(.is-open) { pointer-events: none; } /* пока гаснет — не ловит касания */
+.site-header__drawer.is-open {
+  opacity: 1;
+  transition: opacity 260ms var(--ease-out);
+}
+.site-header__drawer-item,
+.site-header__drawer-actions {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 150ms ease-in, transform 0s linear 150ms;
+}
+.site-header__drawer.is-open .site-header__drawer-item,
+.site-header__drawer.is-open .site-header__drawer-actions {
+  opacity: 1;
+  transform: none;
+  transition: opacity 380ms var(--ease-out) calc(60ms + var(--i, 0) * 35ms),
+    transform 560ms var(--ease-out) calc(60ms + var(--i, 0) * 35ms);
+}
+.site-header__drawer-menu {
+  display: flex;
+  flex-direction: column;
+}
+.site-header__drawer-item { border-bottom: var(--border-width) solid var(--color-border-subtle); }
+.site-header__drawer-row {
+  display: flex;
+  align-items: center;
+}
+.site-header__drawer-link {
+  display: block;
+  flex: 1 1 auto;
+  padding-block: var(--space-16);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  font-weight: var(--fw-h4);
+  color: var(--color-text);
+}
+/* Подразделы Markets и Conditions: ссылка ведёт на раздел, кнопка-шеврон (зона 44×44) раскрывает список.
+   Высота — через grid 0fr → 1fr; скрытый список не ловит фокус (visibility) */
+.site-header__drawer-toggle {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin-right: calc(var(--space-16) * -1); /* знак — по правому краю линии пункта */
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.site-header__drawer-toggle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 12px;
+  height: 12px;
+  margin: auto;
+  background-color: currentColor;
+  -webkit-mask: url('../assets/icons/chevron-down-10.svg') center / contain no-repeat;
+  mask: url('../assets/icons/chevron-down-10.svg') center / contain no-repeat;
+  opacity: 0.6;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast) ease;
+}
+.site-header__drawer-toggle--open::before {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+.site-header__drawer-sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 220ms ease-in, visibility 0s linear 220ms;
+}
+.site-header__drawer-sub--open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 320ms var(--ease-out), visibility 0s;
+}
+.site-header__drawer-sub-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.site-header__drawer-sub-list::after { /* отступ под списком: поле у самого списка не схлопнулось бы в 0fr */
+  content: "";
+  flex: none;
+  height: var(--space-8);
+}
+.site-header__drawer-sub-link {
+  display: block;
+  padding: 10px 0 10px var(--space-16);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+}
+.site-header__drawer-sub-link--current { color: var(--color-accent); } /* текущая страница */
+.site-header__drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+@media (hover: hover) {
+  .site-header__item:hover { --nav-fg: var(--color-accent); } /* и пока курсор в выпадающем меню пункта */
+  .site-header__sub-link:hover {
+    --sub-title: var(--color-accent);
+    background-color: var(--color-surface-overlay);
+  }
+  .site-header__drawer-link:hover,
+  .site-header__drawer-sub-link:hover { color: var(--color-accent); }
+}
+
+@media (max-width: 1024px) {
+  .site-header__nav,
+  .site-header__login { display: none; }
+  .site-header__burger { display: block; }
+  .site-header__cta { min-height: 44px; } /* ТЗ: зона нажатия ≥ 44px на тач-экранах */
+  .site-header__bar { padding-inline: var(--space-24) var(--space-16); }
+  .site-header__actions { gap: var(--space-8); }
+}
+
+@media (max-width: 767px) {
+  .site-header { padding: var(--space-8) var(--space-8) 0; }
+  .site-header--solid { padding: 0; }
+  .site-header__bar {
+    height: var(--header-h-sm);
+    padding-inline: var(--space-16) var(--space-8);
+    border-radius: var(--radius-header);
+  }
+  .site-header__bar--solid { border-radius: 0; }
+  .site-header__logo { width: 96px; }
+}
+
+/* ════════ WhatsApp FAB (6008:155) ══════════════════════════════
+   Закреплена; свёрнута при загрузке, сама не раскрывается и не
+   перекрывает CTA (ТЗ §7.7). Подпись видна при наведении/фокусе. */
+.whatsapp-fab {
+  position: fixed;
+  right: var(--page-gutter);
+  bottom: var(--space-24);
+  z-index: var(--z-fab);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  max-width: var(--fab-size);
+  height: var(--fab-size);
+  padding: var(--space-16);
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-whatsapp);
+  box-shadow: var(--shadow-card);
+  color: transparent; /* подпись скрыта, пока кнопка свёрнута */
+  font-size: var(--fs-button);
+  line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);
+  font-weight: var(--fw-button);
+  white-space: nowrap;
+  transition: max-width var(--dur-base) var(--ease-out), color var(--dur-fast) ease,
+    bottom var(--dur-base) var(--ease-out), box-shadow var(--dur-base) ease;
+}
+.whatsapp-fab::before {
+  content: "";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-surface-dark);
+  -webkit-mask: url('../assets/icons/whatsapp.svg') center / contain no-repeat;
+  mask: url('../assets/icons/whatsapp.svg') center / contain no-repeat;
+}
+.whatsapp-fab:focus-visible {
+  max-width: 240px;
+  padding-right: var(--space-24);
+  box-shadow: var(--shadow-mint-glow);
+  color: var(--color-surface-dark);
+}
+@media (hover: hover) {
+  .whatsapp-fab:hover {
+    max-width: 240px;
+    padding-right: var(--space-24);
+    box-shadow: var(--shadow-mint-glow);
+    color: var(--color-surface-dark);
+  }
+}
+
+/* ════════ Final CTA (6123:8218) ════════════════════════════════
+   Белая секция с тёмной панелью r60; фон — картинка <img> под текстом. */
+.final-cta {
+  padding: var(--section-pad-lg) var(--inset-gutter);
+}
+/* Главная (макет 9079:8633, 01.10): к подвалу фон уходит в мяту (Rectangle 4815, 9079:9378). Секция заходит
+   под скруглённый верх подвала на его радиус (.site-footer--tuck) — мята видна в углах подвала, как в макете */
+.final-cta--mint {
+  padding-bottom: calc(var(--section-pad-lg) + var(--radius-section));
+  background-image: var(--gradient-mint-bottom);
+}
+.site-footer--tuck { margin-top: calc(var(--radius-section) * -1); }
+.final-cta__panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-44);
+  max-width: calc(var(--content-width) + var(--space-80));
+  margin-inline: auto;
+  padding: 120px var(--space-24);
+  overflow: hidden;
+  border-radius: var(--radius-section);
+  text-align: center;
+}
+.final-cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.final-cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+}
+.final-cta__title {
+  max-width: 716px;
+  color: var(--color-text);
+}
+.final-cta__accent { color: var(--color-accent); }
+.final-cta__text {
+  max-width: 602px;
+  color: var(--color-text);
+}
+
+@media (max-width: 1024px) {
+  .final-cta__panel { padding-block: 96px; }
+}
+@media (max-width: 767px) {
+  .final-cta__panel {
+    gap: var(--space-32);
+    padding: 72px var(--space-20);
+  }
+}
+
+/* ════════ Footer (6918:9229) ═══════════════════════════════════ */
+.site-footer {
+  padding: 112px 0 var(--space-40);
+  background-color: var(--color-surface-dark);
+  /* CUSTOM-CSS: мятное свечение сверху (radial в Figma, повёрнут ~17° — упрощён) */
+  background-image: radial-gradient(93% 51% at 45% 5%,
+    color-mix(in srgb, var(--color-accent) 27%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 0%, transparent) 100%);
+  color: var(--color-text);
+}
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.site-footer__top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-64);
+}
+.site-footer__brand {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-20);
+  min-width: 0;
+}
+.site-footer__logo {
+  display: block;
+  width: 122px;
+}
+.site-footer__logo-img { width: 100%; height: auto; }
+.site-footer__about {
+  max-width: 340px;
+  color: var(--color-text-secondary);
+}
+.site-footer__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--color-text-secondary);
+}
+.site-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+.site-footer__heading { color: var(--color-text-muted); }
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.site-footer__link {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--color-text);
+  transition: color var(--dur-fast) ease;
+}
+.site-footer__contact-link {
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) ease;
+}
+.site-footer__secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12) var(--space-28);
+}
+.site-footer__secondary-link {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) ease;
+}
+.site-footer__risk {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-24) var(--space-28);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-overlay);
+}
+.site-footer__risk-text { color: var(--color-text-secondary); }
+.site-footer__risk-note { color: var(--color-text-secondary); } /* решение 24.09: Muted на плашке 4.01 → AA */
+.site-footer__bottom {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  padding-top: var(--space-40);
+  border-top: var(--border-width) solid var(--color-border-subtle);
+}
+.site-footer__legal {
+  flex: 1 1 0;
+  color: var(--color-text-secondary);
+}
+.site-footer__copy { color: var(--color-text-muted); }
+
+@media (hover: hover) {
+  .site-footer__link:hover,
+  .site-footer__contact-link:hover,
+  .site-footer__secondary-link:hover { color: var(--color-accent); }
+}
+
+@media (max-width: 1024px) {
+  .site-footer { padding-top: 88px; }
+  /* ТЗ: зона нажатия ≥ 44px — ссылки подвала получают вертикальные поля */
+  .site-footer__links { gap: 0; }
+  .site-footer__link,
+  .site-footer__secondary-link,
+  .site-footer__contact-link {
+    display: inline-block;
+    padding-block: 12px;
+  }
+  .site-footer__secondary { row-gap: 0; }
+  .site-footer__contacts { gap: 0; }
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, auto));
+    justify-content: space-between;
+    gap: var(--space-40) var(--space-32);
+  }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 767px) {
+  .site-footer { padding: 64px 0 calc(var(--space-32) + 72px); } /* снизу — место под липкую CTA */
+  .site-footer__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-32) var(--space-16);
+  }
+  .site-footer__risk { padding: var(--space-20); }
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+    padding-top: var(--space-24);
+  }
+}
+
+/* ════════ Inner Hero (6013:293) — герой внутренних страниц ═══════════
+   Хлебные крошки, H1, лид + примечание, кнопка. Фон — растр размытых пятен
+   (Mesh gradient + Ellipse 2/3 компонента, отрисован из SVG Figma) = фон
+   контейнера в Elementor. Арт страницы — <img> справа снизу; поверх арта
+   затемнение «Vector». Арт меняется по странице, остальное общее. */
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: var(--border-width) solid var(--color-border-subtle);
+  background: var(--color-surface-dark) url('../assets/img/inner-hero-bg.webp') right top / cover no-repeat;
+}
+/* CUSTOM-CSS: «Vector» — затемнение поверх арта, под текстом */
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: var(--gradient-hero-shade);
+  pointer-events: none;
+}
+.page-hero__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-32);
+  padding-top: var(--page-hero-top);
+  padding-bottom: var(--space-80);
+}
+.page-hero__copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+.page-hero__title {
+  max-width: 820px;
+  color: var(--color-text);
+}
+.page-hero__accent { color: var(--color-accent); }
+.page-hero__texts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: 720px;
+}
+.page-hero__lead { color: var(--color-text); }
+.page-hero__strong { font-weight: var(--fw-bold); } /* выделение в лиде (05 Indices: список инструментов) */
+.page-hero__note { color: var(--color-text-secondary); }
+.page-hero__actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+/* Арт: рамка 536×522 (right 136 на 1440, низ −36 срезан героем) → видимые 536×486 */
+.page-hero__art {
+  position: absolute;
+  right: calc(var(--page-gutter) + 56px);
+  bottom: 0;
+  z-index: 0;
+  width: 536px;
+  height: auto;
+  pointer-events: none;
+  animation: hero-art-float 4s ease-in-out infinite alternate;
+}
+/* CUSTOM-CSS: «парение» арта (фидбек клиента 23.09, решение пользователя 29.09) — 4 с в одну сторону, 12px.
+   Сначала был ритм глобуса главной (9 с) — пользователь: «почти не видно» (~1,3 px/с глаз не ловит). Вниз, а не вверх: низ арта срезан героем (overflow: hidden), при подъёме
+   над краем героя показался бы срез картинки. */
+@keyframes hero-art-float {
+  from { translate: 0 0; }
+  to { translate: 0 var(--hero-float, 12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-hero__art { animation: none; }
+}
+
+/* Хлебные крошки (Breadcrumb 6013:295): Home серым, путь раздела — мятой.
+   Разделитель «/» — после пункта, в его цвете. Elementor: Breadcrumbs (Yoast) */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-8);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-muted);
+}
+.breadcrumb__item--path { color: var(--color-accent); }
+.breadcrumb__item--sep::after {
+  content: "/";
+  margin-left: var(--space-8);
+}
+/* «Markets / Forex» в Figma — один текст: вокруг «/» пробелы, не отступ 8 */
+.breadcrumb__item--sep-tight::after {
+  content: "/";
+  margin-left: 0.3em;
+}
+.breadcrumb__link {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+@media (hover: hover) {
+  .breadcrumb__link:hover { text-decoration-line: underline; }
+}
+
+@media (max-width: 1024px) {
+  .page-hero__copy { max-width: 62%; }
+  .page-hero__art {
+    right: var(--space-8);
+    width: 400px;
+  }
+}
+@media (max-width: 767px) {
+  .page-hero__inner {
+    gap: var(--space-24);
+    padding-bottom: 180px; /* место под арт внизу */
+  }
+  .page-hero__copy { max-width: none; }
+  .page-hero__actions { align-self: stretch; }
+  .page-hero__art {
+    --hero-float: 8px; /* арт 240 вместо 536 — амплитуда меньше */
+    right: -24px;
+    width: 240px;
+  }
+}
+
+/* ════════ FAQ (главная 7045:12137, страницы рынков 6096:3682) ═══════
+   Главная: список 800, заголовок → список 80. Внутренние страницы (--page):
+   список 1000, отступ 40, секция 96/96, без кнопки. */
+.faq { padding-block: var(--section-pad) 0; }
+/* Главная (макет 9079:9364, 01.10): мятный верх после тёмной секции — Rectangle 4815, полоса 240px */
+.faq--mint-top {
+  background-image: var(--gradient-mint-top);
+  background-size: 100% 240px;
+  background-repeat: no-repeat;
+}
+.faq__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  max-width: calc(800px + var(--page-gutter) * 2);
+}
+.faq__list { width: 100%; }
+.faq__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-48);
+}
+/* FAQ Item (6007:65), Theme=Light: плоская строка с разделителем и +/× */
+.faq-item {
+  position: relative;
+  /* обводка в Figma внутри строки — нижнее поле за вычетом рамки (строка 74, а не 75) */
+  padding-block: var(--space-24) calc(var(--space-24) - var(--border-width));
+  border-bottom: var(--border-width) solid var(--line);
+}
+.faq-item--last {
+  padding-bottom: var(--space-24);
+  border-bottom: 0;
+}
+/* Иконка — на самом <details>: + (красный) → × (серый) по состоянию open.
+   «×» — тот же «+», повёрнутый на 45° (29.09: клиент просил, чтобы крестик крутился), scale 1.2 —
+   до размера close.svg из Figma (плечо 14 → диагональ 12). Состояние: без JS — [open], с JS
+   (js/faq.js, класс faq-item--js) — is-open: ставится по клику сразу, [open] при закрытии
+   снимается только в конце анимации высоты. */
+.faq-item::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--space-24) + 1px);
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-cta);
+  -webkit-mask: url('../assets/icons/plus.svg') center / contain no-repeat;
+  mask: url('../assets/icons/plus.svg') center / contain no-repeat;
+  pointer-events: none;
+  transition: transform 450ms var(--ease-out), background-color var(--dur-base) ease;
+}
+.faq-item:is([open]:not(.faq-item--js), .is-open)::after {
+  background-color: var(--color-text-on-light-muted);
+  transform: rotate(45deg) scale(1.2);
+}
+.faq-item__question {
+  display: block;
+  padding-right: var(--space-40);
+  color: var(--fg);
+  cursor: pointer;
+  list-style: none;
+}
+.faq-item__question::-webkit-details-marker { display: none; }
+.faq-item__text { text-wrap: pretty; } /* ответ на всю ширину, как в Figma (balance режет на короткие строки) */
+.faq-item__answer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  margin-top: 14px;
+  color: var(--fg-2);
+}
+@media (hover: hover) {
+  .faq-item__question:hover { color: var(--fg-accent); }
+}
+.faq--page { padding-block: var(--section-pad-md); }
+.faq__inner--page {
+  gap: var(--space-40);
+  max-width: calc(1000px + var(--page-gutter) * 2);
+}
+
+@media (max-width: 1024px) {
+  .faq__inner { gap: var(--space-48); }
+  .faq__inner--page { gap: var(--space-32); }
+}
+
+/* ════════ CTA подвала (footer Variant2 6918:9230) ═══════════════════
+   Стеклянная панель над подвалом внутренних страниц: нахлёст на подвал 73px,
+   подвал получает модификатор --cta (верх 156 = 73 + 83). Секция без фона —
+   под верхом панели виден белый фон страницы, под низом — подвал. */
+.page-cta {
+  position: relative;
+  z-index: 2;
+  margin-bottom: calc(var(--cta-overlap) * -1);
+  padding: var(--space-44) var(--page-gutter) 0;
+}
+.page-cta__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-32);
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: var(--space-40);
+  border: var(--border-width) solid var(--color-border-bright);
+  border-radius: var(--radius-panel);
+  background-image: var(--gradient-glass-card);
+  text-align: center;
+  /* CUSTOM-CSS: Glass в Figma — размытие того, что под панелью (край подвала) */
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.page-cta__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+.page-cta__title { color: var(--color-text-on-light); }
+.page-cta__accent { color: var(--color-accent-deep); }
+.page-cta__text { color: var(--color-text-on-light-secondary); }
+
+.site-footer--cta { padding-top: calc(var(--cta-overlap) + 83px); }
+
+@media (max-width: 1024px) {
+  .page-cta__card { padding: var(--space-40) var(--space-32); }
+  .site-footer--cta { padding-top: calc(var(--cta-overlap) + 64px); }
+}
+@media (max-width: 767px) {
+  .page-cta__card {
+    gap: var(--space-24);
+    padding: var(--space-32) var(--space-20);
+    border-radius: var(--radius-lg);
+  }
+  .site-footer--cta { padding-top: calc(var(--cta-overlap) + 48px); }
+}
+
+/* ════════ Feature Tile (6102:3620) ═════════════════════════════
+   Плитка бенто: заголовок H3 + текст, в углу большая иконка-«призрак» 120px (30%).
+   Стекло: белый 75% + Glass 4. Высота Short = 224. Иконка — <img> (в Elementor —
+   Image с абсолютным положением, в теме — Image в Group). */
+.feature-tile {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 224px;
+  padding: var(--space-32);
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--color-tile-glass);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass в Figma */
+}
+.feature-tile__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: 480px;
+}
+.feature-tile__title { color: var(--fg); }
+.feature-tile__text { color: var(--fg-2); }
+.feature-tile__ghost {
+  position: absolute;
+  right: 42px;
+  bottom: 22px;
+  z-index: -1;
+  width: 120px;
+  height: 120px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  /* наше решение: иконка меньше и под текстом, чтобы не ложилась на абзац */
+  .feature-tile {
+    min-height: 0;
+    padding: var(--space-24) var(--space-24) 112px;
+  }
+  .feature-tile__ghost {
+    right: var(--space-24);
+    bottom: var(--space-20);
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ════════ Card / Market (6006:60) ═════════════════════════════
+   Карточка каталога рынков (02 Markets): чип с иконкой, название H3, один факт,
+   ссылка «Explore». Декор «Union» в компоненте с opacity 0 — не верстаем. */
+.market-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  padding: calc(var(--space-24) - var(--border-width)); /* обводка в Figma внутри */
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--card-bg);
+}
+.market-card__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm); /* 14 → 12 */
+  background-color: var(--color-accent-tint);
+}
+.market-card__icon { width: 24px; height: 24px; }
+.market-card__title { color: var(--fg); }
+.market-card__text {
+  flex: 1 1 auto;
+  color: var(--fg-2);
+}
+
+/* ════════ How it works (главная 7045:11477, «why g2g» на 08 Accounts 6828:9975) ═════
+   Заголовок · 4 шага (Step) · картинка. Шаги шире контента: 1360 (поля 40, как у вставных
+   панелей). Тёмный вариант — главная; светлый (.how--light) — Accounts. Цвета шага — из
+   переменных секции (как темы в base.css), поэтому .step один на оба фона.
+   Перенесено из home.css 2026-09-24. */
+.how {
+  padding-top: var(--section-pad-lg);
+  overflow: clip; /* вместо hidden у .edge-round-top: иначе на мобильном не прилипает экран */
+  /* CUSTOM-CSS: мятное свечение справа сверху (radial, 53%) */
+  background-image: radial-gradient(40% 20% at 71% 12%,
+    color-mix(in srgb, var(--color-accent) 27%, transparent) 0%, transparent 100%);
+}
+/* Светлый вариант: фон мята → Tint, шаги белые, активный — Tint Mint с тёмно-зелёной чертой */
+.how--light {
+  --step-bg: var(--color-surface-light);
+  --step-active-bg: var(--color-surface-tint-mint);
+  --step-line: var(--color-border-strong);
+  --step-accent: var(--color-accent-deep);
+  --step-fg: var(--color-text-on-light);
+  --step-text: var(--color-text-on-light-secondary);
+  --step-num-bg: var(--color-surface-tint-mint);
+  --step-num-border: var(--color-surface-tint-mint);
+  --step-num-fg: var(--color-text-on-light);
+  background-image: var(--gradient-mint-fade-short);
+}
+.how__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-44);
+}
+.how__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  margin-inline: calc(var(--inset-gutter) - var(--page-gutter));
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-24);
+  border-bottom: 3px solid var(--step-line, var(--color-border-strong));
+  border-radius: var(--radius-md);
+  background: var(--step-bg, var(--gradient-step));
+  transition: border-color var(--dur-base) ease;
+}
+/* шаг-вкладка (главная: переключатель экранов, js/tabs.js) */
+.step[role="tab"] { cursor: pointer; }
+.step--active {
+  border-bottom-color: var(--step-accent, var(--color-cta));
+  background: var(--step-active-bg, var(--step-bg, var(--gradient-step)));
+}
+.step__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+.step__num {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: var(--border-width) solid var(--step-num-border, var(--color-border-bright));
+  border-radius: var(--radius-xs);
+  background: var(--step-num-bg, var(--gradient-step));
+  font-size: var(--fs-body-lg); /* решение T4: New style/H5 → Body Large */
+  line-height: var(--lh-body-lg);
+  color: var(--step-num-fg, var(--color-text));
+  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease;
+}
+.step--active .step__num,
+.step__num--active {
+  border-color: transparent;
+  background: var(--step-accent, var(--color-cta));
+  color: var(--color-text);
+}
+.step__title { color: var(--step-fg, var(--color-text)); }
+.step__text { color: var(--step-text, var(--color-text)); }
+/* Главная: экраны ноутбука — 4 кадра (варианты 6483:15771, фон, свечение и hue-оверлей вшиты
+   в WebP), во всю ширину до 1440. Стопкой: новый кадр наплывает поверх за 250 мс, прежний
+   держится под ним и гаснет после (без провала в фон); неактивные скрыты visibility */
+.how__screens {
+  width: 100%;
+  max-width: 1440px;
+  margin: var(--space-44) auto 0;
+}
+.how__frame {
+  position: relative;
+  aspect-ratio: 1440 / 644;
+}
+.how__screen {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0s linear var(--dur-base), visibility 0s linear var(--dur-base);
+}
+.how__screen--active {
+  z-index: 1;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity var(--dur-base) ease;
+}
+.how__screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Accounts: экраны портала в белой рамке 16 (варианты why g2g 6828:9802, 896×566 с рамкой; верхние углы
+   прозрачные) — тот же переключатель, что на главной (.how--switch), кадр по пропорции экрана. Низ срезан краем секции */
+.how--portal .how__screens { max-width: 896px; } /* 60 до узла минус рамка 16 = отступ 44, как у .how__screens */
+.how--portal .how__frame { aspect-ratio: 896 / 566; }
+
+@media (max-width: 1024px) {
+  .how__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Планшет и мобильный (фидбек 25.09): экран — отдельная карточка со скруглением по кругу между
+   заголовком и шагами; прилипает под шапкой, подложки нет (решение пользователя).
+   Шаги в колонку; шаг выбирает прокрутка — экран «доезжает» до шага (js/tabs.js, data-tabs-scroll), тап
+   докручивает к нему. .how__inner растворяется, чтобы переставить детей. Главная и 08 Accounts (.how--switch) */
+@media (max-width: 1024px) {
+  .how--switch {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--section-pad-sm);
+  }
+  .how--switch .how__inner { display: contents; }
+  .how--switch .section-head { margin-inline: var(--page-gutter); }
+  .how--switch .how__screens {
+    order: 1;
+    position: sticky;
+    top: var(--pin-top);
+    z-index: 2;
+    margin-top: var(--space-24);
+    padding: var(--space-8) var(--page-gutter) var(--space-12);
+  }
+  .how--switch .how__frame {
+    --frame-h: clamp(220px, 34vh, 340px); /* на альбомном планшете остаётся место под шаги */
+    width: min(100%, var(--frame-h) * 1440 / 644); /* не шире пропорции кадра — ноутбук не режется сверху */
+    height: var(--frame-h);
+    margin-inline: auto;
+    aspect-ratio: auto;
+    overflow: clip;
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+  }
+  .how--switch .how__screen img { object-position: 53% 50%; } /* ноутбук в кадре правее центра */
+  /* Accounts: карточка по пропорции экрана портала, рамка — на светлом */
+  .how--portal.how--switch .how__frame {
+    width: min(100%, var(--frame-h) * 896 / 566);
+    height: auto; /* экран портала целиком: высота от ширины, не обрезаем по бокам */
+    aspect-ratio: 896 / 566;
+    border-color: var(--color-border-on-light);
+  }
+  .how--portal.how--switch .how__screen img { object-position: 50% 0; }
+  .how--switch .how__steps {
+    order: 2;
+    grid-template-columns: minmax(0, 1fr);
+    margin: var(--space-12) var(--page-gutter) 0;
+  }
+}
+@media (max-width: 767px) {
+  .how__steps { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ════════ Pill: размеры и цвета внутренних страниц (08 Accounts, карточки счетов) ════ */
+.pill--sm {
+  min-height: 0;
+  padding: 6px 12px;
+}
+.pill--deep {
+  background-color: var(--color-deep-tint);
+  color: var(--color-accent-deep);
+}
+.pill--glass {
+  background-color: var(--color-pill-glass);
+  color: var(--color-accent-deep);
+}
+
+/* ════════ Tag — рынок в плитке (08 Accounts, «Markets» 6820:8475) ═══════════
+   Мятная плашка 12% с обводкой 30%, текст Small deep. Обводка в Figma внутри — поле минус рамка */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: calc(var(--space-8) - var(--border-width)) calc(14px - var(--border-width));
+  border: var(--border-width) solid var(--color-border-mint-soft);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent-tint-soft);
+  color: var(--color-accent-deep);
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  white-space: nowrap;
+}
+
+/* Section Heading: зазор 14 вместо 16 (Trading Conditions 6819:8468) */
+.section-head--tight { gap: 14px; }
+
+/* Link со стрелкой, крупный: текст Web/H4 (строка Markets в панели условий) */
+.link-arrow--lg {
+  gap: 10px;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  font-weight: var(--fw-h4);
+}
+
+/* ════════ Support — полоса «Looking for …?» перед подвалом (6834:12125) ═════════
+   Фон Cool White, заголовок H2 (820) и одна кнопка. На 10 Funding — с надзаголовком и лидом */
+.support {
+  padding-block: var(--section-pad-md);
+  background-color: var(--color-text); /* Cool White */
+}
+.support__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+}
+.support__head { max-width: 820px; }
+
+/* ════════ FAQ: вариант 880 с зазором 12 между вопросами (08 Accounts 6816:8368) ═════ */
+.faq--even { padding-block: var(--section-pad); }
+.faq--pad-end { padding-bottom: var(--section-pad); } /* 96 сверху, 112 снизу (16 Business) */
+.faq__inner--mid {
+  gap: var(--space-40);
+  max-width: calc(880px + var(--page-gutter) * 2);
+}
+.faq__list--spaced {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* ════════ CTA в подвале, тёмный вариант (footer 6816:8376 — 08 Accounts, 10 Funding) ═════
+   Секция — верх подвала: тёмный фон со скруглением 60, стеклянная панель, текст слева,
+   кнопка справа. Подвал за ней — .site-footer--flush (без скругления, верх 72).
+   Свечение — одно на секцию и подвал, как в Figma: псевдоэлемент 1440×936 выходит за низ
+   секции на подвал; контент подвала рисуется поверх (.site-footer__inner — position: relative). */
+.page-cta--dark {
+  z-index: auto; /* без своего контекста наложения: свечение ложится под контент подвала */
+  margin-bottom: 0;
+  padding: var(--space-40) var(--inset-gutter) 0;
+  border-radius: var(--radius-section) var(--radius-section) 0 0;
+  background-color: var(--color-surface-dark);
+}
+/* CUSTOM-CSS: радиальное свечение подвала (SVG из Figma, эллипс повёрнут) */
+.page-cta--dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 936px;
+  border-radius: inherit;
+  /* ширина — не меньше макета, но во всю секцию: при фиксированных 1440 на экранах шире по бокам
+     был виден вертикальный обрез свечения (замечание пользователя 01.10). SVG тянется (preserveAspectRatio none) */
+  background: url('../assets/img/footer-cta-glow.svg') center top / max(1440px, 100%) 936px no-repeat;
+  pointer-events: none;
+}
+.page-cta__card--dark {
+  position: relative; /* поверх свечения */
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-44);
+  /* По сетке, шире контента на 2% (решение пользователя 01.10; в макете 1360 = +6%). Раньше ограничения
+     не было — на экранах шире 1440 панель растягивалась на всю ширину минус поля 40. */
+  max-width: calc(var(--content-width) * 1.02);
+  padding: calc(var(--space-40) - var(--border-width));
+  background-image: var(--gradient-glass-dark);
+  text-align: left;
+}
+.page-cta__content--dark {
+  flex: 1 1 0;
+  gap: var(--space-24);
+  max-width: 900px;
+  min-width: 0;
+}
+/* H2 48 → 40 (как у CTA подвала рынков): ширина 900 × 40/48 — перенос как в макете, акцент второй строкой */
+.page-cta__title--dark {
+  max-width: 750px;
+  color: var(--color-text);
+}
+.page-cta__accent--dark { color: var(--color-accent); }
+.page-cta__text--dark { color: var(--color-surface-tint); }
+.page-cta__action { margin-left: auto; }
+
+.site-footer__inner { position: relative; } /* над свечением .page-cta--dark */
+.site-footer--flush {
+  padding-top: var(--space-72);
+  background-image: none;
+}
+
+@media (max-width: 1024px) {
+  .page-cta__card--dark {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-32);
+  }
+  .page-cta__action { margin-left: 0; }
+  .site-footer--flush { padding-top: var(--space-64); }
+}
+@media (max-width: 767px) {
+  .page-cta--dark { padding-top: var(--space-24); }
+  .page-cta__card--dark {
+    gap: var(--space-24);
+    padding: calc(var(--space-24) - var(--border-width)) calc(var(--space-20) - var(--border-width));
+  }
+  .site-footer--flush { padding-top: var(--space-48); }
+}
+
+/* ════════ Your next step (6218:5566) ═════════════════════════════
+   Панель Tint r60 со знаком-декором и двумя карточками: счёт и платформа.
+   Общий блок страниц рынков и 10 Funding (legals 6421:6712) — перенесён из market.css 2026-09-24 */
+.next-step { padding: var(--section-pad-lg) var(--inset-gutter); }
+.next-step__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-44);
+  max-width: calc(var(--content-width) + var(--space-80));
+  margin-inline: auto;
+}
+.next-step__panel {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-16);
+  width: 100%;
+  padding: var(--space-44);
+  overflow: hidden;
+  border-radius: var(--radius-section);
+  background-color: var(--color-surface-tint);
+  /* Декор — знак G2G мятным градиентом (Vector 6263:8330, 30%) = фон контейнера */
+  background-image: url('../assets/img/next-step-deco.svg');
+  background-position: -68px calc(100% + 76px);
+  background-size: 919px 748px;
+  background-repeat: no-repeat;
+}
+/* repeat: plan-card (overline, title, actions, text, list) */
+.plan-card {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-12);
+  border: var(--border-width) solid var(--color-surface-tint);
+  border-radius: var(--radius-md);
+  background-color: var(--color-card-glass-light);
+}
+.plan-card__top {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  padding: 26px var(--space-32);
+  overflow: hidden;
+  border-radius: var(--radius-xs);
+}
+.plan-card__top--art {
+  padding-bottom: var(--space-32);
+  background-color: var(--color-surface-art);
+}
+.plan-card__top--tall { padding-bottom: 78px; } /* арт-блок без кнопки (04 Metals) */
+/* Арт MT5 справа (заливка CROP в Figma → вырезан заранее, 349×246 при 604) */
+.plan-card__art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -2;
+  width: auto; /* ширина — от высоты блока и пропорций вырезанного арта */
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+/* 07 Stocks: арт закрывает весь блок (object-fit cover), часы — у правого края */
+.plan-card__art--cover {
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  object-position: 100% 50%;
+}
+.plan-card__overline { color: var(--fg-overline); }
+.plan-card__overline--light { color: var(--color-text); } /* PLATFORM на арте — белым, как в Figma */
+.plan-card__title { color: var(--fg); }
+.plan-card__title--narrow { max-width: 419px; } /* заголовок на арте — слева от картинки */
+.plan-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.plan-card__divider {
+  width: 100%;
+  height: var(--border-width);
+  margin: 0;
+  border: 0;
+  background-color: var(--color-surface-tint);
+}
+.plan-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px;
+}
+.plan-card__text { color: var(--color-text-on-light); }
+.plan-card__list {
+  display: grid;
+  gap: 18px;
+}
+.plan-card__list--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Маркер — квадрат 4.5px в поле 20×20 (Frame 6918:9146), как в Figma */
+.plan-card__item {
+  display: flex;
+  gap: var(--space-4);
+  color: var(--color-text-on-light);
+}
+.plan-card__item::before {
+  content: "";
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(currentColor, currentColor) 7.4px 7.7px / 4.55px 4.55px no-repeat;
+}
+.plan-card__item--muted { color: var(--color-text-on-light-secondary); } /* Grey on white → On Light Secondary */
+.plan-card__item--red::before {
+  background-image: linear-gradient(var(--color-cta), var(--color-cta));
+}
+
+@media (max-width: 1024px) {
+  .next-step__panel {
+    flex-direction: column;
+    padding: var(--space-24);
+  }
+}
+@media (max-width: 767px) {
+  .next-step__panel { padding: var(--space-12); }
+  .plan-card__top { padding: var(--space-24) var(--space-20); }
+  .plan-card__body { padding: var(--space-20) var(--space-12); }
+  .plan-card__list--two { grid-template-columns: minmax(0, 1fr); }
+  /* Узкая карточка: арт уходит под текст — затемнение слева направо держит контраст */
+  .plan-card__top--art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: linear-gradient(90deg, var(--color-surface-art) 35%, transparent 100%);
+  }
+  .plan-card__art { max-width: 75%; }
+  .plan-card__art--cover { max-width: none; }
+}
+
+/* Your next step: вариант 10 Funding (legals 6421:6712) — без заголовка, знак ниже (bottom −68),
+   карточки 0.75 : 1, верх блоков 52/32; левая карточка — белое стекло 50% без рамки */
+.next-step__panel--deco-low { background-position: -68px calc(100% + 68px); }
+.plan-card--narrow { flex-grow: 0.75; }
+.plan-card--soft {
+  border-color: transparent;
+  background-color: var(--color-card-glass-soft);
+}
+.plan-card__top--roomy { padding: 52px var(--space-32); }
+.plan-card__text--secondary { color: var(--color-text-on-light-secondary); }
+/* Плашка-примечание внизу карточки (Approved wording placeholders) */
+.plan-card__note {
+  padding: var(--space-24) var(--space-28);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-tint);
+  color: var(--color-text-on-light-secondary); /* On Light Muted на Tint 2.7 → Secondary (решение 24.09) */
+}
+@media (max-width: 1024px) {
+  .plan-card--narrow { flex-grow: 1; }
+  .plan-card__top--roomy { padding: var(--space-40) var(--space-32); }
+}
+@media (max-width: 767px) {
+  .plan-card__top--roomy { padding: var(--space-32) var(--space-20); }
+  .plan-card__note { padding: var(--space-20); }
+}
+
+/* ════════ FAQ, тёмный вариант (10 Funding 6421:6756) ═════════════════
+   Тёмная секция со скруглением 30 сверху, фон — растр Mesh gradient (assets/_src/funding/faq-bg.html).
+   FAQ Item Dark = карточка: свёрнута — подложка 50% с рамкой, раскрыта — 20% без рамки; шеврон мятный */
+.faq--dark {
+  border-radius: var(--radius-header) var(--radius-header) 0 0; /* 30 */
+  background: var(--color-surface-dark) url('../assets/img/faq-dark-bg.webp') center top / max(1440px, 100%) auto no-repeat;
+}
+.faq-item--card {
+  padding: calc(22px - var(--border-width)) calc(var(--space-24) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-md);
+  background-color: var(--color-faq-card);
+  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease;
+}
+/* состояние — как у светлого FAQ: [open] без JS, is-open с js/faq.js */
+.faq-item--card:is([open]:not(.faq-item--js), .is-open) {
+  border-color: transparent;
+  background-color: var(--color-faq-card-open);
+}
+.faq-item--card::after {
+  top: 23px;
+  right: var(--space-24);
+  background-color: var(--color-accent);
+  -webkit-mask-image: url('../assets/icons/chevron-down-24.svg');
+  mask-image: url('../assets/icons/chevron-down-24.svg');
+}
+.faq-item--card:is([open]:not(.faq-item--js), .is-open)::after {
+  background-color: var(--color-accent);
+  transform: rotate(180deg);
+}
+
+/* Support: вариант на белом с надзаголовком и лидом (10 Funding 6421:6764) */
+.support--plain { background-color: var(--color-surface-light); }
+
+/* ════════ Input (6008:147) — поле формы с видимой подписью (ТЗ §7.9) ═════════
+   Подпись Small Secondary · поле 52: подложка 5%, рамка On Light, радиус 12. Фокус — рамка Deep (как в Figma) */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+}
+.field__label {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-on-light-secondary);
+}
+.field__control {
+  width: 100%;
+  height: 52px;
+  padding: 0 calc(var(--space-16) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-overlay-on-light);
+  color: var(--color-text-on-light);
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  appearance: none;
+  transition: border-color var(--dur-fast) ease;
+}
+.field__control::placeholder {
+  color: var(--color-text-on-light-muted);
+  opacity: 1;
+}
+.field__control:focus {
+  outline: none;
+  border-color: var(--color-accent-deep);
+}
+.field__control:focus-visible { box-shadow: 0 0 0 2px var(--color-deep-wash); }
+.field__control--area {
+  height: 107px; /* блок Message 135 − подпись − зазор */
+  padding-block: calc(var(--space-16) - var(--border-width));
+  resize: vertical;
+}
+
+/* ════════ Временные заглушки секций (удалить по мере вёрстки) ═════ */
+.dev-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-xl);
+  color: var(--fg-3);
+  font-size: var(--fs-small);
+}
+
+/* ════════ Strip — полоса колонок (Strip Column 6106:3663) ═══════════
+   Перенесено из market.css 28.09: стоит и на рынках (часы, условия), и на 11 About (Presence strip).
+   Колонки делятся рамкой; у последней рамки нет. */
+.strip {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border-subtle);
+  border-radius: var(--radius-xl); /* 22 → 24 */
+  background-color: var(--color-strip-bg);
+}
+.strip__col {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: var(--space-32) 30px;
+  border-right: var(--border-width) solid var(--color-border-subtle);
+}
+.strip__col--last { border-right: 0; }
+/* Колонка-карточка: заголовок + абзац (Indices US100…, Crypto Pip Value…) — на мобильном
+   остаётся столбиком, а не «день слева, часы справа» */
+.strip__col--card { justify-content: flex-start; }
+.strip__title { color: var(--color-text); }
+.strip__text { color: var(--color-text-secondary); }
+.strip__abbr { text-decoration: none; }
+@media (max-width: 1024px) {
+  .strip__col { padding: var(--space-24) var(--space-20); }
+}
+@media (max-width: 767px) {
+  /* Дни — строками: день слева, часы справа */
+  .strip { flex-direction: column; }
+  .strip__col {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: var(--space-16) var(--space-20);
+    border-right: 0;
+    border-bottom: var(--border-width) solid var(--color-border-subtle);
+  }
+  .strip__col--last { border-bottom: 0; }
+  .strip__col--card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+    padding: var(--space-20);
+  }
+}

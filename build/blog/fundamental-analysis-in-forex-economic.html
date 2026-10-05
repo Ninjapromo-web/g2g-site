@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — с текущего сайта g2ggroup.com, до SEO-правок -->
+  <title>Fundamental Analysis in Forex: News, Rates &amp; Central Banks | G2G Group LTD</title>
+  <meta name="description" content="Learn fundamental analysis in forex trading, including economic news, interest rates, and central banks—and how they drive currency movements.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="preload" href="../assets/img/inner-hero-bg.webp" as="image">
+  <script src="../js/header.js" defer></script>
+  <script src="../js/analytics.js" defer></script>
+  <script src="../js/doc-toc.js" defer></script>
+  <script src="../js/stack.js" defer></script>
+  <script src="../js/faq.js" defer></script>
+  <script src="../js/quotes.js" defer></script>
+  <script src="../js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header site-header--solid site-header--always-solid" data-el="header" data-name="site-header">
+    <div class="site-header__bar site-header__bar--solid" data-el="container">
+      <a class="site-header__logo" href="../index.html" data-el="image">
+        <img class="site-header__logo-img" src="../assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="../metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="../indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="../crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="../stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="../markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="../business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="../accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="../accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="../funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="../regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="../legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item site-header__item--active"><a class="site-header__link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="../accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="../accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="../legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="../blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article" data-el="container">
+
+    <!-- section: article-head (Article head 6023:2707) — шапка Solid с самого верха; в WP — шаблон записи (Single Post):
+         рубрика — одна основная (Uncategorized не выводится), автор — «G2G», а не логин, время чтения — по числу слов -->
+    <section class="article-head theme-light" data-el="container" data-name="article-head">
+      <div class="article-head__inner container" data-el="container">
+        <nav aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb breadcrumb--light">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="../blog.html">Blog</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path">Forex</li>
+          </ol>
+        </nav>
+        <p class="pill pill--mint pill--mint-strong" data-el="text">Forex</p>
+        <h1 class="article-head__title type-h1" data-el="heading">Fundamental Analysis in Forex: Economic News, Interest Rates, and Central Banks</h1>
+        <p class="article-meta type-small" data-el="text">
+          <span class="article-meta__author">G2G</span>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <time datetime="2026-02-23">February 23, 2026</time>
+          <span class="article-meta__dot" aria-hidden="true">·</span>
+          <span>15 min read</span>
+        </p>
+        <!-- Cover image 6023:2723: обложка записи + hue #1B4B39 (слой CSS). alt пустой: на обложке вписан заголовок записи — он же в h1 -->
+        <div class="article-cover" data-el="container">
+          <img class="article-cover__img" src="../assets/img/blog/fundamental-analysis-in-forex-economic.webp" width="1920" height="1080" alt="" decoding="async" fetchpriority="high" data-el="image">
+        </div>
+      </div>
+    </section>
+
+    <!-- section: article-body (Article body 6023:2725) -->
+    <section class="article-body theme-light" data-el="container" data-name="article-body">
+      <div class="article-body__inner container" data-el="container">
+        <!-- Тело записи — как его отдаёт WordPress: теги без классов (research/blog-old-site/clean/<slug>.html, слова не менялись).
+             Вид задаёт .article-content в pages.css; id у h2 ставит сборка (в теме — фильтр содержимого), из них же оглавление -->
+        <div class="article-content" data-el="text">
+<h2 id="introduction-why-fundamentals-move-the-forex-market">Introduction: Why Fundamentals Move the Forex Market</h2>
+<p>Currencies do not move randomly. Behind every major rally, collapse, or long-term trend in the forex market lies a <strong>fundamental reason</strong>—whether it’s a surprise interest rate hike, an inflation shock, or a shift in central bank policy.</p>
+<p>This is where <strong>fundamental analysis in forex trading</strong> becomes essential.</p>
+<p>Unlike technical analysis, which focuses on price charts and indicators, fundamental analysis examines the <strong>economic forces</strong> that determine a currency’s true value. These forces include:</p>
+<ul>
+<li>
+Economic data releases
+</li>
+<li>
+Interest rate decisions
+</li>
+<li>
+Central bank policy statements
+</li>
+<li>
+Global risk sentiment
+</li>
+</ul>
+<p>Understanding these drivers allows traders to anticipate <strong>why</strong> currencies move—not just <strong>when</strong>.</p>
+<p>In this guide, you’ll learn how fundamental analysis works in forex, how to interpret economic news, and how central banks and interest rates shape currency markets globally.</p>
+<h2 id="what-is-fundamental-analysis-in-forex">What Is Fundamental Analysis in Forex?</h2>
+<p><strong>Fundamental analysis in forex</strong> is the evaluation of a currency’s value based on <strong>economic, financial, and geopolitical factors</strong>.</p>
+<p>Instead of asking:</p>
+<blockquote>
+<p>“What does the chart say?”</p>
+</blockquote>
+<p>Fundamental traders ask:</p>
+<blockquote>
+<p>“What is happening in the economy that makes this currency stronger or weaker?”</p>
+</blockquote>
+<h3>Core Goal of Forex Fundamental Analysis</h3>
+<p>The primary objective is to determine whether a currency is:</p>
+<ul>
+<li>
+<strong>Overvalued</strong>
+</li>
+<li>
+<strong>Undervalued</strong>
+</li>
+<li>
+<strong>Fairly priced</strong>
+</li>
+</ul>
+<p>This assessment helps traders position themselves for <strong>medium- to long-term trends</strong>, as well as high-impact short-term moves around major news events.</p>
+<h3>What Fundamental Analysis Focuses On</h3>
+<p>Fundamental analysis in forex trading revolves around three pillars:</p>
+<ol>
+<li>
+<strong>Economic News &amp; Data</strong>
+</li>
+<li>
+<strong>Interest Rates</strong>
+</li>
+<li>
+<strong>Central Banks</strong>
+</li>
+</ol>
+<p>Each of these components influences capital flows, investor confidence, and currency demand.</p>
+<h2 id="how-the-forex-market-reacts-to-economic-forces">How the Forex Market Reacts to Economic Forces</h2>
+<p>Currencies represent economies. When an economy performs well, demand for its currency tends to rise. When economic conditions deteriorate, capital often flows out.</p>
+<p>Key drivers include:</p>
+<ul>
+<li>
+Economic growth
+</li>
+<li>
+Inflation levels
+</li>
+<li>
+Employment strength
+</li>
+<li>
+Political stability
+</li>
+<li>
+Monetary policy
+</li>
+</ul>
+<p>Because forex markets are forward-looking, prices often move <strong>before</strong> data is released—based on expectations.</p>
+<h2 id="economic-news-and-forex-trading-explained">Economic News and Forex Trading Explained</h2>
+<p>Economic news releases are among the <strong>most powerful catalysts</strong> in forex trading.</p>
+<h3>Why Economic News Matters in Forex</h3>
+<p>Economic data provides insight into:</p>
+<ul>
+<li>
+The health of an economy
+</li>
+<li>
+Future interest rate decisions
+</li>
+<li>
+Central bank policy direction
+</li>
+</ul>
+<p>When actual data differs from expectations, markets react—often violently.</p>
+<h3>High-Impact Economic Indicators for Forex</h3>
+<p>Some reports consistently move currency markets more than others.</p>
+<h4>1. Gross Domestic Product (GDP)</h4>
+<p>GDP measures overall economic output.</p>
+<ul>
+<li>
+Strong GDP → Currency appreciation
+</li>
+<li>
+Weak GDP → Currency depreciation
+</li>
+</ul>
+<p>GDP trends influence long-term currency valuation.</p>
+<h4>2. Inflation Data (CPI &amp; PPI)</h4>
+<p>Inflation directly impacts monetary policy.</p>
+<ul>
+<li>
+Rising inflation → Potential rate hikes
+</li>
+<li>
+Falling inflation → Potential rate cuts
+</li>
+</ul>
+<p>Because of this, inflation reports are closely watched by traders and central banks alike.</p>
+<h4>3. Employment Data</h4>
+<p>Employment reflects economic strength and consumer demand.</p>
+<p>Key reports include:</p>
+<ul>
+<li>
+Non-Farm Payrolls (NFP)
+</li>
+<li>
+Unemployment Rate
+</li>
+<li>
+Wage Growth
+</li>
+</ul>
+<p>Strong labor markets often support higher interest rates.</p>
+<h2 id="understanding-market-expectations-vs-actual-data">Understanding Market Expectations vs Actual Data</h2>
+<p>One of the most misunderstood aspects of fundamental analysis is <strong>expectations</strong>.</p>
+<p>Forex markets do not react to data alone—they react to:</p>
+<ul>
+<li>
+<strong>Data vs forecasts</strong>
+</li>
+<li>
+<strong>Forward guidance</strong>
+</li>
+<li>
+<strong>Revisions to prior data</strong>
+</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>
+Expected inflation: 3.0%
+</li>
+<li>
+Actual inflation: 3.0%<br>→ Little to no reaction
+</li>
+</ul>
+<p>But:</p>
+<ul>
+<li>
+Expected inflation: 2.5%
+</li>
+<li>
+Actual inflation: 3.2%<br>→ Sharp currency movement
+</li>
+</ul>
+<p>Surprises move markets, not headlines.</p>
+<h2 id="economic-calendars-a-fundamental-traders-tool">Economic Calendars: A Fundamental Trader’s Tool</h2>
+<p>Every fundamental forex trader relies on an economic calendar.</p>
+<p>Economic calendars show:</p>
+<ul>
+<li>
+Release dates
+</li>
+<li>
+Expected values
+</li>
+<li>
+Previous data
+</li>
+<li>
+Impact level (low, medium, high)
+</li>
+</ul>
+<p>They help traders prepare for volatility rather than react emotionally.</p>
+<h3>How to Use an Economic Calendar Effectively</h3>
+<p>Best practices include:</p>
+<ul>
+<li>
+Avoid entering trades before major releases
+</li>
+<li>
+Trade post-news confirmation
+</li>
+<li>
+Align news bias with broader trends
+</li>
+</ul>
+<p>Track revisions and central bank reactions</p>
+<h2 id="interest-rates-and-forex-the-most-powerful-driver-of-currenc">Interest Rates and Forex: The Most Powerful Driver of Currency Prices</h2>
+<p>If there is <strong>one fundamental factor</strong> that dominates long-term currency movements, it is <strong>interest rates</strong>.</p>
+<p>In fact, many professional traders argue that <strong>interest rates are the backbone of fundamental analysis in forex trading</strong>. Economic data, inflation, and employment matter largely because they influence where interest rates are headed next.</p>
+<h2 id="why-interest-rates-matter-so-much-in-forex">Why Interest Rates Matter So Much in Forex</h2>
+<p>Currencies are financial assets. Just like bonds or stocks, they offer a <strong>return</strong>—and that return is heavily influenced by interest rates.</p>
+<p>Higher interest rates generally mean:</p>
+<ul>
+<li>
+Better yield on deposits and bonds
+</li>
+<li>
+Increased foreign investment
+</li>
+<li>
+Stronger demand for the currency
+</li>
+</ul>
+<p>Lower interest rates often result in:</p>
+<ul>
+<li>
+Capital outflows
+</li>
+<li>
+Reduced returns
+</li>
+<li>
+Weaker currency value
+</li>
+</ul>
+<p>This relationship forms the basis of <strong>capital flow theory</strong> in forex.</p>
+<h2 id="the-link-between-interest-rates-and-capital-flows">The Link Between Interest Rates and Capital Flows</h2>
+<p>Global investors are constantly searching for yield.</p>
+<p>When a country offers higher interest rates than others:</p>
+<ul>
+<li>
+Foreign investors convert money into that currency
+</li>
+<li>
+Demand for the currency increases
+</li>
+<li>
+Exchange rate rises
+</li>
+</ul>
+<p>Conversely, when rates fall:</p>
+<ul>
+<li>
+Investors move capital elsewhere
+</li>
+<li>
+Currency demand drops
+</li>
+<li>
+Exchange rate weakens
+</li>
+</ul>
+<p>This is why <strong>interest rate expectations</strong>, not just current rates, move the forex market.</p>
+<h2 id="interest-rate-expectations-vs-actual-rates">Interest Rate Expectations vs Actual Rates</h2>
+<p>One of the most critical concepts in forex fundamental analysis is this:</p>
+<blockquote>
+<p><strong>Currencies move based on where interest rates are expected to go—not where they are now.</strong></p>
+</blockquote>
+<h3>Example Scenario:</h3>
+<ul>
+<li>
+Current interest rate: 3.00%
+</li>
+<li>
+Market expects a hike to 3.50%<br>→ Currency strengthens <strong>before</strong> the hike
+</li>
+</ul>
+<p>When the hike finally occurs:</p>
+<ul>
+<li>
+If expectations are met → Limited reaction
+</li>
+<li>
+If expectations are exceeded → Strong rally
+</li>
+<li>
+If expectations disappoint → Sharp sell-off
+</li>
+</ul>
+<p>This forward-looking behavior explains why currencies often move <em>ahead</em> of central bank announcements.</p>
+<h2 id="interest-rate-differentials-explained">Interest Rate Differentials Explained</h2>
+<p>Forex trading always involves <strong>pairs</strong>, not single currencies. This makes <strong>interest rate differentials</strong> extremely important.</p>
+<h3>What Is an Interest Rate Differential?</h3>
+<p>It is the difference between the interest rates of two currencies in a pair.</p>
+<p>Example:</p>
+<ul>
+<li>
+USD interest rate: 5.00%
+</li>
+<li>
+JPY interest rate: 0.10%
+</li>
+<li>
+Differential: 4.90%
+</li>
+</ul>
+<p>This differential affects:</p>
+<ul>
+<li>
+Capital flows
+</li>
+<li>
+Swap rates
+</li>
+<li>
+Long-term trend direction
+</li>
+</ul>
+<p>Pairs with widening differentials often trend strongly.</p>
+<h2 id="carry-trades-interest-rates-in-action">Carry Trades: Interest Rates in Action</h2>
+<p>The <strong>carry trade</strong> is a classic forex strategy built entirely around interest rate differentials.</p>
+<h3>How Carry Trades Work</h3>
+<p>Traders:</p>
+<ol>
+<li>
+Borrow a low-interest-rate currency
+</li>
+<li>
+Buy a high-interest-rate currency
+</li>
+<li>
+Earn the interest rate difference daily
+</li>
+</ol>
+<p>Historically popular carry trade pairs include:</p>
+<ul>
+<li>
+AUD/JPY
+</li>
+<li>
+NZD/JPY
+</li>
+<li>
+USD/JPY (during low JPY rate periods)
+</li>
+</ul>
+<h3>Why Carry Trades Can Be Profitable—and Risky</h3>
+<p>Carry trades perform well when:</p>
+<ul>
+<li>
+Markets are stable
+</li>
+<li>
+Risk sentiment is positive
+</li>
+<li>
+Interest rate spreads are widening
+</li>
+</ul>
+<p>They struggle when:</p>
+<ul>
+<li>
+Risk-off sentiment dominates
+</li>
+<li>
+Volatility spikes
+</li>
+<li>
+Central banks shift policy
+</li>
+</ul>
+<p>This is why carry trades often unwind violently during financial crises.</p>
+<h2 id="real-interest-rates-and-currency-strength">Real Interest Rates and Currency Strength</h2>
+<p>Nominal interest rates alone do not tell the full story.</p>
+<h3>What Are Real Interest Rates?</h3>
+<p>Real interest rates =<br><strong>Nominal interest rate − Inflation rate</strong></p>
+<p>A country with:</p>
+<ul>
+<li>
+6% interest rate
+</li>
+<li>
+5% inflation
+</li>
+</ul>
+<p>Has a real rate of only 1%.</p>
+<p>Currencies tend to strengthen when:</p>
+<ul>
+<li>
+Real interest rates are rising
+</li>
+<li>
+Inflation is controlled
+</li>
+<li>
+Central banks are perceived as credible
+</li>
+</ul>
+<p>This is why inflation data is so closely linked to forex markets.</p>
+<h2 id="yield-curves-and-forex-market-expectations">Yield Curves and Forex Market Expectations</h2>
+<p>Advanced fundamental traders also watch <strong>yield curves</strong>, especially in major economies.</p>
+<h3>What Yield Curves Signal</h3>
+<ul>
+<li>
+Rising yields → Growth optimism
+</li>
+<li>
+Inverted yield curves → Recession risk
+</li>
+</ul>
+<p>Changes in yield curves often:</p>
+<ul>
+<li>
+Precede currency trend shifts
+</li>
+<li>
+Influence long-term capital flows
+</li>
+<li>
+Shape central bank expectations
+</li>
+</ul>
+<p>Forex markets respond quickly to these signals.</p>
+<h2 id="interest-rates-vs-other-economic-indicators">Interest Rates vs Other Economic Indicators</h2>
+<p>While GDP, employment, and inflation are important, they all feed into one key question:</p>
+<blockquote>
+<p><strong>What will the central bank do next?</strong></p>
+</blockquote>
+<p>Interest rates act as the <strong>final transmission mechanism</strong> between economic data and currency valuation.</p>
+<p>This is why traders often say:</p>
+<blockquote>
+<p>“Trade the central bank, not the data.”</p>
+</blockquote>
+<h2 id="how-traders-position-around-interest-rate-decisions">How Traders Position Around Interest Rate Decisions</h2>
+<p>Professional forex traders rarely gamble on announcements blindly.</p>
+<p>Common approaches include:</p>
+<ul>
+<li>
+Trading expectations weeks in advance
+</li>
+<li>
+Scaling into positions before decisions
+</li>
+<li>
+Waiting for post-decision confirmation
+</li>
+<li>
+Using options to manage risk
+</li>
+</ul>
+<p>Risk management is critical during rate decisions due to extreme volatility.</p>
+<h2 id="central-banks-and-forex-markets-who-really-controls-currency">Central Banks and Forex Markets: Who Really Controls Currency Direction?</h2>
+<p>If economic data provides the <strong>signals</strong> and interest rates provide the <strong>mechanism</strong>, then <strong>central banks provide the power</strong>.</p>
+<p>In <strong>fundamental analysis in forex</strong>, central banks are the single most influential institutions shaping long-term currency trends. Their decisions dictate interest rates, liquidity, inflation control, and investor confidence.</p>
+<p>In many cases, currencies move more on <strong>what central banks say</strong> than on what they actually do.</p>
+<h2 id="what-is-a-central-bank">What Is a Central Bank?</h2>
+<p>A central bank is a country’s primary monetary authority, responsible for maintaining economic and financial stability.</p>
+<p>Its core objectives typically include:</p>
+<ul>
+<li>
+Price stability (controlling inflation)
+</li>
+<li>
+Economic growth support
+</li>
+<li>
+Financial system stability
+</li>
+<li>
+Currency credibility
+</li>
+</ul>
+<p>Because currencies are backed by national economies, central banks sit at the heart of forex valuation.</p>
+<h2 id="how-central-banks-influence-forex-markets">How Central Banks Influence Forex Markets</h2>
+<p>Central banks affect currency prices through <strong>monetary policy</strong>, which directly impacts money supply and interest rates.</p>
+<p>Their influence works through several channels:</p>
+<ul>
+<li>
+Interest rate decisions
+</li>
+<li>
+Market expectations
+</li>
+<li>
+Liquidity injections or withdrawals
+</li>
+<li>
+Policy communication and guidance
+</li>
+</ul>
+<p>Even subtle wording changes can move billions in capital.</p>
+<h2 id="monetary-policy-explained-in-simple-terms">Monetary Policy Explained in Simple Terms</h2>
+<p>Monetary policy refers to how central banks manage money and credit conditions.</p>
+<h3>The Two Main Types of Monetary Policy</h3>
+<h4>1. Hawkish Monetary Policy</h4>
+<p>Hawkish policy aims to <strong>fight inflation</strong>.</p>
+<p>Characteristics include:</p>
+<ul>
+<li>
+Raising interest rates
+</li>
+<li>
+Reducing liquidity
+</li>
+<li>
+Tightening financial conditions
+</li>
+</ul>
+<p>Currencies tend to <strong>strengthen</strong> under hawkish policy.</p>
+<h4>2. Dovish Monetary Policy</h4>
+<p>Dovish policy aims to <strong>stimulate growth</strong>.</p>
+<p>Characteristics include:</p>
+<ul>
+<li>
+Cutting interest rates
+</li>
+<li>
+Increasing liquidity
+</li>
+<li>
+Supporting borrowing and spending
+</li>
+</ul>
+<p>Currencies often <strong>weaken</strong> under dovish policy.</p>
+<h2 id="central-bank-tools-that-move-forex-markets">Central Bank Tools That Move Forex Markets</h2>
+<p>Central banks have several tools at their disposal, each with different market impacts.</p>
+<h3>1. Interest Rate Decisions</h3>
+<p>The most direct and powerful tool.</p>
+<p>Even a <strong>0.25% change</strong> can:</p>
+<ul>
+<li>
+Trigger massive forex volatility
+</li>
+<li>
+Shift long-term currency trends
+</li>
+</ul>
+<h3>2. Open Market Operations</h3>
+<p>Central banks buy or sell government securities to:</p>
+<ul>
+<li>
+Inject liquidity
+</li>
+<li>
+Drain excess money
+</li>
+</ul>
+<p>This affects yields, bond markets, and currency flows.</p>
+<h3>3. Quantitative Easing (QE)</h3>
+<p>QE involves large-scale asset purchases.</p>
+<p>Effects on forex:</p>
+<ul>
+<li>
+Expands money supply
+</li>
+<li>
+Lowers long-term yields
+</li>
+<li>
+Weakens currency over time
+</li>
+</ul>
+<p>QE is often used during economic crises.</p>
+<h3>4. Quantitative Tightening (QT)</h3>
+<p>QT is the opposite of QE.</p>
+<p>Effects include:</p>
+<ul>
+<li>
+Reduced liquidity
+</li>
+<li>
+Rising yields
+</li>
+<li>
+Strengthening currency
+</li>
+</ul>
+<p>Markets closely track QT pace and duration.</p>
+<h3>5. Forward Guidance</h3>
+<p>Forward guidance refers to <strong>verbal communication</strong> about future policy.</p>
+<p>This includes:</p>
+<ul>
+<li>
+Policy statements
+</li>
+<li>
+Press conferences
+</li>
+<li>
+Economic projections
+</li>
+</ul>
+<p>Forex markets often move more on guidance than on the actual decision.</p>
+<h2 id="why-central-bank-communication-matters-more-than-actions">Why Central Bank Communication Matters More Than Actions</h2>
+<p>In modern forex markets, <strong>expectation management</strong> is everything.</p>
+<p>Central banks aim to:</p>
+<ul>
+<li>
+Avoid shocking markets
+</li>
+<li>
+Gradually guide expectations
+</li>
+<li>
+Maintain credibility
+</li>
+</ul>
+<p>A single phrase such as:</p>
+<blockquote>
+<p>“We are prepared to act if necessary”</p>
+</blockquote>
+<p>Can cause:</p>
+<ul>
+<li>
+Yield shifts
+</li>
+<li>
+Currency rallies or sell-offs
+</li>
+<li>
+Volatility spikes
+</li>
+</ul>
+<p>Professional traders dissect every word.</p>
+<h2 id="the-worlds-most-influential-central-banks-in-forex">The World’s Most Influential Central Banks in Forex</h2>
+<p>Not all central banks carry equal weight. Some dominate global capital flows.</p>
+<h3>Federal Reserve (United States)</h3>
+<p>The Federal Reserve is the <strong>most powerful central bank in the world</strong>.</p>
+<p>Why it matters:</p>
+<ul>
+<li>
+USD is the global reserve currency
+</li>
+<li>
+US interest rates affect global liquidity
+</li>
+<li>
+Fed policy impacts emerging and developed markets alike
+</li>
+</ul>
+<p>Hawkish Fed → Strong USD<br>Dovish Fed → Weak USD</p>
+<h3>European Central Bank (Eurozone)</h3>
+<p>The ECB controls monetary policy for 20 eurozone countries.</p>
+<p>Key challenges:</p>
+<ul>
+<li>
+Diverse economies
+</li>
+<li>
+Inflation disparities
+</li>
+<li>
+Political fragmentation
+</li>
+</ul>
+<p>ECB policy strongly influences:</p>
+<ul>
+<li>
+EUR/USD
+</li>
+<li>
+EUR/GBP
+</li>
+<li>
+EUR/JPY
+</li>
+</ul>
+<h3>Bank of Japan (Japan)</h3>
+<p>The BOJ is known for <strong>ultra-loose monetary policy</strong>.</p>
+<p>Key features:</p>
+<ul>
+<li>
+Near-zero interest rates
+</li>
+<li>
+Yield Curve Control (YCC)
+</li>
+<li>
+Heavy market intervention
+</li>
+</ul>
+<p>JPY often weakens during:</p>
+<ul>
+<li>
+Risk-on environments
+</li>
+<li>
+Widening rate differentials
+</li>
+</ul>
+<h3>Bank of England (United Kingdom)</h3>
+<p>The BOE balances:</p>
+<ul>
+<li>
+Inflation control
+</li>
+<li>
+Economic growth
+</li>
+<li>
+Political uncertainty
+</li>
+</ul>
+<p>GBP is highly sensitive to:</p>
+<ul>
+<li>
+Rate expectations
+</li>
+<li>
+Inflation surprises
+</li>
+<li>
+Policy credibility
+</li>
+</ul>
+<h3>Swiss National Bank</h3>
+<p>The SNB actively manages CHF strength.</p>
+<p>Known for:</p>
+<ul>
+<li>
+Currency interventions
+</li>
+<li>
+Safe-haven policy
+</li>
+<li>
+Aggressive inflation control
+</li>
+</ul>
+<p>CHF often strengthens during global uncertainty.</p>
+<h2 id="central-bank-divergence-and-forex-trends">Central Bank Divergence and Forex Trends</h2>
+<p>One of the most powerful fundamental themes in forex is <strong>policy divergence</strong>.</p>
+<h3>What Is Central Bank Divergence?</h3>
+<p>It occurs when:</p>
+<ul>
+<li>
+One central bank tightens policy
+</li>
+<li>
+Another eases or stays neutral
+</li>
+</ul>
+<p>This creates:</p>
+<ul>
+<li>
+Widening interest rate differentials
+</li>
+<li>
+Strong directional currency trends
+</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>
+Fed tightening + BOJ easing<br>→ USD/JPY uptrend
+</li>
+</ul>
+<h2 id="central-banks-and-risk-sentiment">Central Banks and Risk Sentiment</h2>
+<p>Central banks also shape <strong>global risk appetite</strong>.</p>
+<ul>
+<li>
+Easy policy → Risk-on environment
+</li>
+<li>
+Tight policy → Risk-off environment
+</li>
+</ul>
+<p>Risk-on favors:</p>
+<ul>
+<li>
+High-yield currencies
+</li>
+<li>
+Carry trades
+</li>
+</ul>
+<p>Risk-off favors:</p>
+<ul>
+<li>
+USD
+</li>
+<li>
+JPY
+</li>
+<li>
+CHF
+</li>
+</ul>
+<p>Understanding this dynamic is crucial for positioning.</p>
+<h2 id="how-to-combine-fundamental-and-technical-analysis-in-forex">How to Combine Fundamental and Technical Analysis in Forex</h2>
+<p>One of the most common misconceptions among traders is that they must choose between <strong>fundamental analysis</strong> and <strong>technical analysis</strong>. In reality, the most consistent traders combine both.</p>
+<h3>Why a Hybrid Approach Works Best</h3>
+<p>Fundamental analysis answers:</p>
+<ul>
+<li>
+<strong>Why</strong> the market should move
+</li>
+</ul>
+<p>Technical analysis answers:</p>
+<ul>
+<li>
+<strong>When</strong> to enter and exit
+</li>
+</ul>
+<p>When aligned, these two approaches significantly improve probability.</p>
+<h3>Practical Example of a Combined Strategy</h3>
+<ol>
+<li>
+<strong>Fundamental Bias</strong>
+<ul>
+<li>
+Inflation rising faster than expected
+</li>
+<li>
+Central bank signaling tighter policy
+</li>
+<li>
+Bullish bias on the currency
+</li>
+</ul>
+</li>
+<li>
+<strong>Technical Confirmation</strong>
+<ul>
+<li>
+Price breaks above key resistance
+</li>
+<li>
+Higher highs and higher lows form
+</li>
+<li>
+Momentum indicator confirms trend
+</li>
+</ul>
+</li>
+<li>
+<strong>Execution</strong>
+<ul>
+<li>
+Enter on pullback or breakout
+</li>
+<li>
+Stop-loss below structure
+</li>
+<li>
+Target aligned with trend strength
+</li>
+</ul>
+</li>
+</ol>
+<p>This approach avoids emotional trades and random entries.</p>
+<h2 id="news-trading-vs-long-term-fundamental-positioning">News Trading vs Long-Term Fundamental Positioning</h2>
+<p>Fundamental analysis can be applied in different ways depending on your trading style.</p>
+<h3>Short-Term News Trading</h3>
+<p>News trading focuses on <strong>volatility around economic releases</strong>.</p>
+<h4>Characteristics:</h4>
+<ul>
+<li>
+Fast execution
+</li>
+<li>
+High volatility
+</li>
+<li>
+Short holding periods
+</li>
+</ul>
+<h4>Best Practices:</h4>
+<ul>
+<li>
+Trade only high-impact events
+</li>
+<li>
+Reduce position size
+</li>
+<li>
+Wait for direction confirmation
+</li>
+<li>
+Avoid widening spreads
+</li>
+</ul>
+<p>News trading is advanced and not suitable for beginners without risk controls.</p>
+<h3>Medium- to Long-Term Fundamental Trading</h3>
+<p>This approach focuses on <strong>macroeconomic trends</strong>.</p>
+<h4>Characteristics:</h4>
+<ul>
+<li>
+Lower frequency
+</li>
+<li>
+Wider stops
+</li>
+<li>
+Strong directional bias
+</li>
+</ul>
+<h4>Ideal For:</h4>
+<ul>
+<li>
+Swing traders
+</li>
+<li>
+Position traders
+</li>
+<li>
+Traders combining fundamentals with weekly/daily charts
+</li>
+</ul>
+<p>This method is often more stable and less stressful.</p>
+<h2 id="risk-sentiment-and-its-role-in-fundamental-analysis">Risk Sentiment and Its Role in Fundamental Analysis</h2>
+<p>Beyond economic data and central banks, <strong>risk sentiment</strong> plays a critical role in forex markets.</p>
+<h3>Risk-On vs Risk-Off Explained</h3>
+<p><strong>Risk-On Environment</strong></p>
+<ul>
+<li>
+Strong global growth
+</li>
+<li>
+Stable markets
+</li>
+<li>
+Rising equities
+</li>
+</ul>
+<p>Currencies that tend to benefit:</p>
+<ul>
+<li>
+High-yield currencies
+</li>
+<li>
+Commodity-linked currencies
+</li>
+</ul>
+<p><strong>Risk-Off Environment</strong></p>
+<ul>
+<li>
+Economic uncertainty
+</li>
+<li>
+Market stress
+</li>
+<li>
+Geopolitical tension
+</li>
+</ul>
+<p>Currencies that tend to strengthen:</p>
+<ul>
+<li>
+Safe-haven currencies
+</li>
+<li>
+Reserve currencies
+</li>
+</ul>
+<p>Understanding risk sentiment helps traders avoid trading against the broader market mood.</p>
+<h2 id="common-mistakes-in-forex-fundamental-analysis">Common Mistakes in Forex Fundamental Analysis</h2>
+<p>Even experienced traders make mistakes when applying fundamentals.</p>
+<h3>Mistakes to Avoid</h3>
+<ul>
+<li>
+Trading headlines instead of expectations
+</li>
+<li>
+Ignoring central bank communication
+</li>
+<li>
+Overreacting to single data points
+</li>
+<li>
+Failing to align timeframes
+</li>
+<li>
+Neglecting risk management
+</li>
+</ul>
+<p>Fundamental analysis rewards <strong>patience, context, and discipline</strong>.</p>
+<h2 id="how-to-build-a-forex-fundamental-trading-plan">How to Build a Forex Fundamental Trading Plan</h2>
+<p>A structured plan improves consistency and confidence.</p>
+<h3>Key Components of a Fundamental Trading Plan</h3>
+<ul>
+<li>
+Core currency bias
+</li>
+<li>
+Key economic indicators to track
+</li>
+<li>
+Central bank policy outlook
+</li>
+<li>
+Risk sentiment assessment
+</li>
+<li>
+Technical entry criteria
+</li>
+<li>
+Risk and position sizing rules
+</li>
+</ul>
+<p>Without a plan, even the best analysis fails.</p>
+<h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</h2>
+<h3>1. What is fundamental analysis in forex trading?</h3>
+<p>Fundamental analysis in forex evaluates currencies based on economic data, interest rates, central bank policy, and macroeconomic conditions.</p>
+<h3>2. How does economic news affect forex prices?</h3>
+<p>Economic news influences expectations about growth, inflation, and interest rates, which directly impact currency demand and supply.</p>
+<h3>3. Why are interest rates so important in forex?</h3>
+<p>Interest rates determine capital flows. Higher rates attract investment and strengthen currencies, while lower rates often weaken them.</p>
+<h3>4. Do central banks really control currency markets?</h3>
+<p>Central banks strongly influence currency trends through monetary policy decisions, liquidity control, and forward guidance.</p>
+<h3>5. Is fundamental analysis better than technical analysis?</h3>
+<p>Neither is better alone. Fundamental analysis provides direction, while technical analysis improves timing and execution.</p>
+<h3>6. Can beginners use fundamental analysis in forex?</h3>
+<p>Yes. Beginners should start by tracking major economic indicators and understanding central bank policy trends.</p>
+<h3>7. How often should I review fundamental data?</h3>
+<p>Major economic data should be reviewed weekly, while central bank policy outlooks should be monitored continuously.</p>
+<h2 id="conclusion-mastering-fundamental-analysis-in-forex-trading">Conclusion: Mastering Fundamental Analysis in Forex Trading</h2>
+<p>Fundamental analysis in forex is about understanding <strong>why currencies move</strong>, not guessing where price will go next.</p>
+<p>By mastering:</p>
+<ul>
+<li>
+Economic news interpretation
+</li>
+<li>
+Interest rate dynamics
+</li>
+<li>
+Central bank behavior
+</li>
+<li>
+Risk sentiment
+</li>
+</ul>
+<p>You gain a powerful framework for identifying high-probability trading opportunities.</p>
+<p>When combined with disciplined execution and sound risk management, fundamental analysis transforms forex trading from speculation into <strong>strategic decision-making</strong>.</p>
+<p>If you want to trade with confidence and clarity, mastering forex fundamentals is not optional—it’s essential.</p>
+        </div>
+        <!-- Aside 6023:2737 — оглавление из разделов записи (h2). В записях их от 5 до 53: список прокручивается внутри
+             карточки; на ≤1024 свёрнуто в строку, закреплённую под шапкой (js/doc-toc.js) — общий блок с 19–24.
+             Заголовок «Table of contents» — как на 19–24 (правка пользователя 02.10; в макете «On this page») -->
+        <aside class="article-toc doc-toc" aria-label="Table of contents" data-el="container">
+          <details class="doc-toc__box" data-widget="doc-toc" open>
+            <summary class="doc-toc__summary type-overline">Table of contents</summary>
+            <ul class="article-toc__list doc-toc__list" data-el="icon-list">
+              <li><a class="article-toc__link doc-toc__link type-small" href="#introduction-why-fundamentals-move-the-forex-market">Introduction: Why Fundamentals Move the Forex Market</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#what-is-fundamental-analysis-in-forex">What Is Fundamental Analysis in Forex?</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-the-forex-market-reacts-to-economic-forces">How the Forex Market Reacts to Economic Forces</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#economic-news-and-forex-trading-explained">Economic News and Forex Trading Explained</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#understanding-market-expectations-vs-actual-data">Understanding Market Expectations vs Actual Data</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#economic-calendars-a-fundamental-traders-tool">Economic Calendars: A Fundamental Trader’s Tool</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#interest-rates-and-forex-the-most-powerful-driver-of-currenc">Interest Rates and Forex: The Most Powerful Driver of Currency Prices</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#why-interest-rates-matter-so-much-in-forex">Why Interest Rates Matter So Much in Forex</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#the-link-between-interest-rates-and-capital-flows">The Link Between Interest Rates and Capital Flows</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#interest-rate-expectations-vs-actual-rates">Interest Rate Expectations vs Actual Rates</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#interest-rate-differentials-explained">Interest Rate Differentials Explained</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#carry-trades-interest-rates-in-action">Carry Trades: Interest Rates in Action</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#real-interest-rates-and-currency-strength">Real Interest Rates and Currency Strength</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#yield-curves-and-forex-market-expectations">Yield Curves and Forex Market Expectations</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#interest-rates-vs-other-economic-indicators">Interest Rates vs Other Economic Indicators</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-traders-position-around-interest-rate-decisions">How Traders Position Around Interest Rate Decisions</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#central-banks-and-forex-markets-who-really-controls-currency">Central Banks and Forex Markets: Who Really Controls Currency Direction?</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#what-is-a-central-bank">What Is a Central Bank?</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-central-banks-influence-forex-markets">How Central Banks Influence Forex Markets</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#monetary-policy-explained-in-simple-terms">Monetary Policy Explained in Simple Terms</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#central-bank-tools-that-move-forex-markets">Central Bank Tools That Move Forex Markets</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#why-central-bank-communication-matters-more-than-actions">Why Central Bank Communication Matters More Than Actions</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#the-worlds-most-influential-central-banks-in-forex">The World’s Most Influential Central Banks in Forex</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#central-bank-divergence-and-forex-trends">Central Bank Divergence and Forex Trends</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#central-banks-and-risk-sentiment">Central Banks and Risk Sentiment</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-to-combine-fundamental-and-technical-analysis-in-forex">How to Combine Fundamental and Technical Analysis in Forex</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#news-trading-vs-long-term-fundamental-positioning">News Trading vs Long-Term Fundamental Positioning</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#risk-sentiment-and-its-role-in-fundamental-analysis">Risk Sentiment and Its Role in Fundamental Analysis</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#common-mistakes-in-forex-fundamental-analysis">Common Mistakes in Forex Fundamental Analysis</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#how-to-build-a-forex-fundamental-trading-plan">How to Build a Forex Fundamental Trading Plan</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</a></li>
+              <li><a class="article-toc__link doc-toc__link type-small" href="#conclusion-mastering-fundamental-analysis-in-forex-trading">Conclusion: Mastering Fundamental Analysis in Forex Trading</a></li>
+            </ul>
+          </details>
+          <hr class="article-toc__divider doc-toc__divider">
+          <p class="article-toc__note doc-toc__extra type-small" data-el="text">See the live spreads for every instrument in the specification tables.</p>
+          <a class="btn btn--secondary doc-toc__back" href="../markets.html" data-el="button">Market specifications</a>
+        </aside>
+      </div>
+    </section>
+
+    </article>
+
+    <!-- section: related (Related 6023:2746) — 3 × Article card (как в 16 Blog; в WP — Query Loop: свежие записи той же рубрики) -->
+    <section class="related theme-light" data-el="container" data-name="related">
+      <div class="related__inner container" data-el="container">
+        <h2 class="related__overline type-overline" data-el="heading">Related articles</h2>
+        <div class="article-grid article-grid--related" data-el="loop-grid">
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-23" data-el="text">February 23, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html">Technical Analysis in Forex Trading: Indicators and Chart Patterns</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn technical analysis in forex trading, including key indicators, chart patterns, and strategies to improve timing and consistency.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/technical-analysis-in-forex-trading-indicators-and-chart-patterns.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/forex-trading-strategies-that-actually-work-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-11" data-el="text">February 11, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/forex-trading-strategies-that-actually-work.html">Forex Trading Strategies That Actually Work</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Find forex trading strategies that actually work. Learn proven methods, risk management, and real-market techniques used by pro traders.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/forex-trading-strategies-that-actually-work.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+          <article class="article-card" data-el="container">
+            <div class="article-card__media" data-el="container"><img class="article-card__img" src="../assets/img/blog/currency-pairs-explained-820.webp" width="820" height="461" alt="" loading="lazy" decoding="async" data-el="image"></div>
+            <div class="article-card__body" data-el="container">
+              <div class="article-card__meta" data-el="container">
+                <p class="pill pill--neutral" data-el="text">Forex</p>
+                <time class="article-card__date type-caption" datetime="2026-02-11" data-el="text">February 11, 2026</time>
+              </div>
+              <h3 class="article-card__title type-h4" data-el="heading"><a href="../blog/currency-pairs-explained.html">Currency Pairs Explained in Forex Trading: Major, Minor, and Exotic</a></h3>
+              <p class="article-card__excerpt type-small" data-el="text">Learn everything to understand major, minor, and exotic currency pairs, their differences, risks, and how traders choose them.</p>
+              <a class="btn btn--ghost article-card__link" href="../blog/currency-pairs-explained.html" tabindex="-1" aria-hidden="true" data-el="button">Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: page-cta (CTA в подвале, тёмный вариант — footer 6055:5831, компонент Footer cta=true) -->
+    <section class="page-cta page-cta--dark" data-el="container" data-name="page-cta">
+      <div class="page-cta__card page-cta__card--dark" data-el="container">
+        <div class="page-cta__content page-cta__content--dark" data-el="container">
+          <h2 class="page-cta__title page-cta__title--dark type-h2" data-el="heading">Open a <span class="page-cta__accent--dark">live</span> account</h2>
+          <p class="page-cta__text page-cta__text--dark type-body" data-el="text">Clear trading conditions · MetaTrader 5 · WhatsApp support</p>
+        </div>
+        <a class="btn btn--primary btn--lg page-cta__action" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="final">Open Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Figma 6816:8376: тёмная CTA — секция page-cta--dark, подвал продолжает её без скругления) -->
+  <footer class="site-footer site-footer--flush" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="../index.html" data-el="image">
+            <img class="site-footer__logo-img" src="../assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="../platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="../funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../about.html">About</a></li>
+            <li><a class="site-footer__link" href="../regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="../help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="../terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="../order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="../security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="../anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="../complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="../demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="../business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="../regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="../help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="../blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

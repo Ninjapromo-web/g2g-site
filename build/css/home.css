@@ -1,0 +1,1688 @@
+/* G2G — главная (Figma 01 · Home v3: с 01.10 — макет 9079:8633, прежний 7045:11425; id секций ниже — прежние,
+   соответствие — в build/SECTIONS.md).
+   Секции самодостаточны: у каждой свой фон и вертикальные отступы (layout-rules.md).
+   Значения — из get_design_context по id секции (см. build/SECTIONS.md). */
+
+/* ════════ Hero (7045:11426) ═══════════════════════════════════
+   Текст, CTA, трастбар; глобус с котировками — js/globe.js (карточки — компакт Watchlist Card 7046:9471). */
+.hero {
+  /* Правки клиента 01.10 (Trello nblAGTt7): фон — ровный Surface Dark от .theme-dark, без Mesh gradient
+     (прежние пятна Blob 6/5/4/2/3 — assets/_src/hero/hero-mesh-2026-09.css); герой — под высоту экрана,
+     как в HTML клиента: первый экран = шапка + герой + полоса фактов, шар целиком между шапкой и полосой.
+     --hero-h — высота героя; --hero-head — низ плавающей шапки (16 + 72); --hero-strip — высота полосы фактов
+     (24 + 47 + 24 и две линии по 1) */
+  --hero-h: 840px;
+  --hero-head: 88px;
+  --hero-strip: 97px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--hero-h);
+  overflow: hidden;
+}
+@supports (height: 100svh) {
+  .hero { --hero-h: clamp(680px, 100svh, 900px); }
+}
+.hero__inner {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  /* Текст героя — по центру свободной высоты между шапкой и полосой фактов, на одной линии с центром шара
+     (правка пользователя 01.10: «Gateway to Global не по центру»; в Figma верх текста 241 при высоте 840 —
+     на 39px ниже центра). 12px сверху — «парение» шара: центр зоны = центр шара */
+  align-items: center;
+  padding-top: calc(var(--hero-head) + 12px);
+}
+.hero__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-36);
+  max-width: 576px;
+}
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+.hero__title-lead {
+  font-size: var(--fs-hero-lead);
+  line-height: var(--lh-hero-lead);
+  font-weight: var(--fw-hero-lead);
+}
+.hero__title-accent {
+  font-size: var(--fs-hero-accent);
+  line-height: var(--lh-hero-accent);
+  font-weight: var(--fw-hero-accent);
+}
+.hero__lead { color: var(--color-text-secondary); }
+.hero__lead-strong {
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  padding-top: 19px;
+}
+/* Глобус. В Figma — сцена 829×829 (Frame 2147224820: x 611, y 4 на 1440), шар 0,8 сцены = 663: верх уходил
+   под шапку, низ — на полосу фактов. Правка клиента 01.10 («обрезан сверху и снизу, размер как в HTML
+   клиента»): шар целиком между шапкой и полосой и растёт с высотой экрана, как у клиента (там диаметр
+   76,8vh, не больше 704). Центр по горизонтали — как в Figma (50% + 305,5).
+   До старта js/globe.js (после load) и без JS — постер; живой кадр — canvas + слой карточек (.is-live). */
+.hero__globe {
+  /* свободная высота под шар: над ним 20 (8 + «парение» 12), под ним 8 */
+  --globe-room: calc(var(--hero-h) - var(--hero-head) - var(--hero-strip) - 28px);
+  /* диаметр: по высоте; не шире места между текстом героя и правым краем (100vw − 688 = от 656 + 16 до края − 16);
+     не больше, чем у клиента; 384 — чтобы сцена не стала уже 480 (ниже — «телефонная» сетка точек) */
+  --globe-d: max(384px, min(var(--globe-room), 100vw - 688px, 704px));
+  --globe-s: calc(var(--globe-d) * 1.25); /* сторона сцены: шар = 0,8 (RADIUS в js/globe.js) */
+  --globe-top: calc(var(--hero-head) + 20px + (var(--globe-room) - var(--globe-d)) / 2 - var(--globe-d) * 0.125);
+  /* центр шара: как в Figma; на узком десктопе шар отъезжает вправо — не на текст (текст кончается на 656) */
+  --globe-cx: max(50vw + 305.5px, 672px + var(--globe-d) / 2);
+  /* поля слоя карточек (js/globe.js читает их как padding слоя): не под шапку, не на текст героя,
+     не на полосу фактов и не за правый край окна */
+  --globe-safe-top: max(0px, var(--hero-head) + 20px - var(--globe-top));
+  --globe-safe-left: max(0px, max(656px, 50vw - 64px) + 24px - var(--globe-cx) + var(--globe-s) / 2);
+  --globe-safe-bottom: max(0px, var(--globe-top) + var(--globe-s) - var(--hero-h) + var(--hero-strip) + 8px);
+  --globe-safe-right: max(0px, var(--globe-cx) + var(--globe-s) / 2 - 100vw + 24px);
+  position: absolute;
+  top: var(--globe-top);
+  left: calc(max(50% + 305.5px, 672px + var(--globe-d) / 2) - var(--globe-s) / 2);
+  width: var(--globe-s);
+  height: var(--globe-s);
+  pointer-events: none;
+}
+.hero__globe-float {
+  position: absolute;
+  inset: 0;
+}
+.hero__globe-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 700ms var(--ease-out);
+}
+.hero__globe-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-out);
+  pointer-events: auto;
+  touch-action: pan-y pinch-zoom; /* горизонтальный свайп крутит глобус, вертикальный листает страницу */
+}
+.hero__globe-canvas.is-over { cursor: grab; }
+.hero__globe.is-dragging .hero__globe-canvas { cursor: grabbing; }
+.hero__globe.is-live .hero__globe-canvas { opacity: 1; }
+.hero__globe.is-live .hero__globe-poster { opacity: 0; }
+.hero__globe-cards {
+  position: absolute;
+  inset: 0;
+  /* поля для карточек — js/globe.js читает их отсюда; сами карточки стоят абсолютом и от padding не зависят */
+  padding: var(--globe-safe-top, 0px) var(--globe-safe-right, 0px) var(--globe-safe-bottom, 0px) var(--globe-safe-left, 0px);
+  pointer-events: none;
+}
+/* CUSTOM-CSS: «парение» героя (фидбек 23.09) — пока только главная, на остальные герои — после согласования */
+.hero__globe.is-live .hero__globe-float { animation: globe-float 9s ease-in-out infinite alternate; }
+.hero__globe.is-paused .hero__globe-float { animation-play-state: paused; }
+@keyframes globe-float {
+  from { translate: 0 0; }
+  to { translate: 0 -12px; }
+}
+
+/* Подпись «Indicative prices» под глобусом снята 01.10 по решению пользователя (клиент ведёт живые котировки
+   через MT5). Разметка и стили — assets/_src/removed/globe-note/; js/globe.js без подписи работает как раньше.
+   Кнопку паузы пользователь снял 28.09 (WCAG 2.2.2 — осознанно; reduced motion — статичный кадр) */
+@media (prefers-reduced-motion: reduce) {
+  .hero__globe-float { animation: none !important; }
+}
+
+/* Карточка котировки — Watchlist Card 7046:9471 в компакте ~70% (решение 25.09: в герое Figma 47% — текст
+   6,6 px). Раскладка, цвета, радиус и тень — из компонента; кегли подняты до читаемых, подписи — Text Secondary
+   (Muted #6F807E на фоне карточки 4,34:1 < AA). Положение, наклон и прозрачность ставит js/globe.js. */
+.globe-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 200px;
+  padding: 13px; /* 14 минус рамка: обводка в Figma внутри */
+  background: var(--color-quote-card);
+  border: var(--border-width) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 21px rgb(0 0 0 / 0.5); /* Drop shadow 0 12 30 × 0,7 */
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+.globe-card__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.globe-card__flag {
+  flex: none;
+  width: 14px;
+  height: 10px;
+  border-radius: 1.5px;
+}
+.globe-card__bank {
+  flex: none;
+  font-size: 14px;
+  line-height: var(--lh-body-lg);
+  color: var(--color-accent);
+}
+.globe-card__city,
+.globe-card__instrument {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+.globe-card__city {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.globe-card__instrument {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+.globe-card__closed { display: none; }
+.globe-card.is-closed .globe-card__closed { display: inline; }
+.globe-card__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  white-space: nowrap;
+}
+.globe-card__price {
+  font-size: 30px;
+  line-height: 1.05;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  transition: color 600ms var(--ease-out);
+}
+.globe-card.is-closed .globe-card__price { color: var(--color-text-secondary); }
+/* тик: цена на миг окрашивается в сторону движения и остывает к белому */
+.globe-card.is-tick-up .globe-card__price { color: color-mix(in srgb, var(--color-accent-bright) 70%, var(--color-text)); transition: none; }
+.globe-card.is-tick-down .globe-card__price { color: color-mix(in srgb, var(--color-quote-down) 70%, var(--color-text)); transition: none; }
+.globe-card__change {
+  font-size: 14px;
+  line-height: var(--lh-body-lg);
+  color: var(--color-accent);
+}
+.globe-card__change.is-down { color: var(--color-quote-down); }
+.globe-card__change.is-flat { color: var(--color-text-secondary); }
+
+/* Полоса фактов. Правка клиента 01.10: вид и раскладка — как в HTML клиента (g2g-homepage2.html, .stats):
+   знак, факты и короткие разделители равномерно по ширине, подложка-вуаль, линии сверху и снизу; регистрация —
+   значок + две строки, номер лицензии — отдельным пунктом. Шрифт и кегли — наши (Web/H4, Caption, Small).
+   Цифры — по макету и фидбеку 23.09 ($120B+; «120+ Countries» клиент вычеркнул). Прежний вид (Trust facts
+   7045:11445: линии во всю высоту, регистрация и лицензия одним пунктом) — assets/_src/hero/hero-facts-2026-09.css */
+.hero__facts {
+  position: relative;
+  z-index: 1;
+  border-block: var(--border-width) solid var(--color-border-subtle); /* снизу — правка пользователя 01.10 (у клиента только сверху) */
+  background-color: var(--color-strip-wash);
+}
+.hero__facts-inner {
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-24);
+}
+.hero__facts-mark {
+  flex: none;
+  width: 35px;
+  height: 29px;
+  opacity: 0.85;
+}
+.hero__facts-list {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+}
+/* Герой во весь экран: закреплённая кнопка WhatsApp (56px у правого края контейнера, 24px от низа окна)
+   на экранах ниже 980px стоит на полосе фактов — последний пункт не доходит до неё */
+@media (max-height: 979px) {
+  .hero__facts-list { padding-right: calc(var(--fab-size) + var(--space-24)); }
+}
+/* CUSTOM-CSS: свободное место делится поровну между всеми промежутками (space-between у клиента, где
+   разделители — отдельные элементы): ::before и ::after — растягивающиеся отступы перед содержимым пункта,
+   правая граница ::before — разделитель 34px. У первого пункта отступ один и без линии (после знака) */
+.hero__fact {
+  display: flex;
+  flex: 2 1 auto;
+  align-items: center;
+}
+.hero__fact::before,
+.hero__fact::after {
+  content: "";
+  flex: 1 1 0;
+  height: 34px;
+}
+.hero__fact::before { border-right: var(--border-width) solid var(--color-border-subtle); }
+.hero__fact--first { flex-grow: 1; }
+.hero__fact--first::before { display: none; }
+.hero__fact-body {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: var(--space-4);
+  order: 1; /* после обоих отступов */
+  white-space: nowrap;
+}
+.hero__fact-body--row {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.hero__fact-icon {
+  flex: none;
+  width: 18px;
+  height: 22px;
+}
+.hero__fact-value { color: var(--color-text); }
+.hero__fact-label { color: var(--color-text-secondary); }
+.hero__fact-number {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .hero { min-height: 0; }
+  .hero__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: calc(var(--header-h) + 96px);
+    padding-bottom: var(--space-48);
+  }
+  .hero__copy {
+    max-width: 600px;
+    padding-bottom: var(--space-48);
+  }
+  .hero__globe {
+    --globe-safe-top: 16px; /* «парение» поднимает сцену на 12 — карточки не доходят до кнопок */
+    --globe-safe-left: 0px;
+    --globe-safe-bottom: 0px;
+    --globe-safe-right: 0px;
+    position: relative;
+    top: auto;
+    left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+    height: auto;
+    margin-top: var(--space-16); /* без нахлёста на кнопки: карточки не закрывают CTA (ТЗ §7.2) */
+  }
+  /* сцена во всю ширину, шар 560 по центру: карточкам есть место по бокам, а не поверх шара */
+  .hero__globe-float {
+    position: relative;
+    width: 100%;
+    height: 560px;
+  }
+  .hero__globe-poster { object-fit: contain; }
+  .hero__facts-mark { display: none; }
+  .hero__facts-list { padding-right: 0; } /* герой не привязан к высоте экрана — места под WhatsApp не держим */
+  /* без знака первый пункт стоит у левого края */
+  .hero__fact--first { flex-grow: 0; }
+  .hero__fact--first::after { display: none; }
+}
+
+@media (max-width: 767px) {
+  .hero__inner { padding-top: calc(64px + var(--space-48)); }
+  .hero__copy {
+    gap: var(--space-24);
+    padding-bottom: 0;
+  }
+  .hero__actions {
+    flex-direction: column;
+    padding-top: var(--space-8);
+  }
+  .hero__globe-float { height: min(100vw - 2 * var(--page-gutter), 460px); } /* телефон — квадрат, 767 — шире высоты */
+  .globe-card {
+    gap: 6px;
+    width: 164px;
+    padding: 9px 11px; /* 10/12 минус рамка */
+    border-radius: var(--radius-sm);
+  }
+  .globe-card__bank { font-size: 13px; }
+  .globe-card__price { font-size: 22px; }
+  .globe-card__change { font-size: var(--fs-caption); }
+  /* телефон: 2 × 2 без разделителей */
+  .hero__facts-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-20) var(--space-16);
+  }
+  .hero__fact::before,
+  .hero__fact::after { display: none; }
+  .hero__fact-body { white-space: normal; }
+}
+
+/* ════════ Markets (7045:11459) ═════════════════════════════════
+   Тёмный верх плавно уходит в белый (переход уже в копии макета). */
+.markets {
+  padding-block: 130px 112px;
+  /* CUSTOM-CSS: фон — Rectangle 4804 (линейный + 2 радиальных свечения) и Ellipse 1 (белый, blur 200) растром,
+     посчитанным по формулам Figma (assets/_src/markets/markets_bg.py, сверка с рендером ≤ 6 уровней).
+     CSS-градиент (до 01.10) смешивал прозрачные остановки с предумножением: выходил темнее макета и внизу не
+     доходил до белого — на стыке с Why G2G была ступенька. Градиент под картинкой — на время её загрузки */
+  background-image: url('../assets/img/markets-bg.webp'),
+    linear-gradient(180deg, var(--color-surface-dark) 40%, var(--color-surface-light) 100%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.markets__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-head-gap);
+}
+
+/* Бенто рынков (7045:11463). Card / Market Tile 6089:3655:
+   hero 828×344 · small 436×164 · wide 632×200. Слои карточки (как в Figma):
+   фон + затемнение → свечения (::before/::after) → 3D-объект → текст.
+   Наведение (макет 9079:8633, 01.10): варианты hover=yes плитки и Variant2 у Forex, прототип — Smart animate
+   0,6 с, Ease in and out back. Свечения 70% → 100%, объект растёт и сдвигается, заголовок — мятный, текст —
+   белый, ссылка со стрелкой — красная, кнопка Forex — Primary. Состояние ставит плитка переменными --tile-* и
+   --art-*, дети их берут. Плитка кликабельна целиком (в Figma наведение и клик — на всей плитке). */
+.markets__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap);
+}
+.markets__row--top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 436px;
+  gap: var(--grid-gap);
+}
+.markets__stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap);
+}
+.markets__row--bottom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+.market-card {
+  /* геометрия свечений и объекта — задаётся модификатором размера */
+  --glow-w: 506px; --glow-h: 115px; --glow-x: 58.6%; --glow-y: 45.8%;
+  --glow2-w: 274px; --glow2-h: 44px; --glow2-x: 48.7%; --glow2-y: 60.9%;
+  --art-w: 452px; --art-h: 452px; --art-right: -38px; --art-bottom: -138px;
+  --copy-max: 440px;
+  --card-gap: var(--space-16);
+  /* покой */
+  --tile-glow: 0.7;
+  --tile-title: var(--color-text);
+  --tile-text: var(--color-text-secondary);
+  --tile-link: var(--fg-accent);
+  --tile-btn-bg: transparent;
+  --tile-btn-border: var(--color-text);
+  --art-dx: 0%; --art-dy: 0%; --art-k: 1;
+  /* куда уходит объект при наведении — в долях его размера (не зависят от брейкпоинта).
+     Forex: Rectangle 829×353 → 996×424 от (−1; 4) к (−168; −67) = объект 452 → 543, центр −38 / −20 */
+  --art-to-dx: -8.4%; --art-to-dy: -4.5%; --art-to-k: 1.2015;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--card-gap);
+  padding: var(--space-32);
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-card);
+  background-image: var(--gradient-card-shade); /* CUSTOM-CSS: «Vector» */
+  color: var(--color-text);
+}
+/* CUSTOM-CSS: свечения — размытые эллипсы, повёрнутые на 23.76° */
+.market-card::before,
+.market-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  opacity: var(--tile-glow);
+  filter: blur(50px);
+  pointer-events: none;
+  transition: opacity var(--dur-tile) var(--ease-in-out-back);
+}
+.market-card::before {
+  left: var(--glow-x);
+  top: var(--glow-y);
+  width: var(--glow-w);
+  height: var(--glow-h);
+  background-image: var(--gradient-glow-mint);
+  transform: translate(-50%, -50%) rotate(23.76deg);
+}
+.market-card::after {
+  left: var(--glow2-x);
+  top: var(--glow2-y);
+  width: var(--glow2-w);
+  height: var(--glow2-h);
+  background-color: var(--color-glow-cyan);
+  transform: translate(-50%, -50%) rotate(23.76deg);
+}
+.market-card__art {
+  position: absolute;
+  z-index: 1;
+  right: var(--art-right);
+  bottom: var(--art-bottom);
+  width: var(--art-w);
+  height: var(--art-h);
+  max-width: none;
+  pointer-events: none;
+  translate: var(--art-dx) var(--art-dy);
+  scale: var(--art-k);
+  transition: translate var(--dur-tile) var(--ease-in-out-back), scale var(--dur-tile) var(--ease-in-out-back);
+}
+.market-card__copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: var(--copy-max);
+}
+.market-card__title {
+  color: var(--tile-title);
+  transition: color var(--dur-tile) var(--ease-in-out-back);
+}
+.market-card__text {
+  color: var(--tile-text);
+  transition: color var(--dur-tile) var(--ease-in-out-back);
+}
+.market-card__cta {
+  position: relative;
+  z-index: 2;
+}
+/* CUSTOM-CSS: невидимая область ссылки растянута с запасом и обрезается плиткой (overflow: hidden) —
+   вся плитка ведёт туда же, куда её ссылка; имя ссылки для скринридера не меняется */
+.market-card__cta::before {
+  content: "";
+  position: absolute;
+  inset: -400px -900px;
+}
+.market-card__cta--link {
+  color: var(--tile-link);
+  transition: color var(--dur-tile) var(--ease-in-out-back);
+}
+.market-card__cta--btn {
+  border-color: var(--tile-btn-border);
+  background-color: var(--tile-btn-bg);
+  transition: background-color var(--dur-tile) var(--ease-in-out-back), border-color var(--dur-tile) var(--ease-in-out-back);
+}
+@media (hover: hover) {
+  .market-card:hover {
+    --tile-glow: 1;
+    --tile-title: var(--color-accent);
+    --tile-text: var(--color-surface-light);
+    --tile-link: var(--color-link-hot);
+    --tile-btn-bg: var(--color-cta);
+    --tile-btn-border: var(--color-cta);
+    --art-dx: var(--art-to-dx); --art-dy: var(--art-to-dy); --art-k: var(--art-to-k);
+  }
+  /* у ссылки в плитке свой ховер (красный вместе с плиткой) — без подчёркивания и сдвига стрелки общей .link-arrow */
+  .market-card__cta--link:hover { text-decoration-line: none; }
+  .market-card__cta--link:hover::after { transform: none; }
+  /* кнопка Forex под курсором остаётся Primary (общий ховер .btn--outline — мятный) */
+  .market-card__cta--btn:hover {
+    border-color: var(--tile-btn-border);
+    background-color: var(--tile-btn-bg);
+    color: var(--color-text);
+  }
+}
+/* то же состояние при фокусе с клавиатуры */
+.market-card:has(.market-card__cta:focus-visible) {
+  --tile-glow: 1;
+  --tile-title: var(--color-accent);
+  --tile-text: var(--color-surface-light);
+  --tile-link: var(--color-link-hot);
+  --tile-btn-bg: var(--color-cta);
+  --tile-btn-border: var(--color-cta);
+  --art-dx: var(--art-to-dx); --art-dy: var(--art-to-dy); --art-k: var(--art-to-k);
+}
+@media (prefers-reduced-motion: reduce) {
+  .market-card::before,
+  .market-card::after,
+  .market-card__art { transition: none; }
+}
+
+.market-card--hero { min-height: 344px; }
+
+.market-card--small {
+  --glow-w: 248px; --glow-h: 56px; --glow-x: 80.8%; --glow-y: 47.6%;
+  --glow2-w: 135px; --glow2-h: 22px; --glow2-x: 71.6%; --glow2-y: 63.5%;
+  --art-w: 293px; --art-h: 293px; --art-right: -88px; --art-bottom: -109px;
+  --art-to-dx: -15.3%; --art-to-dy: -0.9%; --art-to-k: 1.179; /* 238 → 280,7 (с поворотом 15,6° — 293 → 346), центр −44,7 / −2,7 */
+  --copy-max: none;
+  flex: 1 1 0;
+  justify-content: flex-start;
+  min-height: 164px;
+  padding: var(--space-20) 68px var(--space-20) var(--space-32);
+}
+.market-card--tinted { background-color: var(--color-surface-card-tint); }
+/* Metals: картинка не квадратная (заливка FIT 330×268 в Figma) */
+.market-card--metals { --art-h: 268px; --art-bottom: -51px; }
+
+.market-card--wide {
+  --glow-w: 257px; --glow-h: 65px; --glow-x: 65.9%; --glow-y: 50.8%;
+  --glow2-w: 156px; --glow2-h: 25px; --glow2-x: 55.3%; --glow2-y: 31.5%;
+  --art-w: 330px; --art-h: 330px; --art-right: -2px; --art-bottom: -82px;
+  --art-to-dx: -6.5%; --art-to-dy: 2.3%; --art-to-k: 1.118; /* 330 → 369, центр −21,5 / +7,5 */
+  --copy-max: 338px;
+  --card-gap: var(--space-12);
+  min-height: 200px;
+}
+
+@media (max-width: 1024px) {
+  .markets__row--top { grid-template-columns: minmax(0, 1fr); }
+  .markets__stack { flex-direction: row; }
+  /* Узкие карточки: объект меньше, текст не заходит на него */
+  .market-card--wide {
+    --art-w: 230px; --art-h: 230px; --art-right: -24px; --art-bottom: -64px;
+    --copy-max: 58%;
+  }
+  .market-card--metals { --art-h: 187px; --art-bottom: -30px; }
+}
+
+/* Мобильный (фидбек 25.09): заголовок и текст — на всю ширину карточки; отступ от текста до кнопки
+   небольшой (--art-gap), иллюстрация опущена к низу карточки справа от кнопки и срезана краем, как на
+   десктопе, — не под текстом */
+@media (max-width: 767px) {
+  .markets__stack { flex-direction: column; }
+  .markets__row--bottom { grid-template-columns: minmax(0, 1fr); }
+  .market-card,
+  .market-card--small,
+  .market-card--wide {
+    --copy-max: none;
+    justify-content: flex-start;
+    min-height: 0;
+    padding: var(--space-24);
+  }
+  .market-card__cta { margin-top: var(--art-gap); }
+  .market-card__text { text-wrap: pretty; } /* строки на всю ширину, не «баланс» */
+  .market-card--hero {
+    --art-w: 176px; --art-h: 176px; --art-right: 0px; --art-bottom: -38px; --art-gap: 64px; /* FX не заходит под кнопку и на 360 */
+    min-height: 0;
+  }
+  .market-card--small {
+    --art-w: 190px; --art-h: 190px; --art-right: 12px; --art-bottom: -44px; --art-gap: 64px;
+    flex: none; /* flex: 1 1 0 в колонке без min-height схлопывает карточку */
+  }
+  .market-card--wide { --art-w: 180px; --art-h: 180px; --art-right: 16px; --art-bottom: -40px; --art-gap: 64px; }
+  /* Metals: ссылка «Explore Metals & Energies» длинная — объект над ней, а не рядом */
+  .market-card--metals { --art-w: 160px; --art-h: 130px; --art-right: 16px; --art-bottom: 45px; --art-gap: 92px; }
+}
+
+/* ════════ Why G2G (7045:11472; фон и карточки — макет 9079:8697, 01.10) ═════════ */
+.why {
+  padding-block: var(--section-pad-sm) var(--section-pad-lg);
+  /* Rectangle 4815 (9079:8698): мятная полоса от верха секции на 1271 из 1391px, пик 20% посередине */
+  background-image: var(--gradient-mint-band);
+  background-size: 100% 91.4%;
+  background-repeat: no-repeat;
+}
+.why__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-44);
+}
+.why__actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* features (Features 6608:16833): визуал 803 + колонка карточек 477, общий радиус 60.
+   Переключатель: карточка = вкладка, визуал = панель (js/tabs.js, data-panels="fade").
+   overflow: clip, не hidden — иначе не «прилипает» визуал (sticky) */
+.why__features {
+  display: grid;
+  grid-template-columns: minmax(0, 803fr) minmax(0, 477fr);
+  overflow: clip;
+  border-radius: var(--radius-section);
+}
+
+/* ── Визуал: сцена 803×893 в координатах Figma, масштабируется целиком ── */
+.why__visual {
+  container-type: inline-size;
+  overflow: clip; /* свечения обрезает колонка, как рамка «img» в Figma, — не сцена: иначе край виден, когда сцена прилипла */
+  background-color: var(--color-visual-bg);
+}
+/* CUSTOM-CSS: k = ширина колонки / 803 — tan(atan2()) превращает отношение двух длин в число.
+   Сцена прилипает под шапкой, пока колонка карточек выше неё */
+.why__stage-box {
+  --k: tan(atan2(100cqw, 803px));
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-24));
+  height: calc(893px * var(--k));
+}
+.why__stage {
+  position: relative;
+  left: calc((100cqw - 803px * var(--k)) / 2); /* по центру, когда k ограничен высотой (мобильный) */
+  width: 803px;
+  height: 893px;
+  scale: var(--k);
+  transform-origin: 0 0;
+  /* кегли внутри сцены не зависят от брейкпоинта — сцена уменьшается целиком */
+  --fs-h2: 2.5rem;
+  --fs-overline: 0.75rem;
+  --fs-small: 0.875rem;
+}
+
+/* Панели: неактивная гаснет за 250 мс (visibility прячет её и от скринридера),
+   новая появляется сразу — её элементы «собираются» анимациями ниже */
+.why-visual {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--dur-base) ease, visibility 0s linear var(--dur-base);
+}
+.why-visual--active {
+  visibility: visible;
+  opacity: 1;
+  transition: none;
+}
+.why-visual__list {
+  position: absolute;
+  inset: 0;
+}
+.why-visual__quotes { position: absolute; inset: 0; }
+/* подписи под визуалами 2–4 (12 SemiBold UPPER, трекинг 1.4) */
+.why-visual__caption {
+  position: absolute;
+  font-size: var(--fs-vis-caption);
+  line-height: normal;
+  letter-spacing: var(--ls-vis-caption);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+}
+.why-visual__caption--conditions { left: 78px; top: 760px; letter-spacing: var(--ls-overline); } /* type-overline, T7 */
+.why-visual__caption--execution { left: 88px; top: 806px; }
+.why-visual__caption--markets { left: 56px; top: 800px; }
+.why-visual__caption--funding { left: 101px; top: 800px; }
+
+/* CUSTOM-CSS: Glow — мятный эллипс с размытием (SVG Figma: fill-opacity + feGaussianBlur) */
+.why-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.why-glow--conditions {
+  left: 20px; top: 90px; width: 760px; height: 700px;
+  background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  filter: blur(80px);
+  opacity: 0.724; /* итог анимации Figma: вспышка до 1 и оседание */
+}
+.why-glow--execution {
+  left: 91px; top: 20px; width: 620px; height: 620px;
+  background-color: color-mix(in srgb, var(--color-accent) 13%, transparent);
+  filter: blur(75px);
+}
+.why-glow--markets {
+  left: 50px; top: 130px; width: 700px; height: 640px;
+  background-color: color-mix(in srgb, var(--color-accent) 11%, transparent);
+  filter: blur(85px);
+}
+.why-glow--funding {
+  left: 72px; top: 300px; width: 660px; height: 560px;
+  background-color: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  filter: blur(82.5px);
+}
+
+/* ── 1 · Account Conditions (6608:16707): карточки «лесенкой» x 78/168/98/168, шаг 150 ── */
+.condition {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 470px;
+  min-height: 116px;
+  padding: 17px 27px 11px;
+  border: var(--border-width) solid var(--color-divider-glass);
+  border-radius: var(--radius-lg);
+  background-color: color-mix(in srgb, var(--color-visual-card) 92%, transparent);
+  box-shadow: var(--shadow-card);
+}
+/* статус-точка 8px (x 441, y 21) */
+.condition::after {
+  content: "";
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-visual-dot);
+}
+.condition--active { border-color: var(--color-border-mint); }
+.condition--active::after { background-color: var(--color-accent); }
+.condition--deposit { left: 78px; top: 150px; }
+.condition--spreads { left: 168px; top: 300px; }
+.condition--commission { left: 98px; top: 450px; }
+.condition--swap { left: 168px; top: 600px; }
+.condition__label { color: var(--color-text-muted); }
+.condition__value {
+  margin-top: 2px;
+  color: var(--color-text);
+  text-transform: none; /* размер Web/H2 (решение T7), регистр как в макете */
+}
+.condition__value--accent { color: var(--color-accent); }
+.condition__note {
+  margin-top: var(--space-8);
+  color: var(--color-text-muted);
+}
+
+/* ── 2 · Execution Environment (6608:16854): кольца вокруг ядра (401, 330), трек ордера ── */
+.why-ring {
+  position: absolute;
+  border: 1.5px solid;
+  border-radius: 50%;
+}
+.why-ring--4 { left: 101px; top: 30px; width: 600px; height: 600px; border-color: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.why-ring--3 { left: 169px; top: 98px; width: 464px; height: 464px; border-color: color-mix(in srgb, var(--color-accent) 16%, transparent); }
+.why-ring--2 {
+  left: 235px; top: 164px; width: 332px; height: 332px;
+  border-color: color-mix(in srgb, var(--color-accent) 26%, transparent);
+  opacity: 0.868; scale: 1.023; /* итог анимации Figma */
+}
+.why-ring--1 {
+  left: 297px; top: 226px; width: 208px; height: 208px;
+  border-color: color-mix(in srgb, var(--color-accent) 42%, transparent);
+  opacity: 0.55; scale: 1.08;
+}
+.why-core {
+  position: absolute;
+  left: 390px; top: 319px; width: 22px; height: 22px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-dot-glow-lg);
+  scale: 1.116;
+}
+.why-speed {
+  position: absolute;
+  left: 0; right: 0; top: 512px;
+  font-size: var(--fs-vis-speed);
+  line-height: normal;
+  font-weight: var(--fw-bold);
+  text-align: center;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+.why-speed__label {
+  position: absolute;
+  left: 0; right: 0; top: 606px;
+  font-size: var(--fs-vis-meta);
+  line-height: normal;
+  letter-spacing: 2px;
+  font-weight: var(--fw-semibold);
+  text-align: center;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+}
+.why-track {
+  position: absolute;
+  left: 88px; top: 706px; width: 626px; height: 2px;
+  background-color: var(--color-border-subtle);
+}
+.why-track__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 470px;
+  background-color: var(--color-accent);
+}
+.why-track__tick {
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 8px;
+  background-color: var(--color-border-glass);
+}
+.why-track__tick--1 { left: 0; }
+.why-track__tick--2 { left: 125px; }
+.why-track__tick--3 { left: 250px; }
+.why-track__tick--4 { left: 375px; }
+.why-track__tick--5 { left: 500px; }
+.why-track__tick--6 { left: 625px; }
+.why-track__head {
+  position: absolute;
+  left: 558px; top: 700px; width: 14px; height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-dot-glow);
+}
+.why-track__label {
+  position: absolute;
+  top: 728px;
+  font-size: var(--fs-vis-label);
+  line-height: normal;
+  letter-spacing: var(--ls-vis-label);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  color: var(--color-text-muted);
+}
+.why-track__label--sent { left: 88px; }
+.why-track__label--filled { right: 89px; color: var(--color-accent); } /* правый край = конец трека 714 */
+
+/* ── 3 · Multiple Markets (6608:17002): карточки котировок и чипы — иллюстрация ── */
+.why-quote {
+  position: absolute;
+  width: 264px;
+  height: 92px;
+  border: var(--border-width) solid var(--color-border-subtle);
+  border-radius: 18px;
+  background-color: color-mix(in srgb, var(--color-visual-card) 94%, transparent);
+  box-shadow: var(--shadow-card);
+  line-height: normal;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+.why-quote--xau { left: 56px; top: 168px; scale: 1.031; } /* итог анимации Figma — выделена */
+.why-quote--btc { left: 424px; top: 356px; }
+.why-quote--eur { left: 132px; top: 542px; }
+.why-quote__pair,
+.why-quote__price,
+.why-quote__change { position: absolute; left: 21px; }
+.why-quote__pair { top: 17px; font-size: var(--fs-vis-pair); font-weight: var(--fw-semibold); }
+.why-quote__price { top: 41px; font-size: var(--fs-vis-price); font-weight: var(--fw-bold); }
+.why-quote__change {
+  left: 193px;
+  top: 20px;
+  font-size: var(--fs-vis-change);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+}
+.why-quote__change--down,
+.why-chip__change--down { color: var(--color-down); }
+.why-chip {
+  position: absolute;
+  height: 44px;
+  border: var(--border-width) solid color-mix(in srgb, var(--color-surface-light) 7%, transparent);
+  border-radius: 14px;
+  background-color: color-mix(in srgb, var(--color-visual-card) 80%, transparent);
+  opacity: 0.85;
+  line-height: normal;
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  color: var(--color-text);
+}
+.why-chip__name { position: absolute; left: 15px; top: 11px; font-size: var(--fs-vis-meta); }
+.why-chip__change { position: absolute; left: 111px; top: 12px; font-size: var(--fs-vis-label); color: var(--color-accent); }
+.why-chip--us500 { left: 462px; top: 152px; width: 170px; }
+.why-chip--usdjpy { left: 316px; top: 686px; width: 176px; }
+.why-chip--usdjpy .why-chip__change { left: 117px; }
+.why-chip--dax { left: 548px; top: 574px; width: 170px; }
+/* бледные чипы без изменения цены */
+.why-chip--faint {
+  height: 38px;
+  border-color: color-mix(in srgb, var(--color-surface-light) 5%, transparent);
+  background-color: color-mix(in srgb, var(--color-visual-card) 60%, transparent);
+  opacity: 0.55;
+}
+.why-chip--faint .why-chip__name { top: 10px; }
+.why-chip--usoil { left: 78px; top: 402px; width: 96px; }
+.why-chip--usoil .why-chip__name { left: 34px; }
+.why-chip--brent { left: 590px; top: 250px; width: 124px; }
+.why-chip--brent .why-chip__name { left: 36px; }
+.why-chip--gbp { left: 386px; top: 246px; width: 124px; opacity: 0.5; }
+.why-chip--gbp .why-chip__name { left: 30px; top: 9px; }
+
+/* ── 4 · Funding & Withdrawals (6608:17159): методы → стебель → карточка вывода → шаги ── */
+.why-methods { position: absolute; inset: 0; }
+.why-method {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 60px;
+  border: var(--border-width) solid color-mix(in srgb, var(--color-surface-light) 7%, transparent);
+  border-radius: 14px;
+  background-color: color-mix(in srgb, var(--color-visual-card) 85%, transparent);
+  font-size: var(--fs-vis-method);
+  line-height: normal;
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  color: var(--color-visual-label);
+}
+.why-method--cards { left: 88px; top: 124px; scale: 1.017; } /* итог анимации Figma — выбранный метод */
+.why-method--apple { left: 300px; top: 124px; }
+.why-method--google { left: 512px; top: 124px; }
+.why-method--skrill { left: 88px; top: 196px; }
+.why-method--usdt { left: 300px; top: 196px; }
+.why-method--bank { left: 512px; top: 196px; }
+.why-stem {
+  position: absolute;
+  left: 400px; top: 256px; width: 2px; height: 152px;
+  background-color: var(--color-border-mint);
+}
+.why-withdrawal {
+  position: absolute;
+  left: 101px; top: 408px; width: 600px; height: 206px;
+  border: var(--border-width) solid var(--color-border-mint-mid);
+  border-radius: var(--radius-xl);
+  background-color: color-mix(in srgb, var(--color-visual-card) 95%, transparent);
+  box-shadow: var(--shadow-card);
+  line-height: normal;
+  white-space: nowrap;
+}
+.why-withdrawal__cap {
+  position: absolute;
+  left: 292px; top: -8px; width: 14px; height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-dot-glow);
+}
+.why-withdrawal__label {
+  position: absolute;
+  left: 35px; top: 31px;
+  font-size: var(--fs-vis-label);
+  letter-spacing: var(--ls-vis-label);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+}
+.why-withdrawal__amount {
+  position: absolute;
+  left: 35px; top: 57px;
+  font-size: var(--fs-vis-amount);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+.why-withdrawal__status {
+  position: absolute;
+  left: 35px; top: 131px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 113px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent-tint-strong);
+  font-size: var(--fs-vis-meta);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+}
+.why-withdrawal__note {
+  position: absolute;
+  left: 166px; top: 142px;
+  font-size: var(--fs-vis-meta);
+  color: var(--color-text-muted);
+}
+.why-flow {
+  position: absolute;
+  left: 104px; top: 668px; width: 597px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: var(--fs-vis-meta);
+  line-height: normal;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+}
+.why-flow__step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.why-flow__step::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-visual-dot-step);
+}
+.why-flow__step--done { font-weight: var(--fw-semibold); color: var(--color-text); }
+.why-flow__step--done::before { background-color: var(--color-accent); }
+.why-flow__line {
+  flex: 1 1 0;
+  height: 1px;
+  background-color: var(--color-visual-line);
+}
+
+/* ── «Сборка» визуала: get_motion_context 6608:16833 (таймлайн 9,8 с, собирается за ~2 с,
+   в Figma по кругу). На сайте — один раз при выборе вкладки; пока секция не в экране —
+   пауза на первом кадре (js/motion.js, класс is-waiting). Итоговое состояние = стили выше ── */
+@keyframes why-in {
+  from { opacity: 0; translate: var(--from-x, 0) var(--from-y, 0); scale: var(--from-s, 1); }
+}
+.why-visual--active :is(.why-glow, .condition, .why-visual__caption, .why-ring, .why-speed,
+  .why-speed__label, .why-track, .why-track__head, .why-track__label, .why-quote, .why-chip,
+  .why-method, .why-stem, .why-withdrawal, .why-withdrawal__cap, .why-flow) {
+  animation: why-in var(--a-dur, 450ms) var(--ease-out) var(--a-delay, 0ms) both;
+}
+.why__stage-box.is-waiting .why-visual * { animation-play-state: paused; }
+
+/* 1 · условия: карточки выезжают по очереди с ±24px, MIN. DEPOSIT «дышит» */
+.condition--deposit { --a-delay: 250ms; --from-x: -24px; }
+.condition--spreads { --a-delay: 350ms; --from-x: 24px; }
+.condition--commission { --a-delay: 450ms; --from-x: -24px; }
+.condition--swap { --a-delay: 550ms; --from-x: 24px; }
+.why-visual__caption--conditions { --a-delay: 1000ms; --a-dur: 400ms; }
+.why-visual--active .condition--deposit {
+  animation: why-in 450ms var(--ease-out) 250ms both, why-pulse 600ms ease-in-out 1400ms both;
+}
+.why-visual--active .why-glow--conditions { animation: why-glow-flash 1400ms linear both; }
+@keyframes why-pulse {
+  50% { scale: 1.03; }
+}
+@keyframes why-glow-flash {
+  0% { opacity: 0; scale: 0.9; animation-timing-function: var(--ease-out); }
+  50% { opacity: 1; scale: 1; animation-timing-function: ease-in-out; }
+  100% { opacity: 0.724; scale: 1; }
+}
+
+/* 2 · исполнение: кольца раскрываются от ядра, цифра и трек поднимаются, ордер «летит» к FILLED */
+.why-glow--execution { --a-dur: 600ms; --from-s: 0.9; }
+.why-ring--3 { --a-delay: 490ms; --a-dur: 400ms; --from-s: 0.6; }
+.why-ring--4 { --a-delay: 610ms; --a-dur: 400ms; --from-s: 0.6; }
+.why-speed { --a-delay: 700ms; --a-dur: 500ms; --from-y: 16px; }
+.why-speed__label { --a-delay: 850ms; --from-y: 16px; }
+.why-track { --a-delay: 900ms; --a-dur: 400ms; }
+.why-track__head { --a-delay: 1000ms; --a-dur: 600ms; --from-x: -470px; }
+.why-track__label,
+.why-visual__caption--execution { --a-delay: 1200ms; --a-dur: 400ms; }
+.why-visual--active .why-ring--1 { animation: why-ring-1 2000ms linear both; }
+.why-visual--active .why-ring--2 { animation: why-ring-2 2250ms linear both; }
+.why-visual--active .why-core { animation: why-core 2100ms linear both; }
+@keyframes why-ring-1 {
+  0%, 12.5% { opacity: 0; scale: 0.6; animation-timing-function: var(--ease-out); }
+  32.5% { opacity: 1; scale: 1; }
+  80% { opacity: 1; scale: 1; animation-timing-function: ease-in-out; }
+  100% { opacity: 0.55; scale: 1.08; }
+}
+@keyframes why-ring-2 {
+  0%, 16.44% { opacity: 0; scale: 0.6; animation-timing-function: var(--ease-out); }
+  34.22% { opacity: 1; scale: 1; }
+  82.22% { opacity: 1; scale: 1; animation-timing-function: ease-in-out; }
+  100% { opacity: 0.868; scale: 1.023; }
+}
+@keyframes why-core {
+  0%, 9.52% { opacity: 0; scale: 0; animation-timing-function: var(--ease-out); }
+  16.67% { scale: 1.2; animation-timing-function: var(--ease-out); }
+  23.81% { opacity: 1; scale: 1; }
+  76.19% { scale: 1; animation-timing-function: ease-in-out; }
+  88.1% { scale: 1.35; animation-timing-function: ease-in-out; }
+  100% { opacity: 1; scale: 1.116; }
+}
+
+/* 3 · рынки: карточки проявляются из 92%, чипы поднимаются, XAU/USD выделяется */
+.why-glow--markets { --a-dur: 700ms; --from-s: 0.9; }
+.why-quote--btc { --a-delay: 400ms; --from-s: 0.92; }
+.why-quote--eur { --a-delay: 500ms; --from-s: 0.92; }
+.why-chip--us500 { --a-delay: 600ms; --from-y: 12px; }
+.why-chip--usdjpy { --a-delay: 690ms; --from-y: 12px; }
+.why-chip--dax { --a-delay: 780ms; --from-y: 12px; }
+.why-chip--usoil { --a-delay: 900ms; --from-y: 8px; }
+.why-chip--brent { --a-delay: 990ms; --from-y: 8px; }
+.why-chip--gbp { --a-delay: 1080ms; --from-y: 8px; }
+.why-visual__caption--markets { --a-delay: 1400ms; --a-dur: 400ms; }
+.why-visual--active .why-quote--xau { animation: why-quote-focus 2100ms linear both; }
+@keyframes why-quote-focus {
+  0%, 14.29% { opacity: 0; scale: 0.92; animation-timing-function: var(--ease-out); }
+  35.71% { opacity: 1; scale: 1; }
+  85.71% { opacity: 1; scale: 1; animation-timing-function: ease-in-out; }
+  100% { opacity: 1; scale: 1.031; }
+}
+
+/* 4 · пополнение и вывод: методы появляются волной, стебель ведёт к карточке вывода */
+.why-glow--funding { --a-dur: 700ms; --from-s: 0.92; }
+.why-method--apple { --a-delay: 270ms; --a-dur: 400ms; --from-s: 0.9; }
+.why-method--google { --a-delay: 340ms; --a-dur: 400ms; --from-s: 0.9; }
+.why-method--skrill { --a-delay: 410ms; --a-dur: 400ms; --from-s: 0.9; }
+.why-method--usdt { --a-delay: 480ms; --a-dur: 400ms; --from-s: 0.9; }
+.why-method--bank { --a-delay: 550ms; --a-dur: 400ms; --from-s: 0.9; }
+.why-stem { --a-delay: 800ms; --a-dur: 300ms; }
+.why-withdrawal { --a-delay: 1000ms; --a-dur: 500ms; --from-y: 24px; }
+.why-withdrawal__cap { --a-delay: 1300ms; --a-dur: 200ms; --from-s: 0; }
+.why-flow { --a-delay: 1400ms; --a-dur: 400ms; }
+.why-visual__caption--funding { --a-delay: 1500ms; --a-dur: 400ms; }
+.why-visual--active .why-method--cards { animation: why-method-pick 2150ms linear both; }
+@keyframes why-method-pick {
+  0%, 9.3% { opacity: 0; scale: 0.9; animation-timing-function: var(--ease-out); }
+  27.91% { opacity: 1; scale: 1; }
+  88.37% { opacity: 1; scale: 1; animation-timing-function: ease-in-out; }
+  100% { opacity: 1; scale: 1.017; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-visual * { animation: none !important; }
+}
+
+/* ── Карточки фактов (Card / Fact 6007:40) = вкладки; рамки перекрываются на 1px ── */
+.why__facts {
+  display: flex;
+  flex-direction: column;
+}
+.fact-card {
+  /* макет 01.10: карточки тёмные и в покое (были белые): Surface Card, рамка Border Subtle, мятный чип */
+  --fg: var(--color-text);
+  --fg-2: var(--color-text-secondary);
+  --focus: var(--color-accent);
+  --chip-bg: var(--color-accent-tint-soft);
+  --chip-fg: var(--color-accent);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: -1px;
+  padding: 36px var(--space-40);
+  border: var(--border-width) solid var(--color-border-subtle);
+  background-color: var(--color-surface-card);
+  cursor: pointer;
+  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+}
+.fact-card:focus-visible { outline-offset: -4px; } /* соседи перекрывают внешний контур */
+/* Активная: светлее (Surface Card Hover), мятная рамка и свечение; чип — как у остальных (был красный) */
+.fact-card--active {
+  z-index: 1;
+  border-color: var(--color-border-mint);
+  background-color: var(--color-surface-card-hover);
+  box-shadow: var(--shadow-mint-glow);
+}
+.fact-card--first { border-top-right-radius: var(--radius-section); }
+.fact-card--last {
+  margin-bottom: 0;
+  border-bottom-right-radius: var(--radius-section);
+}
+.fact-card__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--chip-bg);
+  transition: background-color var(--dur-base) ease;
+}
+/* иконка — маска, цвет от состояния карточки (как у вкладок MT5) */
+.fact-card__icon {
+  width: 24px;
+  height: 24px;
+  background-color: var(--chip-fg);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+  transition: background-color var(--dur-base) ease;
+}
+.fact-card__icon--document { --icon: url('../assets/icons/document.svg'); }
+.fact-card__icon--trend-up { --icon: url('../assets/icons/trend-up.svg'); }
+.fact-card__icon--chart-bars { --icon: url('../assets/icons/chart-bars.svg'); }
+.fact-card__icon--wallet { --icon: url('../assets/icons/wallet.svg'); }
+.fact-card__title {
+  color: var(--fg);
+  transition: color var(--dur-base) ease;
+}
+.fact-card__text {
+  color: var(--fg-2);
+  transition: color var(--dur-base) ease;
+}
+
+/* Планшет и мобильный (фидбек 25.09): визуал — отдельная карточка со скруглением по кругу, прилипает
+   под шапкой; подложки нет — карточки, уходящие под визуал, видны по краям (решение пользователя). Карточки фактов — отдельные,
+   в колонку; активную выбирает прокрутка — визуал «доезжает» до карточки (js/tabs.js, data-tabs-scroll),
+   тап докручивает к ней. Сцена кадрирована по содержимому визуалов с полями: x 28–775, y 20–850 (747×830);
+   высота — не больше 46% экрана (альбомный планшет) и 415px */
+@media (max-width: 1024px) {
+  .why__features {
+    grid-template-columns: minmax(0, 1fr);
+    overflow: visible;
+    border-radius: 0;
+  }
+  .why__visual {
+    position: sticky;
+    top: var(--pin-top);
+    z-index: 2;
+    padding-block: var(--space-8) var(--space-12);
+    overflow: visible;
+    background-color: transparent;
+  }
+  .why__stage-box {
+    --k: min(tan(atan2(100cqw, 747px)), tan(atan2(46vh, 830px)), 0.5);
+    position: relative;
+    top: auto;
+    height: calc(830px * var(--k));
+    overflow: clip;
+    border-radius: var(--radius-xl);
+    background-color: var(--color-visual-bg);
+  }
+  .why__stage {
+    left: calc((100cqw - 747px * var(--k)) / 2 - 28px * var(--k));
+    top: calc(-20px * var(--k));
+  }
+  .why__facts { gap: var(--space-12); }
+  .fact-card,
+  .fact-card--first,
+  .fact-card--last {
+    margin-bottom: 0;
+    padding: 28px var(--space-24);
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* ════════ Audiences (7045:11478; фон — макет 9079:8704, 01.10) ═══════════════ */
+.audiences {
+  padding-block: var(--section-pad-lg);
+  /* Rectangle 4815 (9079:8735): мятный верх после тёмной секции, полоса 240px */
+  background-image: var(--gradient-mint-top);
+  background-size: 100% 240px;
+  background-repeat: no-repeat;
+}
+.audiences__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 90px;
+}
+.audiences__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-44);
+}
+.account-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+  padding: var(--space-48) var(--space-48) var(--space-40);
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border-mint);
+  border-radius: var(--radius-xl);
+  background-image: var(--gradient-account-card);
+}
+/* CUSTOM-CSS: фрагмент знака G2G справа сверху (Union, 34%, градиент) */
+.account-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -12px;
+  right: -45px;
+  width: 250px;
+  height: 208px;
+  background: url('../assets/img/account-decor.svg') center / contain no-repeat;
+  pointer-events: none;
+}
+.account-card__title {
+  color: var(--color-text);
+  font-weight: var(--fw-regular);
+}
+.account-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: stretch;
+  padding-top: var(--space-20);
+  border-top: var(--border-width) solid var(--color-border-subtle);
+}
+.account-card__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text);
+}
+.account-card__item::before {
+  content: "";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-accent);
+  -webkit-mask: url('../assets/icons/check.svg') center / contain no-repeat;
+  mask: url('../assets/icons/check.svg') center / contain no-repeat;
+}
+.account-card__cta { margin-top: var(--space-24); }
+
+/* ════════ Platform (7045:11509) ════════════════════════════════ */
+.platform {
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--section-pad);
+  background-image: var(--gradient-mint-fade);
+}
+/* CUSTOM-CSS: два контура знака G2G слева (Union, белый 8%) */
+.platform::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    url('../assets/img/platform-mark.svg') 6px -150px / 605px 493px no-repeat,
+    url('../assets/img/platform-mark.svg') 6px 391px / 605px 493px no-repeat;
+  pointer-events: none;
+}
+.platform__inner {
+  display: flex;
+  align-items: center;
+  min-height: 470px;
+}
+.platform__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  max-width: 46.875%; /* 600 из 1280 */
+  padding-right: var(--space-44);
+}
+/* На 1440 — ровно по месту экспорта (x 568, y 0, 872×692), уже — пропорционально у правого края */
+.platform__visual {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: max(0px, calc(50% - 720px));
+  width: min(872px, calc((100% - var(--page-gutter) * 2) * 0.68125));
+  height: auto;
+  pointer-events: none;
+  /* CUSTOM-CSS: фон секции вшит в экспорт (Glass у тостов) — боковые края растворяются: слева картинка иначе
+     обрезает контуры знака G2G вертикальной линией, справа на экранах шире 1440 не доходит до края секции.
+     4% = 35 px: до тоста Gold слева и до телефона справа (фидбек 28.09) */
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+}
+
+/* ════════ Payments (7045:12002) ════════════════════════════════ */
+.payments { padding-block: var(--section-pad); }
+.payments__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 57px;
+}
+/* В разметке текст идёт первым (порядок чтения), на десктопе плитки — слева */
+.payments__copy {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+}
+.payments__methods {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.payments__row {
+  display: flex;
+  gap: var(--grid-gap);
+}
+/* Плитка метода оплаты: ширина по логотипу, модификатор grow забирает остаток ряда */
+.payment-tile {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-16);
+  min-height: 118px;
+  padding: 27px var(--space-24); /* 28 в Figma минус рамка 1px (в Figma рамка внутрь) */
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-light);
+  box-shadow: var(--shadow-card-light);
+}
+.payment-tile--grow { flex: 1 1 0; }
+.payment-tile--apple { padding-inline: 37px; }
+.payment-tile--google { padding-inline: 34px; }
+.payment-tile--skrill { padding-inline: 30px; }
+.payment-tile--usdt { padding-inline: 26px; }
+.payment-tile__logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.payment-tile__chip {
+  display: flex;
+  flex: none;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-tint);
+}
+.payment-tile__label {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: -0.02em;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-on-light);
+  white-space: nowrap;
+}
+
+/* ════════ Business · Hero D (7045:12096) ═══════════════════════
+   Кадр 1440×900: заголовок (y 123) → сцена со знаком (y 285, высота 414) → кнопка (y 755). */
+.business {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 123px 87px;
+  /* CUSTOM-CSS: Mesh gradient — размытые пятна Blob 2/4/5/6 (центры и цвета из Figma) */
+  background-image:
+    radial-gradient(640px 580px at 86.8% 19%, color-mix(in srgb, var(--color-accent) 38%, transparent) 0%, color-mix(in srgb, var(--color-accent) 22%, transparent) 35%, color-mix(in srgb, var(--color-accent) 6%, transparent) 70%, transparent 100%),
+    radial-gradient(680px 500px at 100% 72%, color-mix(in srgb, var(--color-mesh-deep) 90%, transparent) 0%, transparent 100%),
+    radial-gradient(400px 400px at 18.8% 82%, color-mix(in srgb, var(--color-mesh-cyan) 16%, transparent) 0%, transparent 100%),
+    radial-gradient(460px 440px at 36% 19%, color-mix(in srgb, var(--color-mesh-blue) 35%, transparent) 0%, transparent 100%);
+}
+.business__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.business__head { max-width: 820px; }
+
+/* Сцена: ширина кадра 1440, всё позиционируется в процентах от неё */
+.business__stage {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 414px;
+  margin-inline: auto;
+}
+/* CUSTOM-CSS: Glow (зелёный, 22%) и Mark core (тёмное ядро, 72%) под знаком */
+.business__stage::before,
+.business__stage::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.business__stage::before {
+  left: 23.6%;
+  top: -12px;
+  width: 52.8%;
+  height: 520px;
+  background-color: color-mix(in srgb, var(--color-glow-green) 22%, transparent);
+  filter: blur(80px);
+}
+.business__stage::after {
+  left: 27.1%;
+  top: -44px;
+  width: 45.8%;
+  height: 560px;
+  background-color: color-mix(in srgb, var(--color-mark-core) 72%, transparent);
+  filter: blur(90px);
+}
+/* Знак: SCREEN-рендер на чёрном переведён в прозрачность, точечная сетка снята */
+.business__mark {
+  position: absolute;
+  left: 34.51%;
+  top: 48px;
+  width: 30.97%;
+  height: auto;
+}
+
+/* Выноски: карточка 211×96 + соединительная линия + текст под ней */
+.callout {
+  position: absolute;
+  top: 129px;
+  width: 211px;
+}
+.callout--left { left: 16.6%; }
+.callout--right { left: 68.125%; }
+/* CUSTOM-CSS: соединительная линия (Vector 6, градиент «Linear») */
+.callout::before {
+  content: "";
+  position: absolute;
+  top: 45px;
+  left: -38px;
+  width: 57px;
+  height: 142px;
+  background: url('../assets/img/callout-connector.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+.callout--right::before {
+  left: 188px;
+  transform: scaleX(-1);
+}
+.callout__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  padding: var(--space-16);
+  border: var(--border-width) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-card);
+  box-shadow: var(--shadow-card);
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(var(--blur-glass)); /* CUSTOM-CSS: Glass */
+}
+/* CUSTOM-CSS: мятные угловые метки (Vector 7) — справа сверху и слева снизу */
+.callout__card::before,
+.callout__card::after {
+  content: "";
+  position: absolute;
+  width: 15.5px;
+  height: 15px;
+  background: url('../assets/img/callout-corner.svg') center / contain no-repeat;
+}
+.callout__card::before { top: 8px; right: 8px; }
+.callout__card::after { bottom: 8px; left: 8px; transform: rotate(180deg); }
+.callout__title {
+  color: var(--color-text);
+  text-align: center;
+}
+.callout__text {
+  position: absolute;
+  top: 122px;
+  width: 244px;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+.callout__text--left { left: 37px; }
+.callout__text--right { right: 41px; text-align: right; }
+
+.business__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+@media (max-width: 1024px) {
+  .business { padding-block: var(--section-pad); }
+  .business__stage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-40) var(--space-24);
+    height: auto;
+    max-width: calc(var(--content-width) + var(--page-gutter) * 2);
+    margin-top: var(--space-32);
+    padding-inline: var(--page-gutter);
+  }
+  .business__stage::before { left: 10%; width: 80%; top: 0; }
+  .business__stage::after { left: 20%; width: 60%; top: 0; }
+  .business__mark {
+    position: static;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(360px, 80%);
+  }
+  .callout,
+  .callout__text {
+    position: static;
+    width: auto;
+  }
+  .callout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-16);
+  }
+  .callout::before { display: none; }
+  .callout__card { width: min(211px, 100%); }
+  .callout__text--left,
+  .callout__text--right { text-align: center; max-width: 320px; }
+  .business__actions { margin-top: var(--space-40); }
+}
+
+@media (max-width: 767px) {
+  .business__stage { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 1024px) {
+  .audiences__inner,
+  .payments__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-48);
+  }
+  .audiences__copy { order: -1; } /* на узких экранах заголовок раньше карточки */
+  .platform { padding-bottom: var(--space-24); }
+  .payments__copy,
+  .payments__methods { grid-column: 1; grid-row: auto; }
+  .platform__inner { min-height: 0; }
+  .platform__copy { max-width: 600px; padding-right: 0; }
+  /* Картинка в потоке; края растворяются в фоне секции (фон вшит в экспорт) */
+  .platform__visual {
+    position: static;
+    display: block;
+    width: min(872px, 100%);
+    margin: var(--space-32) auto 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent),
+      linear-gradient(180deg, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent),
+      linear-gradient(180deg, transparent, black 10%, black 90%, transparent);
+    mask-composite: intersect;
+  }
+  .business { min-height: 0; padding-block: var(--section-pad); }
+}
+
+@media (max-width: 767px) {
+  .account-card { padding: var(--space-32) var(--space-24); }
+  .payments__methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .payments__row { display: contents; }
+  .payment-tile {
+    min-height: 96px;
+    padding: 20px var(--space-16);
+  }
+  .payment-tile--wide { grid-column: 1 / -1; }
+}

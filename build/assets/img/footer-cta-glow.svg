@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="936" viewBox="0 0 1440 935.6" preserveAspectRatio="none">
+  <!-- Свечение подвала с CTA (footer 6816:8376, 08 Accounts): радиальный градиент из Figma как есть -->
+  <defs>
+    <radialGradient id="g" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(16.66 41.924 -128.39 53.589 653.5 48.556)">
+      <stop offset="0" stop-color="#2BC48B" stop-opacity="0.502"/>
+      <stop offset="1" stop-color="#2BC48B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1440" height="935.6" fill="url(#g)" opacity="0.53"/>
+</svg>

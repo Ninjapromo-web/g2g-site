@@ -1,0 +1,468 @@
+/* G2G — шаблон страницы рынка (Figma 6014:434, 03 · Forex — market template).
+   Те же секции у 04 Metals & Energies, 05 Indices, 06 Crypto, 07 Stocks —
+   меняется контент. Секции самодостаточны; значения — из get_design_context
+   по id секции (build/SECTIONS.md). Герой, FAQ, CTA подвала и «Your next step» — components.css. */
+
+/* ════════ Why forex (6095:3658) ═════════════════════════════════
+   Заголовок · панель «фото + три карточки» (r60) · кнопка */
+.why-market { padding-block: var(--section-pad-md); }
+.why-market__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+}
+.why-market__panel {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-section);
+}
+/* Фото 727×600: руки + экран MT5, экспорт узла img 6230:6370 целиком */
+.why-market__media {
+  flex: 0 0 56.8%; /* 727 / 1280 */
+  min-width: 0;
+}
+.why-market__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.why-market__features {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+}
+/* repeat: feature-row — Card / Fact (6007:40), вариант строки на белом.
+   Рамки соседних строк перекрываются на 1px, как в Figma (mb −1) */
+.feature-row {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: calc(var(--border-width) * -1);
+  /* обводка в Figma внутри рамки — поле за вычетом рамки, иначе текст уже на 2px и balance
+     переносит строку в другом месте (05 Indices, «Fully STP Execution») */
+  padding: calc(var(--space-36) - var(--border-width)) calc(var(--space-40) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-on-light);
+  background-color: var(--color-surface-light);
+}
+.feature-row--first {
+  margin-top: 0;
+  border-top-right-radius: var(--radius-section);
+}
+/* В Figma угол у нижней строки срезан маской панели вместе с рамкой — здесь
+   рамка идёт по скруглению, как у верхней строки */
+.feature-row--last { border-bottom-right-radius: var(--radius-section); }
+.feature-row__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-tint);
+}
+.feature-row__icon { width: 24px; height: 24px; }
+.feature-row__title { color: var(--fg); }
+.feature-row__text { color: var(--fg-2); }
+.feature-row__nowrap { white-space: nowrap; } /* «Tier-1» не рвать по дефису */
+.feature-row__strong {
+  font-weight: var(--fw-bold);
+  color: var(--fg);
+}
+
+@media (max-width: 1024px) {
+  .why-market__panel { flex-direction: column; }
+  .why-market__media {
+    flex-basis: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .why-market__img { object-position: 50% 30%; }
+  .feature-row--first { border-top-right-radius: 0; }
+  .feature-row--last {
+    border-bottom-left-radius: var(--radius-section);
+    border-bottom-right-radius: var(--radius-section);
+  }
+}
+@media (max-width: 767px) {
+  .why-market__media { aspect-ratio: 1 / 1; }
+  .feature-row { padding: var(--space-28) var(--space-24); }
+}
+
+/* ════════ Market grid (02 Markets 6013:345) ═════════════════════════
+   Каталог рынков на фоне страницы Tint: заголовок · 5 × Card / Market (components.css) */
+.market-grid { padding: var(--section-pad-md) 0 var(--section-pad); }
+.market-grid__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-head-gap);
+}
+.market-grid__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-24);
+}
+@media (max-width: 1024px) {
+  .market-grid__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16);
+  }
+}
+@media (max-width: 767px) {
+  .market-grid__list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ════════ Available instruments — плитки (06 Crypto 6108:3663) ══════
+   Светлая секция на градиенте Panel Tint: заголовок · 2 × Feature Tile (components.css) */
+.market-tiles {
+  padding-block: var(--section-pad-md);
+  background-image: var(--gradient-panel-tint-section);
+}
+.market-tiles__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+.market-tiles__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-24);
+}
+@media (max-width: 1024px) {
+  .market-tiles__grid { gap: var(--space-16); }
+}
+@media (max-width: 767px) {
+  .market-tiles__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ════════ Available stock CFDs (07 Stocks 6109:3758) ═══════════════
+   Светлая секция по центру: заголовок · строка-подводка · чипы с галочкой · примечание */
+.market-intro { padding-block: var(--section-pad-md); }
+.market-intro__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-40);
+  text-align: center;
+}
+.market-intro__head { max-width: 820px; }
+.market-intro__strong {
+  font-weight: var(--fw-bold);
+  color: var(--fg);
+}
+.market-intro__text { color: var(--fg); }
+.market-intro__note { color: var(--fg-2); } /* On Light Muted 2.96 → Secondary (решение 24.09) */
+/* repeat: check-chip (text) — «Specification items»: плашка Tint, галочка deep */
+.check-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-16);
+}
+.check-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  /* обводка в Figma внутри — поля за вычетом рамки (плашка 60 в высоту) */
+  padding: calc(var(--space-16) - var(--border-width)) calc(var(--space-24) - var(--border-width))
+    calc(var(--space-16) - var(--border-width)) calc(var(--space-20) - var(--border-width));
+  border: var(--border-width) solid var(--color-border-on-light);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-tint);
+  color: var(--color-text-on-light);
+  text-align: left;
+  white-space: nowrap;
+}
+.check-chip__icon { flex: none; width: 24px; height: 24px; }
+@media (max-width: 767px) {
+  /* наше решение: столбиком на всю ширину, длинные пункты переносятся */
+  .check-chips {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: var(--space-12);
+  }
+  .check-chip { white-space: normal; }
+}
+
+/* ════════ Available pairs (6095:3693) ═══════════════════════════
+   Тёмная секция со скруглённым верхом: пары · разделитель · спецификации ·
+   часы торговли. Фон: мятное свечение сверху справа + размытые пятна снизу
+   (тот же Mesh gradient, что у героя, отражённый по вертикали — растр). */
+.instruments {
+  padding: var(--section-pad-lg) 0 var(--space-40);
+  background-color: var(--color-surface-dark);
+  /* CUSTOM-CSS: радиальное свечение (в Figma эллипс повёрнут ~13° — упрощён) */
+  background-image:
+    radial-gradient(1345px 808px at 70.8% 258px,
+      color-mix(in srgb, var(--color-accent) 27%, transparent) 0%,
+      transparent 100%);
+  background-repeat: no-repeat;
+}
+/* Forex: внизу ещё размытые пятна — растр = фон контейнера */
+.instruments--mesh {
+  background-image:
+    radial-gradient(1345px 808px at 70.8% 258px,
+      color-mix(in srgb, var(--color-accent) 27%, transparent) 0%,
+      transparent 100%),
+    url('../assets/img/pairs-mesh.webp');
+  background-position: 0 0, right bottom;
+  /* ширина — не меньше макета, но во всю секцию (как свечение подвала): при фиксированных 1440 на экранах
+     шире левый край растра вставал посреди секции; высота — как в макете (растр 1440×810) */
+  background-size: auto, max(1440px, 100%) 810px;
+}
+/* Indices: свечение чуть ниже (эллипс 1378×925, центр 1019/298, повёрнут ~26° — упрощён)
+   и пятна по бокам в нижней половине (Mesh 6263:8316, отражён) — растр 1440×1252 */
+.instruments--mesh-sides {
+  background-image:
+    radial-gradient(1378px 925px at 70.8% 298px,
+      color-mix(in srgb, var(--color-accent) 27%, transparent) 0%,
+      transparent 100%),
+    url('../assets/img/indices-mesh.webp');
+  background-position: 0 0, center bottom;
+  /* пятна по бокам тянутся до краёв секции: при фиксированных 1440 на экранах шире они обрывались
+     вертикальными краями растра (замечание пользователя 02.10); высота — как в макете */
+  background-size: auto, max(1440px, 100%) 1252px;
+}
+/* Crypto (Specifications 6108:3682): только свечение, выше и площе (1293×592, центр 1019/184) */
+.instruments--glow-top {
+  background-image:
+    radial-gradient(1293px 592px at 70.8% 184px,
+      color-mix(in srgb, var(--color-accent) 27%, transparent) 0%,
+      transparent 100%);
+}
+.instruments__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--section-pad-lg);
+}
+.instruments__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-44);
+  width: 100%;
+}
+.instruments__block--narrow { max-width: 800px; }
+.instruments__block--tight { gap: var(--space-40); } /* Indices: спецификации и часы — 40 */
+.instruments__divider {
+  width: 100%;
+  height: var(--border-width);
+  margin: 0;
+  border: 0;
+  background-color: var(--color-divider-strong);
+}
+.instruments__notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  width: 100%;
+  text-align: center;
+}
+.instruments__note { color: var(--color-text-secondary); } /* Muted поверх свечения 2.0 → Secondary (как строка риска, решение 24.09) */
+.instruments__note--soft { color: var(--color-text-on-light-muted); } /* сноски к таблице — как в Figma */
+
+/* Группы пар: FX Majors / FX Crosses по 400px */
+.pair-groups {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+.pair-group {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-16);
+  min-width: 0;
+}
+.pair-group__label { color: var(--fg-accent); }
+/* repeat: pill (пара) — Pill Neutral (6006:39) */
+.pair-group__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pair-group__list--narrow { padding-right: var(--space-40); } /* Majors: 3 в ряд, как в Figma */
+.pair-groups--spaced { gap: var(--space-44); } /* Metals: между группами 44 */
+
+/* Таблица спецификаций — Row / Pair (6094:3688, ключ 430 + значение) и Row / Grid
+   (6098:3506, до 5 равных колонок). Цвета — от темы секции: на тёмном и на белом. */
+.spec-table {
+  width: 100%;
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-md); /* 18 в Figma → 16 */
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  table-layout: fixed;
+  text-align: left;
+}
+.spec-table--pair { max-width: 800px; }
+.spec-table--narrow { max-width: 800px; } /* Row / Grid в колонке 800 (05 Indices) */
+/* Crypto, Metals: в Figma строки целые — 52 и шапка 44 (текстовые узлы 20/16), у Indices — 51.6/43.6 */
+.spec-table--snap {
+  --table-cell-lh: 20px;
+  --table-head-lh: 16px;
+}
+.spec-table__col-key { width: 454px; } /* 24 поле + 430 */
+/* Row / Grid (6098:3506): поля 24, между колонками 16, колонки равные. У ячеек поле только
+   справа (16), поэтому равные <col> сдвигают колонки на 4–18px. Первая <col> = колонка + 40,
+   последняя = колонка + 24, средние делят остаток. Chrome не берёт у <col> calc() с % и px —
+   поэтому чистые проценты, посчитанные для ширины таблицы в макете (указана у модификатора). */
+.spec-table--cols-2 { --col-first: 51%; --col-last: 49%; }         /* 2 колонки в 800 (Metals, часы) */
+.spec-table--cols-3 { --col-first: 35%; --col-last: 33%; }         /* 3 колонки в 800 (Indices) */
+.spec-table--cols-4 { --col-first: 26.25%; --col-last: 25%; }      /* 4 колонки в 1280 (Metals) */
+.spec-table--cols-5 { --col-first: 21.375%; --col-last: 20.125%; } /* 5 колонок в 1280 (Crypto, Metals) */
+.spec-table__col-first { width: var(--col-first); }
+.spec-table__col-last { width: var(--col-last); }
+.spec-table__head-row { background-color: var(--row-head); }
+.spec-table__row--alt { background-color: var(--row-alt); }
+/* Обводка строки в Figma — внутри её высоты: нижнее поле за вычетом рамки (строка 51.6, шапка 43.6) */
+.spec-table__head,
+.spec-table__key,
+.spec-table__value {
+  padding: var(--space-16) var(--space-16) calc(var(--space-16) - var(--border-width)) 0;
+  border-bottom: var(--border-width) solid var(--line);
+  vertical-align: top;
+}
+.spec-table__head {
+  padding-block: 14px calc(14px - var(--border-width));
+  color: var(--fg-2); /* Muted: на подложке строки 4.11, на белом 2.96 → Secondary (решение 24.09) */
+  font-size: var(--fs-table-head);
+  line-height: var(--table-head-lh, var(--lh-table-head));
+  letter-spacing: var(--ls-table-head);
+  font-weight: var(--fw-table-head);
+}
+.spec-table__key,
+.spec-table__value {
+  font-size: var(--fs-table-cell);
+  line-height: var(--table-cell-lh, var(--lh-table-cell));
+  font-weight: var(--fw-table-cell);
+}
+.spec-table__key { color: var(--fg); }
+.spec-table__value { color: var(--fg-2); }
+.spec-table__cell--first { padding-left: var(--space-24); }
+.spec-table__cell--last-row { border-bottom: 0; }
+/* Обёртка: на узких экранах широкая таблица прокручивается сама, страница — нет */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+/* Группа: подпись (мятная / deep) · таблица · примечание */
+.table-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  width: 100%;
+}
+.table-group--narrow { max-width: 800px; }
+.table-group__label { color: var(--fg-accent); }
+.table-group__label--bright { color: var(--color-accent-bright); } /* Indices «General…» — Mint Bright, как в Figma */
+/* Подпись группы + примечание справа (Indices «US INDICES · Applies to…») */
+.table-group__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-8) var(--space-16);
+}
+.table-group__aside { color: var(--fg-2); }
+.table-group__note {
+  margin-top: calc(var(--space-4) * -1); /* 16 после таблицы, как в Figma */
+  color: var(--fg-2); /* On Light Muted 2.96 → Secondary (решение 24.09) */
+}
+.table-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-44);
+  width: 100%;
+  align-items: center;
+}
+
+
+@media (max-width: 1024px) {
+  .instruments__inner { gap: var(--space-80); }
+  .instruments--mesh-sides { background-size: auto, 100% auto; } /* пятна по краям — во всю ширину */
+  /* 5 колонок уже 1280: первая шире, чтобы названия («Chainlink / US Dollar») шли в одну строку */
+  .spec-table--cols-5 { --col-first: 26%; --col-last: 18.5%; }
+  .spec-table__col-key { width: 50%; }
+}
+@media (max-width: 767px) {
+  .instruments { background-size: auto, 900px auto; }
+  .instruments__inner { gap: var(--space-64); }
+  .instruments__block { gap: var(--space-32); }
+  .pair-groups {
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+  .pair-group__list--narrow { padding-right: 0; }
+  .spec-table__head,
+  .spec-table__key,
+  .spec-table__value { padding-right: var(--space-16); }
+  .spec-table__cell--first { padding-left: var(--space-16); }
+  .spec-table--wide { min-width: 600px; }
+  .spec-table--cols-5 { min-width: 720px; } /* 5 колонок: названия («Bitcoin / US Dollar») — в одну строку */
+  /* Узкая таблица без прокрутки: колонки по содержимому — длинный текст («Market») получает место */
+  .spec-table--narrow {
+    --col-first: auto;
+    --col-last: auto;
+    table-layout: auto;
+  }
+  .pill--long { white-space: normal; }
+  .instruments--mesh-sides { background-size: auto, 100% auto; }
+}
+
+/* ════════ Specifications (04 Metals 6099:3440) ═════════════════
+   Светлая секция: таблицы Row / Grid по группам · три карточки Card / Note */
+.market-specs { padding-block: var(--section-pad-md); }
+.market-specs__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-pad-lg);
+}
+.market-specs__tables {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-44);
+}
+/* repeat: note-card (title, text, image) — Card / Note (6087:3646) */
+.note-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-24);
+}
+.note-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding: var(--space-28);
+  border: var(--border-width) solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--card-bg);
+}
+.note-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.note-card__title { color: var(--fg); }
+.note-card__text { color: var(--fg-2); }
+.note-card__img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .note-cards { gap: var(--space-16); }
+  .note-card { padding: var(--space-24); }
+}
+@media (max-width: 767px) {
+  .market-specs__inner { gap: var(--space-64); }
+  .note-cards { grid-template-columns: minmax(0, 1fr); }
+  .note-card__img { object-fit: contain; } /* фон рендеров белый — сливается с карточкой */
+}

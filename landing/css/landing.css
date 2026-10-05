@@ -1,0 +1,868 @@
+/* G2G India landing — стили секций.
+   Значения — из опубликованного Webflow-лендинга (см. tokens.css). Брейкпоинты Elementor:
+   ≤1024 — значения Webflow «Tablet ≤991», ≤767 — «Mobile ≤767» + «≤479» (кегли — clamp в tokens.css).
+   Базовые отступы Webflow (p — 0 0 10px, h1/h3 — 20px 0 10px) перенесены явно в поля и зазоры
+   контейнеров, чтобы ритм совпал 1:1, а виджеты Elementor остались без собственных margin.
+   CUSTOM-CSS — то, что панелью Elementor не выставить; каждый блок продублирован в спеке. */
+
+/* ── База ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; }
+img { max-width: 100%; height: auto; }
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--color-mint); outline-offset: 2px; }
+
+/* ── Типографика (наборы = Global Fonts) ──────────────────────────── */
+.type-h1 { font: 700 var(--fs-h1)/var(--lh-h1) var(--font-main); letter-spacing: -0.02em; text-transform: uppercase; }
+.type-h2 { font: 600 var(--fs-h2)/1.1 var(--font-main); letter-spacing: -0.02em; text-transform: uppercase; }
+.type-h3 { font: 600 var(--fs-h3)/1.2 var(--font-main); letter-spacing: -0.02em; text-transform: uppercase; }
+.type-h4 { font: 600 var(--fs-h4)/var(--lh-h4) var(--font-main); letter-spacing: 0; text-transform: uppercase; }
+.type-h5 { font: 400 var(--fs-h5)/1.2 var(--font-main); letter-spacing: -0.02em; }
+.type-display { font: 600 var(--fs-display)/1.1 var(--font-main); letter-spacing: -0.02em; }
+.type-eyebrow { font: 500 1rem/1 var(--font-main); letter-spacing: 0; }
+.type-body-m { font: 400 var(--fs-body-m)/1.4 var(--font-main); letter-spacing: -0.02em; }
+.type-body { font: 400 var(--fs-body)/1.5 var(--font-main); letter-spacing: 0; }
+.type-fact { font: 600 var(--fs-body)/1.5 var(--font-main); letter-spacing: 0; text-transform: uppercase; }
+.type-nav { font: 400 var(--fs-body)/1.5 var(--font-main); letter-spacing: 0; text-transform: uppercase; }
+.type-note { font: 400 0.9375rem/1.4 var(--font-main); letter-spacing: -0.01em; }
+.type-chip { font: 500 0.8125rem/1.4 var(--font-main); letter-spacing: 0; }
+
+/* ── Кнопки (Theme Style → Buttons + варианты) ────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  font: 600 1rem/1.2 var(--font-main);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.btn__icon { flex: none; width: 1.25rem; height: 1.25rem; }
+
+.btn--primary { background: var(--color-red); color: var(--color-white); }
+.btn--primary:hover { background: var(--color-red-hover); }
+.btn--outline { background: transparent; border-color: var(--color-white-50); color: var(--color-white); }
+.btn--outline:hover { background: var(--color-white-14); border-color: var(--color-grey-200); }
+.btn--light-bordered { background: var(--color-white); border-color: var(--color-grey-200); color: var(--color-ink); }
+.btn--light-bordered:hover { background: var(--color-mist); border-color: var(--color-grey-400); }
+.btn--whatsapp { background: var(--color-whatsapp); color: var(--color-white); }
+.btn--whatsapp:hover { background: var(--color-whatsapp-hover); }
+.btn--sm { height: 2.75rem; padding: 0.75rem 1.5rem; font-size: var(--fs-nav-btn); line-height: 1; letter-spacing: 0; }
+
+/* Круглая вторичная кнопка WhatsApp рядом с главной CTA (герой, финальная CTA): меньше главной (ТЗ Block 1.3),
+   при наведении — цвет WhatsApp. Elementor: Icon, View Framed, Shape Circle, Hover → фон #25D366 */
+.btn-round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-white-50);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-white);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-round:hover { background: var(--color-whatsapp); border-color: var(--color-whatsapp); }
+.btn-round__icon { width: 1.25rem; height: 1.25rem; }
+
+/* ── Шапка секции (надзаголовок + H2) ─────────────────────────────── */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.5rem;
+  max-width: 51.4375rem;
+  margin-inline: auto;
+  text-align: center;
+}
+.section-head--wide { max-width: none; }
+.section-head__eyebrow { color: var(--color-grey-400); }
+.section-head__eyebrow--on-dark { color: var(--color-white-70); }
+.section-head__title { color: var(--color-ink); }
+.section-head__title--on-dark { color: var(--color-white); }
+
+/* ═══ header ═════════════════════════════════════════════════════════ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  padding: 1rem var(--pad-x);
+  border-bottom: 1px solid transparent;
+  background: var(--color-header-glass);
+  backdrop-filter: blur(4px);               /* CUSTOM-CSS: backdrop-filter */
+  -webkit-backdrop-filter: blur(4px);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.site-header.is-scrolled {                  /* CUSTOM-CSS + JS: класс после 40px прокрутки */
+  background: var(--color-header-solid);
+  border-bottom-color: var(--color-grey-800);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+.site-header__logo { display: flex; margin-right: auto; }
+.site-header__logo-img { width: 7.625rem; height: 2.375rem; object-fit: contain; }
+
+.site-nav { display: flex; align-items: center; column-gap: 2rem; }
+.site-nav__link { color: var(--color-grey-200); text-decoration: none; transition: color 0.2s; }
+.site-nav__link:hover { color: var(--color-white); }
+.site-nav__link.is-current { color: var(--color-mint); }
+
+.site-header__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-icon);
+  background: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+}
+.site-header__burger-icon { display: flex; width: 1.75rem; height: 1.75rem; }
+.site-header__burger-fallback { width: 100%; height: 100%; }
+
+/* ═══ hero ═══════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 55rem;
+  overflow: hidden;
+  background: var(--color-hero);
+}
+.hero__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 80% 50%;
+}
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.625rem;                        /* 2rem + нижний отступ h1/p Webflow */
+  width: 55rem;
+  max-width: 60%;
+  padding-top: 10.25rem;                    /* 9rem + верхний отступ h1 Webflow */
+}
+.hero__title { color: var(--color-white); }
+.hero__title-accent { color: var(--color-mint); }
+.hero__lead { max-width: 35rem; color: var(--color-white-80); }
+.hero__cta { display: flex; flex-direction: column; align-items: flex-start; row-gap: 0.75rem; }
+.hero__actions { display: flex; align-items: center; column-gap: 0.75rem; }
+.hero__note { color: var(--color-white-70); }
+
+.trustbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding: 1.25rem 8%;
+  background: var(--color-mist);
+}
+.trustbar__item { color: var(--color-ink); }
+.trustbar__dot { flex: none; width: 0.2841rem; height: 0.2841rem; background: var(--color-ink); }
+
+/* ═══ why ════════════════════════════════════════════════════════════ */
+.why { background: var(--color-white); scroll-margin-top: 5.5rem; }
+.why__inner {
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding: var(--section-y) var(--pad-x);
+}
+.why__title-accent { display: block; color: var(--color-mint-deep); }
+.why__body {
+  display: flex;
+  margin-top: var(--gap-block);
+  padding-bottom: 1px;                      /* компенсация margin -1px карточек */
+  border-radius: var(--r-panel);
+  overflow: hidden;
+}
+.why__media {
+  position: relative;
+  flex: 0 1 59.04%;                         /* 803 / 1360 */
+  min-width: 0;
+  background: var(--color-mist);
+}
+.why__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.why__cards { display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; }
+
+.why-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1.25rem;
+  margin-bottom: -1px;
+  padding: 2rem 2rem 2.625rem;              /* + нижний отступ абзаца Webflow */
+  border: 1px solid var(--color-grey-200);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.why-card:hover { background: var(--color-mist-20); }
+.why-card--first { border-top-right-radius: var(--r-panel); }
+.why-card--last { border-bottom-right-radius: var(--r-panel); }
+.why-card.is-active { background: var(--color-deep); }
+.why-card__icon {
+  display: flex;
+  padding: 0.75rem;
+  border-radius: var(--r-icon);
+  background: var(--color-mist);
+  color: var(--color-ink);
+}
+.why-card__text { display: flex; flex-direction: column; row-gap: 0.5rem; width: 100%; }
+.why-card__title { color: var(--color-ink); }
+.why-card__desc { color: var(--color-grey-600); }
+/* CUSTOM-CSS: состояние активной карточки меняет детей (в Elementor — связанный стиль) */
+.why-card.is-active .why-card__icon { background: var(--color-red); color: var(--color-white); }
+.why-card.is-active .why-card__title { color: var(--color-white); }
+.why-card.is-active .why-card__desc { color: var(--color-grey-400); }
+
+/* ═══ numbers (By the numbers + How it works) ════════════════════════ */
+.numbers {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-section) var(--r-section) 0 0;
+  background: var(--color-deep) url('../assets/img/numbers-bg.webp') no-repeat 100% 0 / 100% auto;
+}
+.numbers__inner {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--section-y);
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding: var(--section-y) var(--pad-x) 0;
+}
+.numbers__block { display: flex; flex-direction: column; row-gap: var(--gap-block); scroll-margin-top: 5.5rem; }
+.numbers__title-accent { color: var(--color-mint); }
+.numbers__divider { width: 100%; height: 1px; margin: 0; border: 0; background: var(--color-white-20); }
+
+.stats { display: flex; column-gap: 2rem; }
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  row-gap: 0.75rem;
+  padding-bottom: 0.625rem;                 /* нижний отступ абзаца Webflow */
+  text-align: center;
+}
+.stat__value { color: var(--color-mint); }
+.stat__label { color: var(--color-grey-400); }
+
+.steps { display: flex; column-gap: 1rem; }
+.step {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  row-gap: 0.75rem;
+  min-width: 0;
+  padding: 1.5rem;
+  border-bottom: 3px solid var(--color-grey-900);
+  border-radius: var(--r-step);
+  background: var(--color-white-5);
+  transition: border-color 0.2s;
+}
+.step:hover, .step.is-active { border-bottom-color: var(--color-red); }
+.step__head { display: flex; align-items: center; column-gap: 0.75rem; }
+.step__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 3.125rem;
+  height: 3.125rem;
+  border: 1px solid var(--color-white-5);
+  border-radius: var(--r-icon);
+  background: var(--color-white-10);
+  color: var(--color-white);
+}
+/* CUSTOM-CSS: активный шаг красит плашку номера */
+.step.is-active .step__num { background: var(--color-red); border-color: var(--color-red); }
+.step__title { color: var(--color-white); }
+.step__methods { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.step__method {
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--color-white-20);
+  border-radius: 999px;
+  color: var(--color-white-80);
+}
+.step__desc { color: var(--color-white-70); }
+
+.steps-media { position: relative; width: 100%; aspect-ratio: 21 / 9; }
+.steps-media__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.steps-media__img.is-active { opacity: 1; }
+.steps-media::after {                       /* CUSTOM-CSS: скрим сверху поверх кадров */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(var(--color-deep), transparent 14%);
+  pointer-events: none;
+}
+
+/* ═══ plans (Two ways to start) ══════════════════════════════════════ */
+.plans { background: var(--color-white); }
+.plans__inner {
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding: var(--section-y) var(--pad-x);
+}
+.plans__title-accent { color: var(--color-mint); }
+.plans__panel {
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
+  margin-top: var(--gap-block);
+  padding: 2.75rem;
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  background: var(--color-panel) url('../assets/img/plans-bg.svg') center / cover;
+}
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.75rem;
+  border-radius: var(--r-card-s);
+  overflow: hidden;
+  background: var(--color-white);
+}
+.plan-card--bordered { border: 1px solid var(--color-mist); }
+.plan-card__head {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1rem;
+  padding: 3.25rem 2rem;
+}
+.plan-card__head--art {
+  border-radius: var(--r-icon);
+  overflow: hidden;
+  background: url('../assets/img/switching-over.webp') center / cover;
+}
+.plan-card__eyebrow { color: var(--color-grey-400); }
+.plan-card__eyebrow--on-art { color: var(--color-rose); }
+.plan-card__title { margin: 1.25rem 0 0.625rem; color: var(--color-ink); }   /* отступы h3 Webflow */
+.plan-card__title--on-art { color: var(--color-white); }
+.plan-card__list { display: flex; flex-direction: column; row-gap: 1.5rem; padding: 1.5rem 1.375rem 1.375rem; }
+.plan-card__item { display: flex; align-items: flex-start; color: var(--color-grey-600); }
+.plan-card__item::before {                  /* CUSTOM-CSS: квадратный маркер (в Elementor — Icon List, своя SVG-иконка) */
+  content: "";
+  flex: none;
+  width: 0.2841rem;
+  height: 0.2841rem;
+  margin: 0.625rem calc(0.625rem - 0.142rem + 0.25rem) 0 calc(0.625rem - 0.142rem);   /* по центру первой строки */
+  background: var(--color-grey-600);
+}
+.plan-card__item--strong { color: var(--color-ink); font-weight: 500; }
+.plan-card__link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: color 0.2s; }
+.plan-card__link:hover { color: var(--color-ink); }
+.plan-card__item--strong::before { background: var(--color-red); }
+
+/* ═══ trust (сравнение + FAQ) ════════════════════════════════════════ */
+.trust { background: var(--color-white); scroll-margin-top: 5.5rem; }
+.trust__inner {
+  display: grid;
+  grid-template-columns: 0.75fr 1.1fr;
+  column-gap: 1rem;
+  align-items: start;
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+.trust__aside {
+  position: sticky;                         /* CUSTOM-CSS (или Pro: Motion Effects → Sticky) */
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  padding-block: var(--section-y);
+}
+.trust__title { color: var(--color-ink); }
+.trust__title-accent { display: block; color: var(--color-mint-deep); }
+.trust__main {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--section-y);
+  min-width: 0;
+  padding: var(--section-y) 0 var(--section-y) 1rem;
+}
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; column-gap: 0.75rem; padding-bottom: 1.5rem; }
+.compare__col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 1.5rem;
+  padding: 5rem 0 2rem;
+}
+.compare__col--g2g {
+  padding-inline: 1rem;
+  border-radius: var(--r-card-s);
+  /* фон — арт справа сверху; оверлей — знак G2G (Elementor: Background + Background Overlay) */
+  background:
+    url('../assets/img/g2g-mark-green.svg') no-repeat 1rem 2rem,
+    url('../assets/img/one-account-art.svg') no-repeat 100% 0,
+    var(--color-mist);
+}
+.compare__label { color: var(--color-grey-600); }
+.compare__label--g2g { color: var(--color-ink); font-weight: 500; }
+.compare__list { display: flex; flex-direction: column; row-gap: 1.5rem; }
+.compare__item { display: flex; align-items: flex-start; column-gap: 0.25rem; color: var(--color-grey-600); }
+.compare__item--g2g { color: var(--color-ink); font-weight: 500; }
+.compare__mark { flex: none; width: 1.25rem; height: 1.25rem; margin-top: 0.145rem; color: var(--color-grey-400); }
+.compare__mark--yes { color: var(--color-mint); }
+
+.faq { display: flex; flex-direction: column; row-gap: var(--gap-block); scroll-margin-top: 5.5rem; }
+.faq__title { color: var(--color-ink); }
+.faq__list { display: flex; flex-direction: column; row-gap: 1.5rem; }
+.faq-item { padding: 0.75rem 0 2.25rem; border-bottom: 1px solid var(--color-grey-200); }
+.faq-item:last-child { padding-bottom: 0.75rem; border-bottom: 0; }   /* CUSTOM-CSS: без линии под последним */
+.faq-item__q {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  column-gap: 1rem;
+  color: var(--color-ink);
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+}
+.faq-item__q::-webkit-details-marker { display: none; }   /* CUSTOM-CSS */
+.faq-item__icon { flex: none; width: 1.25rem; height: 1.25rem; color: var(--color-red); transition: transform 0.2s, color 0.2s; }
+.faq-item[open] .faq-item__icon { transform: rotate(45deg); color: var(--color-grey-800); }   /* CUSTOM-CSS */
+.faq-item__a { padding: 1rem 0 0.625rem; }
+.faq-item__text { color: var(--color-ink); }
+
+/* ═══ products (Product range + Swap-free) ═══════════════════════════ */
+.products {
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 5.5rem;
+  border-radius: var(--r-section) var(--r-section) 0 0;
+  background: var(--color-deep) url('../assets/img/products-bg.webp') no-repeat 100% 0 / 100% auto;
+}
+.products__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: var(--gap-block);
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding: var(--section-y) var(--pad-x) 2.5rem;
+}
+.products__title-accent { color: var(--color-mint); }
+.products__frame { display: flex; flex-direction: column; width: 100%; border-radius: var(--r-card); overflow: hidden; }
+
+.product-tiles { display: flex; margin-bottom: -1px; }
+.product-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  row-gap: 1.5rem;
+  min-width: 0;
+  min-height: 9.5rem;
+  margin-right: -1px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-grey-800);
+  background: var(--color-white-5);
+}
+.product-tile--first { border-top-left-radius: var(--r-card); }
+.product-tile--last { margin-right: 0; border-top-right-radius: var(--r-card); }
+.product-tile__icon {
+  display: flex;
+  padding: 0.75rem;
+  border: 1px solid var(--color-white-5);
+  border-radius: var(--r-icon);
+  background: var(--color-white-10);
+  color: var(--color-white);
+}
+.product-tile__name { color: var(--color-white); }
+
+.products__account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.75rem;
+  border: 1px solid var(--color-grey-800);
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  background: var(--color-white-5);
+}
+.products__account-name { display: flex; align-items: center; column-gap: 0.5rem; flex: none; color: var(--color-white); }
+.products__account-mark { flex: none; width: 1.25rem; height: 1.25rem; color: var(--color-mint); }
+
+.swap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75rem;
+  width: 100%;
+  padding: 2.75rem;
+  border: 1px solid var(--color-grey-800);
+  border-radius: var(--r-card);
+  background: var(--color-white-5);
+}
+.swap__title { color: var(--color-white); }
+.swap__text { color: var(--color-grey-400); }
+
+/* ═══ support ════════════════════════════════════════════════════════ */
+.support { background: var(--color-white); scroll-margin-top: 5.5rem; }
+.support__inner {
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding: var(--section-y) var(--pad-x);
+}
+.support__panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.5rem;
+  padding: 7.5rem 1.5rem;
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  background: url('../assets/img/support-bg.webp') center / cover;
+  text-align: center;
+}
+.support__title { max-width: 44.75rem; color: var(--color-white); }
+.support__title-accent { display: block; color: var(--color-mint); }
+.support__text { max-width: 24rem; color: var(--color-white-80); }
+.support__btn { margin-top: 1.875rem; }    /* 2.75rem Webflow − 1.5rem зазора + отступ абзаца */
+
+/* CUSTOM-CSS: мелкое зерно поверх арта (Webflow Head CSS) — плашка «Switching over», Support, финальная CTA.
+   У плашки и Support фон непрозрачный — зерно под контентом в изолированной группе (z-index −1);
+   у финальной CTA фон полупрозрачный — зерно смешивается с подвалом за ней, поэтому без изоляции,
+   а текст и кнопки подняты z-index 1. */
+.plan-card__head--art::before,
+.support__panel::before,
+.final-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.9;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+}
+.final-cta::before { z-index: 0; }
+
+/* ═══ footer (финальная CTA + подвал) ════════════════════════════════ */
+.site-footer {
+  position: relative;
+  padding: 3rem 0 2.5rem;
+  border-radius: var(--r-section) var(--r-section) 0 0;
+  background: var(--color-deep) url('../assets/img/footer-bg.webp') no-repeat 0 0 / 100% auto;
+}
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+  max-width: calc(var(--content-width) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.final-cta {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2.75rem;
+  width: 100%;
+  padding: 2rem 3rem;
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  background: var(--color-white-5);
+}
+.final-cta__text { position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1 1 0; row-gap: 1.5rem; min-width: 0; padding-bottom: 0.625rem; }
+.final-cta__title { max-width: 30rem; color: var(--color-white); }
+.final-cta__title-accent { color: var(--color-mint); }
+.final-cta__note { color: var(--color-grey-200); }
+.final-cta__actions { position: relative; z-index: 1; display: flex; align-items: center; column-gap: 0.75rem; flex: none; }
+
+.site-footer__cols {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  grid-template-rows: auto auto;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  align-items: start;
+  width: 100%;
+  padding-top: 1rem;
+}
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  grid-row: span 2;
+  align-self: stretch;
+  padding-right: 2rem;
+}
+.site-footer__logo { width: 7.625rem; height: 2.375rem; object-fit: contain; }
+.site-footer__desc { margin-bottom: 0.625rem; color: var(--color-grey-400); }
+.site-footer__legal { display: flex; flex-direction: column; row-gap: 0.75rem; margin-top: auto; }
+.site-footer__small { color: var(--color-grey-400); }
+
+.site-footer__nav { display: flex; column-gap: 1rem; justify-self: end; width: 100%; max-width: 37.5rem; }
+.site-footer__col { display: flex; flex-direction: column; flex: 1 1 0; row-gap: 2rem; min-width: 0; padding-right: 2rem; }
+.site-footer__col--last { padding-right: 0; }
+.site-footer__col-title { color: var(--color-white-70); }
+.site-footer__links { display: flex; flex-direction: column; row-gap: 1rem; }
+.site-footer__link { color: var(--color-grey-400); text-decoration: none; transition: color 0.2s; }
+.site-footer__link:hover { color: var(--color-white); }
+
+/* 6 иконок по 44px на экране 320 в ряд не помещаются — перенос (в Elementor Social Icons переносятся сами) */
+.socials { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-self: end; }
+.socials__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.3333rem;
+  background: var(--color-white-10);
+  color: var(--color-grey-400);
+  transition: color 0.2s;
+}
+.socials__link:hover { color: var(--color-white); }
+
+.site-footer__divider { width: 100%; height: 1px; margin: 0; border: 0; background: var(--color-grey-800); }
+
+.disclaimer { width: 100%; padding: 1rem; border-radius: var(--r-card-s); background: var(--color-white-5); }
+.disclaimer__text { color: var(--color-grey-400); }
+
+/* 6 ссылок на политики (ТЗ) в строку с © не помещаются — две строки: политики, под ними © */
+.site-footer__bottom { display: flex; flex-direction: column; align-items: flex-start; row-gap: 0.75rem; width: 100%; }
+.site-footer__copy { margin-bottom: 0.625rem; color: var(--color-grey-400); }
+.site-footer__policies { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.site-footer__policy { color: var(--color-grey-400); text-decoration: none; transition: color 0.2s; }
+.site-footer__policy:hover { color: var(--color-white); }
+
+/* ═══ плавающая WhatsApp ═════════════════════════════════════════════ */
+.fab-whatsapp {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.875rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  background: var(--color-whatsapp);
+  color: var(--color-white);
+  box-shadow: 0 6px 16px var(--color-fab-shadow);
+  transition: background-color 0.2s;
+}
+.fab-whatsapp:hover { background: var(--color-whatsapp-hover); }
+.fab-whatsapp__icon { width: 1.75rem; height: 1.75rem; }
+
+/* ═══ tablet ≤1024 ═══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .site-header { padding-block: 0.5rem; background: var(--color-ink); border-bottom-color: var(--color-grey-800); }
+  .site-header__burger { display: flex; }
+  .site-nav {                               /* выпадающее меню (Elementor: Nav Menu → Dropdown) */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem var(--pad-x) 1.5rem;
+    border-bottom: 1px solid var(--color-grey-800);
+    background: var(--color-ink);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    transition: opacity 0.2s, transform 0.2s, visibility 0s 0.2s;
+  }
+  .site-header.is-open .site-nav { visibility: visible; opacity: 1; transform: none; transition: opacity 0.2s, transform 0.2s; }
+  .site-nav__link { padding-block: 0.875rem; }
+  .site-nav__cta { width: 100%; margin-top: 1rem; }
+
+  .hero { min-height: 40rem; }
+  .hero__art { object-position: 70% 50%; filter: brightness(0.5); }
+  .hero__content { width: auto; max-width: none; padding-top: 8rem; }
+  .hero__lead { max-width: 34rem; }
+  .trustbar { flex-wrap: wrap; justify-content: center; gap: 0.5rem 2rem; margin-top: auto; }
+  .trustbar__dot { display: none; }
+  .hero__inner { padding-bottom: 3rem; }
+
+  .why__body { flex-direction: column; }
+  .why__media { flex: none; aspect-ratio: 16 / 10; }
+  .why__cards { flex-direction: row; flex-wrap: wrap; }
+  .why-card { flex: 0 0 50%; margin-right: -1px; }
+  .why-card--first { border-radius: 0; }          /* сетка 2×2: скругляем нижние углы, иначе рамку срезает */
+  .why-card--third { border-bottom-left-radius: var(--r-panel); }
+  .why-card--last { border-bottom-right-radius: var(--r-panel); }
+
+  .steps { flex-wrap: wrap; row-gap: 1rem; }
+  .step { flex: 1 1 45%; }
+
+  .plans__panel { padding: 2rem; }
+  .plan-card__list { padding-inline: 0; }
+
+  .trust__inner { grid-template-columns: minmax(0, 1fr); }
+  .trust__aside { position: static; padding-bottom: 2.5rem; }
+  .trust__main { padding-top: 0; padding-left: 0; }
+  .faq-item__q { padding-block: 0.75rem; }
+  .faq-item { padding-block: 0 1.5rem; }
+  .faq-item:last-child { padding-bottom: 0; }
+
+  .products__account { padding: 2rem; }
+  .swap { padding: 2rem; }
+  .swap__text { max-width: none; }
+
+  .support__panel { padding-block: 5rem; }
+
+  .site-footer { padding-top: 2rem; }
+  .final-cta { flex-direction: column; align-items: flex-start; row-gap: 2rem; padding: 3.5rem 2.5rem; }
+  .site-footer__links { row-gap: 0; }
+  .site-footer__link { display: inline-block; padding-block: 0.6875rem; }
+  .site-footer__col { row-gap: 1rem; }
+  .socials__link { width: 2.75rem; height: 2.75rem; }
+}
+
+/* ═══ mobile ≤767 ════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .btn { padding-inline: 1.5rem; }
+
+  .hero { min-height: 0; }
+  .hero__inner { order: 1; padding-bottom: 0; }
+  .hero__content { padding-top: 6.5rem; }
+  .hero__cta { align-items: stretch; }
+  .hero__actions { width: 100%; column-gap: 0.5rem; }
+  .hero__art {                              /* ноутбук под кнопками, заходит под них тёмным верхом */
+    position: relative;
+    order: 2;
+    align-self: flex-end;
+    width: 120%;
+    height: auto;
+    margin-top: -2.5rem;
+    object-fit: fill;
+  }
+  .trustbar { order: 3; margin-top: 0; padding: 1rem var(--pad-x); gap: 0.5rem 1rem; }
+
+  .why__media { aspect-ratio: 1; }
+  .why-card { flex: 1 1 100%; flex-direction: row; column-gap: 1rem; margin-right: 0; padding: 1.25rem 1.25rem 1.875rem; }
+  .why-card__text { flex: 1 1 0; row-gap: 0.375rem; min-width: 0; }
+  .why-card--third { border-radius: 0; }
+  .why-card--last { border-radius: 0 0 var(--r-panel) var(--r-panel); }
+
+  .stats { flex-direction: column; row-gap: 2rem; }
+  .step { flex: 1 1 100%; }
+
+  .plans__panel { flex-direction: column; row-gap: 0.5rem; padding: 0.5rem; }
+  .plan-card { flex: none; padding: 0.5rem; }
+  .plan-card__head { padding: 1.5rem 0.75rem; }
+  .plan-card__head--art { padding: 2rem 0.75rem; }
+  .plan-card__btn { align-self: stretch; padding-inline: 0.75rem; }   /* «Open Individual Account» в одну строку от 360 */
+  .plan-card__list { padding: 1.5rem 0.5rem 1rem; }
+
+  .trust__aside { padding-bottom: 1.5rem; }
+  .compare { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .compare__col { padding-top: 2rem; }
+  .compare__col--g2g { padding-top: 5rem; }
+  .faq__list { row-gap: 0.5rem; }
+
+  .products__inner { padding-bottom: 2rem; }
+  .product-tiles { flex-direction: column; }
+  .product-tile {
+    flex: none;
+    flex-direction: row;
+    column-gap: 1rem;
+    min-height: 0;
+    margin: 0 0 -1px;
+    padding-block: 1rem;
+  }
+  .product-tile--last { border-radius: 0; }
+  .products__account { padding: 1.5rem 1rem; text-align: center; }
+  .swap { padding: 1.5rem; }
+
+  .support__panel { padding: 3rem 1.5rem; }
+
+  .final-cta { padding: 2.5rem 1rem; }
+  .final-cta__actions { width: 100%; column-gap: 0.5rem; }
+  .btn--full-m { flex: 1 1 0; min-width: 0; padding-inline: 0.75rem; font-size: 0.9375rem; }   /* главная тянется, круглая WhatsApp рядом — в один ряд от 360 px */
+  .site-footer__cols { grid-template-columns: minmax(0, 1fr); row-gap: 2rem; }
+  .site-footer__brand { grid-row: auto; padding-right: 0; }
+  .site-footer__nav { flex-wrap: wrap; row-gap: 1.5rem; justify-self: start; max-width: none; }
+  .site-footer__col { flex: 1 1 40%; padding-right: 1rem; }
+  .socials { justify-self: start; }
+  .disclaimer { padding: 1.5rem; }
+  .site-footer__policies { flex-direction: column; row-gap: 0; }
+  .site-footer__policy { display: inline-block; padding-block: 0.6875rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
