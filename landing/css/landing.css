@@ -209,6 +209,8 @@ a { color: inherit; }
 
 /* ═══ why ════════════════════════════════════════════════════════════ */
 .why { background: var(--color-white); scroll-margin-top: 5.5rem; }
+/* правка клиента 06.10: «WHY G2G» на белом терялся (grey-400, контраст 2,7:1) — neutral-600, 5,1:1 */
+.why .section-head__eyebrow { color: var(--color-grey-600); }
 .why__inner {
   max-width: calc(var(--content-width) + 2 * var(--pad-x));
   margin-inline: auto;
