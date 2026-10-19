@@ -1697,36 +1697,54 @@
     gap: 12px;
   }
   .payments__row { display: contents; }
-  /* правка клиента 19.10: плитки разной высоты (96 / 98 / 104), две — во всю ширину, логотипы разного веса.
-     Теперь 2 × 4 одинаковых плиток (grid-auto-rows: 1fr — высоту ряда задаёт самая высокая), логотипы
-     уравнены по видимой площади: ширина на каждый (марки Apple и Google — меньше, длинные надписи — шире) */
-  .payments__methods { grid-auto-rows: 1fr; }
+  /* правка клиента 19.10, вариант B (выбор пользователя): плитки разной высоты (96 / 98 / 104), две — во всю ширину,
+     логотипы разного веса → одна белая панель, внутри сетка 2 × 4 из тонких линий. Ячейки одинаковые
+     (grid-auto-rows: 1fr), логотипы уравнены по видимой площади: ширина на каждый (марки Apple и Google — меньше).
+     Линии — рамка у каждой ячейки (ряды на телефоне — display: contents, порядковые селекторы не работают):
+     справа — у левой колонки (Visa, Apple Pay, Skrill, Tether), снизу — у всех, кроме последнего ряда.
+     В Elementor — Border у контейнера каждой плитки, панель — контейнер-сетка с Border, Radius, Box Shadow. */
+  .payments__methods {
+    grid-auto-rows: 1fr;
+    gap: 0;
+    overflow: hidden;
+    border: var(--border-width) solid var(--color-border-on-light);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface-light);
+    box-shadow: var(--shadow-card-light);
+  }
   .payment-tile,
   .payment-tile--apple,
   .payment-tile--google,
   .payment-tile--skrill,
   .payment-tile--usdt {
-    min-height: 96px;
+    min-height: 80px;
     padding: var(--space-16);
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
   }
+  .payment-tile--visa,
+  .payment-tile--apple,
+  .payment-tile--skrill,
+  .payment-tile--usdt { border-right: var(--border-width) solid var(--color-divider-on-light); }
+  .payment-tile:not(.payment-tile--usdt, .payment-tile--bank) { border-bottom: var(--border-width) solid var(--color-divider-on-light); }
   .payment-tile__logo { width: var(--pay-logo-w, auto); }
-  .payment-tile--visa { --pay-logo-w: 84px; }
-  .payment-tile--mastercard { --pay-logo-w: 118px; }
-  .payment-tile--apple { --pay-logo-w: 30px; }
-  .payment-tile--google { --pay-logo-w: 34px; }
-  .payment-tile--skrill { --pay-logo-w: 80px; }
-  .payment-tile--neteller { --pay-logo-w: 118px; }
-  .payment-tile--usdt { --pay-logo-w: 100px; }
-  /* Bank Transfer: в половине ряда знак и подпись в строку не помещаются — знак над подписью */
-  .payment-tile--bank {
-    flex-direction: column;
-    gap: var(--space-8);
-  }
-  .payment-tile--bank .payment-tile__chip { padding: 6px; }
-  .payment-tile--bank .payment-tile__chip img { width: 24px; height: 24px; }
+  .payment-tile--visa { --pay-logo-w: 72px; }
+  .payment-tile--mastercard { --pay-logo-w: 108px; }
+  .payment-tile--apple { --pay-logo-w: 26px; }
+  .payment-tile--google { --pay-logo-w: 29px; }
+  .payment-tile--skrill { --pay-logo-w: 68px; }
+  .payment-tile--neteller { --pay-logo-w: 104px; }
+  .payment-tile--usdt { --pay-logo-w: 88px; }
+  /* Bank Transfer: знак и подпись в строку, знак меньше */
+  .payment-tile--bank { gap: var(--space-8); }
+  .payment-tile--bank .payment-tile__chip { padding: 4px; }
+  .payment-tile--bank .payment-tile__chip img { width: 20px; height: 20px; }
   .payment-tile--bank .payment-tile__label {
-    font-size: var(--fs-body);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+    font-size: var(--fs-small);
+    line-height: var(--lh-small);
+    letter-spacing: 0;
+    white-space: normal; /* на 320 подпись встаёт в две строки, а не вылезает из ячейки */
   }
 }
