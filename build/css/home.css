@@ -152,7 +152,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  width: 200px;
+  width: 210px; /* 200 → 210 (19.10): подпись инструмента теперь в строке с флагом */
   padding: 13px; /* 14 минус рамка: обводка в Figma внутри */
   background: var(--color-quote-card);
   border: var(--border-width) solid var(--color-border-subtle);
@@ -163,43 +163,39 @@
   transform-origin: 50% 100%;
   will-change: transform, opacity;
 }
+/* правка клиента 19.10 (образец — их скриншот): строка «банк + город» снята, флаг и инструмент в одной строке,
+   первая часть подписи (USD в USD/JPY, US30) — акцентом, остальное — Text Secondary; при закрытом рынке
+   «Closed» встаёт на место процента изменения. Пропорции по образцу: подпись ~7 % ширины карточки, цена ~14 % */
 .globe-card__head {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-8);
   min-width: 0;
 }
 .globe-card__flag {
   flex: none;
-  width: 14px;
-  height: 10px;
-  border-radius: 1.5px;
+  width: 20px;
+  height: 14px;
+  border-radius: 2px;
 }
-.globe-card__bank {
-  flex: none;
-  font-size: 14px;
-  line-height: var(--lh-body-lg);
-  color: var(--color-accent);
-}
-.globe-card__city,
-.globe-card__instrument {
-  font-size: var(--fs-caption);
-  line-height: var(--lh-small);
-  color: var(--color-text-secondary);
-  white-space: nowrap;
-}
-.globe-card__city {
+.globe-card__symbol {
   min-width: 0;
   overflow: hidden;
+  font-size: 14px;
+  line-height: var(--lh-body-lg);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
-.globe-card__instrument {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-8);
+.globe-card__base { color: var(--color-accent); }
+.globe-card__closed {
+  display: none;
+  font-size: 14px;
+  line-height: var(--lh-body-lg);
+  color: var(--color-text-secondary);
 }
-.globe-card__closed { display: none; }
 .globe-card.is-closed .globe-card__closed { display: inline; }
+.globe-card.is-closed .globe-card__change { display: none; }
 .globe-card__price-row {
   display: flex;
   align-items: baseline;
@@ -207,7 +203,7 @@
   white-space: nowrap;
 }
 .globe-card__price {
-  font-size: 30px;
+  font-size: 28px;
   line-height: 1.05;
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
@@ -354,32 +350,20 @@
     padding-top: var(--space-8);
   }
   .hero__globe-float { height: min(100vw - 2 * var(--page-gutter), 460px); } /* телефон — квадрат, 767 — шире высоты */
-  /* правка клиента 19.10: на телефоне карточка занимала половину шара и две наезжали друг на друга — 164 → 140 px,
-     цена 22 → 18; подписи 11 px — нижний предел читаемости, все строки сохранены */
+  /* правка клиента 19.10: на телефоне карточка занимала половину шара и две наезжали друг на друга. Теперь в ней
+     две строки (флаг + инструмент, цена + изменение) — 156 px (по самой длинной живой подписи — WTI/USD · CRUDE OIL), цена 20, подписи 11 px (нижний предел читаемости) */
   .globe-card {
     gap: 4px;
-    width: 140px;
+    width: 156px;
     padding: 7px 9px; /* 8/10 минус рамка */
     border-radius: var(--radius-sm);
   }
   .globe-card__head { gap: 5px; }
-  .globe-card__flag { width: 12px; height: 9px; }
-  .globe-card__bank { font-size: 12px; line-height: var(--lh-small); }
-  .globe-card__city,
-  .globe-card__instrument { font-size: 11px; }
-  /* «Closed» рядом с длинным названием не помещается — уходит на свою строку; название длиннее карточки — многоточие */
-  .globe-card__instrument {
-    flex-wrap: wrap;
-    row-gap: 0;
-  }
-  .globe-card__symbol {
-    min-width: 0;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .globe-card__price { font-size: 18px; }
+  .globe-card__flag { width: 16px; height: 11px; }
+  .globe-card__symbol,
+  .globe-card__closed,
   .globe-card__change { font-size: 11px; line-height: var(--lh-small); }
+  .globe-card__price { font-size: 20px; }
   /* телефон: 2 × 2 без разделителей */
   .hero__facts-list {
     display: grid;
@@ -505,7 +489,7 @@
   right: var(--art-right);
   bottom: var(--art-bottom);
   width: var(--art-w);
-  height: var(--art-h);
+  height: auto; /* иконки клиента 19.10 обрезаны по объекту — высота по пропорциям файла */
   max-width: none;
   pointer-events: none;
   translate: var(--art-dx) var(--art-dy);
@@ -611,6 +595,20 @@
   min-height: 200px;
 }
 
+/* Иконки клиента 19.10 (вместо 3D-объектов Figma). Иконки обрезаны по объекту, поэтому место задаётся шириной
+   и отступами от правого и нижнего края карточки; на десктопе размеры — по макету клиента (ref-2-markets-mock),
+   на планшете и телефоне — в зонах прежних объектов, чуть крупнее. Наведение — прежнее (--art-to-*). */
+.market-card--hero { --art-w: 388px; --art-right: 14px; --art-bottom: -14px; }
+.market-card--stocks { --art-w: 152px; --art-right: 6px; --art-bottom: -8px; }
+.market-card--crypto { --art-w: 124px; --art-right: -30px; --art-bottom: -22px; } /* монета не заходит на текст */
+.market-card--indices { --art-w: 205px; --art-right: 66px; --art-bottom: -14px; }
+.market-card--metals { --art-w: 280px; --art-right: 4px; --art-bottom: -34px; }
+/* наведение: прежний сдвиг влево был рассчитан на объекты с полями — иконка заезжала на текст; теперь подъём и рост */
+.market-card--stocks,
+.market-card--crypto,
+.market-card--indices,
+.market-card--metals { --art-to-dx: 0%; --art-to-dy: -4%; --art-to-k: 1.06; }
+
 @media (max-width: 1024px) {
   .markets__row--top { grid-template-columns: minmax(0, 1fr); }
   .markets__stack { flex-direction: row; }
@@ -620,6 +618,8 @@
     --copy-max: 58%;
   }
   .market-card--metals { --art-h: 187px; --art-bottom: -30px; }
+  .market-card--indices { --art-w: 160px; --art-right: 20px; --art-bottom: -14px; }
+  .market-card--metals { --art-w: 180px; --art-right: 4px; --art-bottom: -6px; }
 }
 
 /* Мобильный (фидбек 25.09): заголовок и текст — на всю ширину карточки; отступ от текста до кнопки
@@ -649,6 +649,12 @@
   .market-card--wide { --art-w: 180px; --art-h: 180px; --art-right: 16px; --art-bottom: -40px; --art-gap: 64px; }
   /* Metals: ссылка «Explore Metals & Energies» длинная — объект над ней, а не рядом */
   .market-card--metals { --art-w: 160px; --art-h: 130px; --art-right: 16px; --art-bottom: 45px; --art-gap: 92px; }
+  /* иконки клиента 19.10 */
+  .market-card--hero { --art-w: 160px; --art-right: 16px; --art-bottom: 6px; }
+  .market-card--stocks { --art-w: 112px; --art-right: 24px; --art-bottom: -6px; }
+  .market-card--crypto { --art-w: 96px; --art-right: 28px; --art-bottom: -10px; }
+  .market-card--indices { --art-w: 116px; --art-right: 30px; --art-bottom: -10px; }
+  .market-card--metals { --art-w: 120px; --art-right: 24px; --art-bottom: 60px; }
 }
 
 /* ════════ Why G2G (7045:11472; фон и карточки — макет 9079:8697, 01.10) ═════════ */

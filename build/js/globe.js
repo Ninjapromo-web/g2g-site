@@ -134,16 +134,18 @@
     var el = document.createElement('div');
     el.className = 'globe-card';
     el.innerHTML =
+      // правка клиента 19.10: без строки «банк + город» — флаг и инструмент в одной строке, ниже цена;
+      // «Closed» встаёт на место процента изменения (CSS: .is-closed)
       '<div class="globe-card__head">' +
         '<img class="globe-card__flag" src="' + flagsDir + b.flag + '.svg" width="20" height="14" alt="">' +
-        '<span class="globe-card__bank">' + b.code + '</span>' +
-        '<span class="globe-card__city">' + b.city + '</span>' +
+        '<span class="globe-card__symbol"><span class="globe-card__base"></span><span class="globe-card__rest"></span></span>' +
       '</div>' +
-      '<p class="globe-card__instrument"><span class="globe-card__symbol"></span><span class="globe-card__closed">Closed</span></p>' +
-      '<p class="globe-card__price-row"><span class="globe-card__price"></span><span class="globe-card__change"></span></p>';
+      '<p class="globe-card__price-row"><span class="globe-card__price"></span><span class="globe-card__change"></span>' +
+        '<span class="globe-card__closed">Closed</span></p>';
     layer.appendChild(el);
     b.el = el;
-    b.symEl = el.querySelector('.globe-card__symbol');
+    b.baseEl = el.querySelector('.globe-card__base');
+    b.restEl = el.querySelector('.globe-card__rest');
     b.priceEl = el.querySelector('.globe-card__price');
     b.chgEl = el.querySelector('.globe-card__change');
     b.poolIndex = -1;
@@ -151,9 +153,15 @@
     b.vis = 0; b.room = 1; b.roomTarget = 1; b.side = null; // место под карточку — placeCards()
     // текст для замера размеров карточки (resize); показ начнётся с первого инструмента пула
     var probe = b.pool[0] || Q.ids[0];
-    b.symEl.textContent = Q.instruments[probe].label;
+    setSymbol(b, Q.instruments[probe].label);
     b.priceEl.textContent = Q.format(probe, Q.get(probe).price);
     b.flashTimer = 0;
+  }
+  // «USD/JPY · YEN» → акцентом первая часть (USD), остальное серым; «US30 · DOW JONES» → US30
+  function setSymbol(b, label) {
+    var m = /^([^\/\s]+)([\s\S]*)$/.exec(label) || [label, label, ''];
+    b.baseEl.textContent = m[1];
+    b.restEl.textContent = m[2];
   }
   function renderQuote(b, flash) {
     var id = b.pool[b.poolIndex];
@@ -173,7 +181,7 @@
   }
   function nextInstrument(b) {
     b.poolIndex = (b.poolIndex + 1) % b.pool.length;
-    b.symEl.textContent = Q.instruments[b.pool[b.poolIndex]].label;
+    setSymbol(b, Q.instruments[b.pool[b.poolIndex]].label);
     renderQuote(b, false);
   }
 
