@@ -354,15 +354,32 @@
     padding-top: var(--space-8);
   }
   .hero__globe-float { height: min(100vw - 2 * var(--page-gutter), 460px); } /* телефон — квадрат, 767 — шире высоты */
+  /* правка клиента 19.10: на телефоне карточка занимала половину шара и две наезжали друг на друга — 164 → 140 px,
+     цена 22 → 18; подписи 11 px — нижний предел читаемости, все строки сохранены */
   .globe-card {
-    gap: 6px;
-    width: 164px;
-    padding: 9px 11px; /* 10/12 минус рамка */
+    gap: 4px;
+    width: 140px;
+    padding: 7px 9px; /* 8/10 минус рамка */
     border-radius: var(--radius-sm);
   }
-  .globe-card__bank { font-size: 13px; }
-  .globe-card__price { font-size: 22px; }
-  .globe-card__change { font-size: var(--fs-caption); }
+  .globe-card__head { gap: 5px; }
+  .globe-card__flag { width: 12px; height: 9px; }
+  .globe-card__bank { font-size: 12px; line-height: var(--lh-small); }
+  .globe-card__city,
+  .globe-card__instrument { font-size: 11px; }
+  /* «Closed» рядом с длинным названием не помещается — уходит на свою строку; название длиннее карточки — многоточие */
+  .globe-card__instrument {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+  .globe-card__symbol {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .globe-card__price { font-size: 18px; }
+  .globe-card__change { font-size: 11px; line-height: var(--lh-small); }
   /* телефон: 2 × 2 без разделителей */
   .hero__facts-list {
     display: grid;
@@ -1680,9 +1697,36 @@
     gap: 12px;
   }
   .payments__row { display: contents; }
-  .payment-tile {
+  /* правка клиента 19.10: плитки разной высоты (96 / 98 / 104), две — во всю ширину, логотипы разного веса.
+     Теперь 2 × 4 одинаковых плиток (grid-auto-rows: 1fr — высоту ряда задаёт самая высокая), логотипы
+     уравнены по видимой площади: ширина на каждый (марки Apple и Google — меньше, длинные надписи — шире) */
+  .payments__methods { grid-auto-rows: 1fr; }
+  .payment-tile,
+  .payment-tile--apple,
+  .payment-tile--google,
+  .payment-tile--skrill,
+  .payment-tile--usdt {
     min-height: 96px;
-    padding: 20px var(--space-16);
+    padding: var(--space-16);
   }
-  .payment-tile--wide { grid-column: 1 / -1; }
+  .payment-tile__logo { width: var(--pay-logo-w, auto); }
+  .payment-tile--visa { --pay-logo-w: 84px; }
+  .payment-tile--mastercard { --pay-logo-w: 118px; }
+  .payment-tile--apple { --pay-logo-w: 30px; }
+  .payment-tile--google { --pay-logo-w: 34px; }
+  .payment-tile--skrill { --pay-logo-w: 80px; }
+  .payment-tile--neteller { --pay-logo-w: 118px; }
+  .payment-tile--usdt { --pay-logo-w: 100px; }
+  /* Bank Transfer: в половине ряда знак и подпись в строку не помещаются — знак над подписью */
+  .payment-tile--bank {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  .payment-tile--bank .payment-tile__chip { padding: 6px; }
+  .payment-tile--bank .payment-tile__chip img { width: 24px; height: 24px; }
+  .payment-tile--bank .payment-tile__label {
+    font-size: var(--fs-body);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
 }

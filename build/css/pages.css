@@ -764,11 +764,13 @@
   background-color: var(--color-surface-soft);
 }
 .platform-switcher__panel[hidden] { display: none; }
+/* фото устройств от клиента (правка 19.10): кадр 16:10, фон вшит белым — белая сцена на сером превью */
 .platform-switcher__stage {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 18px;
+  background-color: var(--color-surface-light);
 }
 .platform-switcher__foot {
   display: flex;

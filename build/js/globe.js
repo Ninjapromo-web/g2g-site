@@ -150,8 +150,9 @@
     b.shown = 0; b.slot = 0; b.px = null; b.py = 0; b.angle = 0;
     b.vis = 0; b.room = 1; b.roomTarget = 1; b.side = null; // место под карточку — placeCards()
     // текст для замера размеров карточки (resize); показ начнётся с первого инструмента пула
-    b.symEl.textContent = Q.instruments[b.pool[0]].label;
-    b.priceEl.textContent = Q.format(b.pool[0], Q.get(b.pool[0]).price);
+    var probe = b.pool[0] || Q.ids[0];
+    b.symEl.textContent = Q.instruments[probe].label;
+    b.priceEl.textContent = Q.format(probe, Q.get(probe).price);
     b.flashTimer = 0;
   }
   function renderQuote(b, flash) {
@@ -226,7 +227,7 @@
       project(b.ux, b.uy, b.uz, c, s, P);
       b.mx = P.x; b.my = P.y; b.d = P.d;
       b.reveal = smoothstep(0.12, 0.4, P.d);
-      if (b.reveal > 0) front.push(b);
+      if (b.reveal > 0 && b.pool.length) front.push(b);
     }
     front.sort(function (a, z) { return z.d - a.d; });
     var fade = 1 - Math.exp(-dt / 0.22);
@@ -563,7 +564,8 @@
       layer.setAttribute('aria-hidden', 'true');
       float.appendChild(canvas);
       float.appendChild(layer);
-      BANKS.forEach(function (b) { bankVec(b); makeCard(b); });
+      // Цены MT5: инструментов без цены на сервере в пуле нет; ЦБ с пустым пулом — только маркер, без карточки
+      BANKS.forEach(function (b) { b.pool = b.pool.filter(Q.has); bankVec(b); makeCard(b); });
 
       canvas.addEventListener('pointerdown', onDown);
       canvas.addEventListener('pointermove', onMove);

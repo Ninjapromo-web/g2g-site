@@ -18,8 +18,16 @@
         get(id) → {price, prevClose, changePct, dir, closed}; format(id, v); formatChange(pct);
         onStatus(fn) → отписка, status: 'loading' | 'indicative' | 'delayed';
         pause(reason) / resume(reason) — тики и запросы стоят, пока есть хоть одна причина
-        (вкладка скрыта — 'hidden' ставит сам модуль; глобус — 'offscreen' и 'user'). */
+        (вкладка скрыта — 'hidden' ставит сам модуль; глобус — 'offscreen' и 'user');
+        has(id) — есть ли у инструмента цена (в режиме MT5 — только пришедшие с сервера).
+
+   Режим MT5 (15.10): плагин WordPress «G2G MT5 Quotes» кладёт перед этим файлом window.G2G_QUOTES_FEED =
+   {file, rest, every, fallbackEvery, staleAfter}. Тогда цены — только настоящие: файл file раз в every мс
+   (статический, его пишет плагин); файл старше staleAfter — значит, у хостинга нет cron, цены берём у rest
+   (он сам обновляет файл) раз в fallbackEvery мс. Ни CNBC, ни случайных тиков, ни снимка; инструментов,
+   которых нет на сервере, нет и на глобусе. Без плагина (превью, локальная копия) — прежний демо-режим. */
 (function () {
+  var FEED = window.G2G_QUOTES_FEED || null;
   var POLL = 90000;            // мс между запросами к источнику
   var FRESH = 5 * 60000;       // старше — статус «delayed»
   var REMOTE = 'https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol' +
@@ -153,6 +161,70 @@
     });
   }
 
+  // ── Режим MT5 ─────────────────────────────────────────────────────────────
+  var avail = {};      // id → true: сервер прислал цену
+  var useRest = false; // файл старый (нет cron) — сразу к rest, пока rest не скажет, что файл пишет cron
+
+  function applyFeed(data) {
+    var quotes = (data && data.quotes) || {};
+    var changed = [];
+    Object.keys(quotes).forEach(function (id) {
+      var x = quotes[id], s = q[id];
+      if (!s || typeof x.price !== 'number') return;
+      var before = avail[id] ? format(id, s.price) : null;
+      var after = format(id, x.price);
+      var closed = !!x.closed;
+      avail[id] = true;
+      s.prevClose = typeof x.prevClose === 'number' && x.prevClose ? x.prevClose : x.price;
+      s.dir = before === null || after === before ? 0 : (x.price > s.price ? 1 : -1);
+      if (before !== after || s.closed !== closed) changed.push(id);
+      s.price = s.anchor = x.price;
+      s.closed = closed;
+    });
+    emit(changed);
+  }
+  function getJSON(url) {
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 8000);
+    return fetch(url, ctrl ? { cache: 'no-store', signal: ctrl.signal } : { cache: 'no-store' }).then(function (r) {
+      clearTimeout(timer);
+      if (!r.ok) throw new Error(r.status);
+      var date = Date.parse(r.headers.get('Date') || '');
+      return r.json().then(function (data) { return { data: data, date: date }; });
+    });
+  }
+  // Свежесть — по часам сервера: заголовок Date ответа против времени записи файла (часы посетителя не важны)
+  function fresh(res) {
+    var d = res && res.data;
+    return !!(d && d.time && !d.stale && (isNaN(res.date) || res.date - d.time < FEED.staleAfter));
+  }
+  function fromRest() {
+    return getJSON(FEED.rest).then(function (res) {
+      useRest = !(res.data && res.data.by === 'worker' && fresh(res));
+      return { res: res, wait: useRest ? FEED.fallbackEvery : FEED.every };
+    });
+  }
+  function liveFetch() {
+    var go = useRest ? fromRest() : getJSON(FEED.file).then(function (res) {
+      return fresh(res) ? { res: res, wait: FEED.every } : fromRest();
+    }, fromRest);
+    return go.then(function (o) {
+      applyFeed(o.res.data);
+      if (fresh(o.res)) lastRemote = Date.now();
+      return o.wait;
+    }, function () { return FEED.fallbackEvery; }).then(function (wait) {
+      setStatus(Date.now() - lastRemote < Math.max(FEED.staleAfter, FEED.fallbackEvery * 3) ? 'live' : 'delayed');
+      return wait;
+    });
+  }
+  function livePoll() {
+    clearTimeout(pollTimer);
+    if (!running) return;
+    liveFetch().then(function (wait) {
+      if (running) pollTimer = setTimeout(livePoll, wait);
+    });
+  }
+
   // Гауссов шум (Бокс — Мюллер)
   function gauss() {
     var u = 1 - Math.random();
@@ -196,7 +268,11 @@
     var go = started && !Object.keys(holds).length;
     if (go === running) return;
     running = go;
-    if (go) {
+    if (go && FEED) {
+      // первые цены только что пришли со start() — следующий запрос через обычный шаг
+      var step = useRest ? FEED.fallbackEvery : FEED.every;
+      pollTimer = setTimeout(livePoll, Date.now() - lastRemote < step ? step : 0);
+    } else if (go) {
       tick();
       tickTimer = setInterval(tick, 400);
       // вернулись после паузы — сразу за свежими ценами, если прежние старше POLL
@@ -219,7 +295,8 @@
     instruments: I,
     start: function (opts) {
       if (starting) return starting;
-      return starting = loadSnapshot(opts && opts.snapshot).then(function () {
+      // MT5: первые цены до первого кадра — глобус по ним решает, у каких ЦБ будут карточки
+      return starting = (FEED ? liveFetch() : loadSnapshot(opts && opts.snapshot)).then(function () {
         started = true;
         emit(IDS);
         update();
@@ -234,6 +311,7 @@
       fn(status);
       return function () { statusListeners = statusListeners.filter(function (f) { return f !== fn; }); };
     },
+    has: function (id) { return !!q[id] && (!FEED || !!avail[id]); },
     get: function (id) {
       var s = q[id];
       return { price: s.price, prevClose: s.prevClose, changePct: (s.price - s.prevClose) / s.prevClose * 100,
