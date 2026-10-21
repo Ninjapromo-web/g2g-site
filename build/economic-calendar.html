@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title/description — из ТЗ клиента 21.10 (Trello nblAGTt7) -->
+  <title>Economic Calendar | G2G Group LTD</title>
+  <meta name="description" content="Stay informed about upcoming economic events and key data releases that may impact the financial markets.">
+  <meta name="theme-color" content="#071212">
+  <!-- фавиконка — текущая клиента (g2ggroup.com), до новой от дизайнеров -->
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/img/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/funnel-display-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="preload" href="assets/img/inner-hero-bg.webp" as="image">
+  <script src="js/header.js" defer></script>
+  <script src="js/analytics.js" defer></script>
+  <script src="js/stack.js" defer></script>
+  <script src="js/quotes.js" defer></script>
+  <script src="js/globe.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Шапка (Figma 4008:65). Transparent над героем → Solid после прокрутки (js/header.js) -->
+  <header class="site-header" data-el="header" data-name="site-header">
+    <div class="site-header__bar" data-el="container">
+      <a class="site-header__logo" href="index.html" data-el="image">
+        <img class="site-header__logo-img" src="assets/img/logo.svg" width="112" height="28" alt="G2G">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Main" data-el="nav">
+        <!-- Выпадающие меню Markets и Conditions — наше решение (макетов нет): состав и подписи — из свёрстанных
+             страниц. Пункт остаётся ссылкой, меню открывает наведение или кнопка-шеврон (js/header.js) -->
+        <ul class="site-header__menu">
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="markets.html">Markets</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-markets" aria-label="Markets menu"></button>
+            <div class="site-header__sub" id="site-sub-markets">
+              <!-- repeat: sub-link (title, note, href) -->
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="forex.html"><span class="site-header__sub-title">Forex</span><span class="site-header__sub-note">FX majors and crosses</span></a></li>
+                <li><a class="site-header__sub-link" href="metals-energies.html"><span class="site-header__sub-title">Metals &amp; Energies</span><span class="site-header__sub-note">Gold, silver, US Oil, Brent Oil</span></a></li>
+                <li><a class="site-header__sub-link" href="indices.html"><span class="site-header__sub-title">Indices</span><span class="site-header__sub-note">US100, US500, US30, DAX40</span></a></li>
+                <li><a class="site-header__sub-link" href="crypto.html"><span class="site-header__sub-title">Crypto</span><span class="site-header__sub-note">Bitcoin, Ethereum and other crypto/USD</span></a></li>
+                <li><a class="site-header__sub-link" href="stocks.html"><span class="site-header__sub-title">Stocks</span><span class="site-header__sub-note">Stock CFDs, as available</span></a></li>
+                <li class="site-header__sub-more"><a class="site-header__sub-link" href="markets.html"><span class="site-header__sub-title">All Markets</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="platform.html">Platform</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="funding.html">Funding</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="business.html">Business</a></li>
+          <li class="site-header__item site-header__item--sub">
+            <a class="site-header__link" href="accounts.html#conditions">Conditions</a>
+            <button class="site-header__sub-toggle" type="button" aria-expanded="false" aria-controls="site-sub-conditions" aria-label="Conditions menu"></button>
+            <div class="site-header__sub" id="site-sub-conditions">
+              <ul class="site-header__sub-list">
+                <li><a class="site-header__sub-link" href="accounts.html#conditions"><span class="site-header__sub-title">Trading Conditions</span><span class="site-header__sub-note">Leverage, spreads, commission, swap</span></a></li>
+                <li><a class="site-header__sub-link" href="funding.html#tx-details"><span class="site-header__sub-title">Deposits &amp; Withdrawals</span><span class="site-header__sub-note">Fees, minimum amount, processing times</span></a></li>
+                <li><a class="site-header__sub-link" href="regulation.html"><span class="site-header__sub-title">Regulation</span><span class="site-header__sub-note">Company registration and licensing status</span></a></li>
+                <li><a class="site-header__sub-link" href="legal.html"><span class="site-header__sub-title">Legal Documents</span><span class="site-header__sub-note">Policies and terms</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__item"><a class="site-header__link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions" data-el="container">
+        <a class="btn btn--outline site-header__login" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+        <a class="btn btn--primary site-header__cta" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <button class="site-header__burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu"></button>
+      </div>
+    </div>
+
+    <!-- Мобильное меню ≤1024 — наше решение (макетов нет) -->
+    <div class="site-header__drawer" id="site-drawer" hidden>
+      <nav aria-label="Mobile" data-el="nav">
+        <ul class="site-header__drawer-menu">
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="markets.html">Markets</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-markets" aria-label="Markets menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-markets">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="forex.html">Forex</a></li>
+                <li><a class="site-header__drawer-sub-link" href="metals-energies.html">Metals &amp; Energies</a></li>
+                <li><a class="site-header__drawer-sub-link" href="indices.html">Indices</a></li>
+                <li><a class="site-header__drawer-sub-link" href="crypto.html">Crypto</a></li>
+                <li><a class="site-header__drawer-sub-link" href="stocks.html">Stocks</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="accounts.html">Accounts</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="platform.html">Platform</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="funding.html">Funding</a></li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="business.html">Business</a></li>
+          <li class="site-header__drawer-item">
+            <div class="site-header__drawer-row" data-el="container">
+              <a class="site-header__drawer-link" href="accounts.html#conditions">Conditions</a>
+              <button class="site-header__drawer-toggle" type="button" aria-expanded="false" aria-controls="site-drawer-conditions" aria-label="Conditions menu"></button>
+            </div>
+            <div class="site-header__drawer-sub" id="site-drawer-conditions">
+              <ul class="site-header__drawer-sub-list">
+                <li><a class="site-header__drawer-sub-link" href="accounts.html#conditions">Trading Conditions</a></li>
+                <li><a class="site-header__drawer-sub-link" href="funding.html#tx-details">Deposits &amp; Withdrawals</a></li>
+                <li><a class="site-header__drawer-sub-link" href="regulation.html">Regulation</a></li>
+                <li><a class="site-header__drawer-sub-link" href="legal.html">Legal Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-header__drawer-item"><a class="site-header__drawer-link" href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__drawer-actions" data-el="container">
+        <a class="btn btn--primary btn--lg btn--block" href="https://portal.g2ggroup.com/en/register" data-el="button" data-event="click_open_account" data-placement="header">Open Account</a>
+        <a class="btn btn--outline btn--lg btn--block" href="https://portal.g2ggroup.com/en/login" data-el="button" data-event="click_login" data-placement="header">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- section: page-hero (Inner Hero 6013:293) — вариант без кнопки и арта (ТЗ клиента 21.10: «кнопки и дополнительные
+         визуальные элементы не нужны»); модификатор page-hero--plain убирает место под арт -->
+    <section class="page-hero page-hero--plain theme-dark" data-el="container" data-name="page-hero">
+      <div class="page-hero__inner container" data-el="container">
+        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb" data-el="nav">
+          <ol class="breadcrumb">
+            <li class="breadcrumb__item breadcrumb__item--sep"><a class="breadcrumb__link" href="index.html">Home</a></li>
+            <li class="breadcrumb__item breadcrumb__item--path" aria-current="page">Economic Calendar</li>
+          </ol>
+        </nav>
+        <div class="page-hero__copy" data-el="container">
+          <h1 class="page-hero__title type-h1" data-el="heading">Economic <span class="page-hero__accent">Calendar</span></h1>
+          <div class="page-hero__texts" data-el="container">
+            <p class="page-hero__lead type-body-lg" data-el="text">Stay informed about upcoming economic events and key data releases that may impact the financial markets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section: econ-calendar — виджет MQL5 Economic Calendar (mql5.com/en/economic-calendar/widgets).
+         Настройки виджета: Current week, English, Light, DD.MM.YYYY, Autosize.
+         CUSTOM-HTML: код виджета вставлен без изменений (условие MetaQuotes «keep the provided code unchanged»);
+         в Elementor — виджет HTML внутри контейнера-карточки. Скрипт сам создаёт iframe на 100% высоты
+         #economicCalendarWidget и переносит подпись .ecw-copyright внутрь, под iframe — высоту задаёт рамка .econ-calendar__frame. -->
+    <section class="econ-calendar theme-tint" data-el="container" data-name="econ-calendar">
+      <div class="econ-calendar__inner container" data-el="container">
+        <div class="econ-calendar__card" data-el="container">
+          <div class="econ-calendar__frame" data-el="html">
+            <div id="economicCalendarWidget"></div>
+            <div class="ecw-copyright"><a href="https://www.metatrader.com/?utm_source=calendar.widget&utm_medium=link&utm_term=economic.calendar&utm_content=visit.mql5.calendar&utm_campaign=202.calendar.widget" rel="noopener nofollow" target="_blank">MQL5 Economic Calendar</a></div>
+            <script async type="text/javascript" data-type="calendar-widget" src="https://www.tradays.com/c/js/widgets/calendar/widget.js?v=15">
+              {"width":"100%","height":"100%","mode":"2","fw":"html","lang":"en"}
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал: скруглённый верх поверх секции календаря, как на 14 Demo -->
+  <footer class="site-footer site-footer--tuck edge-round-top" data-el="footer" data-name="site-footer">
+    <div class="site-footer__inner container" data-el="container">
+      <div class="site-footer__top" data-el="container">
+        <div class="site-footer__brand" data-el="container">
+          <a class="site-footer__logo" href="index.html" data-el="image">
+            <img class="site-footer__logo-img" src="assets/img/logo.svg" width="122" height="31" alt="G2G" loading="lazy">
+          </a>
+          <p class="site-footer__about type-small" data-el="text">G2G GROUP LIMITED is a financial markets broker providing clients with access to available global markets, backed by more than 20 years of combined industry experience.</p>
+          <ul class="site-footer__contacts type-small">
+            <li><a class="site-footer__contact-link" href="tel:+447723448083">+44 7723 448083</a></li>
+            <li><a class="site-footer__contact-link" href="mailto:info@g2ggroup.com">info@g2ggroup.com</a> · <a class="site-footer__contact-link" href="mailto:support@g2ggroup.com">support@g2ggroup.com</a></li>
+            <li>Head Office — Saint Lucia · Back Office — Cyprus</li>
+          </ul>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Trade" data-el="nav">
+          <p class="site-footer__heading type-overline">Trade</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="markets.html">Markets</a></li>
+            <li><a class="site-footer__link" href="platform.html">Platform</a></li>
+            <li><a class="site-footer__link" href="funding.html">Funding</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Accounts" data-el="nav">
+          <p class="site-footer__heading type-overline">Accounts</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="accounts.html">Accounts</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/register" data-event="click_open_account" data-placement="footer">Open Account</a></li>
+            <li><a class="site-footer__link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Company" data-el="nav">
+          <p class="site-footer__heading type-overline">Company</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="about.html">About</a></li>
+            <li><a class="site-footer__link" href="regulation.html">Regulation</a></li>
+            <li><a class="site-footer__link" href="help.html">Help</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__col" aria-label="Legal" data-el="nav">
+          <p class="site-footer__heading type-overline">Legal</p>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__link" href="terms-and-conditions.html">Terms and Conditions</a></li>
+            <li><a class="site-footer__link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="site-footer__link" href="order-execution-policy.html">Order Execution Policy</a></li>
+            <li><a class="site-footer__link" href="security-of-funds-policy.html">Security of Funds Policy</a></li>
+            <li><a class="site-footer__link" href="anti-money-laundering-policy.html">Anti-Money Laundering Policy</a></li>
+            <li><a class="site-footer__link" href="complaints-handling-policy.html">Complaints Handling Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="site-footer__secondary" data-el="nav">
+        <li><a class="site-footer__secondary-link" href="https://portal.g2ggroup.com/en/login" data-event="click_login" data-placement="footer">Log in</a></li>
+        <li><a class="site-footer__secondary-link" href="demo.html" data-event="click_demo" data-placement="footer">Demo</a></li>
+        <li><a class="site-footer__secondary-link" href="business.html">Become a Partner</a></li>
+        <li><a class="site-footer__secondary-link" href="regulation.html">Regulation</a></li>
+        <li><a class="site-footer__secondary-link" href="help.html">Help</a></li>
+        <li><a class="site-footer__secondary-link" href="blog.html">Blog</a></li>
+      </ul>
+
+      <div class="site-footer__risk" data-el="container">
+        <p class="site-footer__risk-text type-caption" data-el="text">Risk warning. Trading forex, metals, energies, indices and crypto CFDs carries a high level of risk and may not be suitable for all investors. You can lose more than your initial deposit. Past performance is not indicative of future results. Seek independent advice if necessary.</p>
+        <p class="site-footer__risk-note type-caption" data-el="text">Restricted countries. G2G Group LTD does not offer services to residents of the United States, Canada, Japan, and other restricted jurisdictions listed in the Terms &amp; Conditions.</p>
+      </div>
+
+      <div class="site-footer__bottom" data-el="container">
+        <p class="site-footer__legal type-caption" data-el="text">G2G GROUP LIMITED · Registration number 2024-00120</p>
+        <p class="site-footer__copy type-caption" data-el="text">© 2026 G2G. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB (6008:155): закреплена, свёрнута, сама не раскрывается -->
+  <a class="whatsapp-fab" href="https://wa.me/447723448083" target="_blank" rel="noopener" data-el="button" data-event="click_whatsapp">Chat on WhatsApp</a>
+
+</body>
+</html>

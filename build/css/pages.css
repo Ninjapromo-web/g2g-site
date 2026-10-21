@@ -3128,3 +3128,55 @@
     border-top: 0;
   }
 }
+
+/* ════════ 30 Economic Calendar — виджет MQL5 (ТЗ клиента 21.10) ════════
+   Секция Tint, в ней белая карточка с виджетом. Внутренности виджета (iframe tradays.com) не стилизуются:
+   у него только тема Light/Dark. Скрипт виджета ставит #economicCalendarWidget высоту 100% рамки, iframe — 100%
+   его высоты, а подпись .ecw-copyright (26px) переносит внутрь под iframe — под неё нижний отступ рамки.
+   Снизу секция заходит под скруглённый верх подвала (.site-footer--tuck) — в углах подвала виден Tint.
+   Elementor: контейнер секции (Background Tint) → контейнер-карточка → виджет HTML с кодом MQL5. */
+.econ-calendar {
+  padding-top: var(--section-pad-md);
+  padding-bottom: calc(var(--section-pad) + var(--radius-section));
+}
+.econ-calendar__card {
+  overflow: hidden; /* скругление обрезает края iframe */
+  border: var(--border-width) solid var(--color-border-faint);
+  border-radius: var(--radius-xl);
+  background-color: var(--card-bg);
+}
+.econ-calendar__frame {
+  height: var(--ecw-h, 880px);
+  padding-bottom: var(--space-32);
+}
+/* У виджета своя серая рамка по краю iframe: сдвиг на 1px за края карточки прячет её слева, сверху и справа —
+   остаётся рамка карточки; нижняя линия виджета остаётся разделителем над подписью MQL5.
+   display: block — без зазора строки под iframe. CUSTOM-CSS (Elementor: Custom CSS контейнера-карточки) */
+.econ-calendar__frame iframe {
+  display: block;
+  width: calc(100% + 2px);
+  margin: -1px -1px 0;
+}
+.econ-calendar .ecw-copyright {
+  font-size: var(--fs-caption);
+  color: var(--fg-3);
+}
+.econ-calendar .ecw-copyright a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+@media (hover: hover) {
+  .econ-calendar .ecw-copyright a:hover {
+    color: var(--fg-accent);
+    text-decoration-line: underline;
+  }
+}
+@media (max-width: 1024px) {
+  .econ-calendar { padding-top: var(--space-64); }
+}
+@media (max-width: 767px) {
+  .econ-calendar { padding-top: var(--space-40); }
+  .econ-calendar__card { border-radius: var(--radius-lg); }
+  .econ-calendar__frame { --ecw-h: 720px; }
+}
